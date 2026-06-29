@@ -1,0 +1,744 @@
+#include "hp_capture_save.h"
+#include "ui_hp_capture_save.h"
+#include "hp_input_text.h"
+
+hp_capture_save::hp_capture_save(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_capture_save)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+
+    hp_UIStatus_update(false);
+    currentSelect =SAVE_NAME;
+    hp_UIStatus_update(true);
+
+    saveShow=CAPTURE_PIC_SAVE;
+    isNormal=0;
+    isUnkown=0;
+    isPD=0;
+    isGas=0;
+    isCollect=0;
+    TimerVoiceNoteCount= 0;//录制时长不超过20s
+    hasVoiceNotes = false;
+    isAudioStart=false;
+    isBluConnected = false;
+//    oldFileName = "";
+
+    hp_winInit();
+    hp_connectInit();
+    ui->edit_notes->setText("");
+    ui->label_error->close();
+}
+
+hp_capture_save::~hp_capture_save()
+{
+    delete ui;
+}
+
+void hp_capture_save::hp_winInit()
+{
+    TimerVoiceNote = new QTimer(this);
+    TimerVoiceNote->setInterval(1000);
+//    HpStatusBoxTop = new hp_statusbox_top(this);
+//    HpStatusBoxTop->setGeometry(800-160,2,160,50);
+    HpInputText = new hp_input_text(this);
+    HpInputText->hp_setIns(INPUT_CAP_SAVE);
+    HpInputText->hp_setMaxInput(40);
+    HpInputText->close();
+    ErrorWarning = new hp_errorwarning_dialog(this,tr("出错了"),tr("没有检测到SD卡"),0);
+    ErrorWarning->move((this->width()-ErrorWarning->width())/2, (this->height()-ErrorWarning->height())/2);
+    ErrorWarning->close();
+
+    ui->frame_labelCheckBox->close();
+    ui->label_voice_notes_time->close();
+
+    ui->frame->installEventFilter(this);
+    ui->preWidget->installEventFilter(this);
+    ui->frame_background->installEventFilter(this);
+    ui->toolButton_voice->installEventFilter(this);
+    ui->edit_name->installEventFilter(this);
+    ui->edit_notes->installEventFilter(this);
+    //QTextEdit必须给控件和视图窗口都注册事件过滤器
+}
+
+void hp_capture_save::hp_connectInit()
+{
+    connect(HpInputText,SIGNAL(hp_signal_text_over(QString,INPUT_NOW_SHOW)),this,SLOT(hp_slot_text_over(QString,INPUT_NOW_SHOW)));
+    connect(TimerVoiceNote,SIGNAL(timeout()),this,SLOT(SlotTimerVoiceNote()));
+}
+
+void hp_capture_save::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+bool hp_capture_save::eventFilter(QObject *watched, QEvent *event)
+{
+    if(event->type()==QMouseEvent::MouseButtonRelease)
+    {
+//        if(!HpInputText->isHidden())
+//        {
+//            HpInputText->hide();
+//        }
+        //文本框点击事件
+        qDebug()<<"hp_capture_save::eventFilter-------------QMouseEvent::MouseButtonRelease   objectName : "<<watched->objectName();
+        if(watched->objectName() =="edit_notes")
+        {
+            hp_UIStatus_update(false);
+            currentSelect = SAVE_NOTES;
+            hp_UIStatus_update(true);
+            hp_edit_clicked();
+            return true;
+        }
+        else if(watched->objectName() =="edit_name")
+        {
+            hp_UIStatus_update(false);
+            currentSelect = SAVE_NAME;
+            hp_UIStatus_update(true);
+            hp_edit_clicked();
+            return true;
+        }
+    }
+    return false;
+}
+void hp_capture_save::mousePressEvent(QMouseEvent *event)
+{
+    SignalUpdateSetUpClock();
+}
+
+void hp_capture_save::keyPressEvent(QKeyEvent *ev)
+{
+    if(!(isLongKey=ev->isAutoRepeat()))
+    {
+        qDebug(" mainwidget::keyPressEvent(QKeyEvent *ev)---------- ev->key() = 0x%02x",ev->key());
+        SignalUpdateSetUpClock();
+    }
+
+}
+
+void hp_capture_save::keyReleaseEvent(QKeyEvent *ev)
+{
+    qDebug(" mainwidget::keyReleaseEvent(QKeyEvent *ev)---------- ev->key() = 0x%02x",ev->key());
+    SignalUpdateSetUpClock();
+    switch (ev->key()) {
+    case Key_RETURN:
+        KeyReturnHandle();
+        break;
+    case Key_CAPTURNANDVIDEO:
+        on_toolButton_save_clicked();
+        break;
+    case Qt::Key_O:
+        SignalPrintscreenHandle();
+        break;
+    default:
+        break;
+    }
+}
+
+//初始化界面组件状态
+void hp_capture_save::hp_init_UIStatus_update()
+{
+    hp_setEditNotes("");
+}
+void hp_capture_save::SlotSetUIStyle(int type)
+{
+    if(type == 1)
+    {
+        this->setGeometry(0,0,1920,1080);
+        ui->frame_2->setGeometry(0,0,1920,1080);
+        ui->preWidget->setGeometry(0,0,1056,596);
+        ui->picShow->setGeometry(0,0,1056,596);
+        ui->frame->setGeometry(1056,0,864,585);
+        ui->label_name->setGeometry(48,90,192,90);
+        ui->edit_name->setGeometry(756,135,201,45);
+        ui->label_notes->setGeometry(48,290,81,50);
+        ui->label_voice_notes->setGeometry(48,210,81,54);
+        ui->toolButton_save->setGeometry(100,500,67,67);
+        ui->toolButton_cancel->setGeometry(580,500,67,67);
+        ui->toolButton_voice->setGeometry(264,210,225,54);
+        ui->frame_labelCheckBox->setGeometry(1920,160,430,40);
+        ui->label_voice_notes_time->setGeometry(500,210,336,54);
+        ui->edit_notes->setGeometry(264,290,480,180);
+        ui->edit_name_jpg->setGeometry(756,135,201,45);
+        ui->label_error->setGeometry(192,500,315,67);
+        ui->frame_background->setGeometry(800,800,1056,596);
+        ui->toolButton_cancel->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_n.png);}\
+                                             QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_n.png);}\
+                                             QToolButton::focus{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_n.png);}");
+        ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStop_1920_n);
+        ui->toolButton_save->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_1920 "save_n.png);}\
+                                                   QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_1920 "save_n.png);}");
+
+    }
+}
+//更新界面组件状态
+void hp_capture_save::hp_UIStatus_update(bool isSeclect )
+{
+    if(UIType == 1)
+    {
+        switch (currentSelect)
+        {
+        case SAVE_NONE:   //初始化界面组件状态
+
+            ui->toolButton_cancel->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_n.png);}\
+                                                 QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_s.png);}\
+                                                 QToolButton::focus{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_s.png);}");
+
+                                                 ui->toolButton_save->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_1920 "save_n.png);}\
+                                                                                    QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_1920 "save_s.png);}");
+                                                                                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStart_1920_n);
+                                                 ui->edit_notes->setStyleSheet(LableStyleSheet_1920_n);
+                    ui->edit_name->setStyleSheet(LableStyleSheet_1920_n);
+            break;
+        case SAVE_CANCELBUTTON:
+            if(isSeclect)
+            {
+                ui->toolButton_cancel->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_s.png);}\
+                                                     QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_s.png);}\
+                                                     QToolButton::focus{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_s.png);}");
+            }
+            else
+            {
+                ui->toolButton_cancel->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_n.png);}\
+                                                     QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_n.png);}\
+                                                     QToolButton::focus{background:transparent;border-image: url(" UI_res_PATH_1920 "cancel_n.png);}");
+            }
+            break;
+        case SAVE_VOICE:
+            if(isSeclect)
+            {
+                if(isAudioStart)
+                {
+                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStart_1920_s);
+                }
+                else
+                {
+                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStop_1920_s);
+                }
+
+            }
+            else
+            {
+                if(isAudioStart)
+                {
+                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStart_1920_n);
+                }
+                else
+                {
+                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStop_1920_n);
+                }
+            }
+            break;
+        case SAVE_NAME:
+            if(isSeclect)
+            {
+                ui->edit_name->setStyleSheet(LableStyleSheet_1920_s);
+            }
+            else
+            {
+                ui->edit_name->setStyleSheet(LableStyleSheet_1920_n);
+                if(!HpInputText->isHidden())
+                    HpInputText->hide();
+            }
+            break;
+        case SAVE_NOTES:
+            if(isSeclect)
+            {
+                ui->edit_notes->setStyleSheet(LableStyleSheet_1920_s);
+            }
+            else
+            {
+                ui->edit_notes->setStyleSheet(LableStyleSheet_1920_n);
+                if(!HpInputText->isHidden())
+                    HpInputText->hide();
+            }
+            break;
+        case SAVE_SAVEBUTTON:
+            if(isSeclect)
+            {
+                ui->toolButton_save->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_1920 "save_s.png);}\
+                                                   QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_1920 "save_s.png);}");
+            }
+            else
+            {
+                ui->toolButton_save->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_1920 "save_n.png);}\
+                                                   QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_1920 "save_n.png);}");
+            }
+            break;
+        }
+    }
+    else if(UIType == 0)
+    {
+        switch (currentSelect)
+        {
+        case SAVE_NONE:   //初始化界面组件状态
+
+            ui->toolButton_cancel->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_n.png);}\
+                                                 QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_s.png);}\
+                                                 QToolButton::focus{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_s.png);}");
+
+                                                 ui->toolButton_save->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_800 "save_n.png);}\
+                                                                                    QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_800 "save_s.png);}");
+                                                                                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStart_800_n);
+                                                 ui->edit_notes->setStyleSheet(LableStyleSheet_800_n);
+                    ui->edit_name->setStyleSheet(LableStyleSheet_800_n);
+            break;
+        case SAVE_CANCELBUTTON:
+            if(isSeclect)
+            {
+                ui->toolButton_cancel->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_s.png);}\
+                                                     QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_s.png);}\
+                                                     QToolButton::focus{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_s.png);}");
+            }
+            else
+            {
+                ui->toolButton_cancel->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_n.png);}\
+                                                     QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_n.png);}\
+                                                     QToolButton::focus{background:transparent;border-image: url(" UI_res_PATH_800 "cancel_n.png);}");
+            }
+            break;
+        case SAVE_VOICE:
+            if(isSeclect)
+            {
+                if(isAudioStart)
+                {
+                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStart_800_s);
+                }
+                else
+                {
+                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStop_800_s);
+                }
+
+            }
+            else
+            {
+                if(isAudioStart)
+                {
+                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStart_800_n);
+                }
+                else
+                {
+                    ui->toolButton_voice->setStyleSheet(ToolButtonVoiceSheetStyleStop_800_n);
+                }
+            }
+            break;
+        case SAVE_NAME:
+            if(isSeclect)
+            {
+                ui->edit_name->setStyleSheet(LableStyleSheet_800_s);
+            }
+            else
+            {
+                ui->edit_name->setStyleSheet(LableStyleSheet_800_n);
+                if(!HpInputText->isHidden())
+                    HpInputText->hide();
+            }
+            break;
+        case SAVE_NOTES:
+            if(isSeclect)
+            {
+                ui->edit_notes->setStyleSheet(LableStyleSheet_800_s);
+            }
+            else
+            {
+                ui->edit_notes->setStyleSheet(LableStyleSheet_800_n);
+                if(!HpInputText->isHidden())
+                    HpInputText->hide();
+            }
+            break;
+        case SAVE_SAVEBUTTON:
+            if(isSeclect)
+            {
+                ui->toolButton_save->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_800 "save_s.png);}\
+                                                   QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_800 "save_s.png);}");
+            }
+            else
+            {
+                ui->toolButton_save->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_PATH_800 "save_n.png);}\
+                                                   QToolButton::pressed{background:transparent;border-image: url(" UI_res_PATH_800 "save_n.png);}");
+            }
+            break;
+        }
+    }
+}//输入备注内容
+void hp_capture_save::hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow)
+{
+//    qDebug()<<"##---------------hp_capture_save::hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow)----------##";
+    switch(currentSelect)
+    {
+    case SAVE_NAME:
+        ui->edit_name->setText(text);
+        break;
+    case SAVE_NOTES:
+        ui->edit_notes->setText(text);
+        break;
+    default:
+        break;
+    }
+//    HpInputText->close();
+}
+//保存按钮
+void hp_capture_save::on_toolButton_save_clicked()
+{
+    hp_UIStatus_update(false);
+    currentSelect = SAVE_SAVEBUTTON;
+    hp_UIStatus_update(true);
+    qDebug()<<"ui->edit_name->text().size()"<<ui->edit_name->text();
+    if(ui->edit_name->text() == NULL)
+    {
+        ErrorWarning->warning(tr("出错了"),tr("文件名不得为空"));
+        ErrorWarning->setDelayClose(3000);
+        ErrorWarning->show();
+        return;
+
+    }
+//    if(ui->edit_name->text().size() == 0)
+//    {
+//        qDebug("ui->edit_name->text().size() == 0");
+//        ErrorWarning->warning(tr("出错了"),tr("文件名不得为空"));
+//        ErrorWarning->setDelayClose(3000);
+//        ErrorWarning->show();
+//        return;
+//    }
+
+    isSaveSuccess = true;
+
+
+    signal_hp_capture_save_close(saveShow,1);
+
+    if(isSaveSuccess)
+    {
+        ui->label_voice_notes_time->close();
+        HpInputText->hp_setText("");
+        ui->label_error->close();
+    }
+    else
+    {
+        ui->label_error->show();
+    }
+}
+//取消保存按钮
+void hp_capture_save::on_toolButton_cancel_clicked()
+{
+    hp_UIStatus_update(false);
+    currentSelect = SAVE_CANCELBUTTON;
+    hp_UIStatus_update(true);
+
+    ui->label_voice_notes_time->close();
+    HpInputText->hp_setText("");
+    ui->label_error->close();
+    switch(saveShow)
+    {
+    case CAPTURE_PIC_SAVE:
+        signal_hp_capture_save_close(saveShow,0);
+        break;
+    case PREVIEW_PIC_SAVE:
+        signal_hp_capture_save_close(saveShow,0);
+        break;
+    }
+}
+//设置标签是否选中
+void hp_capture_save::on_checkBox_normal_stateChanged(int arg1)
+{
+    isNormal=arg1;
+    hp_update_checkBox_isEnabled();
+}
+void hp_capture_save::on_checkBox_unkown_stateChanged(int arg1)
+{
+    isUnkown=arg1;
+    hp_update_checkBox_isEnabled();
+}
+void hp_capture_save::on_checkBox_PD_stateChanged(int arg1)
+{
+    isPD=arg1;
+    hp_update_checkBox_isEnabled();
+}
+void hp_capture_save::on_checkBox_gas_stateChanged(int arg1)
+{
+    isGas=arg1;
+    hp_update_checkBox_isEnabled();
+}
+void hp_capture_save::on_checkBox_collect_stateChanged(int arg1)
+{
+    isCollect=arg1;
+    hp_update_checkBox_isEnabled();
+}
+//更新标签是否可选择状态
+void hp_capture_save::hp_update_checkBox_isEnabled()
+{
+    qDebug()<<"hp_capture_save::hp_update_checkBox_isEnabled()    isNormal="<<isNormal<<"  isGas="<<isGas<<"  isPD="<<isPD;
+    if(isNormal)
+    {
+        ui->checkBox_gas->setEnabled(false);
+        ui->checkBox_PD->setEnabled(false);
+    }
+    else if(isNormal==0)
+    {
+        ui->checkBox_PD->setEnabled(true);
+        ui->checkBox_gas->setEnabled(true);
+    }
+    if(isGas||isPD)
+    {
+        ui->checkBox_normal->setEnabled(false);
+    }
+    else if(isGas==0&&isPD==0)
+    {
+        ui->checkBox_normal->setEnabled(true);
+    }
+}
+
+//文本框点击事件 通过事件过滤器触发
+void hp_capture_save::hp_edit_clicked()
+{
+
+    if(HpInputText->isHidden())
+    {
+
+        switch(currentSelect)
+        {
+        case SAVE_NAME:
+            HpInputText->hp_setMaxInput(26);
+            HpInputText->hp_setShow(INPUT_SHOW_NOCHCHAR);
+            HpInputText->hp_serSymInputEnabled(false);
+            qDebug()<<"hp_capture_save::hp_edit_clicked   ui->edit_name->text()="<<ui->edit_name->text();
+            HpInputText->hp_setText(ui->edit_name->text());
+            break;
+        case SAVE_NOTES:
+            HpInputText->hp_setMaxInput(40);
+            HpInputText->hp_setShow(INPUT_SHOW_ENG);
+            HpInputText->hp_serSymInputEnabled(true);
+            qDebug()<<"hp_capture_save::hp_edit_clicked   ui->edit_notes->text()="<<ui->edit_notes->text();
+            HpInputText->hp_setText(ui->edit_notes->text());
+            break;
+        default:
+            break;
+        }
+
+        HpInputText->show();
+    }
+    else
+    {
+        HpInputText->hide();
+    }
+
+}
+//设置备注
+void hp_capture_save::hp_setEditNotes(QString note)
+{
+    ui->edit_notes->setText(note);
+}
+//设置文件名
+void hp_capture_save::hp_setEditName(QString text)
+{
+    ui->edit_name->setText(text.left(text.size()-4));
+}
+//获取备注内容
+QString hp_capture_save::hp_getEditNotes()
+{
+    return ui->edit_notes->text();
+}
+//获取文件名
+QString hp_capture_save::hp_getEditName()
+{
+    return ui->edit_name->text();
+}
+//设置保存界面类型
+void hp_capture_save::hp_setSaveShow(SAVE_SHOW saveShow)
+{
+    this->saveShow=saveShow;
+    hp_UIStatus_update(false);
+    currentSelect = SAVE_NAME;
+    hp_UIStatus_update(true);
+}
+//设置照片显示
+void hp_capture_save::hp_setPreWidget(QString path)
+{
+
+    QString picture = "/run/media/mmcblk2p1/DCIM/"+path;
+    qDebug()<<"hp_setPreWidget ----picture : "<<picture;
+    QImage *image=new QImage(picture);
+    QPixmap *pixmap = new QPixmap();
+    *image=image->scaled(440,264,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+    pixmap->convertFromImage(*image);
+    ui->picShow->setPixmap(*pixmap);
+//    if()
+//    hasVoiceNotes = false;
+
+}
+//录音按钮
+void hp_capture_save::on_toolButton_voice_clicked()
+{
+    hp_UIStatus_update(false);
+
+    if(!isAudioStart)
+    {
+        if(isBluConnected)
+        {
+            TimerVoiceNoteCount = 0;
+            ui->label_voice_notes_time->setStyleSheet("color:white;");
+            ui->label_voice_notes_time->setText("0″");
+            ui->label_voice_notes_time->show();
+            isAudioStart=true;
+            signal_pc_key_set_audio_start();
+            TimerVoiceNote->start();
+        }
+        else
+        {
+            isAudioStart=false;
+            ui->label_voice_notes_time->setStyleSheet("color:red;");
+            ui->label_voice_notes_time->setText(tr("请先连接蓝牙"));
+            ui->label_voice_notes_time->show();
+        }
+    }
+    else
+    {
+        signal_pc_key_set_audio_stop();
+        isAudioStart = false;
+        hasVoiceNotes = true;
+        TimerVoiceNote->stop();
+    }
+    currentSelect = SAVE_VOICE;
+    hp_UIStatus_update(true);
+}
+//信号反馈 蓝牙状态控制 录音放音
+void hp_capture_save::slot_pc_key_set_ble_inout(unsigned char return_value)
+{
+    qDebug("hp_capture_save::slot_pc_key_set_ble_inout(unsigned char return_value : 0x%02x",return_value);
+    if(isAudioStart)
+        signal_pc_key_set_audio_start();
+}
+//信号反馈 开始录制语音
+void hp_capture_save::slot_pc_key_set_audio_start(unsigned char return_value)
+{
+    qDebug("hp_capture_save::slot_pc_key_set_audio_start(unsigned char return_value : 0x%02x ",return_value);
+}
+//信号反馈 结束录制语音信号
+void hp_capture_save::slot_pc_key_set_audio_stop(unsigned char return_value)
+{
+    qDebug("hp_capture_save::slot_pc_key_set_audio_stop(unsigned char return_value : 0x%02x ",return_value);
+        isAudioStart=false;
+    if(return_value==RE_OK)
+    {
+        hasVoiceNotes = true;
+    }
+}
+//语音录制定时器计时
+void hp_capture_save::SlotTimerVoiceNote()
+{
+    if(TimerVoiceNoteCount<20)
+    {
+        TimerVoiceNoteCount++ ;
+        ui->label_voice_notes_time->setText(QString::number(TimerVoiceNoteCount)+"″");
+    }
+    else if(TimerVoiceNoteCount == 20)
+    {
+        on_toolButton_voice_clicked();
+//        signal_pc_key_set_audio_stop();
+//        isAudioStart = false;
+//        hasVoiceNotes = true;
+//        TimerVoiceNote->stop();
+//        ui->label_voice_notes_time->close();
+    }
+}
+//停止录音定时器
+void hp_capture_save::hp_stopTimerVideo()
+{
+    TimerVoiceNote->stop();
+//    ui->label_voice_notes_time->close();
+}
+//按键 ↓键
+void hp_capture_save::KeyDownHandle()
+{
+    hp_UIStatus_update(false);
+    if(currentSelect==SAVE_NOTES)
+    {
+        currentSelect = SAVE_SAVEBUTTON;
+    }
+    else if(currentSelect == SAVE_VOICE)
+    {
+        currentSelect = SAVE_NOTES;
+    }
+    hp_UIStatus_update(true);
+}
+//按键 ↑键
+void hp_capture_save::KeyUpHandle()
+{
+    hp_UIStatus_update(false);
+    if(currentSelect == SAVE_SAVEBUTTON||currentSelect == SAVE_CANCELBUTTON)
+    {
+        currentSelect = SAVE_NOTES;
+    }
+    else if(currentSelect == SAVE_NOTES)
+    {
+        currentSelect = SAVE_VOICE;
+    }
+    hp_UIStatus_update(true);
+}
+//按键 ←键
+void hp_capture_save::KeyLeftHandle()
+{
+    hp_UIStatus_update(false);
+    if(currentSelect == SAVE_CANCELBUTTON)
+    {
+        currentSelect = SAVE_SAVEBUTTON;
+    }
+    hp_UIStatus_update(true);
+}
+//按键 →键
+void hp_capture_save::KeyRightHandle()
+{
+    hp_UIStatus_update(false);
+    if(currentSelect == SAVE_SAVEBUTTON)
+    {
+        currentSelect = SAVE_CANCELBUTTON;
+    }
+    hp_UIStatus_update(true);
+}
+//按键 确认键
+void hp_capture_save::KeyOKHandle()
+{
+    switch (currentSelect) {
+    case SAVE_NONE:
+        break;
+    case SAVE_CANCELBUTTON:
+        emit ui->toolButton_cancel->clicked();
+        break;
+    case SAVE_NOTES:
+        hp_edit_clicked();
+        if(HpInputText->isHidden())
+        {
+            HpInputText->show();
+        }
+        else
+        {
+            HpInputText->hide();
+        }
+        break;
+    case SAVE_SAVEBUTTON:
+        emit ui->toolButton_save->clicked();
+        break;
+    case SAVE_VOICE:
+        emit ui->toolButton_voice->clicked();
+        break;
+    }
+}
+//按键 返回键
+void hp_capture_save::KeyReturnHandle()
+{
+    emit ui->toolButton_cancel->clicked();
+}
+//修改蓝牙连接状态
+void hp_capture_save::hp_SetCaptureSaveBlu(int isConnected)
+{
+    isBluConnected = isConnected;
+}

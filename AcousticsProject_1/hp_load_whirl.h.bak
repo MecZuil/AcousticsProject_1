@@ -1,0 +1,41 @@
+#ifndef HP_LOAD_WHIRL_H
+#define HP_LOAD_WHIRL_H
+
+#include <QWidget>
+#include <QTimer>
+#include <QPainter>
+#include <QDebug>
+
+namespace Ui {
+class hp_load_whirl;
+}
+
+class hp_load_whirl : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_load_whirl(QWidget *parent = nullptr);
+    ~hp_load_whirl();
+
+    void StartLoadTimer(int wx,int wy,int width,int height);
+    void StopLoadTimer();
+
+
+public slots:
+    void SlotLoadTimer();
+
+
+protected:
+    virtual void paintEvent(QPaintEvent *event);
+
+private:
+    Ui::hp_load_whirl *ui;
+
+    QTimer* LoadTimer;
+
+    int rotation;
+
+};
+
+#endif // HP_LOAD_WHIRL_H

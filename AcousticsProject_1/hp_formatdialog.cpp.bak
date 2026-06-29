@@ -1,0 +1,201 @@
+#include "hp_formatdialog.h"
+#include "ui_hp_formatdialog.h"
+
+/*
+ * 最开始是SD卡格式化提示框,现在作为消息提示框
+*/
+hp_formatdialog::hp_formatdialog(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_formatdialog)
+{
+    ui->setupUi(this);
+    //设置窗口为模式对话框 禁止其他顶级窗口获取任何的输入 这样会让按键事件传递到本窗口下
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+    setGeometry((800-width())/2,(480-height())/2,width(),height());
+
+    DialogTimer = new QTimer(this);
+    dialogType=DIALOG_OKCANCEL;
+    connect(DialogTimer,SIGNAL(timeout()),this,SLOT(SlotDialogTimer()));
+    hp_setDialogType(DIALOG_OKCANCEL);
+    ui->ToolButton_OK->setFocus();
+}
+
+hp_formatdialog::~hp_formatdialog()
+{
+    delete ui;
+}
+
+void hp_formatdialog::SlotSetUIStyle(int type)
+{
+    if(type == 1)
+    {
+        QFont font("Microsoft YaHei", 24);
+        setGeometry((800-780)/2,(480-370)/2,780,370);
+        ui->frame->setGeometry(0,0,780,370);
+        ui->Text->setGeometry(0,90,780,112);
+        ui->ToolButton_OK->setGeometry(99,247,192,70);
+        ui->ToolButton_Cancel->setGeometry(489,247,182,70);
+        ui->Text->setFont(font);
+        ui->ToolButton_Cancel->setFont(font);
+        ui->ToolButton_OK->setFont(font);
+    }
+}
+void hp_formatdialog::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_formatdialog::keyPressEvent(QKeyEvent *ev)
+{
+    if(!(isLongKey=ev->isAutoRepeat()))
+    {
+        qDebug(" hp_formatdialog::keyPressEvent(QKeyEvent *ev)---------- ev->key() = 0x%02x",ev->key());
+        SignalUpdateSetUpClock();
+    }
+}
+
+void hp_formatdialog::keyReleaseEvent(QKeyEvent *ev)
+{
+    SignalUpdateSetUpClock();
+    qDebug("hp_formatdialog::keyReleaseEvent(QKeyEvent *ev)------------------------0x%02x ",ev->key());
+    switch (ev->key()) {
+    case Key_RETURN:
+        on_ToolButton_Cancel_clicked();
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_formatdialog::mousePressEvent(QMouseEvent *event)
+{
+    SignalUpdateSetUpClock();
+}
+//设置文本
+void hp_formatdialog::hp_setFormatDialogText(QString text)
+{
+    ui->Text->setText(text);
+}
+//确认按钮点击响应事件
+void hp_formatdialog::on_ToolButton_OK_clicked()
+{
+    SignalUpdateSetUpClock();
+    qDebug()<<"hp_formatdialog::on_ToolButton_OK_clicked dialogType: "<<dialogType;
+
+    signal_delete_pic();
+    signal_pc_sys_formatting_sd();
+    signal_pc_sys_config_init();
+    close();
+}
+//取消按钮点击响应事件
+void hp_formatdialog::on_ToolButton_Cancel_clicked()
+{
+    qDebug()<<"hp_formatdialog::on_ToolButton_Cancel_clicked : "<<dialogType;
+    SignalUpdateSetUpClock();
+    if(dialogType == DIALOG_CANCEL)
+    {
+        DialogTimer->stop();
+        SignalWifiConnectCancel();//停止轮询,连接开关关闭
+        Signal4GConnectCancel();
+        SignalGPSConnectCancel();
+    }
+    close();
+}
+//开启定时器
+void hp_formatdialog::hp_setDialogTimer(int ms)
+{
+    DialogTimer->setInterval(ms);
+    DialogTimer->start();
+}
+//定时器计时结束
+void hp_formatdialog::SlotDialogTimer()
+{
+    DialogTimer->stop();
+    if(this->isVisible())
+    {
+
+        SignalWifiConnecttimeout();//停止轮询,连接失败,连接开关
+        Signal4GConnecttimeout();
+        SignalGPSConnecttimeout();
+        SignalIROpentimeout();
+    }
+    close();
+}
+//设置弹窗类型
+void hp_formatdialog::hp_setDialogType(DIALOG_TYPE type)
+{
+    dialogType=type;
+    DialogTimer->stop();
+    switch(dialogType)
+    {
+    case DIALOG_OKCANCEL:
+        ui->ToolButton_Cancel->move(190,120);
+        ui->ToolButton_OK->move(60,120);
+        ui->ToolButton_OK->setFocus();
+        ui->ToolButton_Cancel->show();
+        ui->ToolButton_OK->show();
+        break;
+    case DIALOG_OK:
+        break;
+    case DIALOG_CANCEL:
+        ui->ToolButton_Cancel->move(122,120);
+        ui->ToolButton_OK->move(60,120);
+        ui->ToolButton_Cancel->setFocus();
+        ui->ToolButton_Cancel->show();
+        ui->ToolButton_OK->close();
+        break;
+    case DIALOG_NULL:
+        ui->ToolButton_Cancel->move(122,120);
+        ui->ToolButton_OK->move(60,120);
+        ui->ToolButton_Cancel->close();
+        ui->ToolButton_OK->close();
+        break;
+    default:
+        break;
+    }
+}
+//按键 →键
+void hp_formatdialog::KeyRightHandle()
+{
+    if(dialogType == DIALOG_CANCEL)
+    {
+        return;
+    }
+    if(ui->ToolButton_OK->hasFocus())
+    {
+        ui->ToolButton_Cancel->setFocus();
+    }
+    else if(ui->ToolButton_Cancel->hasFocus())
+    {
+        ui->ToolButton_OK->setFocus();
+    }
+}
+//按键 ←键
+void hp_formatdialog::KeyLeftHandle()
+{
+    if(dialogType == DIALOG_CANCEL)
+    {
+        return;
+    }
+    if(ui->ToolButton_OK->hasFocus())
+    {
+        ui->ToolButton_Cancel->setFocus();
+    }
+    else if(ui->ToolButton_Cancel->hasFocus())
+    {
+        ui->ToolButton_OK->setFocus();
+    }
+}
+//void hp_formatdialog::on_toolButton_clicked()
+//{
+//    KeyRightHandle();
+//}

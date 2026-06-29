@@ -1,0 +1,77 @@
+#ifndef HP_DIALOG_SERVICE_H
+#define HP_DIALOG_SERVICE_H
+
+#include <QWidget>
+
+#include "hi384_protocol.h"
+#include "hp_assemblystyle.h"
+#include "hp_input_text.h"
+#include "hp_errorwarning_dialog.h"
+#include "hp_formatdialog.h"
+
+namespace Ui {
+class hp_dialog_service;
+}
+
+class hp_dialog_service : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_dialog_service(QWidget *parent = nullptr);
+    ~hp_dialog_service();
+
+    bool isConnected;
+    bool isConnecting;
+    bool isScreenClosed;//屏幕是否关闭
+
+    int UIType;
+
+signals:
+    void signal_pc_sys_set_service(client_para client_para);
+
+    void SignalUpdateSetUpClock();
+    void SignalIsClientConnected(bool isConnected);//传递参数 预览界面图片上传按钮是否能够点击
+
+protected:
+    virtual bool eventFilter(QObject *w, QEvent *e);
+    virtual void mousePressEvent(QMouseEvent *ev);
+    virtual void keyReleaseEvent(QKeyEvent *ev);
+
+private slots:
+    void slot_pc_sys_set_service(unsigned char return_value);
+    void hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow);
+    void on_checkBox_srvopen_clicked(bool checked);
+    void on_toolButton_close_clicked();
+        void SlotSetUIStyle(int type);
+    void on_toolButton_picUpload_clicked();
+
+private:
+    Ui::hp_dialog_service *ui;
+
+    client_para clientPara;
+    SERVICE_SELECT currentSelect;
+
+    QString ServeIP;    //自动上传的服务器IP
+    QString ServePort;   //自动上传的服务器端口
+    QString ServeUsr;    //自动上传的服务器用户名
+    QString ServePass;   //自动上传的服务器密码
+
+    void KeyUpHandle();
+    void KeyDownHandle();
+    void KeyLeftHandle();
+    void KeyRightHandle();
+    void KeyCenterHandle();
+    void KeyReturnHandle();
+    void changeEvent(QEvent *e);
+    void hp_UIStatus_update(bool isSeclect );
+    void hp_edit_clicked();
+
+    hp_input_text *HpInputText;
+    hp_errorwarning_dialog *ErrorWarning;
+    hp_formatdialog *FormatWarning;
+
+    void SignalSlot();
+};
+
+#endif // HP_DIALOG_SERVICE_H

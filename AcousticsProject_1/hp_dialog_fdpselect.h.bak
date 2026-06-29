@@ -1,0 +1,49 @@
+#ifndef HP_DIALOG_FDPSELECT_H
+#define HP_DIALOG_FDPSELECT_H
+
+#include <QWidget>
+#include <QDebug>
+
+#include <hi384_protocol.h>
+#include <hp_enum.h>
+#include <hp_assemblystyle.h>
+
+namespace Ui {
+class hp_dialog_fdpselect;
+}
+
+class hp_dialog_fdpselect : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_dialog_fdpselect(QWidget *parent = nullptr);
+    ~hp_dialog_fdpselect();
+
+    int UIType;
+    bool isSLMOpen;
+    void SetButtonEnabled(bool isSLM,bool isAuto);
+    void SetSLMVisible(bool isVisible);
+signals:
+    void signal_pc_key_get_fpga_calfreq();
+    void SignalSetFdpChooseRect(int fdp_value,int fdp_max);
+    void SignalSetSLM(bool isOpen);
+
+private slots:
+    void on_FDPSet_Auto_clicked();
+    void on_FDPSet_SLM_clicked();
+    void SlotSetButtonEnabled(bool isSLM,bool isAuto);
+
+    void slot_pc_key_get_fpga_calfreq(unsigned char return_value,int data);
+
+private:
+    Ui::hp_dialog_fdpselect *ui;
+
+    double f;
+
+    void hp_button_status_update(bool isSelect);
+
+    FDPSELECT_SELECT current_select;
+};
+
+#endif // HP_DIALOG_FDPSELECT_H

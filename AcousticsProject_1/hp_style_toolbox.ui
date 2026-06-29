@@ -1,0 +1,1447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_style_toolBox</class>
+ <widget class="QWidget" name="hp_style_toolBox">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>700</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame{background:transparent;border:none;}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="IR_title">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;background:black;</string>
+      </property>
+      <property name="text">
+       <string>红外</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="scrollArea_IRpara">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QScrollArea
+{
+background:transparent;
+border:none;
+}
+QScrollBar:vertical{    
+width:3px;/*整个滑动条的宽度*/
+background:rgb(45, 48, 51);
+border:none;
+margin:3px 0px 3px 0px;/*上下两个小方块的长宽 也控制滑动条宽度*/
+}
+
+QScrollBar::handle:vertical{
+background:rgb(0, 221, 253);/*中间滑块的颜色*/
+border:none;
+border-radius:3px;
+}
+
+QScrollBar::add-line:vertical {
+width: 3px;
+background:rgb(22, 24, 26);
+border:none;
+subcontrol-position:right;
+subcontrol-origin:margin;
+}
+QScrollBar::sub-line:vertical {
+border:none;
+background:rgb(22, 24, 26);
+width: 3px;
+subcontrol-origin:margin;
+subcontrol-position:left;
+}
+QScrollBar::top-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::bottom-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::sub-page:vertical{
+background:black;
+}
+QScrollBar::add-page:vertical
+{
+background:black;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_IRpara">
+       <property name="geometry">
+        <rect>
+         <x>24</x>
+         <y>-20</y>
+         <width>448</width>
+         <height>330</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+border:none;</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_IRpara" stretch="0,0,0,0,0">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>40</number>
+        </property>
+        <property name="topMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>20</number>
+        </property>
+        <item>
+         <widget class="QDoubleSpinBox" name="SpinBox_dwEmissivity">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>366</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QDoubleSpinBox
+{
+	font: 14pt ;
+	background:transparent;
+	color:white;
+	border:2px solid white;
+}
+
+QDoubleSpinBox::Disabled
+{
+	font: 14pt ;
+	background:transparent;
+	color:rgb(170, 170, 170);
+	border:2px solid rgb(170, 170, 170);
+}
+
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::UpDownArrows</enum>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="keyboardTracking">
+           <bool>true</bool>
+          </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="prefix">
+           <string> 发射率：</string>
+          </property>
+          <property name="suffix">
+           <string> %</string>
+          </property>
+          <property name="decimals">
+           <number>0</number>
+          </property>
+          <property name="minimum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>100.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>96.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="SpinBox_dwDistance">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>366</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QDoubleSpinBox
+{
+	font: 14pt ;
+	background:transparent;
+	color:white;
+	border:2px solid white;
+}
+
+QDoubleSpinBox::Disabled
+{
+	font: 14pt ;
+	background:transparent;
+	color:rgb(170, 170, 170);
+	border:2px solid rgb(170, 170, 170);
+}
+
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::UpDownArrows</enum>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="keyboardTracking">
+           <bool>true</bool>
+          </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="prefix">
+           <string> 距离：</string>
+          </property>
+          <property name="suffix">
+           <string> m</string>
+          </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="minimum">
+           <double>0.300000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>2.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+          <property name="value">
+           <double>2.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="SpinBox_dwReflectiveTemperature">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>366</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QDoubleSpinBox
+{
+	font: 14pt ;
+	background:transparent;
+	color:white;
+	border:2px solid white;
+}
+
+QDoubleSpinBox::Disabled
+{
+	font: 14pt ;
+	background:transparent;
+	color:rgb(170, 170, 170);
+	border:2px solid rgb(170, 170, 170);
+}
+
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::UpDownArrows</enum>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="keyboardTracking">
+           <bool>true</bool>
+          </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="prefix">
+           <string>  反射温度：</string>
+          </property>
+          <property name="suffix">
+           <string> ℃</string>
+          </property>
+          <property name="decimals">
+           <number>0</number>
+          </property>
+          <property name="minimum">
+           <double>-100.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>23.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="SpinBox_dwExternalOpticsTransmit">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>366</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QDoubleSpinBox
+{
+	font: 14pt ;
+	background:transparent;
+	color:white;
+	border:2px solid white;
+}
+
+QDoubleSpinBox::Disabled
+{
+	font: 14pt ;
+	background:transparent;
+	color:rgb(170, 170, 170);
+	border:2px solid rgb(170, 170, 170);
+}
+
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::UpDownArrows</enum>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="keyboardTracking">
+           <bool>true</bool>
+          </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="prefix">
+           <string> 透过率：</string>
+          </property>
+          <property name="suffix">
+           <string> %</string>
+          </property>
+          <property name="decimals">
+           <number>0</number>
+          </property>
+          <property name="minimum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>100.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>100.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButton_detectionSetting">
+          <property name="minimumSize">
+           <size>
+            <width>366</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_l_n.png);
+color:white;}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_l_s.png);
+color:white;}
+QToolButton::disabled{
+background:transparent;
+border-image: url(:/res/label_Background_l_d.png);
+color:white;
+}</string>
+          </property>
+          <property name="text">
+           <string> 设置</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="GAS_title">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;background:black;</string>
+      </property>
+      <property name="text">
+       <string>气体</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="scrollArea_Gaspara">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QScrollArea
+{
+background-color: transparent;
+border:none;
+}
+QScrollBar:vertical{    
+width:3px;/*整个滑动条的宽度*/
+background:rgb(45, 48, 51);
+border:none;
+margin:3px 0px 3px 0px;/*上下两个小方块的长宽 也控制滑动条宽度*/
+}
+
+QScrollBar::handle:vertical{
+background:rgb(0, 221, 253);/*中间滑块的颜色*/
+border:none;
+border-radius:3px;
+}
+
+QScrollBar::add-line:vertical {
+width: 3px;
+background:rgb(22, 24, 26);
+border:none;
+subcontrol-position:right;
+subcontrol-origin:margin;
+}
+QScrollBar::sub-line:vertical {
+border:none;
+background:rgb(22, 24, 26);
+width: 3px;
+subcontrol-origin:margin;
+subcontrol-position:left;
+}
+QScrollBar::top-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::bottom-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::sub-page:vertical{
+background:black;
+}
+QScrollBar::add-page:vertical
+{
+background:black;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_Gaspara">
+       <property name="geometry">
+        <rect>
+         <x>26</x>
+         <y>0</y>
+         <width>448</width>
+         <height>200</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+border:none;</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_IRpara_2">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>40</number>
+        </property>
+        <property name="topMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>20</number>
+        </property>
+        <item>
+         <widget class="QDoubleSpinBox" name="SpinBox_gasEnvtemp">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>366</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::TabFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QDoubleSpinBox
+{
+	font: 14pt ;
+	background:transparent;
+	color:white;
+	border:2px solid white;
+}
+
+QDoubleSpinBox::Disabled
+{
+	font: 14pt ;
+	background:transparent;
+	color:rgb(170, 170, 170);
+	border:2px solid rgb(170, 170, 170);
+}
+
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::UpDownArrows</enum>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="keyboardTracking">
+           <bool>true</bool>
+          </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="prefix">
+           <string> 环境温度：</string>
+          </property>
+          <property name="suffix">
+           <string>   ℃</string>
+          </property>
+          <property name="decimals">
+           <number>0</number>
+          </property>
+          <property name="minimum">
+           <double>-20.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>50.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>25.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="SpinBox_gasHumidity">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>366</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::TabFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QDoubleSpinBox
+{
+	font: 14pt ;
+	background:transparent;
+	color:white;
+	border:2px solid white;
+}
+
+QDoubleSpinBox::Disabled
+{
+	font: 14pt ;
+	background:transparent;
+	color:rgb(170, 170, 170);
+	border:2px solid rgb(170, 170, 170);
+}
+
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::UpDownArrows</enum>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="keyboardTracking">
+           <bool>true</bool>
+          </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="prefix">
+           <string>  湿度：</string>
+          </property>
+          <property name="suffix">
+           <string> %</string>
+          </property>
+          <property name="decimals">
+           <number>0</number>
+          </property>
+          <property name="minimum">
+           <double>0.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>95.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>50.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_repair">
+          <property name="minimumSize">
+           <size>
+            <width>366</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>366</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QFrame{
+font: 14pt ;
+	background:transparent;
+	color:white;
+	border:2px solid white;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QDoubleSpinBox" name="SpinBox_repair">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>366</width>
+             <height>44</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>366</width>
+             <height>44</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>14</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::TabFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QDoubleSpinBox
+{
+	font: 14pt ;
+	background:transparent;
+	color:white;
+	border:2px solid white;
+}
+
+QDoubleSpinBox::Disabled
+{
+	font: 14pt ;
+	background:transparent;
+	color:rgb(170, 170, 170);
+	border:2px solid rgb(170, 170, 170);
+}
+
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::UpDownArrows</enum>
+           </property>
+           <property name="accelerated">
+            <bool>true</bool>
+           </property>
+           <property name="keyboardTracking">
+            <bool>true</bool>
+           </property>
+           <property name="showGroupSeparator" stdset="0">
+            <bool>false</bool>
+           </property>
+           <property name="prefix">
+            <string>    泄露更正：</string>
+           </property>
+           <property name="suffix">
+            <string/>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_repair">
+           <property name="geometry">
+            <rect>
+             <x>80</x>
+             <y>0</y>
+             <width>220</width>
+             <height>44</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background:transparent;
+border:transparent;</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="PD_title">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;background:black;</string>
+      </property>
+      <property name="text">
+       <string>局放</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="scrollArea_PDpara">
+      <property name="styleSheet">
+       <string notr="true">QScrollArea
+{
+background-color: transparent;
+border:none;
+}
+QScrollBar:vertical{    
+width:3px;/*整个滑动条的宽度*/
+background:rgb(45, 48, 51);
+border:none;
+margin:3px 0px 3px 0px;/*上下两个小方块的长宽 也控制滑动条宽度*/
+}
+
+QScrollBar::handle:vertical{
+background:rgb(0, 221, 253);/*中间滑块的颜色*/
+border:none;
+border-radius:3px;
+}
+
+QScrollBar::add-line:vertical {
+width: 3px;
+background:rgb(22, 24, 26);
+border:none;
+subcontrol-position:right;
+subcontrol-origin:margin;
+}
+QScrollBar::sub-line:vertical {
+border:none;
+background:rgb(22, 24, 26);
+width: 3px;
+subcontrol-origin:margin;
+subcontrol-position:left;
+}
+QScrollBar::top-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::bottom-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::sub-page:vertical{
+background:black;
+}
+QScrollBar::add-page:vertical
+{
+background:black;
+}</string>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_PDpara">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>500</width>
+         <height>74</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;border:none;</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

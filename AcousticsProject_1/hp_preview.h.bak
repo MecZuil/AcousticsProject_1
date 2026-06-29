@@ -1,0 +1,241 @@
+#ifndef HP_PREVIEW_H
+#define HP_PREVIEW_H
+
+#include <QWidget>
+#include <QListWidgetItem>
+#include <QPixmap>
+#include <QPainter>
+#include <QIcon>
+#include <QString>
+#include <QDir>
+#include <QProcess>
+#include <QPainter>
+#include <QImage>
+#include <QKeyEvent>
+#include <QEvent>
+#include <QThread>
+#include <QTimer>
+#include <QMatrix>
+#include <QScrollBar>
+#include <QDateTime>
+#include <QScroller>
+#include <QKeyEvent>
+#include <QPropertyAnimation>
+#include <QParallelAnimationGroup>
+#include <QStringLiteral>
+
+#include  <gst/gst.h>
+#include  <gst/audio/streamvolume.h>
+#include  <gst/video/videooverlay.h>
+
+#include "hp_assemblystyle.h"
+#include "hp_enum.h"
+#include "hp_formatdialog.h"
+#include "hp_statusbox_top.h"
+#include "hi384_protocol.h"
+#include "hp_errorwarning_dialog.h"
+#include "hp_input_text.h"
+
+
+namespace Ui {
+class hp_preview;
+}
+
+class hp_preview : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_preview(QWidget *parent = nullptr);
+    ~hp_preview();
+
+    int isShowMoreInfo;//是否显示PF power/阈值DB/范围DB/频域数据
+
+    bool isLoadingItem;
+    bool isLoadingListWidget;
+    bool isSdInsert;
+    bool isSDUpdateSuccess;//SD卡内容更新是否成功
+    bool isSDPathExist;//是否存在目录/run/media/mmcblk2p1
+    bool isClosePreview;
+    take_capture_t captureInfo;
+
+    hp_formatdialog* FormatDialog;
+    hp_errorwarning_dialog* ErrorWarningDialog;
+    //    hp_statusbox_top* HpStatusBoxTop;
+    hp_input_text *HpInputText;
+
+    int UIType;
+    int VideoForJPG(QString file,QString filename);
+    bool hp_ChangePicInfo(take_capture_t picInfo);
+    void hp_updateCurrentItemInfo(bool isShow);
+    void hp_setEditName(QString text);
+    void hp_setEditNotes(QString note);
+    void hp_setEditSD(QString sdInfo);
+    void hp_stopVideoProcess();
+    void SlotShowCurrentPageTimer();
+    void hp_SetPreviewSaveBlu(int isConnected);
+    void hp_setToolButtonEnabled(int isEdit,int isDelete,int isReturn);
+    void AddListWidgetItem(take_capture_t captureData);
+    void hp_setCaptureInfo(take_capture_t picInfo);
+
+signals:
+    void SignalPrintscreenHandle();
+    void SignalUpdateSetUpClock();
+    void signal_hp_preview_close();
+    void signal_hp_capture_save_open(SAVE_SHOW saveShow,take_capture_t picInfo);
+    void signal_pc_key_get_capture_info(char *data);
+    void signal_pc_key_get_sdinsert();
+    void signal_pc_key_set_audio_play();
+    void signal_pc_key_set_audio_stopplay();
+    void signal_pc_key_get_grab();
+    void signal_pc_buf_start_encode();
+    void signal_pc_key_set_displaypos(int_pos intPos);
+    void signal_pc_key_set_ble_inout(int stats);
+    void signal_pc_key_get_avi_streamcount(char *data);
+    void signal_pc_pic_set_pic(char * data);
+//    void signal_pc_key_set_play_avi(char *data);
+
+public slots:
+    //    void slot_pc_key_get_sdinsert(unsigned char return_value,int stats);
+    //        void slot_pc_key_get_sdinfo(unsigned char return_value,sdinfo_t);
+    void VideoPlayerReadData();
+    void SlotIsClientConnected(bool isConnected);
+
+private slots:
+    void on_toolButton_close_clicked();
+    void on_toolButton_edit_clicked();
+    void on_toolButton_delete_clicked();
+
+    void slot_pc_pic_set_pic(unsigned char return_value);
+
+    void slot_pc_key_set_capture_edit(unsigned char return_value);
+    //    void slot_pc_key_get_battery(unsigned char return_value,int stats);
+    void slot_pc_key_set_audio_play(unsigned char return_value);
+    void slot_pc_key_set_audio_stopplay(unsigned char return_value);
+    void slot_pc_key_get_capture_info(unsigned char return_value,take_capture_t);
+    void slot_pc_sys_formatting_sd(unsigned char return_value);
+    void slot_pc_buf_start_encode(unsigned char return_value);
+    void slot_pc_key_set_ble_inout(unsigned char return_value);
+    void slot_pc_key_get_avi_streamcount(unsigned char return_value,int data);
+    //    void slot_setting_dateTimeChange(QDateTime dateTime);
+//    void slot_pc_key_set_play_avi(unsigned char return_value);
+
+    void hp_slot_text_over(QString,INPUT_NOW_SHOW);
+
+    void slot_delete_pic();
+    void SlotSDInsert();
+    void SlotSDPullOut();
+    void SlotListWidgetAnimation();
+//    void actionTriggered(int action);
+//    void scrollChanged(int value);
+    //    void SlotNewPicSaved();
+    void on_listWidget_currentRowChanged(int currentRow);
+    //    void on_checkBox_normal_clicked(bool checked);
+    //    void on_checkBox_unkown_clicked(bool checked);
+    //    void on_checkBox_PD_clicked(bool checked);
+    //    void on_checkBox_GL_clicked(bool checked);
+    //    void on_checkBox_collect_clicked(bool checked);
+    void on_toolButton_voiceNotes_clicked();
+    void on_toolButton_videoStop_clicked();
+    void on_toolButton_videoPlay_clicked();
+    void seekToPosition(gint64 time_nanoseconds);
+    void query_position_and_duration();
+
+    void on_toolButton_LastPage_clicked();
+    void on_toolButton_NextPage_clicked();//20240924
+
+    void on_toolButton_PicSave_clicked();
+
+protected:
+    bool eventFilter(QObject *o,QEvent *e);
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void keyPressEvent(QKeyEvent *ev);
+    virtual void keyReleaseEvent(QKeyEvent *ev);
+
+private:
+    Ui::hp_preview *ui;
+
+    //几个标签是否选中
+    int isNormal;
+    int isUnkown;
+    int isPD;
+    int isGas;
+    int isCollect;
+    int freshNum;
+
+    bool isClientConnected;//客户端是否连接
+    bool isLoading;//是否在加载中
+    int loadingNum;//当前加载页数：10个文件为一页
+    int firstVisableItem;
+
+    int MaxPageCount;//最大页码
+    int AviPlayFirstCount;//每次播放视频是卡在第一帧的计数，打印第一帧超过三次就更换播放方式
+    int ThumbnailNum;//缩略图数量
+    int PicNum;//图片数量
+    int AviNum;//视频数量
+    int listIndex;//当前选中列表项
+    bool isLongKey;// 是否长按
+    bool isVoicePlay;//录音是否正在播放
+    bool isVideoProcessStart;//视频播放进程是否开始
+    bool isVideoPlay;//视频是否正在播放
+    bool isAnimationUp;//列表动画是否是升起
+    bool isAudioPress;//协议返回前不响应点击操作
+    bool isBluConnected;//蓝牙是否连接
+    bool isVideoHaveAudio;//视频是否有音频流 1-有
+
+
+    char * ResourcesListDirect;//视频图片资源列表文件名路径
+
+    QImage* maskImage;
+
+    QString FileDirect;//SD卡图片视频路径
+    QProcess *VideoPlayerProcess ;
+    sdinfo_t sd_info;
+
+    QFileInfoList FileList;
+    QStringList FileNameList;
+    QPropertyAnimation* Animation;
+    QPropertyAnimation *FrameAnimation;
+    QPropertyAnimation *ListWidgetAnimation;
+    QParallelAnimationGroup *VideoAnimationGroup;
+    PREVIEW_SELECT currentSelect;
+    int_pos videoPos;
+
+    QTimer *    m_pipeLineMsgTimer;
+    GstElement *pipeline;
+    GstBus *bus;
+    GstMessage *msg;
+    GMainLoop *loop;
+
+    void changeEvent(QEvent *e);
+
+    int getAudioSize(const QString fileName);
+    bool hp_updateDir();
+    void hp_winInit();
+    void hp_connectInit();
+    void hp_dataInit();
+    void hp_setListWidgetStyle();
+    void hp_updateStatus(bool isSelect);
+
+    void ShowVideoFirstPic(int x,int y,int width,int height);
+    void hp_addPreviewItem(QString title,QString iconPath);
+    void UpdateResourcesListFile();
+    void StartCheckFile();
+    void DeleVideoForJPG();
+
+    void ShowCurrentPage();
+    void hp_updateCurrentVidItemInfo(int Item);
+    void Sleep(int msec);
+    void hp_videoStop();
+    void hp_InitAnimation();
+    void hp_AnimationDown();
+    void hp_AnimationUp();
+    void KeyDownHandle();
+    void KeyUpHandle();
+    void KeyLeftHandle();
+    void KeyRightHandle();
+    void KeyOKHandle();
+    void KeyReturnHandle();
+};
+
+#endif // HP_PREVIEW_H

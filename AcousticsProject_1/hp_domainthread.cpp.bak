@@ -1,0 +1,1386 @@
+#include "hp_domainthread.h"
+
+hp_domainthread::hp_domainthread(QObject *parent) : QThread(parent)
+{
+    stopped = false;
+    domainName = "/tmp/sock";
+    p_hpdomainapi = new hp_domainapi();
+    p_hpprotocolpkg = new hp_domainprotocol();
+}
+//修改通讯文件名字
+void hp_domainthread::setDomainName(const QString &str)
+{
+    if(domainName != str)
+    {
+        domainName = str;
+        qDebug()<<"set domainName:"<<domainName;
+    }
+}
+//开始线程--开始不断的问询通信文件
+void hp_domainthread::startDomain()
+{
+    start();
+}
+//停止不断问询通信文件---间接表示停止通讯
+void hp_domainthread::stopDomain()
+{
+    stopped = true;
+}
+
+void hp_domainthread::run()
+{
+
+    int ret;
+    unsigned char r_buf[1024 * 20];
+
+
+    unsigned char  recv_cmd= ERRORCMD;
+    unsigned char recv_subcmd = 0xff;
+    unsigned char return_value;
+    unsigned char recv_data[1024 * 20] = { 0 };
+    int recv_datalen = 0;
+
+    QByteArray ba = domainName.toUtf8();
+
+    //    static struct timeval tv_begin, tv_end;
+
+    while(!stopped) {
+        while(!stopped) {
+
+            sock_fd = p_hpdomainapi->Domain_client_init(ba.data());
+            if(sock_fd > 0) {
+                qDebug()<< "demo : sock_fd:" << sock_fd;
+                break;
+            }
+            sleep(3);
+        }
+
+        while(!stopped) {
+//            memset(r_buf,0,sizeof (r_buf));
+            ret = p_hpdomainapi->Domain_recv(sock_fd,r_buf,1024 * 20);
+//            for(int i =0;strlen((char*)r_buf);i++)
+//            {
+//                printf("%.02x",r_buf[i]);
+//            }
+
+            //            QDateTime upd_data_ret = QDateTime::currentDateTime();
+            //            qint64 tempqd = upd_data_ret.msecsTo(upd_data);
+            //            upd_data = upd_data_ret;
+            //            MYLOG << " time shot -- > " << tempqd;
+            //            zhenlv_chart++;
+
+            //            gettimeofday(&tv_end, NULL);
+            //            int intervalTimeMs = tv_end.tv_sec * 1000 + tv_end.tv_usec / 1000 - tv_begin.tv_sec * 1000 - tv_begin.tv_usec / 1000;
+            //            long intervalTimeMs = (tv_end.tv_usec - tv_begin.tv_usec) / 1000;
+            //            MYLOG << " time get shot -- > " << intervalTimeMs;
+            //            gettimeofday(&tv_begin, NULL);
+            //            zhenlv_chart++;
+
+            if(ret <= 0) {
+                qDebug()<<"recv error..PLEASE check server connect ok";
+                p_hpdomainapi->Domain_client_uinit(&sock_fd);
+                break;
+            }
+            memset(recv_data,0,sizeof (recv_data));
+            while(ret)
+            {
+                ret = p_hpprotocolpkg->protocol_pkg_hp_analysis(r_buf,ret,&recv_cmd,&recv_subcmd,&return_value,recv_data,&recv_datalen);
+                if(ret >= 0)
+                {
+                    process(recv_cmd,recv_subcmd,return_value,recv_data,recv_datalen);
+                }
+            }
+            //            if(recv_subcmd == PC_BUF_GET_LINKLIST)
+            //            {
+            //                QDateTime upd_data_ret = QDateTime::currentDateTime();
+            //                qint64 tempqd = upd_data_ret.msecsTo(upd_data);
+            //                upd_data = upd_data_ret;
+            //                MYLOG << " time shot -- > " << tempqd;
+            //                zhenlv_chart++;
+            //            }
+        }
+    }
+
+    if(sock_fd > 0)
+        p_hpdomainapi->Domain_client_uinit(&sock_fd);
+}
+
+//主类
+void hp_domainthread::process(unsigned char recv_cmd, unsigned char recv_subcmd, unsigned char return_value,unsigned char *data, int recv_datalen)
+{
+    switch(recv_cmd)
+    {
+    case PC_CFG:        //配置类
+        pc_cfg_process(recv_subcmd,return_value,data,recv_datalen);
+        break;
+    case PC_SYS:        //系统类
+        pc_sys_process(recv_subcmd,return_value,data,recv_datalen);
+        break;
+    case PC_KEY:
+        pc_key_process(recv_subcmd,return_value,data,recv_datalen);
+        break;
+    case PC_BUF:
+        pc_buf_process(recv_subcmd,return_value,data,recv_datalen);
+        break;
+    case PC_FPGA:
+        pc_fpga_process(recv_subcmd,return_value,data,recv_datalen);
+        break;
+    case PC_STREAM:
+        pc_stream_process(recv_subcmd,return_value,data,recv_datalen);
+        break;
+
+    default:
+        break;
+    }
+
+}
+//cfg
+void hp_domainthread::pc_cfg_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen)
+{
+    switch (recv_subcmd)
+    {
+    default:
+        break;
+
+    }
+}
+//系统类
+void hp_domainthread::pc_sys_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen)
+{
+    int stats =-1;
+    switch (recv_subcmd)
+    {
+    case PC_SYS_SET_TIME_SEC:       //系统时间设置
+        signal_pc_sys_set_time_sec(return_value);
+        break;
+    case PC_SYS_FORMATTING_SD:    //SD卡格式化
+        signal_pc_sys_formatting_sd(return_value);
+        break;
+    case PC_SYS_CONFIG_INIT:         //恢复出厂设置
+        signal_pc_sys_config_init(return_value);
+        break;
+    case PC_SYS_SET_WIFI_STA_START:     //开启sta设置
+        signal_pc_sys_set_wifi_sta_start(return_value);
+        break;
+    case PC_SYS_SET_WIFI_STA_SEARCH:              //获取可接入的网络
+        qDebug()<<"hp_domainthread::pc_sys_process-----PC_SYS_SET_WIFI_STA_SEARCH----return_value"<<return_value<<"----recv_datalen : "<<recv_datalen;
+        char *essid;//switch中不能一定义就赋值
+        essid = (char *)data;
+        signal_pc_sys_set_wifi_sta_search(return_value,essid);
+        break;
+    case PC_SYS_SET_WIFI_STA_CONNECT:             //设置要接入的网络
+        signal_pc_sys_set_wifi_sta_connect(return_value);
+        break;
+    case PC_SYS_GET_WIFI_STA_STATE:               //获取WIFI sta模式下的状态(需要轮询)
+        if(return_value == RE_OK)
+        {
+            memcpy(&stats,data,sizeof(int));
+        }
+        signal_pc_sys_get_wifi_sta_state(return_value,stats);
+        break;
+
+//    case PC_SYS_SET_PRPD_ANSER:              //接收到每帧PRPD后都要发送这个，表示回复
+//    case PC_SYS_SET_FREQ_ANSER:
+//        signal_pc_sys_set_freq_anser(return_value);
+//        break;
+    default:
+        break;
+
+    }
+}
+//key
+void hp_domainthread::pc_key_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen)
+{
+    int stats =-1;
+    char *str;
+    switch(recv_subcmd)
+    {
+    case PC_KEY_SET_CAPTURE_START:    //开始拍照
+        str = (char *)data;
+        qDebug()<<"        signal_pc_key_set_capture_start(return_value, str);";
+        signal_pc_key_set_capture_start(return_value, str);
+        break;
+    case PC_KEY_SET_CAPTURE_STOP:      //停止拍照
+        signal_pc_key_set_capture_stop(return_value);
+        break;
+    case PC_KEY_SET_CAPTURE_EDIT:        //编辑图像信息
+        signal_pc_key_set_capture_edit(return_value);
+        break;
+    case PC_KEY_GET_CAPTURE_INFO:          //获取图像信息
+        take_capture_t takeCapture;
+        if(return_value == RE_OK)
+        {
+            memcpy(&takeCapture,data,sizeof(take_capture_t));
+        }
+        else
+        {
+            memset(&takeCapture,0,sizeof(take_capture_t));
+        }
+        signal_pc_key_get_capture_info(return_value,takeCapture);
+        break;
+    case PC_KEY_GET_CAPTURE_FLAG:       //获取拍照状态
+        if(return_value == RE_OK)
+            memcpy(&stats,data,sizeof(int));
+        signal_pc_key_get_capture_flag(return_value,stats);
+        break;
+    case PC_KEY_SET_RECORD_START:      //开始录像
+        signal_pc_key_set_record_start(return_value);
+        break;
+    case PC_KEY_SET_RECORD_STOP:      //停止录像
+        str = (char *)data;
+        qDebug()<<"hp_domainthread::signal_pc_key_set_record_stop-----str"<<str;
+        signal_pc_key_set_record_stop(return_value,str);
+        break;
+//    case PC_KEY_GET_RECORD_FLAG:      //获取录像状态
+//        if(return_value == RE_OK)
+//            memcpy(&stats,data,sizeof(int));
+//        signal_pc_key_get_record_flag(return_value,stats);
+//        break;
+    case PC_KEY_GET_SDINSERT:          //SD卡是否插入
+        if(return_value == RE_OK)
+        {
+            memcpy(&stats,data,sizeof(int));
+        }
+        signal_pc_key_get_sdinsert(return_value,stats);
+        break;
+    case PC_KEY_GET_SDINFO:           //获取SD卡容量信息
+        sdinfo_t sdinfo;
+        if(return_value == RE_OK)
+        {
+            memcpy(&sdinfo,data,sizeof(sdinfo_t));
+        }
+        else
+        {
+            memset(&sdinfo,0,sizeof(sdinfo_t));
+        }
+        signal_pc_key_get_sdinfo(return_value,sdinfo);
+        break;
+    case PC_KEY_SET_WIFI_AP_STATE:         //wifi开关控制
+        signal_pc_key_set_wifi_ap_state(return_value);
+        break;
+    case PC_KEY_GET_WIFI_AP_STATE:         //获取wifi状态
+        if(return_value==RE_OK)
+            memcpy(&stats,data,sizeof (int));
+        signal_pc_key_get_wifi_ap_state(return_value,stats);
+        break;
+    case PC_KEY_SET_BLE_STATE:        //蓝牙开关控制
+        signal_pc_key_set_ble_state(return_value);
+        break;
+    case PC_KEY_SET_BLE_INOUT:        //蓝牙开关控制  录音放音
+        signal_pc_key_set_ble_inout(return_value);
+    case PC_KEY_SET_BLE_SEARCH:          //搜索蓝牙耳机
+        str = (char *)data;
+        qDebug()<<"hp_domainthread::pc_key_process-----PC_KEY_SET_BLE_SEARCH----return_value"<<return_value<<"----recv_datalen : "<<recv_datalen;
+        signal_pc_key_set_ble_search(return_value,str);
+        break;
+    case PC_KEY_GET_BLE_OLDCONNECT:           //查找已匹配过的蓝牙耳机
+         signal_pc_key_get_ble_oldconnect(return_value);
+        break;
+    case PC_KEY_SET_BLE_CONNECT:            //连接蓝牙耳机
+        signal_pc_key_set_ble_connect(return_value);
+        break;
+    case PC_KEY_SET_BLE_DISCONNECT:            //断开蓝牙耳机
+        signal_pc_key_set_ble_disconnect(return_value);
+        break;
+    case PC_KEY_GET_BLE_STATE:                  //获取蓝牙状态
+        ble_stat ble_Stat;
+        if(return_value == RE_OK)
+        {
+            memcpy(&ble_Stat,data,sizeof(ble_stat));
+        }
+        else
+        {
+            memset(&ble_Stat,0,sizeof(ble_stat));
+        }
+        signal_pc_key_get_ble_state(return_value,ble_Stat);
+        break;
+    case PC_KEY_GET_BLE_SEARCH://获取搜索蓝牙耳机搜索结果
+        str = (char *)data;
+        signal_pc_key_get_ble_search(return_value,str);
+    case PC_KEY_SET_4G_STATE:                   //4G开关控制
+        signal_pc_key_set_4g_state(return_value);
+        break;
+    case PC_KEY_GET_4G_STATE:                   //获取4G状态
+        qDebug("PC_KEY_GET_4G_STATE : 0x%02x",return_value);
+        if(return_value == RE_OK)
+        {
+            memcpy(&stats,data,sizeof(int));
+        }
+        signal_pc_key_get_4g_state(return_value,stats);
+        break;
+    case PC_KEY_SET_A_GRAY_RECT:                //添加一个灰色半透明区域
+        signal_pc_key_set_a_gray_rect(return_value);
+        break;
+    case PC_KEY_EDIT_A_GRAY_RECT:               //编辑一个灰色半透明区域
+        signal_pc_key_edit_a_gray_rect(return_value);
+        break;
+    case PC_KEY_DEL_A_GRAY_RECT:                //删除一个灰色半透明区域
+        signal_pc_key_del_a_gray_rect(return_value);
+        break;
+    case PC_KEY_POWERDOWN:                     //关机
+        signal_pc_key_powerdown(return_value);
+        break;
+    case PC_KEY_GET_CHARGE:                     //充电插入检测
+        if(return_value == RE_OK)
+        {
+            memcpy(&stats,data,sizeof(int));
+        }
+        signal_pc_key_get_charge(return_value,stats);
+        break;
+    case PC_KEY_GET_BATTERY:                   //获取电池电量
+        if(return_value == RE_OK)
+        {
+            memcpy(&stats,data,sizeof(int));
+        }
+        signal_pc_key_get_battery(return_value,stats);
+        break;
+    case PC_KEY_SET_SINGLE_SOURCE:              //设置单双声道
+        signal_pc_key_set_single_source(return_value);
+        break;
+    case PC_KEY_GET_SINGLE_SOURCE:               //获取单双声道
+        if(return_value == RE_OK)
+        {
+            memcpy(&stats,data,sizeof(int));
+        }
+        signal_pc_key_get_single_source(return_value,stats);
+        break;
+    case PC_KEY_SET_MOVING_RANGE:           //设置动态范围
+        signal_pc_key_set_moving_range( return_value);
+        break;
+    case PC_KEY_GET_MOVING_RANGE:             //获取动态范围
+        int_range movingRange;
+        if(return_value == RE_OK)
+        {
+            memcpy(&movingRange,data,sizeof(int_range));
+        }
+        else
+        {
+            memset(&movingRange,0,sizeof(int_range));
+        }
+        signal_pc_key_get_moving_range(return_value ,movingRange);
+        break;
+    case PC_KEY_SET_AUDIO_START:              //开始录制语音
+        signal_pc_key_set_audio_start(return_value);
+        break;
+    case PC_KEY_SET_AUDIO_STOP:               //结束录制语音
+        signal_pc_key_set_audio_stop(return_value);
+        break;
+    case PC_KEY_SET_AUDIO_PLAY:               //播放图像中记录的语音
+        signal_pc_key_set_audio_play(return_value);
+        break;
+    case PC_KEY_SET_AUDIO_STOPPLAY:            //结束播放图像中记录的语音
+        signal_pc_key_set_audio_stopplay(return_value);
+        break;
+    case PC_KEY_SET_DISP_MULTIPLE:             //放大倍数设置
+        signal_pc_key_set_disp_multiple(return_value);
+        break;
+    case PC_KEY_GET_GRAB:                   //截图
+        signal_pc_key_get_grab(return_value);
+        break;
+    case PC_KEY_SET_HDMI:                     //打开HDMI
+        signal_pc_key_set_hdmi(return_value);
+        break;
+    case PC_KEY_SET_LCDSTATE:                //息屏功能
+        signal_pc_key_set_lcdstate(return_value);
+        break;
+    case PC_KEY_SET_PRDPSTREAM:              //设置PRPD开启还是关闭
+        signal_pc_key_set_prpdstream(return_value);
+        break;
+    case PC_KEY_SET_USBMODE:                  //设置USB模式
+        signal_pc_key_set_usbmode(return_value);
+        break;
+    case PC_KEY_GET_USBINSERT:                //获取USB是否插入
+        int isUSBInsert;
+        if(return_value == RE_OK)
+        {
+            memcpy(&isUSBInsert,data,sizeof(int));
+        }
+        else
+        {
+            memset(&isUSBInsert,0,sizeof(int));
+        }
+        signal_pc_key_get_usbinsert(return_value,isUSBInsert);
+        break;
+    case PC_KEY_SET_4GGPS_STATE:             //4G GPS控制
+        signal_pc_key_set_4ggps_state( return_value);
+        break;
+    case PC_KEY_SET_TWOZOOM:                 //设置两倍聚焦
+        signal_pc_key_set_twozoom(return_value);
+        break;
+    case PC_KEY_SET_AUTOZOOM:               //设置自动聚焦
+        signal_pc_key_set_autozoom(return_value);
+        break;
+    case PC_KEY_SET_DISPLAYPOS:             //设置视频位置
+        signal_pc_key_set_displaypos(return_value);
+        break;
+    case PC_KEY_SET_IRSTREAM:               //设置红外开关
+        signal_pc_key_set_irstream(return_value);
+        break;
+    default:
+        break;
+
+    }
+}
+//buf
+void hp_domainthread::pc_buf_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen)
+{
+    switch (recv_subcmd)
+    {
+    case PC_BUF_START_ENCODE:             //视频模块开始运行
+        signal_pc_buf_start_encode(return_value);
+        break;
+    case PC_BUF_STOP_ENCODE:              //视频模块停止运行
+        signal_pc_buf_stop_encode(return_value);
+        break;
+    default:
+        break;
+    }
+}
+//fpga
+void hp_domainthread::pc_fpga_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen)
+{
+    switch(recv_subcmd)
+    {
+    case PC_FPGA_SET_FREQ_START:             //设置频谱图 起始位
+        signal_pc_fpga_set_freq_start(return_value);
+        break;
+    case PC_FPGA_SET_VID_MODE:               //设置算法模式
+        signal_pc_fpga_set_vid_mode(return_value);
+    case PC_FPGA_SET_ADJUST_CCD_X:           //设置可见光位置X
+        signal_pc_fpga_set_adjust_ccd_x(return_value);
+        break;
+    case PC_FPGA_SET_ADJUST_CCD_Y:           //设置可见光位置Y
+        signal_pc_fpga_set_adjust_ccd_y(return_value);
+        break;
+    case PC_FPGA_SET_Z:
+        signal_pc_fpga_set_z(return_value);
+        break;
+    case PC_FPGA_SET_SETARITHMETIC:
+        signal_pc_fpga_set_setarithmetic(return_value);
+        break;
+    default:
+        break;
+
+    }
+}
+//stream
+void hp_domainthread::pc_stream_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen){
+    switch (recv_subcmd)
+    {
+    case PC_STREAM_DATA:       //获取频域数据
+        signal_pc_stream_data(return_value,data);
+        break;
+    case PC_STREAM_PRPD:       //获取PRPD数据
+        int * prpdValue;
+        prpdValue = (int *)data;
+        signal_pc_stream_prpd(return_value,prpdValue,recv_datalen);
+        break;
+    }
+}
+
+void hp_domainthread::slot_pc_sys_set_time_sec(char *data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_sys_set_time_sec--------------------str:"<<data;
+
+    totallen =p_hpprotocolpkg->protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_SET_TIME_SEC,0,(unsigned char *)data,strlen(data),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_sys_formatting_sd()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+//    qDebug()<<"hp_domainthread::slot_pc_sys_formatting_sd--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_FORMATTING_SD,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_sys_config_init()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+    //    qDebug()<<"##--------------------hp_domainthread::slot_pc_sys_config_init--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_CONFIG_INIT,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_sys_set_wifi_sta_start(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+        qDebug()<<"##--------------------hp_domainthread::slot_pc_sys_set_wifi_sta_start--------------------stats : "<<stats;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_SET_WIFI_STA_START,0,(unsigned char *)&stats,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_sys_set_wifi_sta_search()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+        qDebug()<<"##--------------------hp_domainthread::slot_pc_sys_set_wifi_sta_search--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_SET_WIFI_STA_SEARCH,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void  hp_domainthread::slot_pc_sys_set_wifi_sta_connect(wifi_sta wifiSTA)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+        qDebug()<<"##--------------------hp_domainthread::slot_pc_sys_set_wifi_sta_connect--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_SET_WIFI_STA_CONNECT,0,(unsigned char *)&wifiSTA,sizeof(wifi_sta),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_sys_get_wifi_sta_state()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+        qDebug()<<"##--------------------hp_domainthread::slot_pc_sys_get_wifi_sta_state--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_GET_WIFI_STA_STATE,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_capture_start()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_capture_start--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_CAPTURE_START,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_capture_stop(take_capture_t data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_capture_stop--------------------data.filename:"<<(char *)data.filename<<"--------data.issave:"<<data.issave;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_CAPTURE_STOP,0,(unsigned char *)&data,sizeof(take_capture_t),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_capture_edit(take_capture_t data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_capture_edit--------------------data.filename:"<<(char *)data.filename<<"--------data.issave:"<<data.issave;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_CAPTURE_EDIT,0,(unsigned char *)&data,sizeof(take_capture_t),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_capture_info(char *str)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+     printf("hp_domainthread::slot_pc_key_get_capture_info(char *str : %s\n",str);
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_CAPTURE_INFO,0,(unsigned char *)str,strlen(str),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_capture_flag()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+    qDebug()<<"##-------------------- hp_domainthread::slot_pc_key_get_capture_flag--------------------";
+
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_CAPTURE_FLAG,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_record_start()
+{
+    qDebug( )<<"##-----------------hp_domainthread::slot_pc_key_set_record_start--------------";
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_RECORD_START,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_record_stop()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_record_stop--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_RECORD_STOP,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+//void hp_domainthread::slot_pc_key_get_record_flag()
+//{
+//    int ret ,totallen;
+//    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_record_flag--------------------";
+
+//    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_RECORD_FLAG,0,NULL,0,0);
+//    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+//    if(ret <0)
+//        qDebug()<<"Domain_send error";
+//    return;
+//}
+
+void hp_domainthread::slot_pc_key_get_sdinsert()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    //    qDebug()<<"##-------------------- hp_domainthread::slot_pc_key_get_sdinsert--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_SDINSERT,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_sdinfo()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_sdinfo--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_SDINFO,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_wifi_ap_state(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_wifi_ap_state--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_WIFI_AP_STATE,0,(unsigned char*)&data, sizeof(int), 0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret < 0)
+        qDebug()<<"Domain_send error";
+}
+
+void hp_domainthread::slot_pc_key_get_wifi_ap_state()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_wifi_ap_state--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_WIFI_AP_STATE,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_ble_state(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_bluetooth_state--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_BLE_STATE,0,(unsigned char*)&data, sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_ble_search()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_ble_search--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_BLE_SEARCH,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_ble_oldconnect()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_ble_oldconnect--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_BLE_OLDCONNECT,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_ble_connect(char *str)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_ble_connect--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_BLE_CONNECT,0,(unsigned char*)str, strlen(str),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_ble_disconnect()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_ble_disconnect--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_BLE_DISCONNECT,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_ble_state()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_ble_state--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_BLE_STATE,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_ble_search()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_ble_search--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_BLE_SEARCH,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_4g_state(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_4g_state--------------------data : "<<data;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_4G_STATE,0,(unsigned char *)&data,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_4g_state()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_4g_state--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_4G_STATE,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_a_gray_rect(grayRect_t rect)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_a_gray_rect--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_A_GRAY_RECT,0,(unsigned char *)&rect,sizeof(grayRect_t),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_edit_a_gray_rect(grayRect_t rect)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_deit_a_gray_rect--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_EDIT_A_GRAY_RECT,0,(unsigned char *)&rect,sizeof(grayRect_t),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_del_a_gray_rect(grayRect_t rect)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_del_a_gray_rect--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_DEL_A_GRAY_RECT,0,(unsigned char *)&rect,sizeof(grayRect_t),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_powerdown()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_powerdown--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_POWERDOWN,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_charge()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_charge--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_CHARGE,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_battery()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_battery--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_BATTERY,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_single_source(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_single_source--------------------data:"<<data;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_SINGLE_SOURCE,0,(unsigned char*)&data, sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_single_source()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_single_source--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_SINGLE_SOURCE,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_moving_range(int_range movingRange)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_moving_range--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_MOVING_RANGE,0,(unsigned char*)&movingRange, sizeof(int_range),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_moving_range()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_moving_range--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_MOVING_RANGE,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_audio_start()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_audio_start--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_AUDIO_START,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_audio_stop()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_audio_stop--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_AUDIO_STOP,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_audio_play()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_audio_play--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_AUDIO_PLAY,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_audio_stopplay()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_audio_stopplay--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_AUDIO_STOPPLAY,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_disp_multiple(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_disp_multiple--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_DISP_MULTIPLE,0,(unsigned char *)&data, sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_get_grab()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_get_grab--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_GRAB,0,NULL, 0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_hdmi(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_hdmi--------------------stats : "<<stats;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_HDMI,0,(unsigned char *)&stats, sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_lcdstate(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_lcdstate--------------------stats : "<<stats;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_LCDSTATE,0,(unsigned char *)&stats, sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_buf_start_encode()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_buf_start_encode--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_BUF,PC_BUF_START_ENCODE,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_buf_stop_encode()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_buf_stop_encode--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_BUF,PC_BUF_STOP_ENCODE,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_fpga_set_freq_start(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_fpga_set_freq_start--------------------data : "<<data;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_FPGA,PC_FPGA_SET_FREQ_START,0,(unsigned char *)&data,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_fpga_set_vid_mode(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_fpga_set_vid_mode--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_FPGA,PC_FPGA_SET_VID_MODE,0,(unsigned char *)&data,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_fpga_set_adjust_ccd_x(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_fpga_set_adjust_ccd_x--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_FPGA,PC_FPGA_SET_ADJUST_CCD_X,0,(unsigned char *)&data,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_fpga_set_adjust_ccd_y(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_fpga_set_adjust_ccd_y--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_FPGA,PC_FPGA_SET_ADJUST_CCD_Y,0,(unsigned char *)&data,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_key_set_prpdstream(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_key_set_prpdstream--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_PRDPSTREAM,0,(unsigned char *)&stats,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_key_set_usbmode(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_usbmode--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_USBMODE,0,(unsigned char *)&stats,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_key_get_usbinsert()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_gey_get_usbinsert--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_GET_USBINSERT,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_sys_set_prpd_anser()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_sys_set_prpd_anser--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_SET_PRPD_ANSER,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_sys_set_freq_anser()
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+//    qDebug()<<"##--------------------hp_domainthread::slot_pc_sys_set_freq_anser--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_SYS,PC_SYS_SET_FREQ_ANSER,0,NULL,0,0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+
+void hp_domainthread::slot_pc_key_set_4ggps_state(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_4ggps_state--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_4GGPS_STATE,0,(unsigned char *)&stats,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_key_set_twozoom(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_twozoom--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_TWOZOOM,0,(unsigned char *)&stats,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_key_set_autozoom(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_twozoom--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_AUTOZOOM,0,(unsigned char *)&stats,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_key_set_displaypos(int_pos intPos)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_displaypos--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_DISPLAYPOS,0,(unsigned char *)&intPos,sizeof(int_pos),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_fpga_set_z(int_Z intZ)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_fpga_set_z--------------------intZ.val : "<<intZ.val;
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_FPGA,PC_FPGA_SET_Z,0,(unsigned char *)&intZ,sizeof(int_Z),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_key_set_irstream(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_irstream--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_IRSTREAM,0,(unsigned char *)&stats,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_key_set_ble_inout(int stats)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_key_set_ble_inout--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_KEY,PC_KEY_SET_BLE_INOUT,0,(unsigned char *)&stats,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}
+void hp_domainthread::slot_pc_fpga_set_setarithmetic(int data)
+{
+    int ret ,totallen;
+    unsigned char buf[1024];
+    qDebug()<<"##--------------------hp_domainthread::slot_pc_fpga_set_setarithmetic--------------------";
+
+    totallen =p_hpprotocolpkg-> protocol_pkg_hp_create(buf,1024,PC_FPGA,PC_FPGA_SET_SETARITHMETIC,0,(unsigned char *)&data,sizeof(int),0);
+    ret = p_hpdomainapi->Domain_send(sock_fd,buf,totallen);
+
+    if(ret <0)
+        qDebug()<<"Domain_send error";
+    return;
+}

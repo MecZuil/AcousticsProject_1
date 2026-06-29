@@ -1,0 +1,312 @@
+#ifndef HP_ENUM_H
+#define HP_ENUM_H
+
+//弹窗种类
+typedef enum{
+    DIALOG_OKCANCEL,
+    DIALOG_OK,
+    DIALOG_CANCEL,
+    DIALOG_NULL,
+}DIALOG_TYPE;
+
+typedef enum
+{
+    DateYearSetting,
+    DateMonthSetting,
+    DateDaySetting,
+    DateHourSetting,
+    DateMinuteSetting,
+    DateSecondSetting,
+}SetUpDateSetting;
+
+typedef enum{
+    TEXTTYPE_LEAKSTYPE,
+    TEXTTYPE_CURRENCYTYPE,
+    TEXTTYPE_PRESSUREUNITS,
+
+}SpinBoxTextType_TYPE;
+
+//测温参数界面选择
+typedef enum{
+    IRPARAMETER_TEMPTYPE,
+}IRPARAMETER_SELECT;
+//标定选择界面
+typedef enum{
+    HIDECALIIR_TEMPRANGE,
+    HIDECALIIR_EMISSIVITY,
+    HIDECALIIR_DISTANCE,
+    HIDECALIIR_X,
+    HIDECALIIR_Y,
+    HIDECALIIR_ENVIROTEMP,
+    HIDECALIIR_PRESETTEMP1,
+
+}SETTING_HIDECALIIR;
+//自定义按钮组hp_style_toolbox
+typedef enum{
+    IR_TOOLBOX,
+    GA_TOOLBOXS,
+    PD_TOOLBOX,
+}CURRENTBOX_TOOLBOX;
+
+//蓝牙界面按钮
+typedef enum{
+    Ble_LISTWIDGET,
+    Ble_SEARCH,
+    Ble_DISCONNECT,
+    Ble_RETURN,
+
+}Bluetooth_SELECT;
+
+//进度条弹窗种类
+typedef enum{
+    PRODIALOG_IROPEN,
+    PRODIALOG_SELFINSPECTION,
+}PROGRESSDIALOG_TYPE;
+
+//设置界面
+typedef enum{
+    TAB_CONNECT,
+    TAB_SYSTEM,
+    TAB_DETECTION,
+    TAB_ADVANCED,
+    TAB_DEVICE,
+}SETTING_TABWIDGET;
+
+//设置界面按钮
+typedef enum{
+    SETTING_None=0,
+    SETTING_WIFI,
+    SETTING_Blu,
+    SETTING_HDMI,
+    SETTING_4G,
+    SETTING_GPS,
+    SETTING_SERVICE,
+
+    SETTING_WIFI_TOOLBUTTON,
+    SETTING_Ble_TOOLBUTTON,
+    SETTING_SERVICE_TOOLBUTTON,
+
+    SETTING_Language=31,
+    SETTING_AutoShutDown,
+    SETTING_AutoCloseScreen,
+    SETTING_USBMode,
+    SETTING_VideoTime,
+
+
+
+    SETTING_DETECTIONMODE=61,
+    SETTING_DETECT_PRPD,
+    SETTING_DETECT_GAS,
+    SETTING_DETECT_IR,
+    SETTING_GASENVTEMP,
+    SETTING_GASHUMIDITY,
+    SETTING_GASREPAIR,
+    SETTING_LEAKSTYPE,
+    SETTING_CURRENCYTYPE,
+    SETTING_PRESSURE,
+    SETTING_PRESSUREUNIT,
+    SETTING_Emissivity,
+    SETTING_Distance,
+    SETTING_ReflectiveTemperature,
+    SETTING_ExternalOpticsTransmit,
+    SETTING_DetectionSetting,
+
+
+    SETTING_Time=91,
+    SETTING_Format,
+    SETTING_Reset,
+    SETTING_HideSetting,
+    SETTING_SelfInspection,
+    SETTING_AcousticsMode,
+
+}SETTING_SELECT;
+
+typedef enum{
+    FDPSELECT_AUTO,
+    FDPSELECT_SLM,
+}FDPSELECT_SELECT;
+
+//红外画中画编辑按钮
+typedef enum{
+    IRHZHEDIT_ALPHA=0,
+    IRHZHEDIT_AMPLIFY,
+}IRHZHEDIT_SELECT;
+
+//预览界面按钮
+typedef enum{
+    PREVIEW_ListWidget=0,
+    PREVIEW_Edit,
+    PREVIEW_Delete,
+    PREVIEW_Return,
+    PREVIEW_VoiceNote,
+    PREVIEW_VideoPlay,
+    PREVIEW_VideoStop,
+    PREVIEW_NextPage,
+    PREVIEW_LastPage,
+    PREVIEW_NowPage,
+    PREVIEW_PicUpload,
+
+}PREVIEW_SELECT;
+
+//保存界面按钮
+typedef enum{
+    SAVE_NONE,
+    SAVE_NAME,           //文件名
+    SAVE_NOTES,          //备注
+    SAVE_VOICE,             //录音
+//    SAVE_LABELFRAME,          //标签
+    SAVE_SAVEBUTTON,     //保存
+    SAVE_CANCELBUTTON,         //取消
+
+}HPCAPTURESAVE_CONTROL;
+
+//保存界面
+typedef enum{
+    CAPTURE_PIC_SAVE,  //主界面拍照保存
+    PREVIEW_PIC_SAVE,  //预览界面图片编辑保存
+}SAVE_SHOW;
+
+//主界面按钮
+typedef enum{
+    MAIN_NONE=0,
+    MAIN_MENU,             //二级菜单
+//    MAIN_GRADIENTRECT,     //动态范围滑动
+    MAIN_FDP,              //频谱
+}CURRENT_BUTTON;
+
+//按钮弹窗界面
+typedef enum{
+    MENU_SETTING = 0,
+    MENU_ASM,
+    MENU_ZOOM,
+    MENU_PRPD,
+    MENU_TM,
+    MENU_IR,
+    MENU_AUTO,
+    MENU_SmartScenes,
+    MENU_PICMODE,
+    MENU_DYNAMICRANGE,
+    MENU_AIFOCUS,
+    MENU_DRAW,
+    MENU_IRCOLOR,
+    MENU_PICMODE_CCD,
+    MENU_PICMODE_IR,
+    MENU_PICMODE_PIP,
+}MAIN_MENU_SHOW;
+//输入法
+typedef enum{
+    INPUT_SHOW_NUM,         //只有数字
+    INPUT_SHOW_NOCHCHAR,    //没有中文、符号
+    INPUT_SHOW_NUM_2,       //数字
+    INPUT_SHOW_CHAR,        //字符
+    INPUT_SHOW_ENG,         //字母
+}INPUT_SHOW;
+
+//图像模式
+typedef enum{
+    PICMODE_IR,
+    PICMODE_PIP,
+    PICMODE_CCD,
+}PICMODE;
+
+typedef enum{
+    INPUT_SHOW_NONE,
+    INPUT_SETTING,//设置界面
+    INPUT_HIDEMENU,//隐藏界面
+    INPUT_CAP_SAVE,//保存界面
+    INPUT_SETTING_WIFI_SPA,//wifi设置界面
+    INPUT_HIDECALIIR,//隐藏红外校准界面
+    INPUT_SERVICE,//服务连接界面
+    INPUT_PREVIEW,//预览界面 当前仅页码可输入
+}INPUT_NOW_SHOW;
+
+//列表所在界面 区分item的ui
+typedef enum
+{
+    LIST_NONE=0,
+    LIST_PREVIEW,
+    LIST_WIFI,
+    LIST_TOOTHBLUE,
+
+}LIST_NAME;
+
+typedef enum
+{
+    STATUS_NONE,       //按钮仅选中 未选中状态时为NONE 有两种以上状态时根据对应状态赋值。
+    STATUS_1,
+    STATUS_2,
+    STATUS_3
+
+}HP_BUTTON_STATUS;
+
+typedef enum
+{
+    WIFI_RETURN,
+    WIFI_MODE,
+    WIFI_APSWITCH,
+    WIFI_WIFINAME,
+    WIFI_PASSWORD,
+    WIFI_REFRESHBUTTON,
+    WIFI_CONNECTCHECKBOX,
+
+}WIFIDIALOG_SETTING;
+
+typedef enum
+{
+    HIDEADJUST_CLOSE,
+    HIDEADJUST_Z0,
+    HIDEADJUST_Z1,
+    HIDEADJUST_Z2,
+    HIDEADJUST_Z3,
+    HIDEADJUST_NOISECOUNT,
+    HIDEADJUST_NOISELIMIT,
+    HIDEADJUST_GRAB,
+    HIDEADJUST_TESTCHECKBOX,
+    HIDEADJUST_TESTSPINBOX,
+    HIDEADJUST_TESTSLIDER,
+    HIDEADJUST_TESTTOOLBOX,
+    HIDEADJUST_IR,
+    HIDEADJUST_PDPARA,
+    HIDEADJUST_GASPARA,
+    HIDEADJUST_WIFINAME,
+    HIDEADJUST_WIFIPSWD,
+    HIDEADJUST_LOGOTYPE,
+    HIDEADJUST_DEVICESN,
+    HIDEADJUST_DeviceName,
+    HIDEADJUST_LOCALY,
+    HIDEADJUST_LOCALX,
+    HIDEADJUST_X1,
+    HIDEADJUST_Y1,
+    HIDEADJUST_SELFINSPECTION,
+    HIDEADJUST_WIN,
+    HIDEADJUST_RECORD,
+    HIDEADJUST_MAINTIME,
+    HIDEADJUST_BLETYPE
+}HIDEADJUST_SETTING;
+
+typedef enum
+{
+    SERVICE_SERVER_ACT,
+    SERVICE_SERVER_PSWD,
+    SERVICE_IP,
+    SERVICE_Account,
+
+}SERVICE_SELECT;
+
+typedef enum
+{
+    WIFI_DISCONNECT,
+    WIFI_ISCONNECTING,
+    WIFI_CONNECTED,
+}WIFIDIALOG_STATE;
+
+//当前状态用
+typedef enum
+{
+    DS_NON=-1,//编辑点线框，可以进行移动，删除操作
+    DS_POINT,//增加点操作
+    DS_LINE,//增加线操作
+    DS_RECT,//增加框操作
+    DS_CIRCLE,//增加圆操作
+}DS;
+#endif // HP_ENUM_H

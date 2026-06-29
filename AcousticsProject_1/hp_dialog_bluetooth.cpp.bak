@@ -1,0 +1,563 @@
+#include "hp_dialog_bluetooth.h"
+#include "ui_hp_dialog_bluetooth.h"
+
+hp_dialog_bluetooth::hp_dialog_bluetooth(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_bluetooth)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+    //qDebug(" set ble ui finish");
+    //    ui->frame->setStyleSheet("QWidget{background:black;}");
+    ui->label_pariedDevice->close();
+    ui->listWidget_pairedDevice->close();
+    //    ui->label_bleStatus->close();
+ui->frame->setStyleSheet("background-image: url(:/res/background_2.jpg);");
+    ErrorWarning  = new hp_errorwarning_dialog(this);
+    ErrorWarning->close();
+    m_scanAddrNameMap.clear();
+
+    ui->listWidget_availableDevice->setResizeMode(QListView::Adjust);      //设置单元项自适应
+    ui->listWidget_availableDevice->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);//设置滑动条是否显示
+    QScroller *scroller=QScroller::scroller(ui->listWidget_availableDevice);
+    scroller->grabGesture(ui->listWidget_availableDevice,QScroller::LeftMouseButtonGesture);//鼠标左键拖动
+    ui->listWidget_availableDevice->setMovement(QListView::Static);//列表项不可被拖动
+
+    currentSelect = Ble_LISTWIDGET;
+    hp_updateStatus(true);
+
+    currentBleMacAddr = "";
+    currentBleName = "";
+    isLongKey = false;
+    isDisConnecting = false;
+    isConnected = false;
+    isConnecting = false;
+    isSearch = false;
+    ble_mode = false;
+
+    BleStatusTimer = new QTimer(this);
+    connect(BleStatusTimer,SIGNAL(timeout()),this,SLOT(SlotBleStatusTimer()));
+    BleStatusTimer->setInterval(1000);
+    //    qDebug(" set ble creat finish");
+}
+
+hp_dialog_bluetooth::~hp_dialog_bluetooth()
+{
+    delete ui;
+}
+
+void hp_dialog_bluetooth::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_dialog_bluetooth::SlotSetUIStyle(int type)
+{
+    UIType = type;
+    if(UIType == 1)
+    {
+        this->setGeometry(0,0,1920,1080);
+        ui->frame->setGeometry(0,0,1920,1080);
+        ui->listWidget_availableDevice->setGeometry(360,180,1152,675);
+        ui->label_availableDevice->setGeometry(310,70,430,90);
+        ui->label_pariedDevice->setGeometry(1790,50,180,41);
+        ui->toolButton_search->setGeometry(160,645,360,67);
+        ui->toolButton_disconnect->setGeometry(1080,645,360,67);
+        ui->toolButton_close->setGeometry(68,68,68,68);
+        ui->listWidget_pairedDevice->setGeometry(1830,100,350,300);
+        ui->label_bleStatus->setGeometry(700,110,811,60);
+        ui->label_bleSearchStatus->setGeometry(20,390,611,24);
+
+        ui->toolButton_search->setStyleSheet(ToolButtonSheetStyle_1920_n);
+        ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_1920_n);
+        ui->listWidget_availableDevice->setStyleSheet(ListWidgeVerticalSheetStyle_1920_n);
+        ui->toolButton_disconnect->setStyleSheet(ToolButtonSheetStyle_1920_n);
+        ui->frame->setStyleSheet("background-image: url(" UI_res_PATH_1920 "background_1.jpg);");
+    }
+
+}
+
+void hp_dialog_bluetooth::keyPressEvent(QKeyEvent *ev)
+{
+    if(!(isLongKey=ev->isAutoRepeat()))
+    {
+        qDebug(" hp_dialog_bluetooth::keyPressEvent(QKeyEvent *ev)---------- ev->key() = 0x%02x",ev->key());
+        SignalUpdateSetUpClock();
+    }
+    switch(ev->key())
+    {
+    default:
+        break;
+    }
+}
+
+void hp_dialog_bluetooth::keyReleaseEvent(QKeyEvent *ev)
+{
+    qDebug()<<" hp_dialog_bluetooth::keyReleaseEvent(QKeyEvent *ev)---------- ev->key() = "<<ev->key();
+    switch (ev->key())
+    {
+    case Key_RETURN:
+        KeyReturnHandle();
+        break;
+    case Key_CAPTURNANDVIDEO:
+        SignalPrintscreenHandle();
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_dialog_bluetooth::mousePressEvent(QMouseEvent *event)
+{
+    SignalUpdateSetUpClock();
+}
+//更新控件状态
+void hp_dialog_bluetooth::hp_updateStatus(bool isSelect)
+{
+    switch (currentSelect) {
+    case Ble_DISCONNECT:
+        if(isSelect)
+        {
+            ui->toolButton_disconnect->setStyleSheet(ToolButtonSheetStyle_s);
+        }
+        else
+        {
+            ui->toolButton_disconnect->setStyleSheet(ToolButtonSheetStyle_n);
+        }
+        break;
+    case Ble_LISTWIDGET:
+        if(isSelect)
+        {
+            ui->listWidget_availableDevice->setStyleSheet(ListWidgeVerticalSheetStyle_s);
+        }
+        else
+        {
+            ui->listWidget_availableDevice->setStyleSheet(ListWidgeVerticalSheetStyle_n);
+        }
+        break;
+    case Ble_RETURN:
+        if(isSelect)
+        {
+            ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_s);
+        }
+        else
+        {
+            ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_s);
+        }
+        break;
+    case Ble_SEARCH:
+        if(isSelect)
+        {
+            ui->toolButton_search->setStyleSheet(ToolButtonSheetStyle_s);
+        }
+        else
+        {
+            ui->toolButton_search->setStyleSheet(ToolButtonSheetStyle_n);
+        }
+        break;
+    }
+}
+
+//开启蓝牙
+void hp_dialog_bluetooth::BleOn()
+{
+    hp_updateStatus(false);
+    currentSelect = Ble_LISTWIDGET;
+    hp_updateStatus(true);
+    currentBleName = "";
+    currentBleMacAddr = "";
+    isConnected = false;
+    isConnecting = false;
+    on_toolButton_search_clicked();
+    ui->listWidget_availableDevice->clear();
+    ui->label_bleSearchStatus->clear();
+    ui->label_bleStatus->clear();
+    BleStatusTimer->start();
+}
+//关闭蓝牙
+void hp_dialog_bluetooth::BleOff()
+{
+    MYLOG<<" isConnected : "<<isConnected;
+    SignalSetIsBleConnected(false);
+    if(isConnected)
+    {
+        on_toolButton_disconnect_clicked();
+    }
+
+    ui->label_bleStatus->close();
+    ui->label_bleSearchStatus->clear();
+//    on_toolButton_disconnect_clicked();
+    BleStatusTimer->stop();
+}
+//搜索可使用蓝牙
+void hp_dialog_bluetooth::on_toolButton_search_clicked()
+{
+    hp_updateStatus(false);
+    currentSelect = Ble_SEARCH;
+    hp_updateStatus(true);
+    isSearch = true;
+    qDebug()<<"hp_dialog_bluetooth::on_toolButton_search_clicked()";
+    signal_pc_key_set_ble_search();
+}
+//选择蓝牙----使用列表
+void hp_dialog_bluetooth::on_listWidget_availableDevice_itemPressed(QListWidgetItem *item)
+{
+    qDebug()<<"void hp_dialog_bluetooth::on_listWidget_availableDevice_itemPressed(QListWidgetItem *item)";
+    hp_updateStatus(false);
+    currentSelect = Ble_LISTWIDGET;
+    hp_updateStatus(true);
+
+    char bleMacAddr[50];
+    memset(bleMacAddr,0,sizeof(bleMacAddr));
+    currentBleName = item->text().split("(").at(0);
+    currentBleMacAddr = item->text().split("(").at(1);
+    currentBleMacAddr.chop(1);
+    char *cBleMaxAddr = currentBleMacAddr.toUtf8().data();
+    memcpy(bleMacAddr,cBleMaxAddr,strlen(cBleMaxAddr));
+
+    qDebug()<<" currentBleName "<<currentBleName;
+    qDebug()<<" currentBleMacAddr : "<<currentBleMacAddr;
+    printf("send to  core  :%s\n",bleMacAddr);
+
+    isConnecting = true;
+    QString strblelabletext = tr("蓝牙连接中 : ") + currentBleName + "(" + currentBleMacAddr + ")";
+    ui->label_bleStatus->setText(strblelabletext);
+    ui->label_bleStatus->show();
+    signal_pc_key_set_ble_connect(bleMacAddr);
+}
+//选择蓝牙----已匹配列表
+void hp_dialog_bluetooth::on_listWidget_pairedDevice_itemPressed(QListWidgetItem *item)
+{
+}
+//点击断开蓝牙
+void hp_dialog_bluetooth::on_toolButton_disconnect_clicked()
+{
+    hp_updateStatus(false);
+    currentSelect = Ble_DISCONNECT;
+    hp_updateStatus(true);
+    isDisConnecting = true;
+    MYLOG<<" isConnected : "<<isConnected;
+    SignalSetIsBleConnected(false);
+
+    if(currentBleMacAddr == "")
+    {
+        signal_pc_key_get_ble_devinfo();
+        return;
+    }
+
+    char bleMacAddr[50];
+//    currentBleMacAddr = m_scanAddrNameMap.key(currentBleName);
+    char *cBleMaxAddr = currentBleMacAddr.toUtf8().data();
+    memcpy(bleMacAddr,cBleMaxAddr,strlen(cBleMaxAddr));
+
+    qDebug()<<" currentBleMacAddr : "<<currentBleMacAddr;
+    printf("send to  core  :%s\n",bleMacAddr);
+
+    signal_pc_key_set_ble_disconnect(cBleMaxAddr);
+}
+//信号反馈 搜索蓝牙耳机
+void hp_dialog_bluetooth::slot_pc_key_set_ble_search(unsigned char return_value)
+{
+if(ble_mode)
+    qDebug()<<"hp_dialog_bluetooth::slot_pc_key_set_ble_search(unsigned char return_value: "<<return_value;
+
+}
+//信号反馈 查找以前连接过的蓝牙
+void hp_dialog_bluetooth::slot_pc_key_get_ble_oldconnect(unsigned char return_value,char *data)
+{
+}
+//获取连接的蓝牙
+void hp_dialog_bluetooth::slot_pc_key_get_ble_devinfo(unsigned char return_value,char *data)
+{
+    if(!ble_mode)
+        return;
+    qDebug("hp_dialog_bluetooth::slot_pc_key_get_ble_devinfo(unsigned char return_value : 0x%02x",return_value);
+    QString strNames = QString::fromUtf8(data);
+    if(strNames == NULL)
+        return;
+    qDebug()<<"slot_pc_key_get_ble_devinfo ------strNames : "<<strNames;
+
+    QString mac_addr = strNames.split(",").at(0);
+    QString dev_name = strNames.split(",").at(1);
+    m_scanAddrNameMap.insert(mac_addr, dev_name);
+    currentBleMacAddr = mac_addr;
+    currentBleName = dev_name;
+
+    if(isDisConnecting)
+    {
+        on_toolButton_disconnect_clicked();
+        return;
+    }
+
+    QString strblelabletext;
+    strblelabletext = tr("蓝牙已连接 : ") + currentBleName + "(" + currentBleMacAddr + ")";
+    ui->label_bleStatus->setText(strblelabletext);
+    ui->label_bleStatus->show();
+}
+//断开蓝牙反馈
+void hp_dialog_bluetooth::slot_pc_key_set_ble_disconnect(unsigned char return_value)
+{
+    if(ble_mode)
+    {
+        qDebug()<<"hp_dialog_bluetooth::slot_pc_key_set_ble_disconnect return_value : "<<return_value<<"BleName : "<<currentBleName;
+        isDisConnecting = false;
+    }
+}
+//static int g_ble_scan_state = 0;/*蓝牙扫描状态 -1-异常 0-初始化 1-开始扫描 2-正在扫描 3-扫描完成*/
+//static  int conn_state;/*0-断开连接 1-正在连接 2-已连接*/
+//static int g_ble_pair_state = 0;/*蓝牙配对信息状态 -1-异常 0-初始化 1-开始读取 2-开始清除 3-正在读取 4-读取完成 5-清除成功*/
+//获取蓝牙状态
+void hp_dialog_bluetooth::slot_pc_key_get_ble_state(unsigned char return_value,ble_stat bleStat)
+{
+    if(!ble_mode)
+        return;
+//    qDebug("hp_dialog_bluetooth::slot_pc_key_get_ble_state(unsigned char return_value : 0x%02x ",return_value);
+    QString strblelabletext;
+    //连接状态
+    qDebug()<<"hp_dialog_bluetooth:: ble state Connect : "<<bleStat.a2dpStat<<" ble search state  : "<<bleStat.scanStat<< " isSearch : "<<isSearch<<"isConnected : "<<isConnected;
+    switch (bleStat.a2dpStat) {
+    case 0://断开连接
+        MYLOG<<" isConnected : "<<isConnected;
+        SignalSetIsBleConnected(false);
+        ui->label_bleStatus->close();
+        isConnecting = false;
+        isConnected = false;
+        break;
+    case 1://正在连接
+        isConnecting = true;
+        isConnected = false;
+        MYLOG<<" isConnected : "<<isConnected;
+        SignalSetIsBleConnected(false);
+        strblelabletext = tr("蓝牙连接中 : ") + currentBleName + "(" + currentBleMacAddr + ")";
+        ui->label_bleStatus->setText(strblelabletext);
+        ui->label_bleStatus->show();
+        break;
+    case 2://连接完成
+        if(!isConnected)
+        {
+            if(currentBleName == "" )
+            {
+                signal_pc_key_get_ble_devinfo();
+            }
+            strblelabletext = tr("蓝牙已连接 : ") + currentBleName + "(" + currentBleMacAddr + ")";
+            ui->label_bleStatus->setText(strblelabletext);
+            ui->label_bleStatus->show();
+            isConnecting = false;
+            isConnected = true;
+            MYLOG<<" isConnected : "<<isConnected;
+            SignalSetIsBleConnected(true);
+        }
+        break;
+    default:
+        isConnected = false;
+        break;
+        //    default:
+        //        break;
+    }
+    //扫描状态
+//    qDebug()<<" ble search state  : "<<bleStat.scanStat<< " isSearch : "<<isSearch;
+    if(isSearch)
+    {
+        switch (bleStat.scanStat) {
+        case -1://异常
+            ui->label_bleSearchStatus->setText(tr("请再次搜索..."));
+            break;
+        case 0://初始化
+            ui->label_bleSearchStatus->clear();
+            break;
+        case 1://开始扫描
+        case 2://正在扫描
+            ui->label_bleSearchStatus->setText(tr("蓝牙搜索中..."));
+            break;
+        case 3://扫描完成
+            isSearch = false;
+            ui->label_bleSearchStatus->setText(tr("蓝牙搜索完成"));
+            signal_pc_key_get_ble_search();
+            break;
+        default:
+            break;
+        }
+    }
+
+    //
+//    qDebug()<<" ble pairStat state  : "<<bleStat.pairStat;
+    //    switch (bleStat.scanStat) {
+    //    case -1://异常
+    //        ui->label_bleSearchStatus->setText(tr("请再次搜索..."));
+    //        break;
+    //    case 0://初始化
+    //        ui->label_bleSearchStatus->clear();
+    //        break;
+    //    case 1://开始扫描
+    //    case 2://正在扫描
+    //        ui->label_bleSearchStatus->setText(tr("蓝牙搜索中..."));
+    //        break;
+    //    case 3://扫描完成
+    //        ui->label_bleSearchStatus->setText(tr("蓝牙搜索完成"));
+    //        signal_pc_key_get_ble_search();
+    //        break;
+    //    default:
+    //        break;
+    //    }
+}
+//设置是否连接提示
+void hp_dialog_bluetooth::hp_setLableBleStatus(int type)
+{
+    switch(type)
+    {
+    case 0://未连接
+    case 1://连接中
+    case 2://已连接
+        break;
+    default:
+        break;
+    }
+}
+//关闭蓝牙设置界面
+void hp_dialog_bluetooth::on_toolButton_close_clicked()
+{
+    this->close();
+}
+//按键 ↓键
+void hp_dialog_bluetooth::KeyDownHandle()
+{
+    hp_updateStatus(true);
+    if(currentSelect == Ble_LISTWIDGET)
+    {
+        currentSelect = Ble_SEARCH;
+    }
+    else if(currentSelect == Ble_RETURN)
+    {
+        currentSelect = Ble_LISTWIDGET;
+    }
+    hp_updateStatus(true);
+}
+//按键 ↑键
+void hp_dialog_bluetooth::KeyUpHandle()
+{
+    hp_updateStatus(false);
+    switch (currentSelect) {
+    case Ble_DISCONNECT:
+        currentSelect = Ble_LISTWIDGET;
+        break;
+    case Ble_LISTWIDGET:
+        currentSelect = Ble_RETURN;
+        break;
+    case Ble_RETURN:
+        break;
+    case Ble_SEARCH:
+        currentSelect = Ble_LISTWIDGET;
+        break;
+    }
+    hp_updateStatus(true);
+}
+//按键 ←键
+void hp_dialog_bluetooth::KeyLeftHandle()
+{
+    hp_updateStatus(false);
+    if(currentSelect == Ble_DISCONNECT)
+    {
+        currentSelect = Ble_SEARCH;
+    }
+    hp_updateStatus(true);
+}
+//按键 →键
+void hp_dialog_bluetooth::KeyRightHandle()
+{
+    hp_updateStatus(false);
+    if(currentSelect==Ble_SEARCH) {
+        currentSelect = Ble_DISCONNECT;
+    }
+    hp_updateStatus(true);
+}
+//按键 确认键
+void hp_dialog_bluetooth::KeyOKHandle()
+{
+    switch (currentSelect) {
+    case Ble_DISCONNECT:
+        emit ui->toolButton_disconnect->clicked();
+        break;
+    case Ble_LISTWIDGET:
+        if(ui->listWidget_availableDevice->count() == 0)
+        {
+            return;
+        }
+        emit ui->listWidget_availableDevice->itemPressed(ui->listWidget_availableDevice->currentItem());
+        break;
+    case Ble_RETURN:
+        emit ui->toolButton_close->clicked();
+        break;
+    case Ble_SEARCH:
+        emit ui->toolButton_search->clicked();
+        break;
+    }
+}
+//按键 返回键
+void hp_dialog_bluetooth::KeyReturnHandle()
+{
+    emit ui->toolButton_close->clicked();
+}
+//连接蓝牙反馈
+void hp_dialog_bluetooth::slot_pc_key_set_ble_connect(unsigned char return_value)
+{
+    qDebug()<<"hp_dialog_bluetooth::slot_pc_key_set_ble_connect return_value : "<<return_value;
+}
+//定时查询蓝牙状态
+void hp_dialog_bluetooth::SlotBleStatusTimer()
+{
+    signal_pc_key_get_ble_state();
+}
+//获取蓝牙耳机搜索结果
+void hp_dialog_bluetooth::slot_pc_key_get_ble_search(unsigned char return_value, char *data)
+{
+    qDebug(" hp_dialog_bluetooth::slot_pc_key_get_ble_search(unsigned char return_value : 0x%02x",return_value);
+
+    ui->listWidget_availableDevice->clear();
+    if(return_value == RE_OK)
+    {
+        QString strNames = QString::fromUtf8(data);
+        int Itemnum = 0;
+        QStringList strs = strNames.split("\n");
+        qDebug()<<"strNames"<<strNames<<"  strs.length() : "<<strs.length();
+        if(strs.count() == 0)
+            return;
+
+        //        for(QString addrName : strs)
+        //        {
+        //            if(addrName.split(",").count() < 2)
+        //                break;
+        //            QString mac_addr = addrName.split(",").at(0);
+        //            QString dev_name = addrName.split(",").at(1);
+        //            m_scanAddrNameMap.insert(mac_addr, dev_name);
+        //            qDebug() << "mac_addr" << mac_addr << "dev_name" << dev_name;
+        //        }
+
+        m_scanAddrNameMap.clear();
+        for(QString addrName : strs)
+        {
+            qDebug() << "add new ble";
+            if(addrName.split(",").count() < 2)
+                break;
+            QString mac_addr = addrName.split(",").at(0);
+            QString dev_name = addrName.split(",").at(1);
+            m_scanAddrNameMap.insert(mac_addr, dev_name);//key为地址 value为名字
+            qDebug() << "mac_addr" << mac_addr << "dev_name" << dev_name;
+        }
+        QMap<QString, QString>::const_iterator itMap = m_scanAddrNameMap.constBegin();
+        for(; itMap != m_scanAddrNameMap.constEnd(); itMap++)
+        {
+            QString bleItem_name = itMap.value();
+            QString bleItem_addr = itMap.key();
+            ui->listWidget_availableDevice->addItem(bleItem_name + "(" + bleItem_addr + ")");
+        }
+    }
+}

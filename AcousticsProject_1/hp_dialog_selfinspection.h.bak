@@ -1,0 +1,60 @@
+#ifndef HP_DIALOG_SELFINSPECTION_H
+#define HP_DIALOG_SELFINSPECTION_H
+
+#include <QWidget>
+#include <QVector>
+
+#include <hi384_protocol.h>
+#include <qcustomplot.h>
+#include <hp_progressbar_dialog.h>
+
+struct MyPoint
+{
+    int x;
+    int y;
+};
+
+namespace Ui {
+class hp_dialog_selfinspection;
+}
+
+class hp_dialog_selfinspection : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_dialog_selfinspection(QWidget *parent = nullptr);
+    ~hp_dialog_selfinspection();
+
+    bool isSelfInspection;
+    bool isStartInspection;
+    bool stopWrite;
+    void CloseLable();
+    void OpenProgressDialog();
+
+private slots:
+    void slot_pc_stream_data(unsigned char return_value,unsigned char * data);
+    void slot_pc_fpga_set_setarithmetic(unsigned char return_value);
+//    void slot_pc_sys_set_freq_anser(unsigned char return_value);
+
+    void on_toolButton_close_clicked();
+
+signals:
+    void signal_pc_sys_set_freq_anser();
+    void SignalCloseSelfInspection();
+    void SignalUpdateSetUpClock();
+    void SignalPrintscreenHandle();
+protected:
+    virtual void keyReleaseEvent(QKeyEvent *ev);
+
+private:
+    Ui::hp_dialog_selfinspection *ui;
+    void PointInit();
+    void changeEvent(QEvent *e);
+
+    hp_progressbar_dialog *ProgressBarDialog;
+        QList<QLabel *> label_list;
+    int DataGroup[64][64];
+};
+
+#endif // HP_DIALOG_SELFINSPECTION_H

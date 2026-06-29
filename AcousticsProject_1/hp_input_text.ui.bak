@@ -1,0 +1,4326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_input_text</class>
+ <widget class="QWidget" name="hp_input_text">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:#f0f0f0;</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>853</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:#3d4447;
+border:0px solid #000000;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame_eng">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>580</y>
+     <width>853</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color:#4d5559;
+	border-radius:5px;
+	color:#ffffff;
+}
+QPushButton:pressed{
+	background-color:#545d61;
+}
+QFrame{
+	border:0px solid #000000;
+	background-color:#3d4447;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="btnCN">
+    <property name="geometry">
+     <rect>
+      <x>553</x>
+      <y>136</y>
+      <width>108</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">CN</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnk">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">k</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btni">
+    <property name="geometry">
+     <rect>
+      <x>553</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">i</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnb">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">b</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnh">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">h</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btng">
+    <property name="geometry">
+     <rect>
+      <x>365</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">g</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnType">
+    <property name="geometry">
+     <rect>
+      <x>28</x>
+      <y>92</y>
+      <width>108</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">↑</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btns">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">s</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnr">
+    <property name="geometry">
+     <rect>
+      <x>253</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">r</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnz">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">z</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new15">
+    <property name="geometry">
+     <rect>
+      <x>252</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">，</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnv">
+    <property name="geometry">
+     <rect>
+      <x>365</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">v</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnx">
+    <property name="geometry">
+     <rect>
+      <x>215</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">x</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnw">
+    <property name="geometry">
+     <rect>
+      <x>103</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">w</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnc">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">c</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnl">
+    <property name="geometry">
+     <rect>
+      <x>665</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">l</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnchange_sym1">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>136</y>
+      <width>108</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}
+QPushButton::disabled{
+border-image: url(:/res/label_Background_s.png);
+	background-color: rgba(0, 0, 0, 200);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">#+=</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnf">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">f</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDelete">
+    <property name="geometry">
+     <rect>
+      <x>665</x>
+      <y>92</y>
+      <width>108</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">DEL</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnp">
+    <property name="geometry">
+     <rect>
+      <x>703</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">p</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btny">
+    <property name="geometry">
+     <rect>
+      <x>403</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">y</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSpace">
+    <property name="geometry">
+     <rect>
+      <x>327</x>
+      <y>136</y>
+      <width>147</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">Sp</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnu">
+    <property name="geometry">
+     <rect>
+      <x>478</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">u</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btne">
+    <property name="geometry">
+     <rect>
+      <x>178</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">e</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnt">
+    <property name="geometry">
+     <rect>
+      <x>328</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">t</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btna">
+    <property name="geometry">
+     <rect>
+      <x>65</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">a</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnn">
+    <property name="geometry">
+     <rect>
+      <x>515</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">n</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnj">
+    <property name="geometry">
+     <rect>
+      <x>515</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">j</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btno">
+    <property name="geometry">
+     <rect>
+      <x>628</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">o</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnchange_123">
+    <property name="geometry">
+     <rect>
+      <x>28</x>
+      <y>136</y>
+      <width>108</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">123</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOK_3">
+    <property name="geometry">
+     <rect>
+      <x>665</x>
+      <y>136</y>
+      <width>108</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string>确定</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new16">
+    <property name="geometry">
+     <rect>
+      <x>478</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">。</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnd">
+    <property name="geometry">
+     <rect>
+      <x>215</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">d</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnm">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">m</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnq">
+    <property name="geometry">
+     <rect>
+      <x>28</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">q</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther10_3">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>136</y>
+      <width>108</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">_</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="hp_style_scrollarea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>52</y>
+     <width>731</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:0px solid #000000;</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>2000</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>2000</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <widget class="QLabel" name="label_CH_show">
+     <property name="geometry">
+      <rect>
+       <x>-1</x>
+       <y>0</y>
+       <width>2001</width>
+       <height>42</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#3d4447;
+color:#ffffff;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>746</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+	background-color:#4d5559;
+	border-radius:5px;
+    border:1px solid rgba(255,255,255,125);
+	color:#ffffff;
+	padding-left:10px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame_num_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>360</y>
+     <width>853</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color:#4d5559;
+	border-radius:5px;
+	color:#ffffff;
+}
+QPushButton:pressed{
+	background-color:#545d61;
+}
+QFrame{
+	border:0px solid #000000;
+	background-color:#3d4447;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="btnDot_3">
+    <property name="geometry">
+     <rect>
+      <x>146</x>
+      <y>130</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">.</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDel_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>4</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">DEL</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn0_2">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>130</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn4_2">
+    <property name="geometry">
+     <rect>
+      <x>146</x>
+      <y>46</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">4</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn3_2">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>88</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">3</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn8_2">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>4</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">8</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn6_2">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>46</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">6</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn9_2">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>4</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">9</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn1_2">
+    <property name="geometry">
+     <rect>
+      <x>146</x>
+      <y>88</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn5_2">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>46</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">5</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn2_2">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>88</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn7_2">
+    <property name="geometry">
+     <rect>
+      <x>146</x>
+      <y>4</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">7</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnType_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>46</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">ab</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnchange_sym1_2">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>130</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">#+=</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOK_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>88</y>
+      <width>124</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string>确定</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther10_2">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>130</y>
+      <width>124</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">_</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_char">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>800</y>
+     <width>853</width>
+     <height>186</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color:#4d5559;
+	border-radius:5px;
+	color:#ffffff;
+}
+QPushButton:pressed{
+	background-color:#545d61;
+}
+QFrame{
+	border:0px solid #000000;
+	background-color:#3d4447;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="btnOther6">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">^</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther3">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">#</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther15">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">?</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new3">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">,</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther8">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">*</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new7">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">\</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new9">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">：</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther16">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">=</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new13">
+    <property name="geometry">
+     <rect>
+      <x>405</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">”</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther13">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">|</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new1">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">.</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new11">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">；</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther19">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">(</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther5">
+    <property name="geometry">
+     <rect>
+      <x>405</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">%</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther9">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">-</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther10">
+    <property name="geometry">
+     <rect>
+      <x>705</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">_</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new2">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther11">
+    <property name="geometry">
+     <rect>
+      <x>405</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">+</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new8">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">。</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDelete_new2">
+    <property name="geometry">
+     <rect>
+      <x>705</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">DEL</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new4">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther4">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">$</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new5">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">&quot;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new10">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">，</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther1">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">!</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new6">
+    <property name="geometry">
+     <rect>
+      <x>405</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">/</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther7">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">&amp;&amp;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnchange_return">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">ESC</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">@</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther20">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new12">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">“</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new14">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">、</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOK_4">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>92</y>
+      <width>146</width>
+      <height>84</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string>确定</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new24">
+    <property name="geometry">
+     <rect>
+      <x>555</x>
+      <y>136</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">}</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther22">
+    <property name="geometry">
+     <rect>
+      <x>555</x>
+      <y>48</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">]</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther21">
+    <property name="geometry">
+     <rect>
+      <x>555</x>
+      <y>4</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">[</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOther_new23">
+    <property name="geometry">
+     <rect>
+      <x>555</x>
+      <y>92</y>
+      <width>71</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">{</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_num">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>90</y>
+     <width>853</width>
+     <height>186</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color:#4d5559;
+	border-radius:5px;
+	color:#ffffff;
+}
+QPushButton:pressed{
+	background-color:#545d61;
+}
+QFrame{
+	border:0px solid #000000;
+	background-color:#3d4447;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="btnDot">
+    <property name="geometry">
+     <rect>
+      <x>146</x>
+      <y>136</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">.</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnOK">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>135</y>
+      <width>124</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string>确定</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDel">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>4</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">←</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn0">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>136</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn4">
+    <property name="geometry">
+     <rect>
+      <x>146</x>
+      <y>48</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">4</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn3">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>92</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">3</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn8">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>4</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">8</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn6">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>48</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">6</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn9">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>4</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">9</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn1">
+    <property name="geometry">
+     <rect>
+      <x>146</x>
+      <y>92</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn5">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>48</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">5</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn2">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>92</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn7">
+    <property name="geometry">
+     <rect>
+      <x>146</x>
+      <y>4</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">7</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDot_2">
+    <property name="geometry">
+     <rect>
+      <x>402</x>
+      <y>136</y>
+      <width>124</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QPushButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string notr="true">-</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>hp_style_scrollarea</class>
+   <extends>QScrollArea</extends>
+   <header location="global">hp_style_scrollarea.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

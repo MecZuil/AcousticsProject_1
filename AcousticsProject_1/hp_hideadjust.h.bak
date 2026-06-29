@@ -1,0 +1,184 @@
+#ifndef HP_HIDEADJUST_H
+#define HP_HIDEADJUST_H
+
+#include <QWidget>
+#include <QDebug>
+#include <QString>
+#include <QKeyEvent>
+
+#include "hp_enum.h"
+#include "hi384_protocol.h"
+#include "hp_xmlreader.h"
+#include "hp_gradient_rect.h"
+#include "hp_input_text.h"
+#include "hp_assemblystyle.h"
+
+namespace Ui {
+class hp_hideadjust;
+}
+
+class hp_hideadjust : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_hideadjust(QWidget *parent = nullptr);
+    ~hp_hideadjust();
+
+    int ccd_x;
+    int ccd_y;
+    int isSelfInspection;
+    int isWin;
+    int isRecording;
+    int local_x;
+    int local_y;
+    int isSetZ;//0-切换不同模式z值 1-在标定修改z值
+    int saveWhoZoom;//保存当前应显示的z值模式
+    int currentfdp;//当前qt发送给core的频域范围
+
+    int UIType;
+    int IROpen;
+    int GasParaOpen;
+    int PDParaOpen;
+
+    bool isGrab;//截图开关是否打开
+
+
+    double FPGA_Z;
+    double FPGA_AUTO_Z;
+    int_Z IntZ ;
+
+    hp_gradient_rect *GradientRect;
+
+    int CreateMasksDynamically(int x ,int y);
+
+    void SetFPGALocalXY(int X ,int Y);
+    void InitZValue(int i ,double value);
+    void SetFPGANOISEPara(int limit,int count);
+
+
+protected:
+    virtual void keyPressEvent(QKeyEvent *ev);
+    virtual void keyReleaseEvent(QKeyEvent *ev);
+    bool eventFilter(QObject *o, QEvent *e);
+
+signals:
+    void SignalUpdateSetUpClock();
+    void SignalSendZ(double z,double auto_z);
+    void SignalAutoCapture(bool isCapture);
+
+    void signal_pc_fpga_set_adjust_ccd_x(int data);
+    void signal_pc_fpga_set_adjust_ccd_y(int data);
+    void signal_pc_fpga_set_z( int_Z intZ);
+    void signal_pc_fpga_set_setarithmetic(int data );
+    void signal_pc_buf_test_button();
+    void signal_pc_buf_test_checkbox(int status);
+    void signal_pc_buf_test_progressbar(int data);
+    void signal_pc_buf_test_spinbox(int data);
+    void signal_pc_fpga_set_local_xy(int data);
+    void signal_pc_buf_show_time(int data);
+    void signal_pc_fpga_set_noise_limit(int value);
+    void signal_pc_key_set_noise_count(int value);
+    void signal_pc_ctrl_get_setarithmetic();
+    void signal_pc_ctrl_get_freq_start();
+    void signal_pc_ctrl_get_z();
+    void signal_pc_ctrl_get_local_xy();
+    void signal_pc_ctrl_get_noise_limit();
+    void signal_pc_ctrl_write_fpga_localdata(int status);
+
+public slots:
+    void SlotSetZValue(int i);
+
+private slots:
+
+    void slot_pc_buf_test_button(unsigned char return_value);
+    void slot_pc_buf_test_checkbox(unsigned char return_value);
+    void slot_pc_buf_test_progressbar(unsigned char return_value);
+    void slot_pc_buf_test_spinbox(unsigned char return_value);
+   void slot_pc_fpga_set_adjust_ccd_x(unsigned char return_value);
+   void slot_pc_fpga_set_adjust_ccd_y(unsigned char return_value);
+   void slot_pc_fpga_set_z(unsigned char return_value);
+   void slot_pc_fpga_set_setarithmetic(unsigned char return_value);
+   void slot_pc_fpga_set_local_xy(unsigned char return_value);
+   void slot_pc_buf_show_time(unsigned char return_value);
+   void slot_pc_fpga_set_noise_limit(unsigned char return_value);
+   void slot_pc_key_set_noise_count(unsigned char return_value);
+   void hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow);
+   void slot_pc_ctrl_get_setarithmetic(unsigned char return_value,int data);
+   void slot_pc_ctrl_get_freq_start(unsigned char return_value,int data);
+   void slot_pc_ctrl_get_z(unsigned char return_value,int data);
+   void slot_pc_ctrl_get_local_xy(unsigned char return_value,int data);
+   void slot_pc_ctrl_get_noise_limit(unsigned char return_value,int data);
+   void slot_pc_fpga_set_freq_start(int data);
+   void slot_pc_ctrl_write_fpga_localdata(unsigned char return_value);
+
+//   void SlotSendAIFocus(bool isStart);
+   void SlotSetHideSelfInspection(bool isChecked);
+
+   void on_X1_spinBox_valueChanged(int arg1);
+   void on_Y1_spinBox_valueChanged(int arg1);
+   void on_toolButton_close_clicked();
+   void on_Z0Value_doubleSpinBox_valueChanged(double arg1);
+   void on_grab_checkBox_clicked(bool checked);
+   void on_win_checkBox_clicked(bool checked);
+   void on_selfInspection_checkBox_clicked(bool checked);
+   void on_record_checkBox_clicked(bool checked);
+   void on_test_checkBox_clicked(bool checked);
+   void on_test_toolButton_clicked();
+   void on_test_doubleSpinBox_valueChanged(double arg1);
+//   void on_test_horizontalSlider_valueChanged(int value);
+   void on_localX_spinBox_valueChanged(int arg1);
+   void on_localY_spinBox_valueChanged(int arg1);
+   void on_test_horizontalSlider_sliderReleased();
+   void on_mainTime_checkBox_clicked(bool checked);
+   void on_Z1Value_doubleSpinBox_valueChanged(double arg1);
+   void on_Z2Value_doubleSpinBox_valueChanged(double arg1);
+   void on_Z3Value_doubleSpinBox_valueChanged(double arg1);
+   void on_noiseLimit_horizontalSlider_sliderReleased();
+   void on_noiseCount_spinBox_valueChanged(int arg1);
+   void on_noiseLimit_horizontalSlider_valueChanged(int value);
+   void on_LogoType_spinBox_valueChanged(int arg1);
+   void on_BleType_spinBox_valueChanged(int arg1);
+   void on_GasPara_checkBox_clicked(bool checked);
+   void on_PDPara_checkBox_clicked(bool checked);
+   void on_IR_checkBox_clicked(bool checked);
+   void on_DEVICESN_toolButton_clicked();
+   void on_DeviceName_toolButton_clicked();
+   void on_WIFIName_toolButton_clicked();
+   void on_CCDType_spinBox_valueChanged(int arg1);
+   void on_LOGOSetting_toolButton_clicked();
+   void on_AutoSave_checkBox_clicked(bool checked);
+
+   void on_dataSync_toolButton_clicked();
+
+   void on_Sw4G_checkBox_clicked(bool checked);
+
+   void on_Set10K_checkBox_clicked(bool checked);
+
+   void on_GPS_checkBox_clicked(bool checked);
+
+   void on_Service_checkBox_clicked(bool checked);
+
+   void on_LocalData_checkBox_clicked(bool checked);
+
+private:
+    Ui::hp_hideadjust *ui;
+
+    hp_input_text *HpInputText;
+
+    hp_XMLReader XmlReader;
+    bool isLongKey;
+    int_range movingRange;
+    bool isAIFocusStart;
+    HIDEADJUST_SETTING currentSelect;
+
+
+    QMap<int, double> intZValueMap;
+    void ParameterInit();
+    void ReadWifiInfo();//获取wifi账号密码
+    void SetWifiInfo();//获取wifi账号密码
+    void hp_edit_clicked();
+    void hp_UIStatus_update(bool isSeclect );
+};
+
+#endif // HP_HIDEADJUST_H

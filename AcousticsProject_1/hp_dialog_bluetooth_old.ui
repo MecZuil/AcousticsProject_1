@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_dialog_bluetooth_old</class>
+ <widget class="QWidget" name="hp_dialog_bluetooth_old">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+background-color: rgb(0, 0, 0);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QListWidget" name="listWidget_availableDevice">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>100</y>
+      <width>481</width>
+      <height>300</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QAbstractItemView {
+	background-color:#000000;
+	color:#ffffff;
+	border:1px solid rgb(255,255,255);
+border-radius:3px;
+}
+QAbstractItemView::item:selected {
+	color: #ffffff;
+	background-color: rgb(0, 221, 253);
+}
+
+QScrollBar:vertical{    
+width:3px;/*整个滑动条的宽度*/
+background:rgb(45, 48, 51);
+border:none;
+margin:3px 0px 3px 0px;/*上下两个小方块的长宽 也控制滑动条宽度*/
+}
+
+QScrollBar::handle:vertical{
+background:rgb(0, 221, 253);/*中间滑块的颜色*/
+border:none;
+border-radius:3px;
+}
+
+QScrollBar::add-line:vertical {
+width: 3px;
+background:rgb(22, 24, 26);
+border:none;
+subcontrol-position:right;
+subcontrol-origin:margin;
+}
+QScrollBar::sub-line:vertical {
+border:none;
+background:rgb(22, 24, 26);
+width: 3px;
+subcontrol-origin:margin;
+subcontrol-position:left;
+}
+QScrollBar::top-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::bottom-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::sub-page:vertical{
+background:black;
+}
+QScrollBar::add-page:vertical
+{
+background:black;
+}</string>
+    </property>
+    <property name="currentRow">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_availableDevice">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>50</y>
+      <width>180</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
+    <property name="text">
+     <string>可用设备:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_pariedDevice">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>50</y>
+      <width>180</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>11</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
+    <property name="text">
+     <string>已配对设备:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_search">
+    <property name="geometry">
+     <rect>
+      <x>159</x>
+      <y>430</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QToolButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+
+QToolButton::pressed{
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>搜索</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_disconnect">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>430</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+
+QToolButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>断开</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_close">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QToolButton{
+border-image: url(:/res/returnBig_n.png);
+}
+
+QToolButton::pressed{
+border-image: url(:/res/returnBig_s.png);
+}
+
+QToolButton::disabled{
+border-image: url(:/res/returnBig_d.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget_pairedDevice">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>100</y>
+      <width>350</width>
+      <height>300</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QAbstractItemView {
+	background-color:#000000;
+	color:#ffffff;
+	border:1px solid #ffffff;
+border-radius:3px;
+}
+QAbstractItemView::item:selected {
+	color: #ffffff;
+	background-color: #000000;
+}
+
+QScrollBar:vertical{    
+width:15px;/*整个滑动条的宽度*/
+background:rgb(45, 48, 51);
+border:none;
+margin:15px 0px 15px 0px;/*上下两个小方块的长宽 也控制滑动条宽度*/
+}
+
+QScrollBar::handle:vertical{
+background:rgb(45, 48, 51);/*中间滑块的颜色*/
+border:none;
+border-radius:0px;
+}
+
+QScrollBar::add-line:vertical {
+width: 20px;
+background:rgb(22, 24, 26);
+border:none;
+subcontrol-position:right;
+subcontrol-origin:margin;
+}
+QScrollBar::sub-line:vertical {
+border:none;
+background:rgb(22, 24, 26);
+width: 20px;
+subcontrol-origin:margin;
+subcontrol-position:left;
+}
+QScrollBar::top-arrow:vertical{
+subcontrol-origin: margin;
+height:15px;
+width:15px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::bottom-arrow:vertical{
+subcontrol-origin: margin;
+height:15px;
+width:15px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::sub-page:vertical{
+background:grey;
+}
+QScrollBar::add-page:vertical
+{
+background:grey;
+}/*
+*/</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_bleStatus">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>70</y>
+      <width>341</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>13</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
+    <property name="text">
+     <string>未连接</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_bleSearchStatus">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>400</y>
+      <width>611</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>13</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <zorder>listWidget_availableDevice</zorder>
+   <zorder>label_availableDevice</zorder>
+   <zorder>label_pariedDevice</zorder>
+   <zorder>toolButton_close</zorder>
+   <zorder>listWidget_pairedDevice</zorder>
+   <zorder>label_bleStatus</zorder>
+   <zorder>toolButton_search</zorder>
+   <zorder>toolButton_disconnect</zorder>
+   <zorder>label_bleSearchStatus</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

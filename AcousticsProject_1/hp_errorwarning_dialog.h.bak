@@ -1,0 +1,53 @@
+#ifndef HP_ERRORWARNING_DIALOG_H
+#define HP_ERRORWARNING_DIALOG_H
+
+#include <QWidget>
+#include <QTimer>
+#include <QKeyEvent>
+
+#include "hp_enum.h"
+#include "hi384_protocol.h"
+
+namespace Ui {
+class hp_errorwarning_dialog;
+}
+
+class hp_errorwarning_dialog : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_errorwarning_dialog(QWidget *parent = 0,QString title=NULL, QString text=NULL,int ms=3000);
+    ~hp_errorwarning_dialog();
+
+    void warning(QString title,QString text);
+//    void setWarningText(QString title ,QString text);
+    void setDelayClose(int ms);
+
+signals:
+    void SignalDialogClose();
+    void SignalDialogTimerFinish();
+    void SignalUpdateSetUpClock();
+
+
+protected:
+    virtual void keyReleaseEvent(QKeyEvent *ev);
+    virtual void keyPressEvent(QKeyEvent *ev);
+    virtual void mousePressEvent(QMouseEvent *event);
+
+private slots:
+    void timer_finish();
+    void on_OKToolButton_clicked();
+    void SlotCloseTimer();
+
+
+private:
+    Ui::hp_errorwarning_dialog *ui;
+
+    QTimer *CloseTimer;
+    bool isLongKey;
+
+    void changeEvent(QEvent *e);
+};
+
+#endif // HP_ERRORWARNING_DIALOG_H

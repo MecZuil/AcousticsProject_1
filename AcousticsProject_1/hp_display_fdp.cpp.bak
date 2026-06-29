@@ -1,0 +1,604 @@
+#include "hp_display_fdp.h"
+#include "ui_hp_display_fdp.h"
+
+#define isDebug 0
+
+hp_display_fdp::hp_display_fdp(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_display_fdp)
+{
+    ui->setupUi(this);
+
+
+    hp_winInit();
+    hp_plotStyleInit();
+    TimerFDP = new QTimer(this);
+    connect(TimerFDP,SIGNAL(timeout()),this,SLOT(SlotDataCount()));
+    TimerFDP->setInterval(5000);//5s读取帧率
+    //        connect(TimerFDP,SIGNAL(timeout()),this,SLOT(hp_plotDataShow()));
+    //        TimerFDP->setInterval(80);//自测
+
+    TimerFDP->start();
+}
+
+hp_display_fdp::~hp_display_fdp()
+{
+    delete ui;
+}
+
+void hp_display_fdp::SlotSetUIStyle(int type)
+{
+    UIType = type;
+    if(type == 1)
+    {
+        QFont font("Microsoft YaHei", 20);
+        this->setGeometry(0,0,1920,1080);
+        ui->plot->setGeometry(0,0,216,1080);
+        ui->chooseRect->setGeometry(0,260,216,203);
+        ui->label_max->setGeometry(59,0,101,39);
+        ui->label_min->setGeometry(70,170,91,31);
+        ui->label_max->setFont(font);
+        ui->label_min->setFont(font);
+    }
+}
+
+void hp_display_fdp::hp_winInit()
+{
+    //qcustomplot类提升后,触摸事件需要自行连接信号
+    connect(ui->plot,&QCustomPlot::mousePress,this,&hp_display_fdp::mousePressEvent);
+    connect(ui->plot,&QCustomPlot::mouseMove,this,&hp_display_fdp::mouseMoveEvent);
+    connect(ui->plot,&QCustomPlot::mouseRelease,this,&hp_display_fdp::mouseReleaseEvent);
+
+    this->setStyleSheet("background-color: rgb(95,95,95);");
+    chooseBottomLine=false;
+    chooseTopLine=false;
+    chooseMoveRect=false;
+    isAdaptiveOpen = false;
+    isSLMOpen = false;
+    is10KSetEnabled = false;
+    f=value_Max / poordX_Max;   //实际数据2048 / 显示轴坐标100
+    cyRatio = value_Max/poordY_Max; //实际数据2048 / y轴480
+    valuePlot = 0;
+    dataCount = 0;
+    y_topLine = 0;
+    y_buttonLine = 0;
+    tickOffset = 15;
+    isChangePingDuan = 0;
+
+    QString Para;
+    Para = XmlReader.ReadXml("qtconfig.xml","FREQ_RANGE","is10k_set");
+    is10KSetEnabled = false;
+    if(Para != NULL)
+    {
+        if(Para.toInt() == 1)
+        {
+            is10KSetEnabled = true;
+        }
+    }
+
+}
+//频谱选择框是否选中
+void hp_display_fdp::hp_updateChooseRectUI(bool isSelect)
+{
+    //    if(isSelect)
+    //        ui->chooseRect->setStyleSheet("QWidget{border:0px solid white;background:rgba(255,255,255,100);}");
+    //    else
+    //        ui->chooseRect->setStyleSheet("QWidget{border:0px solid white;background:rgba(0, 221, 253,100);}");
+}
+//图标显示设置
+void hp_display_fdp::hp_plotStyleInit()
+{
+    QFont fontxy;
+    fontxy.setFamily("微软雅黑");
+    ui->plot->setFont(fontxy);
+
+    //    ui->plot->setGeometry(0,0,120,this->height());
+    ui->plot->axisRect()->setAutoMargins(QCP::msNone);//禁止自动确认边界
+    ui->plot->axisRect()->setBackground(QBrush(QColor(13, 34, 67)));
+    ui->plot->setBackground(QBrush(QColor(13, 34, 67)));//必须设置背景颜色 否则外侧默认会有白线
+
+    //    //对调xy轴
+    QCPAxis *yAxis = ui->plot->yAxis;
+    QCPAxis *xAxis = ui->plot->xAxis;
+    ui->plot->xAxis = yAxis;
+    ui->plot->yAxis = xAxis;
+
+    //===================使背景透明
+    //        ui->plot->axisRect()->setBackground(Qt::transparent);
+    //        ui->plot->setStyleSheet("background:transparent;");
+    //        QLinearGradient plotGrandient;
+    //        plotGrandient.setColorAt(0,QColor(255,255,255,0));
+    //        ui->plot->setBackground(plotGrandient);
+
+    //====================坐标轴是否隐藏
+    ui->plot->xAxis->setVisible(true);
+    ui->plot->yAxis->setVisible(false);
+    ui->plot->xAxis2->setVisible(false);
+    ui->plot->yAxis2->setVisible(false);
+    ui->plot->addGraph();
+    ui->plot->yAxis->setBasePen(QPen(Qt::gray,3));      //    轴线颜色
+    ui->plot->xAxis->setBasePen(QPen(Qt::gray,3));
+    ui->plot->xAxis->setTickLabelColor(QColor(255,255,255));//轴标文本色
+    ui->plot->xAxis->setTickPen(QPen(Qt::gray,3));
+    //    ui->plot->xAxis->setSubTickPen(QPen(Qt::gray,1));//子刻度线
+    ui->plot->xAxis->setSubTicks(false);
+    ui->plot->xAxis->setTickLengthIn(20);//主刻度向内延伸
+    //    ui->plot->yAxis->ticker()->setTickCount(3);//主刻度值个数
+    ui->plot->xAxis->grid()->setVisible(false);
+    ui->plot->yAxis->grid()->setVisible(false);
+
+    ui->plot->xAxis->setTickLabels(true);//显示刻度值
+    ui->plot->yAxis->setRange(0, 350);
+    ui->plot->xAxis->setRange(0, value_Max);
+
+    ui->plot->xAxis->setTickLabelSide(QCPAxis::LabelSide::lsInside);//使刻度值显示在内部
+    ui->plot->yAxis->setTickLabelSide(QCPAxis::LabelSide::lsInside);//使刻度值显示在内部
+    hp_setTicker();
+}
+
+//计算帧率 开启频域自适应时发送自适应读取命令
+void hp_display_fdp::SlotDataCount()
+{
+#if isDebug
+    qDebug("hp_display_fdp::SlotDataCount --------dataCount: %d",dataCount/5);
+#endif
+    dataCount = 0;
+
+
+}
+//测试 平时不用
+void hp_display_fdp::hp_plotDataShow(){
+
+    //    short * plotData ;
+    //    plotData = (short *)data;
+    ui->plot->yAxis->setRangeReversed(true);//翻转y轴，向左为正半轴
+    //    ui->plot->addGraph();
+    ui->plot->graph()->setLineStyle(QCPGraph::lsLine);
+    QColor color(51, 218, 207);
+    ui->plot->graph()->setPen(QPen(Qt::white,1));
+    ui->plot->graph()->setBrush(QBrush(color.lighter(200)));
+    QVector<QCPGraphData> timeData(value_Max);
+    valuePlot=valuePlot+1;
+    if(valuePlot>350)
+    {
+        valuePlot = 0;
+    }
+    for(int i = 0;i<value_Max;++i)
+    {
+        if(i>1100&&i<1200)
+        {
+            timeData[i].key = i;
+            timeData[i].value = 100;
+        }
+        else
+        {
+            //            qsrand(QTime(0,0,0).msecsTo(QTime::currentTime()));
+            //            int test = qrand()%16384;
+            timeData[i].key = i;
+            timeData[i].value = valuePlot;
+
+        }
+        //        if(valuePlot%60==0)
+        //        {
+        //            qDebug()<<"value = "<<valuePlot;
+
+        //        }
+    }
+    ui->plot->graph()->data()->set(timeData);
+    ui->plot->replot();
+}
+
+void hp_display_fdp::mousePressEvent(QMouseEvent *ev)
+{
+    if(isAdaptiveOpen || isSLMOpen)
+        return;
+
+    SignalUpdateSetUpClock();
+
+    press_point=ev->pos();
+#if isChangeFDPValueCount
+    int pressRange = 30;// 该值*2 = 按下的响应范围
+    if(press_point.y() >= ui->chooseRect->y()-pressRange &&press_point.y() <= ui->chooseRect->y()+pressRange) //点击调节最大值
+    {
+        chooseTopLine=true;
+    }
+    else if(press_point.y() >= ui->chooseRect->y()+ui->chooseRect->height()-pressRange && press_point.y() <= ui->chooseRect->y()+ui->chooseRect->height()+pressRange)//点击调节最小值
+    {
+        chooseBottomLine=true;
+    }
+    else if(press_point.y() >= ui->chooseRect->y()+pressRange && press_point.y() <= ui->chooseRect->y()+ui->chooseRect->height()+pressRange)
+    {
+        chooseMoveRect = true;
+    }
+#endif
+}
+
+void hp_display_fdp::mouseMoveEvent(QMouseEvent *ev)
+{
+    if(isAdaptiveOpen || isSLMOpen)
+        return;
+
+    current_point=ev->pos();
+#if isChangeFDPValueCount
+    int pos = current_point.y()-press_point.y();
+    if(chooseTopLine) //点击调节最大值
+    {
+        y_buttonLine = ui->chooseRect->y()+ui->chooseRect->height();
+        y_topLine = ui->chooseRect->y()+pos;
+#if isDebug
+        qDebug()<<"press Max Line : "<<ui->chooseRect->y()<<"  press.y"<<current_point.y();
+        qDebug()<<"press Max y_buttonLine : "<<y_buttonLine<<"   y_topLine : "<<y_topLine;
+#endif
+        int chooseRectRange = ui->chooseRect->y()+ui->chooseRect->height() - y_topLine;//选择的y轴范围
+        if(y_topLine >= 0 && chooseRectRange <= 120 && chooseRectRange >= 60)//大于屏幕显示的最大刻度值的y轴 并且 选择范围小于2个频段 大于一个频段 则可移动 60是一个频段的y轴像素值
+        {
+            ui->chooseRect->setGeometry(ui->chooseRect->x(),y_topLine,ui->chooseRect->width(),chooseRectRange);
+            //跟随鼠标移动显示y值(max)
+            double y_max=(ui->plot->xAxis->pixelToCoord(y_topLine)-15)/f;
+            QString str = QString("%2").arg(QString::asprintf("%.1f",y_max));
+            ui->label_max->setText(str);
+            ui->label_max->move(ui->label_max->x(),ui->chooseRect->y());
+            ui->label_min->move(ui->label_min->x(),ui->chooseRect->y() + ui->chooseRect->height() - ui->label_min->height());
+        }
+    }
+    else if(chooseBottomLine)//点击调节最小值
+    {
+
+        y_buttonLine = ui->chooseRect->y()+ui->chooseRect->height()+pos;
+        y_topLine = ui->chooseRect->y();
+#if isDebug
+        qDebug()<<"press Min Line : "<<ui->chooseRect->y()+ui->chooseRect->height()<<"  press.y"<<current_point.y();
+        qDebug()<<"press Min y_buttonLine : "<<y_buttonLine<<"   y_topLine : "<<y_topLine;
+#endif
+        int chooseRectRange = y_buttonLine - ui->chooseRect->y();//选择的y轴范围
+
+        if(y_buttonLine <= ui->plot->xAxis->coordToPixel(15) && chooseRectRange <= 120 && chooseRectRange >= 60)//小于刻度0对应的y轴值 并且 选择范围小于2个频段 则可移动  60是一个频段的y轴像素值
+        {
+            ui->chooseRect->setGeometry(ui->chooseRect->x(),ui->chooseRect->y(),ui->chooseRect->width(),chooseRectRange);
+            //跟随鼠标移动显示y值(min)
+            double y_min=(ui->plot->xAxis->pixelToCoord(y_buttonLine)-15)/f;
+            QString str = QString("%2").arg(QString::asprintf("%.1f",y_min));
+            //            qDebug()<<"str : "<<str<<" y : "<<ui->chooseRect->y()+ui->chooseRect->height();
+            ui->label_max->move(ui->label_max->x(),ui->chooseRect->y());
+            ui->label_min->move(ui->label_min->x(),ui->chooseRect->y() + ui->chooseRect->height() - ui->label_min->height());
+            ui->label_min->setText(str);
+        }
+        else if(y_buttonLine > ui->plot->xAxis->coordToPixel(15) && chooseRectRange <= 120 && chooseRectRange >= 60)
+        {
+            double y_min=0.0;
+            QString str = QString("%2").arg(QString::asprintf("%.1f",y_min));
+            ui->label_min->setText(str);
+        }
+    }
+    else if(chooseMoveRect)
+    {
+
+        y_topLine = ui->chooseRect->y()+pos;
+        y_buttonLine = ui->chooseRect->y()+ui->chooseRect->height()+pos;
+#if isDebug
+        qDebug()<<"press chooseRect : "<<ui->chooseRect->y()<<"  press.y"<<current_point.y();
+        qDebug()<<"press All y_buttonLine : "<<y_buttonLine<<"   y_topLine : "<<y_topLine;
+#endif
+        if( y_buttonLine <= ui->plot->xAxis->coordToPixel(15) && y_topLine >= 0) //小于刻度0对应的y轴值 并且 大于刻度60对应的y轴值
+        {
+            ui->chooseRect->move(ui->chooseRect->x(),y_topLine);
+
+            //跟随鼠标移动显示y值(max)
+            double y_max=(ui->plot->xAxis->pixelToCoord(y_topLine)-tickOffset)/f;
+            QString str_max = QString("%2").arg(QString::asprintf("%.1f",y_max));
+            //            qDebug()<<"str : "<<str<<" y : "<<ui->chooseRect->y()+ui->chooseRect->height();
+            ui->label_max->setText(str_max);
+            double y_min=(ui->plot->xAxis->pixelToCoord(y_buttonLine)-tickOffset)/f;
+            QString str_min = QString("%2").arg(QString::asprintf("%.1f",y_min));
+            //            qDebug()<<"str : "<<str<<" y : "<<ui->chooseRect->y()+ui->chooseRect->height();
+            ui->label_min->setText(str_min);
+            ui->label_max->move(ui->label_max->x(),ui->chooseRect->y());
+            ui->label_min->move(ui->label_min->x(),ui->chooseRect->y() + ui->chooseRect->height() - ui->label_min->height());
+        }
+    }
+    press_point = current_point;
+    //    qDebug()<<"str_max = "<< ui->label_max->text()<< "int_max = "<<y_topLine;
+#else
+    if((press_point.y()>=ui->chooseRect->y())&&(press_point.y()<=(ui->chooseRect->height()+ui->chooseRect->y())))
+    {
+        int pos = current_point.y()-press_point.y();
+        if((ui->chooseRect->y()+pos)>=5&&(ui->chooseRect->y()+ui->chooseRect->height()+pos)<=475)
+        {
+            ui->chooseRect->move(ui->chooseRect->x(),ui->chooseRect->y()+pos);
+
+            //跟随鼠标移动显示y值(max)
+            double y_min=ui->plot->xAxis->pixelToCoord(ui->chooseRect->y()+ui->chooseRect->height())/20.5;
+            QString str = QString("%2").arg(QString::asprintf("%.1f",y_min));
+            ui->label_min->setText(str);
+            press_point = current_point;
+        }
+        else if((ui->chooseRect->y()+ui->chooseRect->height()+pos)>475)
+        {
+            double y_min=0;
+            QString str = QString("%2").arg(QString::asprintf("%.1f",y_min));
+            ui->label_min->setText(str);
+            press_point = current_point;
+        }
+        else if((ui->chooseRect->y()+pos)<5)
+        {
+            double y_min=52;
+            QString str = QString("%2").arg(QString::asprintf("%.1f",y_min));
+            ui->label_min->setText(str);
+            press_point = current_point;
+        }
+    }
+#endif
+}
+
+//void hp_display_fdp::paintEvent(QPaintEvent *ev){
+
+//}
+
+void hp_display_fdp::mouseReleaseEvent(QMouseEvent *ev)
+{
+    if(isAdaptiveOpen ||isSLMOpen)
+        return;
+
+#if isChangeFDPValueCount
+    int fdp_data;
+    int fdp_content;//频带数
+
+    chooseBottomLine=false;
+    chooseTopLine=false;
+    chooseMoveRect=false;
+    //    y_buttonLine = ui->chooseRect->height() + ui->chooseRect->height();
+
+    if(is10KSetEnabled )
+    {
+#if isDebug
+        qDebug()<<"ui->plot->xAxis->pixelToCoord(y_buttonLine - y_topLine) : "<<ui->plot->xAxis->pixelToCoord(y_buttonLine - y_topLine);
+        qDebug()<<" y_buttonLine : "<<y_buttonLine<<"   y_topLine : "<<y_topLine;
+#endif
+        if(ui->plot->xAxis->pixelToCoord(y_buttonLine - y_topLine) <= 256)
+        {
+            fdp_content = 0;
+        }
+        else
+        {
+            fdp_content = qRound((ui->plot->xAxis->pixelToCoord(y_topLine)-ui->plot->xAxis->pixelToCoord(y_buttonLine))/256.0-1);
+
+        }
+        fdp_data = fdp_content << 12;
+        fdp_data = fdp_data + qRound(ui->plot->xAxis->pixelToCoord(y_buttonLine));
+    }
+    else
+    {
+        if( ui->plot->xAxis->pixelToCoord(y_buttonLine) <= 10*f)
+        {
+#if isDebug
+            qDebug()<<"qCeil((ui->plot->xAxis->pixelToCoord(y_topLine)-10*f)/256.0-1) : "<<qCeil((ui->plot->xAxis->pixelToCoord(y_topLine)-10*f)/256.0-1);
+            qDebug()<<"y_topLine : "<<y_topLine;
+#endif
+
+            fdp_content = qCeil((ui->plot->xAxis->pixelToCoord(y_topLine)-10*f)/256.0-1);
+            fdp_data = (fdp_content << 12) + qCeil(10*f);
+
+        }
+        else
+        {
+#if isDebug
+            qDebug()<<"ui->plot->xAxis->pixelToCoord(y_buttonLine - y_topLine) : "<<ui->plot->xAxis->pixelToCoord(y_buttonLine - y_topLine);
+            qDebug()<<" y_buttonLine : "<<y_buttonLine<<"   y_topLine : "<<y_topLine;
+#endif
+            if(ui->plot->xAxis->pixelToCoord(y_buttonLine - y_topLine) <= 256)
+            {
+                fdp_content = 0;
+            }
+            else
+            {
+                fdp_content = qRound((ui->plot->xAxis->pixelToCoord(y_topLine)-ui->plot->xAxis->pixelToCoord(y_buttonLine))/256.0-1);
+
+            }
+            fdp_data = fdp_content << 12;
+            fdp_data = fdp_data + qRound(ui->plot->xAxis->pixelToCoord(y_buttonLine));
+        }
+    }
+#if isDebug
+    qDebug()<<"fdp_data : "<<fdp_data<<" y_min : "<<y_buttonLine<<" 1966_min : "<<ui->plot->xAxis->pixelToCoord(y_buttonLine)<<" fdp_content : "<<fdp_content;
+#endif
+    SendDoubleRange.lowwer = ui->label_min->text().toDouble() *1.00;
+    SendDoubleRange.upper = ui->label_max->text().toDouble() *1.00;
+    signal_pc_fpga_set_freq_start(fdp_data);
+    signal_pc_key_set_freq_range(SendDoubleRange);
+
+    XmlReader.WriteXml("qtconfig.xml","FREQ_RANGE","min",QString::number(qRound(ui->plot->xAxis->pixelToCoord(y_buttonLine))));
+    XmlReader.WriteXml("qtconfig.xml","FREQ_RANGE","max",QString::number(qRound(ui->plot->xAxis->pixelToCoord(y_topLine))));
+#else
+    double fdp_min = ui->label_min->text().toDouble();
+    qDebug()<<"fap_min = "<<fdp_min<<"------f = :"<<f<<"  ----fdp_min/f = "<<fdp_min/f;
+    if(fdp_min<=10)
+        signal_pc_fpga_set_freq_start((int)(10*20.5));
+    else
+        signal_pc_fpga_set_freq_start((int)(fdp_min*20.5));
+    XmlReader.WriteXml("qtconfig.xml","FREQ_RANGE","min",QString::number(qRound(ui->plot->xAxis->pixelToCoord(ui->chooseRect->y()+ui->chooseRect->width()))));
+    XmlReader.WriteXml("qtconfig.xml","FREQ_RANGE","max",QString::number(qRound(ui->plot->xAxis->pixelToCoord(ui->chooseRect->y()))));
+
+#endif
+}
+
+void hp_display_fdp::slot_pc_fpga_set_freq_start(unsigned char return_value)
+{
+    qDebug()<<"hp_display_fdp::slot_pc_fpga_set_freq_start(unsigned char return_value : "<<return_value;
+}
+
+void hp_display_fdp::SlotSetFdpChooseRect(int fdp_value,int fdp_max)
+{
+#if isChangeFDPValueCount
+    int fdp_content ;
+    int fdp_data;
+
+    qDebug()<<"button : "<<fdp_value<<"max : "<<fdp_max;
+    //对存储的值做判断，若出错则变为默认值
+    if(fdp_value<0 || fdp_value > 2047-256 || fdp_max>value_Max || fdp_max<0 ||  (fdp_value>fdp_max) )
+    {
+        fdp_value = 200;
+        fdp_max = fdp_value + 500;
+    }
+    else if ((fdp_max-fdp_value)<=256) {
+        if(fdp_value <= 2047-256)
+            fdp_max = fdp_value + 256;
+        else
+            fdp_value = fdp_max - 256;
+    }
+    if((fdp_max-fdp_value)>2*256)
+    {
+        fdp_max = fdp_value + 2*256;
+    }
+
+    fdp_content = (fdp_max-fdp_value)/256-1;
+
+    if(is10KSetEnabled)
+    {
+        fdp_data = (fdp_content << 12) + fdp_value;//记录最小值+频段
+    }
+    else
+    {
+        if(fdp_value <= 10*f)
+            fdp_data = (fdp_content << 12) + qRound(10*f);
+        else
+            fdp_data = (fdp_content << 12) + fdp_value;//记录最小值+频段
+    }
+
+    //最小值
+    QString str_min = QString("%2").arg(QString::asprintf("%.1f",fdp_value/f));
+    ui->label_min->setText(str_min);
+    //最大值
+    QString str_max = QString("%2").arg(QString::asprintf("%.1f",fdp_max/f));
+    ui->label_max->setText(str_max);
+
+    SendDoubleRange.lowwer = qRound(fdp_value/f*100)/100.00;
+    SendDoubleRange.upper = qRound(fdp_max/f*100)/100.00;
+
+    double y_max = poordY_Max-fdp_max/cyRatio;
+    double y_min = poordY_Max-fdp_value/cyRatio;
+    //    qDebug()<<"hp_initFdpChooseRectMin : fdp_max : "<<fdp_max<<"   y_max : "<<y_max;
+    //    qDebug()<<"hp_initFdpChooseRectMin : fdp_min : "<<fdp_value<<"   y_min : "<<y_min;
+    //    qDebug()<<"hp_initFdpChooseRectMin : rect_height : "<<ui->plot->xAxis->coordToPixel(fdp_value) - ui->plot->xAxis->coordToPixel(fdp_max);
+    if(y_max<0)
+        y_max = 0;
+    ui->chooseRect->setGeometry(ui->chooseRect->x(),qRound(y_max),ui->chooseRect->width(),qRound(y_min-y_max));
+    ui->label_max->move(ui->label_max->x(),ui->chooseRect->y());
+    ui->label_min->move(ui->label_min->x(),ui->chooseRect->y() + ui->chooseRect->height() - ui->label_min->height());//跟随选择框位置变
+
+    y_buttonLine = ui->chooseRect->y()+ui->chooseRect->height();
+    y_topLine = ui->chooseRect->y();
+
+    signal_pc_fpga_set_freq_start(fdp_data);
+    signal_pc_key_set_freq_range(SendDoubleRange);
+
+#else
+    QString str = QString("%2").arg(QString::asprintf("%.1f",fdp_value/20.5));
+    ui->label_min->setText(str);
+    double y_value = poordY_Max-fdp_value/cyRatio;
+    qDebug()<<" y_value : "<<y_value;
+
+    //最小值
+    QString str_min = QString("%2").arg(QString::asprintf("%.1f",fdp_value/f));
+    ui->label_min->setText(str_min);
+    //最大值
+    QString str_max = QString("%2").arg(QString::asprintf("%.1f",fdp_max/f));
+    ui->label_max->setText(str_max);
+    ui->chooseRect->move(ui->chooseRect->x(),ui->label_min->y()+ui->label_min->height()-ui->label_max->y());
+    //    ui->label_max->move(ui->label_max->x(),ui->chooseRect->y());
+    //    ui->label_min->move(ui->label_min->x(),ui->chooseRect->y() + ui->chooseRect->height() - ui->label_min->height());//跟随选择框位置变
+
+    signal_pc_fpga_set_freq_start(fdp_value);
+#endif
+}
+
+//设置轴坐标偏移
+void hp_display_fdp::hp_setTicker()
+{
+    QSharedPointer<QCPAxisTickerFixed> xfixTicker(new QCPAxisTickerFixed);
+    xfixTicker->setTickStep(8);//设置刻度间距
+    ui->plot->xAxis->setTicker(xfixTicker);
+
+    QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+    textTicker->addTick(0+tickOffset,"0");
+    textTicker->addTick(qRound(10*f+tickOffset),"10");
+    textTicker->addTick(qRound(20*f+tickOffset),"20");
+    textTicker->addTick(qRound(30*f+tickOffset),"30");
+    textTicker->addTick(qRound(40*f+tickOffset),"40");
+    textTicker->addTick(qRound(50*f+tickOffset),"50");
+    textTicker->addTick(qRound(60*f+tickOffset),"60");
+    textTicker->addTick(qRound(70*f+tickOffset),"70");
+    textTicker->addTick(qRound(80*f+tickOffset),"80");
+    textTicker->addTick(qRound(90*f+tickOffset),"90");
+    textTicker->addTick(qRound(100*f+tickOffset),"100");
+    //    textTicker->addTick(value_Max,"65");
+
+    ui->plot->xAxis->setTicker(textTicker);
+    ui->plot->replot();
+}
+//获取频域数据
+void hp_display_fdp::slot_pc_stream_data(unsigned char return_value,unsigned char * data)
+{
+
+    dataCount++;
+
+    int test = 0;
+    unsigned short plotData[value_Max];
+    memcpy(plotData,data,value_Max*sizeof(unsigned short));
+    //    plotData = (short *)data;
+    ui->plot->yAxis->setRangeReversed(true);//翻转y轴，向左为正半轴
+    ui->plot->graph()->setLineStyle(QCPGraph::lsLine);
+    ui->plot->graph()->setPen(QPen(QColor(0,255,0)));
+    ui->plot->graph()->setBrush(QColor(0,255,0));
+    QVector<QCPGraphData> timeData(value_Max);
+    signal_pc_sys_set_freq_anser();
+    //    if(dataCount%5 != 0)
+    //        return;
+
+    for(int i = 0;i+15<value_Max;++i)
+    {
+        if(i<15)
+        {
+            timeData[i].value = 1;
+        }
+        else
+        {
+            timeData[i].key = i;
+            if(plotData[i-15]>250)
+                timeData[i].value = 250;
+            else
+                timeData[i].value = plotData[i-15];
+        }
+
+    }
+    //    for(int i = 300;i<1300;i++)
+    //    {
+    //        if(plotData[i]>175)
+    //            test++;
+    //    }
+    //    qDebug()<<"  timeData[i].value > 175    test : "<<test;
+    ui->plot->graph()->data()->set(timeData);
+    ui->plot->replot();
+
+}
+
+void hp_display_fdp::slot_pc_sys_set_freq_anser(unsigned char return_value)
+{
+    qDebug("hp_display_fdp::slot_pc_sys_set_freq_anser(unsigned char return_value : 0x%02x",return_value);
+}
+void hp_display_fdp::slot_pc_key_set_freq_range(unsigned char return_value)
+{
+    qDebug("hp_display_fdp::slot_pc_key_set_freq_range(unsigned char return_value : 0x%02x",return_value);
+}
+
+
+void hp_display_fdp::SetAutoEnabled(bool isEnabled)
+{
+    //    ui->toolButton_auto->setEnabled(isEnabled);
+}
+void hp_display_fdp::slot_pc_key_get_freq_range(unsigned char return_value,double_range range)
+{
+    SLOTLOG<<"lowwer : "<<range.lowwer<<",upper : "<<range.upper;
+
+    SlotSetFdpChooseRect(range.lowwer,range.upper);
+}
+

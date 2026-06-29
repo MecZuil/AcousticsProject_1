@@ -1,0 +1,76 @@
+#ifndef HP_HIDECALIBRATION_IR_H
+#define HP_HIDECALIBRATION_IR_H
+
+#include <QWidget>
+#include <QKeyEvent>
+#include <QDateTime>
+#include <QPainter>
+
+#include "hp_enum.h"
+#include "hi384_protocol.h"
+#include "hp_input_text.h"
+#include "hp_assemblystyle.h"
+#include "hp_formatdialog.h"
+
+namespace Ui {
+class hp_hidecalibration_ir;
+}
+
+class hp_hidecalibration_ir : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_hidecalibration_ir(QWidget *parent = nullptr);
+    ~hp_hidecalibration_ir();
+
+    int UIType;
+
+signals:
+    void signal_pc_key_set_ir_redress(expert_correction_t data);
+    void signal_pc_key_set_ir_start_redress();
+    void signal_pc_key_get_ir_califile(char *data);
+    void signal_pc_key_set_ir_mode(int stats);
+    void signal_pc_key_set_ir_autopear(int stats);
+    void signal_pc_key_set_ir_temprange(int stats);
+
+private slots:
+    void slot_pc_key_set_ir_redress(unsigned char return_value);
+    void slot_pc_key_set_ir_start_redress(unsigned char return_value);
+    void slot_pc_key_get_ir_califile(unsigned char return_value);
+    void slot_pc_key_set_ir_temprange(unsigned char return_value);
+
+    void hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow);
+
+    void on_toolButton_getCoordinate_clicked();
+    void on_toolButton_startCali_clicked();
+    void on_toolButton_save_clicked();
+    void on_toolButton_generate_clicked();
+    void on_toolButton_close_clicked();
+    void on_toolButton_openInputText_clicked();
+    void on_listWidget_tempRange_currentRowChanged(int currentRow);
+
+protected:
+    virtual bool eventFilter(QObject *o, QEvent *e);
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
+    virtual void paintEvent(QPaintEvent *event);
+//    virtual void keyPressEvent(QKeyEvent *ev);//按下并松开后执行
+//    virtual void keyReleaseEvent(QKeyEvent *ev);
+
+private:
+    Ui::hp_hidecalibration_ir *ui;
+
+    hp_input_text * HpInputText;
+    hp_formatdialog * PromptDialog;
+
+    SETTING_HIDECALIIR current_select;
+    expert_correction_t IRPara;
+
+    bool isDrawPoint;//开始画点位置
+    QPoint pressPoint;
+    QPoint nowPoint;
+};
+
+#endif // HP_HIDECALIBRATION_IR_H

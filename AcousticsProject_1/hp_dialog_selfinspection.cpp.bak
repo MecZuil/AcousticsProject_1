@@ -1,0 +1,244 @@
+#include "hp_dialog_selfinspection.h"
+#include "ui_hp_dialog_selfinspection.h"
+
+hp_dialog_selfinspection::hp_dialog_selfinspection(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_selfinspection)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+
+    stopWrite = true;
+
+    ProgressBarDialog = new hp_progressbar_dialog(this);
+    ProgressBarDialog->close();
+
+    ui->LABEL1->close();
+    ui->LABEL2->close();
+    ui->LABEL3->close();
+
+    isSelfInspection = false;
+    isStartInspection =false;
+    PointInit();
+
+}
+
+hp_dialog_selfinspection::~hp_dialog_selfinspection()
+{
+    delete ui;
+}
+
+void hp_dialog_selfinspection::SlotSetUIStyle(int type)
+{
+    if(type== 0)
+    {
+        this->setGeometry(0,0,1920,1080);
+        ui->frame->setGeometry(0,0,1920,1080);
+        ui->label_background->setGeometry(0,0,1920,1080);
+        ui->toolButton_close->setGeometry(68,68,68,68);
+        ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_1920_n);
+        ui->label_background->setStyleSheet("border-image: url(" UI_res_PATH_1920 "selfInspection_background.jpg);");
+    }
+}
+//翻译
+void hp_dialog_selfinspection::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_dialog_selfinspection::keyReleaseEvent(QKeyEvent *ev)
+{
+    qDebug()<<" hp_dialog_wifi::keyReleaseEvent(QKeyEvent *ev)---------- ev->key() = "<<ev->key();
+    SignalUpdateSetUpClock();
+    switch (ev->key())
+    {
+    case Key_RETURN:
+        on_toolButton_close_clicked();
+        break;
+    case Key_CAPTURNANDVIDEO:
+        SignalPrintscreenHandle();
+    default:
+        break;
+    }
+}
+
+void hp_dialog_selfinspection::PointInit()
+{
+    label_list.clear();
+    label_list << ui->label_1 << ui->label_2 << ui->label_3 << ui->label_4  \
+               << ui->label_6 << ui->label_8 << ui->label_9 << ui->label_10 \
+               << ui->label_25 << ui->label_26 << ui->label_27 << ui->label_28   \
+               << ui->label_29 << ui->label_30 << ui->label_31 << ui->label_32   \
+               << ui->label_34 << ui->label_35 << ui->label_36 << ui->label_37   \
+               << ui->label_38 << ui->label_39 << ui->label_45 << ui->label_46   \
+               << ui->label_47 << ui->label_48 << ui->label_49 << ui->label_50   \
+               << ui->label_51 << ui->label_52  << ui->label_53 << ui->label_67  \
+               << ui->label_68 << ui->label_69 << ui->label_70 << ui->label_71  \
+               << ui->label_72 << ui->label_73 << ui->label_74 << ui->label_77  \
+               << ui->label_78 << ui->label_79<< ui->label_97 << ui->label_98  \
+               << ui->label_99 << ui->label_100 << ui->label_101 << ui->label_102 \
+               << ui->label_103 << ui->label_104 << ui->label_105 << ui->label_107  \
+               << ui->label_108 << ui->label_109 << ui->label_110 << ui->label_111  \
+               << ui->label_112 << ui->label_113 << ui->label_114 << ui->label_115  \
+               << ui->label_116 << ui->label_11 << ui->label_33 << ui->label_5;
+    for(int i = 0;i<label_list.size();i++)
+    {
+        label_list[i]->close();
+    }
+
+}
+
+void hp_dialog_selfinspection::slot_pc_stream_data(unsigned char return_value,unsigned char * data)
+{
+    if((!isStartInspection) || (!isSelfInspection))
+        return;
+    if(stopWrite)
+    {
+        stopWrite = false;
+//        CloseLable();
+        unsigned short plotData[2016];
+        memcpy(plotData,data,2016*sizeof(unsigned short));
+
+//        FILE* file_fp = fopen("/run/media/mmcblk2p1/fileOutPutQt_19131125_234916.txt", "r");
+//        //printf("%s","/run/media/mmcblk2p1/fileOutPutQt_19131125_234916.txt");
+//        fread(plotData, 1, 2016 * 2, file_fp);       //写入全部数据
+//        fclose(file_fp);
+//        system("sync");
+
+//        char buf[50];
+//        file_fp = fopen("/run/media/mmcblk2p1/fileRead.txt", "wb");
+//        for(int i = 0;i < 2016;i++)
+//        {
+//            memset(buf,0,sizeof(buf));
+//            sprintf(buf,"%d\n",plotData[i]);
+//            fwrite(buf, 1, strlen(buf), file_fp);       //写入全部数据
+//        }
+//        fclose(file_fp);
+//        system("sync");
+
+//        signal_pc_sys_set_freq_anser();
+
+
+        for(int i = 0;i<64;i++)
+        {
+            for(int j = 0;j<64;j++)
+            {
+                DataGroup[i][j] = 1;
+            }
+        }
+        int plotDataNum = 0;
+        //qDebug()<<"-------------------2";
+        for(int i = 0;i<63;i++)
+        {
+
+            //        qDebug()<<"-------------------i : "<<i;
+            for(int j = i+1;j<=63;j++)
+            {
+                //            qDebug()<<"-------------------j : "<<j;
+                DataGroup[i][j] =plotData[plotDataNum];
+                plotDataNum ++;
+            }
+        }
+        plotDataNum = 0;
+        for(int j = 0;j<63;j++)
+        {
+            for(int i = j+1;i<=63;i++)
+            {
+                DataGroup[i][j] = plotData[plotDataNum];
+                plotDataNum ++;
+            }
+        }
+
+        for(int i = 0;i < 64;i++)
+        {
+            QString numberCheck="";
+            double averageNum = 0;
+            for(int j = 0; j < 64;j++)
+            {
+                if(DataGroup[i][j]>250)
+                    DataGroup[i][j] = 250;
+                averageNum = averageNum + DataGroup[i][j];
+                numberCheck = numberCheck + QString::number(DataGroup[i][j]) + " ";
+
+            }
+
+            averageNum = averageNum / 64.00;
+
+//            qDebug()<<" the line : "<<i<<" the averageNum : "<<averageNum;
+//            qDebug()<<"                 number : "<<numberCheck;
+
+            //0-0.1 红 red 0.1-0.25 橙 rgb(255, 151, 32); 0.25-0.5 黄 rgb(255,255,0)
+
+            if(averageNum <0.7*250)
+            {
+                qDebug()<<" i :"<<i<<" averageNum : "<<averageNum<<" <0.7";
+
+                if(averageNum<0.25*250)
+                {
+                    label_list[i]->setStyleSheet("background-color:red;\
+                                                 border-radius:7px;");//红
+                }
+                else if(averageNum<0.5*250)
+                {
+                    label_list[i]->setStyleSheet("background-color:rgb(255, 151, 32);\
+                                                 border-radius:7px;");//橙
+                }
+                else if(averageNum<0.7*250)
+                {
+                    label_list[i]->setStyleSheet("background-color:rgb(255,255,0);\
+                                                 border-radius:7px;");//黄
+                }
+//                label_list[i]->show();
+
+            }
+            else
+            {
+                if(label_list[i]->isVisible())
+                    label_list[i]->setVisible(false);
+            }
+        }
+        update();
+    }
+    else
+    {
+        signal_pc_sys_set_freq_anser();
+        return;
+    }
+
+}
+
+void hp_dialog_selfinspection::on_toolButton_close_clicked()
+{
+    this->close();
+    SignalCloseSelfInspection();
+}
+
+void hp_dialog_selfinspection::CloseLable()
+{
+    for(int i = 0;i<label_list.size();i++)
+    {
+        label_list[i]->close();
+    }
+}
+void hp_dialog_selfinspection::slot_pc_fpga_set_setarithmetic(unsigned char return_value)
+{
+    if(isSelfInspection)
+        isStartInspection = true;
+    else
+        isStartInspection = false;
+}
+void hp_dialog_selfinspection::OpenProgressDialog()
+{
+    ProgressBarDialog->StartProgressTimer(10000);
+    ProgressBarDialog->hp_setDialogType(PRODIALOG_SELFINSPECTION);
+    ProgressBarDialog->show();
+}
