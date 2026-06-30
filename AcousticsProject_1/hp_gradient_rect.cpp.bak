@@ -1,0 +1,144 @@
+#include "hp_gradient_rect.h"
+#include "ui_hp_gradient_rect.h"
+
+hp_gradient_rect::hp_gradient_rect(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_gradient_rect)
+{
+    ui->setupUi(this);
+
+    isSliderShow=0;
+    isPress= false;
+    //    ui->verticalSlider->close();
+
+    ui->label_max->close();
+    ui->label_min->close();
+
+    moving_range.lower = 0;
+    movingRangeMaxValue = 1000;
+    moving_range.upper=1000;
+    ui->verticalSlider->setMaximum(1000);
+    ui->verticalSlider->setMinimum(0);
+    ui->label_min->installEventFilter(this);
+    ui->verticalSlider->installEventFilter(this);
+}
+
+hp_gradient_rect::~hp_gradient_rect()
+{
+    delete ui;
+}
+//绘制渐变色条
+void hp_gradient_rect::paintEvent(QPaintEvent *ev)
+{
+//    if(isSliderShow)
+//    {
+//        ui->verticalSlider->show();
+//    }
+//    else
+//    {
+        //        ui->verticalSlider->close();
+        //        //绘制渐变色条
+        //        QPainter painter(this);
+        //        painter.setRenderHint(QPainter::Antialiasing);//反锯齿
+        //        QLinearGradient linearGradient(0,60,0,480);
+        //        //设置渐变色
+        //        linearGradient.setColorAt(0,QColor(255,0,255));
+        //        linearGradient.setColorAt(0.2,Qt::red);
+        //        linearGradient.setColorAt(0.4,Qt::yellow);
+        //        linearGradient.setColorAt(0.6,Qt::green);
+        //        linearGradient.setColorAt(0.8,Qt::blue);
+        //        linearGradient.setColorAt(1,Qt::white);
+        //        //绘制色条及边框
+        //        painter.setBrush(linearGradient);
+        //        painter.drawRect(30,60,30,360);
+        //        painter.setPen(Qt::white);
+        //        painter.drawRect(30,60,30,360);
+//    }
+}
+
+bool hp_gradient_rect::eventFilter(QObject *obj, QEvent *event)
+{
+    if(event->type() == QMouseEvent::MouseButtonPress)
+    {
+        if(obj->objectName()=="label_min")
+        {
+            qDebug("label_min");
+            isSliderShow=!isSliderShow;
+//            update();
+        }
+    }
+    return false;
+}
+//进度条值改变响应槽函数
+void hp_gradient_rect::on_verticalSlider_valueChanged(int value)
+{
+//    if( value>=movingRangeMaxValue )
+//    {
+//        value=movingRangeMaxValue;
+//        ui->verticalSlider->setValue(value);
+//    }
+//    moving_range.lower=value;
+//    ui->label_min->setText( QString::number(value)+"dB");
+//    if(!isPress)
+//    {
+//        signal_pc_key_set_moving_range(moving_range);
+//    }
+
+}
+//更改动态范围最大值
+void hp_gradient_rect::hp_setMovingRangeUpper(int movingRangeUpper)
+{
+    movingRangeMaxValue=1000;
+    ui->label_max->setText(QString::number(movingRangeUpper)+"dB");
+}
+//更改动态范围最小值
+void hp_gradient_rect::hp_setMovingRangeLower(int_move_range value)
+{
+    moving_range = value;
+    moving_range.lower=Limit(value.lower,moving_range.upper,0);
+    qDebug()<<"moving_range.lower : "<<moving_range.lower<<"QString::number(moving_range.lower)"<<QString::number(moving_range.lower);
+    ui->label_min->setText(QString::number(moving_range.lower)+"dB");
+    ui->verticalSlider->setValue(value.lower);
+    on_verticalSlider_sliderReleased();
+}
+//进度条松开事件
+void hp_gradient_rect::on_verticalSlider_sliderReleased()
+{
+    int value = ui->verticalSlider->value();
+    moving_range.lower=value;
+    signal_pc_key_set_moving_range(moving_range);
+    ui->label_min->setText( QString::number(value)+"dB");
+    if(isPress)
+    {
+        isPress=false;
+        hp_undateSliderUI(false);
+        SignalSetDynamicRange(moving_range);
+    }
+}
+//进度条是否选中状态更新
+void hp_gradient_rect::hp_undateSliderUI(bool isSelect)
+{
+    if(isSelect)
+    {
+        ui->verticalSlider->setStyleSheet("QSlider::groove:vertical{border:0px solid #ffffff;}\
+                                           QSlider::sub-page:vertical{background-color:rgb(178, 180, 181);border-radius:0px;}\
+                                           QSlider::add-page:vertical{background-color:rgb(0, 221, 253);border:0px solid #777;border-radius:0px;}\
+                                           QSlider::handle:vertical{ border:0px solid white; background:#ffffff;\
+                                                                     border-radius:0px;height: 20px; margin-top:0px;margin-bottom:0px;}");
+    }
+    else
+    {
+        ui->verticalSlider->setStyleSheet("QSlider::groove:vertical{border:0px solid #ffffff;}\
+                                           QSlider::sub-page:vertical{background-color:gray;border-radius:0px;}\
+                                           QSlider::add-page:vertical{background-color:gray;border:0px solid #777;border-radius:0px;}\
+                                           QSlider::handle:vertical{ border:0px solid white; background:#ffffff;\
+                                                                    border-radius:0px;height: 20px; margin-top:0px;margin-bottom:0px;}");
+    }
+}
+//进度条按下事件
+void hp_gradient_rect::on_verticalSlider_sliderPressed()
+{
+    isPress = true;
+    hp_undateSliderUI(true);
+//    SignalGradientRectPressed();
+}

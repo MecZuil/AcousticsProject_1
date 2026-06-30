@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_dialog_ircolor</class>
+ <widget class="QWidget" name="hp_dialog_ircolor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>320</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QFrame" name="gridFrame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>320</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+background-color:rgb(13, 34, 67);
+border :1px solid rgb(32, 85, 166);
+}</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="2">
+     <widget class="QToolButton" name="toolButton_20">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao20_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao20_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QToolButton" name="toolButton_18">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao18_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao18_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QToolButton" name="toolButton_21">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao21_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao21_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="2" column="4">
+     <widget class="QToolButton" name="toolButton_22">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao22_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao22_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QToolButton" name="toolButton_19">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao19_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao19_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QToolButton" name="toolButton_11">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao11_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao11_s.png);
+background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QToolButton" name="toolButton_13">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao13_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao13_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="4">
+     <widget class="QToolButton" name="toolButton_17">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao17_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao17_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QToolButton" name="toolButton_10">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao10_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao10_s.png);
+background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QToolButton" name="toolButton_14">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao14_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao14_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QToolButton" name="toolButton_15">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao15_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao15_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="0" column="4">
+     <widget class="QToolButton" name="toolButton_12">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao12_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao12_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QToolButton" name="toolButton_1">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao01_n.png);
+background:transparent;
+}  
+QToolButton:checked{
+border-image: url(:/res/sebiao01_s.png);
+background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QToolButton" name="toolButton_16">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao16_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao16_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QToolButton" name="toolButton_2">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border-image: url(:/res/sebiao02_n.png);
+background:transparent;
+}  
+
+QToolButton:checked{
+border-image: url(:/res/sebiao02_s.png);background:transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QFrame" name="frame_gray">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>321</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(155, 174, 191,150);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>

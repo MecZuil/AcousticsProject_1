@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_errorwarning_dialog</class>
+ <widget class="QWidget" name="hp_errorwarning_dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>325</width>
+    <height>166</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>325</width>
+     <height>166</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QFrame{
+background-color:rgb(13, 34, 67);
+border :1px solid rgb(62, 139, 192);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="titleLabel">
+    <property name="geometry">
+     <rect>
+      <x>2</x>
+      <y>10</y>
+      <width>320</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;border:none;</string>
+    </property>
+    <property name="text">
+     <string>出错</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel">
+    <property name="geometry">
+     <rect>
+      <x>2</x>
+      <y>50</y>
+      <width>320</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>错误</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="OKToolButton">
+    <property name="geometry">
+     <rect>
+      <x>112</x>
+      <y>120</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QToolButton::pressed{
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string>确定</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,617 @@
+#ifndef HI384_PROTOCOL_H
+#define HI384_PROTOCOL_H
+
+#include <QString>
+
+#define Limit(N,MAX,MIN) N>MAX?MAX:(N<MIN?MIN:N)
+
+#define DEMYLOG           qDebug() << "file : " << __FILE__ << " func : " << __func__ << " line : " << __LINE__ << " || "
+#define MYLOG           qDebug() << "**QT**[ " << __FILE__ << " : " << __func__ << " : " << __LINE__ << " ] : "
+#define SLOTLOG          qDebug() << __FILE__ << "::" << __func__ << "(unsigned char return_value : "<<QString().sprintf("0x%02x",return_value)
+
+#define SDPICFULLFILE  "/run/media/mmcblk2p1/DCIM/"
+
+#define value_Max 2048
+#define poordX_Max 100.00
+#define poordY_Max 480.00
+
+#define BATTERY_STEP0         9700                //最低电(power_0.png)5.4V
+#define BATTERY_STEP5         15000                //最高电(power_4.png) 8.1V
+
+#define BATTERY_STEP1         (BATTERY_STEP0+(BATTERY_STEP5-BATTERY_STEP0)*2/10)                //     (power_1.png)
+#define BATTERY_STEP2         (BATTERY_STEP0+(BATTERY_STEP5-BATTERY_STEP0)*4/10)                //     (power_2.png)
+#define BATTERY_STEP3         (BATTERY_STEP0+(BATTERY_STEP5-BATTERY_STEP0)*6/10)                //     (power_3.png)
+#define BATTERY_STEP4         (BATTERY_STEP0+(BATTERY_STEP5-BATTERY_STEP0)*8/10)
+
+#define Key_RETURN 0x57
+#define Key_PREVIEW 0x45
+#define Key_CAPTURNANDVIDEO 0x51
+
+#define UI_res_mainmenu_PATH_800  ":/res_mainmenu/"
+#define UI_res_mainmenu_PATH_1920  ":/res_mainmenu_1920/"
+#define UI_res_PATH_800  ":/res/"
+#define UI_res_PATH_1920  ":/res_1920/"
+
+#define MIN_RECT_WIDTH 10
+#define MIN_RECT_HEIGHT 10
+#define MAIN_DISPLAY_MAIN_X_1920 168
+#define MAIN_DISPLAY_FDP_X_1920 216
+#define MAIN_DISPLAY_MAIN_Y_1080 1080
+#define MAIN_DISPLAY_FDP_Y_1080 1080
+
+#define isSyncPicModeIR 1 //开机不自启动红外，红外启动与
+#define isGrayRectShow 0  //是否开启主界面动态范围调节按钮
+#define isOpenDetectPara 0//是否开放气体局放检测参数设置 0-关闭 1-局放[bit0]开启 2-气体[bit1]开启 4-红外[bit2]开启
+#define isChangeFDPValueCount    1 //
+//#define isSetIRMode 1//0-红外开机自动上电 1-红外模块开启按钮开放
+//#define isNewBle 0//0-旧蓝牙 1-新蓝牙
+
+enum RE_CODE
+{
+    RE_OK = 0x00,                       //返回参数正常
+    RE_ERR_INTER_INSTRUCT = 0x01,		//core内部错误
+    RE_ERR_INTER_STATUS = 0x02,			//内部状态错误
+    RE_ERR_INTER_OPERATION = 0x03,		//内部运行错误
+    RE_ERR_PARA_RECV = 0x04,			//参数接收错误
+    RE_ERR_PARA_INVALID = 0x05,			//参数无效
+    RE_ERR_MEMORY = 0x06,				//内存异常
+    RE_ERR_ILLEGAL_OPERATION = 0x07,	//非法操作
+    RE_ERR_FILE = 0x10,					//文件异常
+    RE_ERR_SDFORMAT = 0x12,				//SD卡正在格式化格式化
+    RE_ERR_SDFULL = 0x13,				//SD卡已满
+    RE_ERR_NOSD = 0x13,                 //SD卡不存在
+    RE_ERR_DEV_UNSUPPORT = 0x20,		//外设不支持
+    RE_ERR_DEV_NONEXISTENT = 0x21,		//外设不存在
+    RE_ERR_DEV_STATUS = 0x22,			//外设状态错误
+    RE_ERR_DEV_SD = 0x23,				//SD卡错误
+    RE_ERR_DEV_FPGA = 0x24,				//FPGA设备错误
+    RE_ERR_DEV_WIFI = 0x25,				//WIFI设备错误
+    RE_ERR_DEV_LTE = 0x26,				//4G/5G设备错误
+    RE_ERR_DEV_AUDIO = 0x27,			//音频设备错误
+    RE_ERR_DEV_GPS = 0x28,				//GPS设备错误
+    RE_ERR_DEV_LASER = 0x29,			//激光设备错误
+    RE_ERR_DEV_SERSOR = 0x2A,			//传感器设备错误
+    RE_ERR_DEV_BLE = 0x2B,				//蓝牙设备错误
+    RE_ERR_DEV_DETECTION = 0x2C,		//外设IO探测错误
+    RE_ERR_DEV_IOPMIC = 0x2D,			//外设IO管理错误
+
+
+    RE_ERR_NET_CONFLICT = 0x40,			//网络冲突异常
+    RE_ERR_NET_STATUS = 0x41,			//网络状态错误
+    RE_ERR_NET_INIT = 0x42,				//网络初始化错误
+    RE_ERR_NET_TRANS = 0x43,			//网络传输错误
+    RE_ERR_NET_IP_INVALID = 0x44,		//网络IP无效
+    RE_ERR_NET_RECV = 0x45,				//网络接收错误
+
+    RE_ERR_SERVER_RESPONSE = 0x50,		//服务器响应错误
+    /*~0x7F 保留字段*/
+
+    /*0x80 之后为自定义字段*/
+    RE_ERR_XML_READ = 0x80,             //XML读取失败
+    RE_ERR_INRUN = 0x81,                //已经处于该操作中
+    RE_ERR_NOTINRUN = 0x82,             //该操作中已经结束
+    RE_ERR_FPGAWRITE = 0x83,            //fpga写入失败
+    RE_ERR_SENDTOQT = 0x84,             //发送给QT失败
+    RE_ERR_DEVIO = 0x85,                //IO读写失败
+    RE_ERR_DEVOPEN = 0x86,              //打开设备失败
+    RE_ERR_PASSWORD = 0x87,             //密码错误
+    RE_ERR_CONNECT = 0x88,              //连接失败
+    RE_ERR_SET = 0x89,                  //设置失败
+    RE_ERR_IRCOUNT = 0x90,              //红外模块不存在
+    RE_ERR_EMPTY = 0x91,                //需要设置的参数不存在
+
+    RE_ERR_NOCMD = 0xff,				//命令不存在
+};
+
+enum CMD_PC {
+    PC_LINK = 0x00,				//连接类
+    PC_BUF = 0x01,				//控制类 实际是PC_CTRL 要改的太多了
+    PC_CFG  = 0x02,				//配置类
+    PC_KEY_OBSOLETE = 0x05,		//按键类，已废弃
+    PC_GET,						//获取类
+    PC_ANALYSIS = 0x09,			//分析类
+    PC_FPGA,           			//标定FPGA前端菜单
+    PC_MEASURE = 0x10,			//测温类
+    PC_IMAGE,					//图像类
+    PC_SYS,						//系统类
+    PC_KEY,						//按键类
+    PC_MCAST,					//多播类
+    PC_PIC,						//抓图类
+    PC_STREAM,					//实时传输类
+    PC_OSD,						//osd类
+};
+
+enum PC_CMD_MCAST
+{
+    PC_MCAST_SEARCH_DEV = 0x01,     //0x01  搜索设置				DevInfo
+    PC_MCAST_SET_IP                 //设置IP				SetIPInfo
+};
+
+/* @ description : 系统子命令码 */
+enum CMD_KEY_SUB {
+    PC_KEY_SET_CAPTURE_START=0x00,      //开始拍照					发送：无参数							返回：char *data	(文件名)
+    PC_KEY_SET_CAPTURE_STOP,            //停止拍照					发送：struct take_capture			返回：无
+    PC_KEY_SET_CAPTURE_EDIT,            //编辑图像信息				发送：struct take_capture			返回：无
+    PC_KEY_GET_CAPTURE_INFO,            //获取图像信息        		发送：char *data	(文件名)   			返回：struct take_capture
+    PC_KEY_GET_CAPTURE_FLAG,            //获取拍照状态				发送：无参数							返回：int
+    PC_KEY_SET_RECORD_START,            //开始录像 					发送：无参数							返回：无
+    PC_KEY_SET_RECORD_STOP,             //停止录像					发送：无参数							返回：char *data	(文件名)
+    PC_KEY_GET_RECORD_FLAG,             //获取录像状态				发送：无参数							返回：int
+
+    PC_KEY_GET_SDINSERT,                //获取SD卡插入状态			发送：无参数							返回：int
+    PC_KEY_GET_SDINFO,                  //获取SD卡使用信息			发送：无参数							返回：struct sdinfo_s
+    PC_KEY_SET_WIFI_AP_STATE,           //wifi开关控制          	发送：   0关闭 1开启				    返回：无
+    PC_KEY_GET_WIFI_AP_STATE,           //获取wifi状态          	发送：无参数		   				    返回：0关闭 1开启
+    PC_KEY_SET_BLE_STATE,               //蓝牙开关控制     	     	发送：   0关闭 1开启				    返回：无   关闭时会直接返回，如果返回 1，则表示关闭成功
+    PC_KEY_SET_BLE_INOUT,               //蓝牙输入输出     	     	发送：   0输入 1输出				    返回：无
+    PC_KEY_SET_BLE_SEARCH,              //搜索蓝牙耳机	         	发送：无				                返回：无
+    PC_KEY_GET_BLE_SEARCH,              //获取搜索蓝牙耳机搜索结果     	发送：无				                返回：char *  分隔符 '\n'
+    PC_KEY_SET_BLE_OLDCONNECT,          //查找以前连接过的蓝牙耳机    	发送：int 0:清除配对记录  1:开始获取配对记录	    返回：char *  分隔符 '\n'
+    PC_KEY_GET_BLE_OLDCONNECT,          //获取以前连接过的蓝牙耳机    	发送：无                        	    返回：char *
+    PC_KEY_SET_BLE_CONNECT,             //连接蓝牙耳机	         	发送：char *蓝牙耳机名称	            返回：无
+    PC_KEY_SET_BLE_DISCONNECT,          //断开蓝牙耳机	         	发送：char *蓝牙耳机名称  	            返回：无
+    PC_KEY_GET_BLE_STATE,               //获取蓝牙状态                发送：无参数                              返回：struct ble_stat
+    PC_KEY_GET_BLE_DEVINFO,             //获取已连接蓝牙的信息         发送：无参数                         返回：char *
+    PC_KEY_SET_4G_STATE,                //4G开关控制          	    发送：   0关闭 1开启				    返回：int
+    PC_KEY_GET_4G_STATE,                //获取4G状态          	    发送：无参数		   				    返回：0关闭 1开启
+    PC_KEY_SET_4GGPS_STATE,             //4G GPS控制                发送：0关闭 1开启                      返回：int
+
+    PC_KEY_SET_A_GRAY_RECT,				//添加一个灰色半透明区域					发送：struct grayRect			返回：无
+    PC_KEY_EDIT_A_GRAY_RECT,			//编辑一个灰色半透明区域					发送：struct grayRect			返回：无
+    PC_KEY_DEL_A_GRAY_RECT,				//删除一个灰色半透明区域					发送：struct grayRect			返回：无
+
+    PC_KEY_SET_A_SHOW_RECT,				//添加一个智能降噪区域					发送：struct grayRect			返回：无
+    PC_KEY_EDIT_A_SHOW_RECT,			//编辑一个智能降噪区域					发送：struct grayRect			返回：无
+    PC_KEY_DEL_A_SHOW_RECT,				//删除一个智能降噪区域					发送：struct grayRect			返回：无
+
+    PC_KEY_SET_NEW_COLORRULE,			//切换新的色标					    发送：int 类型        			返回：无
+
+    //GPIO18
+    PC_KEY_POWERDOWN,                   //关机        					    发送：无参数					返回：无
+    PC_KEY_GET_CHARGE,                  //充电插入检测						发送：无参数						返回：0未插入 1插入
+    PC_KEY_GET_BATTERY,                 //获取电池电量						发送：无参数						返回：int
+
+    PC_KEY_SET_SINGLE_SOURCE,           //设置单双声道						发送：0单声道，1 双声道				返回：无
+    PC_KEY_GET_SINGLE_SOURCE,           //获取单双声道						发送：无							返回：0单声道，1 双声道
+    PC_KEY_SET_MOVING_RANGE,            //设置动态范围						发送：参数 struct int_range	返回：无
+    PC_KEY_GET_MOVING_RANGE,            //获取动态范围						发送：int id						返回：参数 int_range
+
+    PC_KEY_SET_AUDIO_START,				//开始录制语音						发送：无							返回：无
+    PC_KEY_SET_AUDIO_STOP,				//结束录制语音						发送：无							返回：无
+    PC_KEY_SET_AUDIO_PLAY,				//播放图像中记录的语音                 发送：无               			返回：无
+    PC_KEY_SET_AUDIO_STOPPLAY,			//结束播放图像中记录的语音              发送：无               			返回：无
+    PC_KEY_SET_DISP_MULTIPLE,           //放大倍数设置     	     	        发送：放大倍率(int)	    		返回：无
+    PC_KEY_GET_GRAB,                    //截图                               发送：无                         返回：无
+    PC_KEY_SET_HDMI,                    //打开HDMI                           发送：1打开 0关闭                 返回：无
+    PC_KEY_SET_LCDSTATE,                //息屏功能                           发送：0:息屏 1：亮屏				返回：无
+    PC_KEY_SET_USBMODE,                 //设置USB模式                        发送：0:正常模式 1：大容量存储模式	返回：无
+    PC_KEY_GET_USBINSERT,               //获取USB是否插入                     发送：无                         返回：0：未插入，1：插入
+    PC_KEY_SET_PRDPSTREAM,              //设置PRPD开启还是关闭，默认是关闭的     发送：1打开 0关闭                返回：无
+
+    PC_KEY_SET_ZOOMSET,                 //设置二倍变焦                        发送：int 1，2，3                返回：无
+    PC_KEY_SET_AUTOZOOM,                //设置自动聚焦                        发送：1打开 0关闭                返回：无
+    PC_KEY_SET_DISPLAYPOS,              //设置视频位置                        发送：struct int_pos            返回：无
+    PC_KEY_SET_IRSTREAM,                //设置红外开关                        发送：1打开 0关闭                返回：int 总共15步，会主动触发，到15即完成切换
+    PC_KEY_GET_IR_STATE,                //获取红外是否开启                     发送：无                        返回：15已经开启
+    PC_KEY_SET_IR_COLOR,                //设置红外伪彩                        发送：int                        返回：int 0 还在设置中 1 设置成功
+//  1 (白热)   2 (黑热)  10(融合1)  11(彩虹)  12(融合 2)  13(铁红 1)  14(铁红 2)  15(深褐色)  16(色彩1)  17(色彩 2)  18(冰火)
+//  19(雨)  20(红热)  21(绿热)  22(深蓝)                                                                     返回：int 0 还在设置中 1 设置成功
+
+    PC_KEY_SET_IR_AUTOPEAR,             //设置红外自动切档                    发送：1打开  0关闭               返回：无
+    PC_KEY_SET_IR_TEMPRANGE,            //设置当前挡位                       发送：1(30 至 45) 2 (-20,150) 3 (0,400) 返回：无
+    PC_KEY_SET_IR_REDRESS,              //添加校正参数                       发送：struct expert_correction_t    返回：无
+    PC_KEY_SET_IR_START_REDRESS,        //开始校正                          发送：无                          返回：无
+
+    PC_KEY_GET_IR_CALIFILE,             //标定文件导出                      发送：char *文件名全路径            返回：无
+
+    PC_KEY_ADD_IR_POINT,                //添加点                           发送：struct int_point            返回：无
+    PC_KEY_EDIT_IR_POINT,               //编辑点                           发送：struct int_point            返回：无
+    PC_KEY_DEL_IR_POINT,                //删除点                           发送：struct int_point            返回：无
+
+    PC_KEY_ADD_IR_LINE,                 //添加线                           发送：struct int_line             返回：无
+    PC_KEY_EDIT_IR_LINE,                //编辑线                           发送：struct int_line             返回：无
+    PC_KEY_DEL_IR_LINE,                 //删除线                           发送：struct int_line             返回：无
+
+    PC_KEY_ADD_IR_RECT,                 //添加矩形                          发送：struct int_rect            返回：无
+    PC_KEY_EDIT_IR_RECT,                //编辑矩形                          发送：struct int_rect            返回：无
+    PC_KEY_DEL_IR_RECT,                 //删除矩形                          发送：struct int_rect            返回：无
+
+    PC_KEY_CLEAR_IR_OSD,                //删除所有点线框                     发送：无                         返回：无
+    PC_KEY_GET_FPGA_VERSION,            //返回FPGA版本                      发送：无                         返回：int
+    PC_KEY_SET_FREQ_RANGE,              //设置频域范围                      发送：struct double_range        返回：无
+
+    PC_KEY_SET_IR_THERMOMETRY_BASE,     //设置测温基本参数                   发送：struct thermometry_base_s   返回：int 0 还在设置中 1 设置成功
+    PC_KEY_SET_IR_MODE,                 //设置专家模式                        发送：int 0普通模式 1 专家模式     返回：无
+    PC_KEY_SET_IR_HZH,                  //设置红外模式画中画                 发送：int 0 全屏IR 1 画中画 2 全屏可见光     返回：无
+    PC_KEY_EDIT_IR_HZH,                 //编辑红外模式画中画                 发送：struct ir_hzh                返回：无
+    PC_KEY_GET_FPGA_CALFREQ,            //获取fpga计算的频域自适应值         发送：无                            返回：int
+    PC_KEY_SET_NCNNOUT,                 //返回深度识别结果，主动触发         发送：int struct ncnndat            返回：无
+    PC_KEY_SET_GAS_DISTANCE,            //设置气体泄露量距离                 发送：int  以cm为单位               返回：无
+    PC_KEY_SET_GAS_SHOW,                //设置气体泄漏量显示方式              发送：int 0不显示(局放模式) 1显示横线(气体模式) 2显示数值(气体模式)  返回：无
+    PC_KEY_SET_GAS_REPAIR,              //设置气体泄露修正参数                发送：struct gasPara              返回：无
+    PC_KEY_SET_NOISE_COUNT,             //设置噪声极值个数                   发送：int  一般不会超过 10          返回：无
+    PC_KEY_SET_PRPD_RECOUP,             //设置PRPD补偿编号                   发送：int -1、0、1                返回：无
+    PC_KEY_GET_AVI_STREAMCOUNT,         //获取AVI视频流码流数量               发送：char *                      返回：int 1-视频流无音频流 2-有视频流音频流
+    PC_KEY_GET_FREQ_RANGE,              //获取频域范围                        发送：无                        返回：struct double_range
+    PC_KEY_GET_PRDPSTREAM,              //获取PRPD是否打开                    发送：无                        返回：int
+    PC_KEY_GET_AUTOZOOM,                //获取智能降噪是否打开                  发送：无                        返回：int 1打开 0关闭
+    PC_KEY_GET_ZOOMSET,                 //获取当前处于几倍变焦                 发送：无                        返回：int 1，2，3
+    PC_KEY_GET_IR_HZH,                  //获取当前画中画模式                   发送：无                       返回：int 0 全屏IR 1 画中画 2 全屏可见光
+    PC_KEY_GET_GAS_DISTANCE,            //获取其它泄漏量距离                   发送：无                        返回：int  以cm为单位
+    PC_KEY_SET_FREQTMSHOW,              //设置时频图是否打开                   发送：1打开 0关闭                返回：无
+    PC_KEY_GET_FREQTMSHOW,              //获取时频图是否打开                   发送：无                        返回：1打开 0关闭
+    PC_KEY_SET_LOCAL_COLOR,             //设置定位数据伪彩                     发送：int                       返回：无
+    //1 (彩虹)   2 (极光)  3(黑白)  4(骨骼)  5(冷调)  6(铜色)  7(铁红)  8(Jet) 9(医学) 10(春天) 11(地形) 12(白黑)
+    PC_KEY_SET_CCD_COLOR,               //设定可见光色调                       发送：int 1(正常) 2(黑白) 3(白黑)    返回：无
+};
+
+/* @ description : 数据子命令码 */
+enum CMD_BUF_SUB {
+    PC_BUF_START_ENCODE = 0x40,			//视频模块开始运行        					发送：无参数							返回：无
+    PC_BUF_STOP_ENCODE, 				//视频模块停止运行        					发送：无参数							返回：无
+    PC_BUF_TEST_BUTTON,                 //测试按钮                               发送：无                              返回：无
+    PC_BUF_TEST_CHECKBOX,               //测试开关                               发送：int 1 0                              返回：无
+    PC_BUF_TEST_PROGRESSBAR,            //测试拉条                               发送：int                              返回：无
+    PC_BUF_TEST_SPINBOX,                //测试spinbox                               发送：int                               返回：无
+    PC_BUF_SHOW_TIME,                   //主界面展示当前时间                       发送：int 1 0                              返回：无
+    //获取 FPGA 数据
+    PC_CTRL_GET_SETARITHMETIC,           //获取 [0:1]自检 [2:3]录音             发送：无                         返回：int
+    PC_CTRL_GET_FREQ_START,              //获取 频域信息 [0:11]频域起始值 [12:13] 块数  发送：无                         返回：int
+    PC_CTRL_GET_Z,                       //获取视场角参数   Z值原始值             发送：无                         返回：int
+    PC_CTRL_GET_LOCAL_XY,                //获取 定位数据偏移 [0:7] Y值 [8:15] X值  发送：无                       返回：int
+    //PC_CTRL_GET_VID_MODE,              //获取算法模式                           发送：无                        返回：int
+    PC_CTRL_GET_NOISE_LIMIT,             //获取fpga噪声阈值 [0:7] 极值个数 [8:15] 噪声阈值   发送：无                        返回：int
+
+    PC_CTRL_WRITE_FPGA_LOCALDATA,        //隐藏界面，将FPGA原始定位数据写入文件     发送：int 1 开 0 关              返回：无
+
+    PC_CTRL_SET_CORE_LOG,                //隐藏界面，打开core日志                发送：int 1开 0关                返回：无
+
+    PC_CTRL_GET_MAXPOS_THRETHOLD,        //隐藏界面，声源判定阈值                发送：无                           返回：int
+    PC_CTRL_GET_POSH_ADDALL,             //获取 声源差值绝对值和                 发送：无                           返回：int
+    PC_CTRL_GET_POSFLOAT_FIX,            //获取定位数据浮点定点                  发送：无                           返回：int
+    PC_CTRL_GET_FFTFLOAT_FIX,            //获取频域数据浮点定点                  发送：无                           返回：int
+    PC_CTRL_GET_PRPDFLOAT_FIX,           //获取prpd数据即语音增强浮点定点         发送：无                           返回：int
+    PC_CTRL_GET_DIAGZERO,                //隐藏界面，协方差对角线置零             发送：无                           返回：int
+};
+
+/* @ description : 系统子命令码 */
+enum CMD_SYS_SUB {
+    PC_SYS_SET_TIME_SEC = 0x00,         //系统时间设置        					发送：char *						返回：无
+    PC_SYS_FORMATTING_SD,               //SD卡格式化        					发送：无参数                          返回：无
+    PC_SYS_CONFIG_INIT,                 //恢复出厂设置        					发送：无参数						返回：无
+
+    PC_SYS_SET_WIFI_STA_START,          //sta模式下，打开wifi开关时调用        发送：1 开启 0 关闭(int)              返回：无
+    PC_SYS_SET_WIFI_STA_SEARCH,         //获取可接入的网络						发送：无参数                          返回：char * 分隔符 '\n'
+    PC_SYS_SET_WIFI_STA_CONNECT,      	//设置要接入的网络						发送：wifi_sta						返回：无
+    PC_SYS_GET_WIFI_STA_STATE,          //获取WIFI sta模式下的状态(需要轮询)    发送：无                             返回：0 关闭、1 开启
+
+    PC_SYS_SET_PRPD_ANSER,              //接收到每帧PRPD后都要发送这个，表示回复 发送：无                             返回：无
+    PC_SYS_SET_FREQ_ANSER,              //接收到每帧FREQ后都要发送这个，表示回复 发送：无                             返回：无
+
+    PC_SYS_SET_SERVICE,					//客户端连接服务器                  发送：client_para                    返回：无
+    PC_SYS_GET_SERVICE,					//客户端连接状态                    发送：无                             返回：int 连接状态
+
+    PC_SYS_SET_APPISCONNECT,            //接收客户端连接信号                 发送:int 0 未连接 1 已连接            返回:无
+    PC_SYS_GET_APPISCONNECT,            //获取客户端连接信号                 发送:无 主动触发                      返回:int 0 未连接 1 已连接
+};
+
+enum CMD_FPGB_SUB {
+    PC_FPGA_RESERVE = 0x00,             //保留
+    PC_FPGA_SET_Z = 0x4a,               //设置视场角参数                       发送：struct int_Z  int = double * 256            返回：无
+    PC_FPGA_SET_LOCAL_XY = 0x58,        //设置 定位数据偏移 X、Y的位置高8位y开始地址,    低8位x开始地址，范围是1 ~ 23             发送：int                            返回：无
+    PC_FPGA_SET_FREQ_START = 0x60,      //设置频谱图 起始位 频域信息 [0:11]频域起始值 [12:13] 块数                    发送：int                           返回：无
+    PC_FPGA_SET_SETARITHMETIC = 0x61,   //设置算法 bit1是加窗,bit0是自检,bit2是录音       发送：int 1打开 0关闭                返回：无
+    PC_FPGA_SET_NOISE_LIMIT = 0x62,     //设置fpga噪声阈值                    发送：0 ~ 255                       返回：无
+    PC_FPGA_SET_MAXPOS_THRETHOLD = 0x63,//隐藏界面，声源判定阈值                发送：int 0~10000                   返回：无
+    PC_FPGA_SET_POSFLOAT_FIX = 0x64,    //无需发送,定位数据浮点定点 开关
+    PC_FPGA_SET_FFTFLOAT_FIX = 0x65,    //无需发送,频域数据浮点定点 开关
+    PC_FPGA_SET_PRPDFLOAT_FIX = 0x66,   //无需发送,prpd数据即语音增强浮点定点 开关
+    PC_FPGA_SET_DIAGZERO = 0x67,        //隐藏界面，协方差对角线置零             发送：int 0不置零 1置零              返回：无
+    PC_FPGA_SET_VID_MODE = 0xC5,        //设置算法模式                        发送：int                           返回：无
+                                                                         // 目前有两种模式 分别发 0、0xff (实际上 FPGA只读取第六位，0xff 第六位肯定是 1)
+    PC_FPGA_SET_ADJUST_CCD_X = 0xD1,    //设置可见光位置X                      发送：int                           返回：无
+    PC_FPGA_SET_ADJUST_CCD_Y = 0xD2,    //设置可见光位置Y                      发送：int                           返回：无
+
+    FPGA_CMD_FPGAUPDATE_START_INIT = 0xf1,       //开启正常模式
+};
+
+enum CMD_STREAM_SUB {
+    PC_STREAM_START = 0x00,             //发送 开启数据流                      发送：无
+    PC_STREAM_FREQ,                     //发送频谱数据                         发送：char * 大小 待定              返回：无
+    PC_STREAM_DATA,                     //发送频域                            发送：char * 大小 1966 * 2
+    PC_STREAM_PRPD,                     //发送PRPD数据                        发送：int * 大小：360*90
+
+    //以下名称 AVI 改成 264 应该更加合适
+    PC_STREAM_GET_AVI = 0x20,		     //获取AVI数据              		NULL
+    PC_STREAM_GET_AVI_FRAME  = 0x21,	//发送AVI数据             		unsigend char[]
+    PC_STREAM_GET_AVI_STOP  = 0x22,		  //停止发送AVI数据             		NULL
+};
+
+enum CMD_CFG_SUB
+{
+    PC_CFG_GET_DEVICEINFO = 0x00,        //获取设备信息                        发送:无                            返回:ComDeviceInfo
+    PC_CFG_GET_SYSCONFIG = 0x10,
+};
+
+/* 抓图类子命令 */
+enum PC_CMD_PIC
+{
+    PC_PIC_GET_RAW = 0x01,	//获取灰度图片
+    PC_PIC_GET_JPG,			//获取jpg图片
+    PC_PIC_GET_BMP,			//获取BMP图片
+    PC_PIC_SET_PIC,			//4G图片传输                                    发送：char * 图片名称                  返回：无
+};
+
+enum COMMUNICATETYPE{
+    DOMAIN_SOCKET,
+    NET_SOCKET,
+    USB_SOCKET,
+};
+
+typedef struct {
+    char ServiceUser[32];           	//服务器用户名
+    char ServicePassword[32];       	//服务器用户密码
+    char ServiceIP[16];             	//连接的服务器IP
+    int ServicePort;                	//连接的服务器端口号
+    int switch_value;               	//1-开启客户端 0-关闭客户端
+} client_para;
+
+typedef struct {
+    char ServiceUser[32];           	//服务器用户名
+    char ServicePassword[32];       	//服务器用户密码
+    char DeviceType[32];	        	//客户端仪器型号
+    char SerialNumber[20];	        	//客户端仪器序列号
+} service_para;
+
+//蓝牙状态
+typedef struct ble_stat
+{
+    int scanStat;//扫描
+    int a2dpStat;//连接
+    int pairStat;//历史连接
+}ble_stat;
+
+/* sd卡容量参数，dev->pc */
+typedef struct sdinfo_t
+{
+    int totalMB;				//sd卡总大小
+    int usedMB; 				//sd卡已使用大小
+    int reserver[4];			//保留
+}sdinfo_t;
+
+typedef struct ncnndat
+{
+    int id;     //不显示、电晕放电、悬放放电、沿面放电、噪声 -1 0 1 2 3
+    int compend;//类型识别的百分比
+}ncnndat;
+
+typedef struct gasPara
+{
+        int envTemp;//环境温度
+        int humidity;//湿度
+        int gasRepair;//泄露更正 * 100倍
+        int shape;//气体漏孔类型 0 圆孔 1 三角 2 楔形
+        int press;//气体漏孔压力 * 100 int 单位均为 bar
+        int moneyUnit;//货币单位  0 ￥(人民币) 1 $ (美元) 2 €(欧元) 3 ₽(卢比)
+        int eachMoney;//单位价格 默认 1￥/kWh Spinbox * 100
+        int specificPower;//比功率 意为，默认 11.7kW/m³/min 生成单位体积的压缩空气单位时间内消耗的能量 Spinbox * 100
+}gasPara;
+
+typedef struct int_move_range
+{
+    int id;
+    int lower;							//int类范围低点
+    int upper;							//int类高点
+}int_move_range;
+
+
+typedef struct{
+    int dev_id;                          //设备id
+    unsigned char mac_addr[8];           //MAC地址
+    int reserve[16];                     //16字节保留
+}__attribute__ ((packed)) DevInfo;
+
+typedef struct{
+    int dev_id;                           //设备id
+    unsigned char ip[16];                 //IP
+    unsigned char netmask[16];            //子网掩码
+    unsigned char gateway[16];            //网关
+    int reserve[16];                      //16字节保留
+}__attribute__ ((packed)) SetIPInfo;
+
+
+typedef struct expert_correction_s {
+    int distance100;                        //距离        0.3 ~ 3m            需要 乘 100
+    int enviroTemp100;                      //环境温度     -273.0 ~ 1000.0    需要 乘 100
+    int emissivity100;                      //发射率       1 ~ 100
+    int presetTemp100;                      //预设温度      -40.0 ~ 650.0    需要 乘 100
+    int x;                                  //x坐标
+    int y;                                  //y坐标
+} expert_correction_t;
+
+typedef struct grayRect_t{
+    int id;
+    int X;
+    int Y;
+    int width;
+    int height;
+}grayRect_t;
+
+typedef struct int_range
+{
+    int lower;							//int类范围低点
+    int upper;							//int类高点
+}int_range;
+
+
+
+typedef struct wifi_sta{
+    char ssid[32];//连接的网络名称
+    char password[64];//连接网络的密码
+    char switch_value;//是否连接  连接为1 关闭为0
+}wifi_sta;
+
+
+#define HP_PICVOICE_TAG  0x5A5A0008     //不确定长度的写在前面
+#define HP_PICINFO_TAG  0x5A5A0009
+#define HP_PICEND_TAG  0x5A5A000a
+
+typedef struct picVoice_t
+{
+    int nTag;                           //语音标签  0x5A5A0008
+    int exact_rate;                     //取样率
+    int channels;                       //通道数
+    int format;                         //量化位数
+    unsigned int voiceLen;              //声音长度
+}picVoice_t;
+
+typedef struct picInfo_t                        //图像其他信息结构体
+{
+    int nTag;                           //文本标签  0x5A5A0009
+    int out_width;                      //照片宽
+    int out_height;                     //照片高
+    unsigned char soundmode;		 	//声源模式
+    unsigned char type[5];				//类型,按顺序，哪个选中，哪个置1
+    struct int_range moverange;			//动态范围
+    unsigned char notes[100];			//备注
+}picInfo_t;
+
+typedef struct picTag_t                         //放到倒数第二位，标识标签的偏移
+{
+    int nTag;                           //标签,对应上面各种信息标签
+    int offset;                         //对应标签信息在文件中的偏移，若没有，则为-1
+}picTag_t;
+
+typedef struct picEnd_t                         //放到尾部，标识标签的个数
+{
+    int nTag;                           //可以用来检查文件完整性        0x5A5A0301
+    int num;                            //标签的数量
+}picEnd_t;
+
+typedef struct picHead_t
+{
+    struct picVoice_t picVoice;         //音频信息
+    struct picInfo_t picInfo;           //其他信息
+    struct picTag_t picTag[2];          //标签(音频标签目前就两个，所以这里为2)
+    struct picEnd_t picEnd;             //标签数量
+}picHead_t;
+
+typedef struct int_pos
+{
+    int X;							//int X
+    int Y;							//int Y
+}int_pos;
+
+typedef struct int_point
+{
+    int id;
+    int X;							//int X
+    int Y;							//int Y
+    int isSelect;                   //是否选中 0 不选中  1 选中
+}int_point;
+
+typedef struct int_line
+{
+    int id;
+    int X1;
+    int Y1;
+    int X2;
+    int Y2;
+    int isSelect;                   //是否选中 0 不选中  1 选中
+    int tempMode;                   //0 最低温  1 平均温  2 最高温  3最高温和最低温
+}int_line;
+
+typedef struct int_rect
+{
+    int id;
+    int X;
+    int Y;
+    int width;
+    int hight;
+    int isSelect;                   //是否选中 0 不选中  1 选中
+    int tempMode;                   //0 最低温  1 平均温  2 最高温  3最高温和最低温
+}int_rect;
+
+typedef struct int_Z
+{
+    int whoZoom;               //Z值处于的模式 不同模式Z值不同 智能降噪与变焦互斥 0 智能降噪Z值 1 一倍变焦Z值 2 二倍变焦Z值 3 三倍变焦Z值
+    int val;
+}int_Z;
+
+//选中时的参数，选中点，线，框重画时用
+typedef struct
+{
+    char c;//选中的类型，点，线，框
+    int s;//index
+}__attribute__ ((packed))CS;
+
+typedef struct double_range
+{
+    double lowwer;
+    double upper;
+}double_range;
+
+#include <sys/time.h>
+
+
+typedef struct thermometry_base_s {
+    int dwEmissivity;                   //发射率 1~100
+    int dwDistance;                     //距离: 30~200 0.3-2m（协议传输中约定以cm作为单位传输, 精确到小数点后1位）
+    int dwReflectiveTemperature;        //反射温度: -10000~100000 -100.0~1000.0℃（精确到小数点后1位）,传输时(实际值 + 100) * 10换算成正整数
+    int dwExternalOpticsTransmit;       //外部光学透过率: 1~100 0.01~1(精确到小数点后两位), 传输时实际值*100换算成整数
+}thermometry_base_s;
+
+typedef struct ir_hzh
+{
+    int type; //0-全屏IR 1-画中画 2-可见光
+    int X;
+    int Y;
+    int width;
+    int hight;
+    int alpha;  //0-》100 不透明-》透明
+}ir_hzh;
+
+typedef struct {
+    char station_name[128];            //站点名称(显示)
+    char station_ascii[32];            //站点编码(显示)
+    char device_name[128];             //设备名称(显示)
+    char device_ascii[32];             //设备编码(显示)
+    char task_name[128];               //测点名称(显示)
+    char task_ascii[32];               //测点编码(显示)
+    char device_unit[64];              //设备单元
+    char device_level[64];             //设备等级
+    char device_type[64];              //设备类型
+    char device_remarks[64];           //设备备注
+    char device_version[64];           //设备版本
+    char device_angle[64];             //设备角度
+    char device_capture[32];           //不管
+    char ident_code[32];               //不管
+} deviceInfo_current_t;
+
+struct take_capture_t
+{
+    //QT编辑发送的信息
+    unsigned char filename[32];         //文件名
+    unsigned char newfilename[32];      //新的文件名
+    unsigned char hasNewName;           //是否存在信息文件名  1存在  0不存在
+    unsigned char issave;               //是否保存  1保存  0不保存
+    unsigned char hasVoice;             //是否存在录音  1存在  0不存在
+    unsigned char soundmode;		 	//声源模式  1多声源  0单生源
+    unsigned char type[5];				//类型,按顺序，哪个选中，哪个置1
+    unsigned char isInTask;             //是否处于台账模式
+    deviceInfo_current_t taskInfo;      //台账任务信息
+
+    //QT接收的信息(QT 默认设置为0 即可)
+    struct int_move_range moverange;			//动态范围
+    double bfPowerMax;                  //BF Power(max)
+    double threshold;                   //阈值DB
+    double rangedb;                     //范围DB
+    struct double_range freqRange;      //频域范围
+    struct timeval tv;                  //图片生成时间
+    unsigned char notes[100];			//备注
+};
+
+
+
+
+#endif // HI384_PROTOCOL_H

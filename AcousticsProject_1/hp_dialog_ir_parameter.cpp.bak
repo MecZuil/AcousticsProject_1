@@ -1,0 +1,168 @@
+#include "hp_dialog_ir_parameter.h"
+#include "ui_hp_dialog_ir_parameter.h"
+
+hp_dialog_ir_parameter::hp_dialog_ir_parameter(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_ir_parameter)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+    setGeometry(70,0,width(),height());
+    current_select = IRPARAMETER_TEMPTYPE;
+
+    UIType = 0;
+
+    ui->listWidget_tempType->setVisible(false);
+    ui->listWidget_tempType->setGeometry(40,60,240,100);
+
+    ui->frame_tempType->installEventFilter(this);
+}
+
+hp_dialog_ir_parameter::~hp_dialog_ir_parameter()
+{
+    delete ui;
+}
+
+void hp_dialog_ir_parameter::SlotSetUIStyle(int type)
+{
+    UIType = type;
+    if(UIType == 1)
+    {
+        ui->frame_2->setGeometry(0,0,1536,1080);
+        ui->frame->setGeometry(384,337,768,405);
+        ui->listWidget_tempType->setGeometry(100,130,581,141);
+        ui->frame_tempType->setGeometry(100,60,580,70);
+        ui->tempType_text->setGeometry(1,1,578,68);
+        ui->tempType_select->setGeometry(531,1,48,68);
+        ui->toolButton_return->setGeometry(240,270,288,67);
+        ui->toolButton_return->setStyleSheet(ToolButtonSheetStyle_1920_n);
+    }
+}
+
+//翻译
+void hp_dialog_ir_parameter::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+
+
+        break;
+    default:
+        break;
+    }
+}
+
+//根据选择语言 翻译程序
+void hp_dialog_ir_parameter::SlotLanguageChanged(int languageType)
+{
+    qDebug()<<"hp_dialog_ir_parameter::SlotLanguageChanged()......."<<languageType;
+    switch(languageType)
+    {
+    case 0:
+        ui->tempType_text->setText("测温类型： 最大值");
+        ui->listWidget_tempType->item(0)->setText(" 测温类型：最小值");
+        ui->listWidget_tempType->item(1)->setText(" 测温类型：平均值");
+        ui->listWidget_tempType->item(2)->setText(" 测温类型：最大值");
+        ui->listWidget_tempType->item(3)->setText(" 测温类型：所有值");
+        ui->toolButton_return->setText("返回");
+        break;
+    case 1://english
+        ui->tempType_text->setText("Measure:Max Temp");
+        ui->listWidget_tempType->item(0)->setText(" Measure:Min Temp");
+        ui->listWidget_tempType->item(1)->setText(" Measure:Ave Temp");
+        ui->listWidget_tempType->item(2)->setText(" Measure:Max Temp");
+        ui->listWidget_tempType->item(3)->setText(" Measure:All Temp");
+        ui->toolButton_return->setText("Return");
+        break;
+    case 2://Türkçe
+        ui->tempType_text->setText("tipi: Maksimum");
+        ui->listWidget_tempType->item(0)->setText(" tipi: Min");
+        ui->listWidget_tempType->item(1)->setText(" tipi: ortalama");
+        ui->listWidget_tempType->item(2)->setText(" tipi: maksimum");
+        ui->listWidget_tempType->item(3)->setText(" tipi: Tüm değerler");
+        ui->toolButton_return->setText("dönmek");
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_dialog_ir_parameter::on_toolButton_return_clicked()
+{
+    this->close();
+}
+
+bool hp_dialog_ir_parameter::eventFilter(QObject *o, QEvent *e)
+{
+    if( e->type() == QEvent::MouseButtonPress )
+    {
+        qDebug()<<"hp_Interface_PLREdit::eventFilter(QMouseEvent *ev)--------------e->type()----------"<<e->type();
+        qDebug()<<"hp_Interface_PLREdit::eventFilter(QMouseEvent *ev)--------------o->objectName()----------"<<o->objectName();
+        SignalUpdateSetUpClock();//触摸重置
+
+        if(o->objectName() == "frame_tempType")
+        {
+            SetParameterSelect(false);
+            current_select = IRPARAMETER_TEMPTYPE;
+            ui->listWidget_tempType->setVisible(!ui->listWidget_tempType->isVisible());
+            SetParameterSelect(true);
+        }
+    }
+    return false;
+}
+
+void hp_dialog_ir_parameter::keyReleaseEvent(QKeyEvent *ev)
+{
+    qDebug(" mainwidget::keyReleaseEvent(QKeyEvent *ev)---------- ev->key() = 0x%02x",ev->key());
+    SignalUpdateSetUpClock();
+
+    switch (ev->key()) {
+    case Key_RETURN:
+        if(ui->listWidget_tempType->isVisible())
+            ui->listWidget_tempType->setVisible(false);
+        else if(this->isVisible())
+            on_toolButton_return_clicked();
+        break;
+    default:
+        break;
+
+    }
+}
+
+void hp_dialog_ir_parameter::SetParameterSelect(bool isSelect)
+{
+    switch (current_select) {
+    case IRPARAMETER_TEMPTYPE:
+        if(isSelect)
+            ui->frame_tempType->setStyleSheet(FrameSheetStyle_s);
+        else
+            ui->frame_tempType->setStyleSheet(FrameSheetStyle_n);
+        break;
+    default:
+        break;
+    }
+}
+//设置测温类型
+void hp_dialog_ir_parameter::SetListWidgetTempTypeRow(int i)
+{
+    ui->listWidget_tempType->setCurrentRow(i);
+}
+//0 最低温 1平均温 2 最高温 3 最高温和最低温
+void hp_dialog_ir_parameter::on_listWidget_tempType_currentRowChanged(int currentRow)
+{
+    if( ui->listWidget_tempType->currentItem()== nullptr)
+    {
+        qDebug()<<"ui->listWidget->currentItem()== nullptr";
+        return;
+    }
+
+    ui->tempType_text->setText(ui->listWidget_tempType->currentItem()->text());
+    if(this->isVisible())
+    {
+        SignalSelectTempType(currentRow);
+    }
+    ui->listWidget_tempType->close();
+}

@@ -1,0 +1,189 @@
+#include "hp_hideadjust.h"
+#include "ui_hp_hideadjust.h"
+
+/*
+ *键盘K键按下显示
+ * X1 Y1 控制界面x,y值
+*/
+
+hp_hideadjust::hp_hideadjust(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_hideadjust)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+
+    GradientRect = new hp_gradient_rect(this);
+    GradientRect->move(this->width()-GradientRect->width(),0);
+//    GradientRect->close();
+
+    ccd_x = 0;
+    ccd_y = 0;
+    isGrab = false;
+    isSelfInspection = 0;
+    isWin = 0;
+    isAIFocusStart = false;
+    isLongKey = false;
+    FPGA_Z = 0.000;
+    FPGA_AUTO_Z = 0.000;
+    ui->X1Value_label->close();
+    ui->Y1Value_label->close();
+    ui->X1_spinBox->close();
+    ui->Y1_spinBox->close();
+    ui->grab_checkBox->close();
+    ui->grab_label->close();
+
+    ParameterInit();
+}
+
+hp_hideadjust::~hp_hideadjust()
+{
+    delete ui;
+}
+//开机初始化
+void hp_hideadjust::ParameterInit()
+{
+    QString para;
+//    para = XmlReader.ReadXml("config.xml","ADJUST","ccd_x");
+//    if(para != NULL)
+//        ccd_x = para.toInt();
+//    else
+//        ccd_x = 0;
+//    emit ui->X1_spinBox->setValue(ccd_x);
+
+//    para = XmlReader.ReadXml("config.xml","ADJUST","ccd_y");
+//    if(para != NULL)
+//        ccd_y = para.toInt();
+//    else
+//        ccd_y = 0;
+//    emit ui->Y1_spinBox->setValue(ccd_y);
+    //动态范围
+    para = XmlReader.ReadXml("sys.xml","MOVING_RANGE","lower");
+    if(para !=NULL)
+        movingRange.lower = para.toInt();
+    else
+        movingRange.lower = 0;
+    GradientRect->hp_setMovingRangeUpper(movingRange.upper);
+    GradientRect->hp_setMovingRangeLower(movingRange.lower);
+
+
+}
+
+void hp_hideadjust::keyPressEvent(QKeyEvent *ev)
+{
+    if(!(isLongKey=ev->isAutoRepeat()))
+    {
+        qDebug(" hp_hideadjust::keyPressEvent(QKeyEvent *ev)---------- ev->key() = 0x%02x",ev->key());
+        SignalUpdateSetUpClock();
+    }
+    switch(ev->key())
+    {
+    default:
+        break;
+    }
+}
+
+void hp_hideadjust::keyReleaseEvent(QKeyEvent *ev)
+{
+    SignalUpdateSetUpClock();
+    qDebug("hp_hideadjust::keyReleaseEvent(QKeyEvent *ev)------------------------0x%02x ",ev->key());
+    switch (ev->key()) {
+    case Key_RETURN:
+        on_toolButton_close_clicked();
+        break;
+    default:
+        break;
+    }
+}
+
+//X1值变化设置
+void hp_hideadjust::on_X1_spinBox_valueChanged(int arg1)
+{
+    ccd_x = arg1;
+    signal_pc_fpga_set_adjust_ccd_x(ccd_x);
+}
+//Y1值变化设置
+void hp_hideadjust::on_Y1_spinBox_valueChanged(int arg1)
+{
+    ccd_y = arg1;
+    signal_pc_fpga_set_adjust_ccd_y(ccd_y);
+}
+
+void hp_hideadjust::on_toolButton_close_clicked()
+{
+    this->close();
+}
+
+void hp_hideadjust::slot_pc_fpga_set_adjust_ccd_x(unsigned char return_value)
+{
+    qDebug()<<"hp_hideadjust::slot_pc_fpga_set_adjust_ccd_x(unsigned char return_value : "<<return_value;
+}
+
+void hp_hideadjust::slot_pc_fpga_set_adjust_ccd_y(unsigned char return_value)
+{
+    qDebug()<<"hp_hideadjust::slot_pc_fpga_set_adjust_ccd_y(unsigned char return_value : "<<return_value;
+}
+void hp_hideadjust::on_doubleSpinBox_valueChanged(double arg1)
+{
+    int Zdata = arg1 * 256;
+//    qDebug()<<"signal_pc_fpga_set_z(Zdata : "<<Zdata;
+    if(isAIFocusStart)
+    {
+        FPGA_AUTO_Z = arg1;
+        IntZ.autozoom = true;
+    }
+    else
+    {
+        FPGA_Z = arg1;
+        IntZ.autozoom = false;
+    }
+
+    IntZ.val = Zdata;
+    qDebug()<<"!!!!!!!!!!!!-----------------------signal_pc_fpga_set_z(IntZ)----------------!!!!!!!!!! "<<"IntZ.val : "<<IntZ.val<< "  IntZ.autozoom : "<<IntZ.autozoom;
+    signal_pc_fpga_set_z(IntZ);
+}
+void hp_hideadjust::slot_pc_fpga_set_z(unsigned char return_value)
+{
+    qDebug("hp_hideadjust::slot_pc_fpga_set_z(unsigned char return_value : 0x%02x ",return_value);
+}
+void hp_hideadjust::SetDoubleSpinBox(double value)
+{
+    ui->doubleSpinBox->setValue(value);
+}
+void hp_hideadjust::SlotSendAIFocus(bool isStart)
+{
+    isAIFocusStart = isStart;
+    if(isAIFocusStart)
+    {
+        ui->doubleSpinBox->setValue(FPGA_AUTO_Z);
+    }
+    else
+    {
+        ui->doubleSpinBox->setValue(FPGA_Z);
+    }
+}
+
+void hp_hideadjust::on_grab_checkBox_clicked(bool checked)
+{
+    isGrab = checked;
+}
+
+void hp_hideadjust::on_win_checkBox_clicked(bool checked)
+{
+    isWin = checked;
+
+    signal_pc_fpga_set_setarithmetic((isWin<<1)+isSelfInspection);
+}
+
+void hp_hideadjust::on_selfInspection_checkBox_clicked(bool checked)
+{
+    isSelfInspection = checked;
+
+    signal_pc_fpga_set_setarithmetic((isWin<<1)+isSelfInspection);
+}
+//信号返回 设置算法
+void hp_hideadjust::slot_pc_fpga_set_setarithmetic(unsigned char return_value)
+{
+    qDebug("hp_hideadjust::slot_pc_fpga_set_setarithmetic(unsigned char return_value : 0x%02x",return_value);
+}

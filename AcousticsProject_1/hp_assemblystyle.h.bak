@@ -1,0 +1,307 @@
+#ifndef HP_ASSEMBLYSTYLE_H
+#define HP_ASSEMBLYSTYLE_H
+
+/*
+ * 统一UI设置
+*/
+#define TextColor_d " rgb(170,170,170) "
+#define TextColor_n " rgb(216, 235, 255)"
+#define CheckBoxTextFontColor " #ffffff "
+#define FrameBorderColor_s " rgb(0, 221, 253) "
+#define FrameBorderColor_n " #ffffff "
+#define FrameBorderColor_d " rgb(170,170,170) "
+
+
+
+#define CheckBoxSheetStyle_n "QCheckBox{background:transparent;}\
+QCheckBox::indicator:unchecked {image: url(:/res/checkBox_n.png);color: " CheckBoxTextFontColor ";}\
+QCheckBox::indicator:checked {image: url(:/res/checkBox_s.png);color: " CheckBoxTextFontColor ";}\
+QCheckBox::indicator:disabled { image: url(:/res/checkBox_d.png);color: " CheckBoxTextFontColor "; }"
+
+#define CheckBoxSheetStyle_s "QCheckBox{background:transparent;color: " CheckBoxTextFontColor ";border:1px solid " FrameBorderColor_s "; border-radius:3px;}\
+QCheckBox::indicator:unchecked {image: url(:/res/checkBox_n.png);color: " CheckBoxTextFontColor ";}\
+QCheckBox::indicator:checked { image: url(:/res/checkBox_s.png);color: " CheckBoxTextFontColor ";}\
+QCheckBox::indicator:disabled {image: url(:/res/checkBox_d.png);color: " CheckBoxTextFontColor ";}"
+
+#define ToolButtonSheetStyle_s "QToolButton{background:transparent;border-image: url(:/res/label_Background_s.png);color:" CheckBoxTextFontColor " ;}\
+QToolButton::pressed{background:transparent;border-image: url(:/res/label_Background_s.png);color: " CheckBoxTextFontColor ";}\
+QToolButton::disabled{background:transparent;border-image: url(:/res/label_Background_d.png);color:white;}"
+
+#define ToolButtonSheetStyle_n "QToolButton{background:transparent;border-image: url(:/res/label_Background_n.png);color: " CheckBoxTextFontColor " ;}\
+QToolButton::pressed{background:transparent;border-image: url(:/res/label_Background_s.png);color: " CheckBoxTextFontColor " ;}\
+QToolButton::disabled{background:transparent;border-image: url(:/res/label_Background_d.png);color:white;}"
+
+#define ToolButtonSheetStyle_l_s "QToolButton{background:transparent;border-image: url(:/res/label_Background_l_s.png);color:" CheckBoxTextFontColor " ;}\
+QToolButton::pressed{background:transparent;border-image: url(:/res/label_Background_s.png);color: " CheckBoxTextFontColor ";}\
+QToolButton::disabled{background:transparent;border-image: url(:/res/label_Background_l_d.png);color:white;}"
+
+#define ToolButtonSheetStyle_l_n "QToolButton{background:transparent;border-image: url(:/res/label_Background_l_n.png);color: " CheckBoxTextFontColor " ;}\
+QToolButton::pressed{background:transparent;border-image: url(:/res/label_Background_s.png);color: " CheckBoxTextFontColor " ;}\
+QToolButton::disabled{background:transparent;border-image: url(:/res/label_Background_l_d.png);color:white;}"
+
+
+#define FrameSheetStyle_s "QFrame{background:transparent; border:1px solid " FrameBorderColor_s "; border-radius:3px;}"
+
+#define FrameSheetStyle_n "QFrame{background:transparent; border:1px solid " FrameBorderColor_n " ; border-radius:3px;}"
+
+#define ListWidgetHorizontalSheetStyle_s "QListWidget{background:#000000;color:#ffffff;border:0px solid grey;}\
+QListView::item:selected{background:grey;border:1px solid " FrameBorderColor_s "; }\
+QListView::item:selected:!active{border:1px solid rgb(0, 221, 253);background:grey;}\
+QScrollBar:horizontal{ height:3px;background: #16181a;border:none;margin:0px 3px 0px 3px;}\
+QScrollBar::handle:horizontal{background:rgb(0, 221, 253);border:none;min-width:3px;border-radius:1px;}\
+QScrollBar::add-line:horizontal {width: 0px;background:black; border:none;subcontrol-position:right;subcontrol-origin:margin;}\
+QScrollBar::sub-line:horizontal { width: 0px;background:black;border:none;subcontrol-position:left;subcontrol-origin:margin;}\
+QScrollBar::sub-page:horizontal{background:black; }\
+QScrollBar::add-page:horizontal{background:black;}"
+
+#define ListWidgetHorizontalSheetStyle_n "QListWidget{background:#000000;color:#ffffff;border:0px solid grey;}\
+                                          QListView::item:selected{background:grey;border:0px solid " FrameBorderColor_s "; }\
+                                          QListView::item:selected:!active{border:0px solid  " FrameBorderColor_s " ;background:grey;}\
+                                          QScrollBar:horizontal{ height:3px;background: #16181a;border:none;margin:0px 3px 0px 3px;}\
+                                          QScrollBar::handle:horizontal{background: " FrameBorderColor_s " ;border:none;min-width:3px;border-radius:1px;}\
+                                          QScrollBar::add-line:horizontal {width: 0px;background:black; border:none;subcontrol-position:right;subcontrol-origin:margin;}\
+                                          QScrollBar::sub-line:horizontal { width: 0px;background:black;border:none;subcontrol-position:left;subcontrol-origin:margin;}\
+                                          QScrollBar::sub-page:horizontal{background:black; }\
+                                          QScrollBar::add-page:horizontal{background:black;}"
+
+#define ListWidgeVerticalSheetStyle_s  "QListWidget{background:transparent;border:1px solid " FrameBorderColor_s ";}\
+                                          QAbstractItemView {background-color:#000000;color:#ffffff;border:1px solid " FrameBorderColor_s ";border-radius:3px;}\
+                                          QAbstractItemView::item:selected {color: #ffffff;background-color: " FrameBorderColor_s " ;}\
+                                          QScrollBar:vertical{width:3px;background:rgb(45, 48, 51);border:none;margin:3px 0px 3px 0px;}\
+                                          QScrollBar::handle:vertical{background: " FrameBorderColor_s " ;border:none;border-radius:3px;}\
+                                          QScrollBar::add-line:vertical {width: 3px;background:rgb(22, 24, 26);border:none;subcontrol-position:right;subcontrol-origin:margin;}\
+                                          QScrollBar::sub-line:vertical {border:none;background:rgb(22, 24, 26);width: 3px;subcontrol-origin:margin;subcontrol-position:left;}\
+                                          QScrollBar::top-arrow:vertical{subcontrol-origin: margin;height:3px;width:3px;border:0px solid rgb(45, 48, 51);background:rgb(45, 48, 51);}\
+                                          QScrollBar::bottom-arrow:vertical{subcontrol-origin: margin;height:3px;width:3px;border:0px solid rgb(45, 48, 51);background:rgb(45, 48, 51);}\
+                                          QScrollBar::sub-page:vertical{background:black;}QScrollBar::add-page:vertical{background:black;}"
+
+#define ListWidgeVerticalSheetStyle_n  "QListWidget{background:transparent;border:1px solid " FrameBorderColor_n ";}\
+                                          QAbstractItemView {background-color:#000000;color:#ffffff;border:1px solid rgb(255,255,255);border-radius:3px;}\
+                                          QAbstractItemView::item:selected {color: #ffffff;background-color: " FrameBorderColor_s " ;}\
+                                          QScrollBar:vertical{width:3px;background:rgb(45, 48, 51);border:none;margin:3px 0px 3px 0px;}\
+                                          QScrollBar::handle:vertical{background: " FrameBorderColor_s ";border:none;border-radius:3px;}\
+                                          QScrollBar::add-line:vertical {width: 3px;background:rgb(22, 24, 26);border:none;subcontrol-position:right;subcontrol-origin:margin;}\
+                                          QScrollBar::sub-line:vertical {border:none;background:rgb(22, 24, 26);width: 3px;subcontrol-origin:margin;subcontrol-position:left;}\
+                                          QScrollBar::top-arrow:vertical{subcontrol-origin: margin;height:3px;width:3px;border:0px solid rgb(45, 48, 51);background:rgb(45, 48, 51);}\
+                                          QScrollBar::bottom-arrow:vertical{subcontrol-origin: margin;height:3px;width:3px;border:0px solid rgb(45, 48, 51);background:rgb(45, 48, 51);}\
+                                          QScrollBar::sub-page:vertical{background:black;}QScrollBar::add-page:vertical{background:black;}"
+
+#define ToolButtonVoiceSheetStyleStart_s  "QToolButton{background:transparent;border-image: url(:/res/voicenotes_start_s.png);}\
+                                          QToolButton::pressed{background:transparent;border-image: url(:/res/voicenotes_start_s.png);}"
+
+#define ToolButtonVoiceSheetStyleStop_s  "QToolButton{background:transparent;border-image: url(:/res/voicenotes_stop_s.png);}\
+                                          QToolButton::pressed{background:transparent;border-image: url(:/res/voicenotes_stop_s.png);}"
+
+#define ToolButtonVoiceSheetStyleStart_n  "QToolButton{background:transparent;border-image: url(:/res/voicenotes_start_n.png);}\
+                                          QToolButton::pressed{background:transparent;border-image: url(:/res/voicenotes_start_n.png);}"
+
+#define ToolButtonVoiceSheetStyleStop_n  "QToolButton{background:transparent;border-image: url(:/res/voicenotes_stop_n.png);}\
+                                          QToolButton::pressed{background:transparent;border-image: url(:/res/voicenotes_stop_n.png);}"
+
+#define LableStyleSheet_s  "border:1px solid " FrameBorderColor_s ";background:transparent;color: " CheckBoxTextFontColor " ;"
+
+#define LableStyleSheet_n  "border:1px solid " FrameBorderColor_n ";background:transparent;color: " CheckBoxTextFontColor " ;"
+
+#define ToolButtonReturnSheetStyleBig_s  "QToolButton{ background:transparent;border-image: url(:/res/returnBig_s.png);}\
+                                          QToolButton::pressed{background:transparent;border-image: url(:/res/returnBig_s.png);}\
+                                          QToolButton::disabled{background:transparent;border-image: url(:/res/returnBig_d.png);}"
+
+#define ToolButtonReturnSheetStyleBig_n  "QToolButton{ background:transparent;border-image: url(:/res/return_n.png);}\
+                                          QToolButton::pressed{background:transparent;border-image: url(:/res/return_s.png);}\
+                                          QToolButton::disabled{background:transparent;border-image: url(:/res/return_d.png);}"
+
+#define ToolButtonIRHZHAlpha100_n "QToolButton {border-image: url(:/res_mainmenu/hzh_alpha100_n.png);background:transparent;}\
+                                          QToolButton:checked{border-image: url(:/res_mainmenu/hzh_alpha100_n.png);background:transparent;}"
+
+#define ToolButtonIRHZHAlpha100_s "QToolButton {border-image: url(:/res_mainmenu/hzh_alpha100_s.png);background:transparent;}\
+                                          QToolButton:checked{border-image: url(:/res_mainmenu/hzh_alpha100_s.png);background:transparent;}"
+
+#define ToolButtonIRHZHAlpha50_n "QToolButton {border-image: url(:/res_mainmenu/hzh_alpha50_n.png);background:transparent;}\
+                                          QToolButton:checked{border-image: url(:/res_mainmenu/hzh_alpha50_n.png);background:transparent;}"
+
+#define ToolButtonIRHZHAlpha50_s "QToolButton {border-image: url(:/res_mainmenu/hzh_alpha50_s.png);background:transparent;}\
+                                          QToolButton:checked{border-image: url(:/res_mainmenu/hzh_alpha50_s.png);background:transparent;}"
+
+
+#define ToolButtonIRHZHAmplify_n "QToolButton {border-image: url(:/res_mainmenu/hzh_amplify_n.png);background:transparent;}\
+                                          QToolButton:checked{border-image: url(:/res_mainmenu/hzh_amplify_n.png);background:transparent;}"
+
+#define ToolButtonIRHZHAmplify_s "QToolButton {border-image: url(:/res_mainmenu/hzh_amplify_s.png);background:transparent;}\
+                                          QToolButton:checked{border-image: url(:/res_mainmenu/hzh_amplify_s.png);background:transparent;}"
+
+#define ToolButtonIRHZHReduce_n "QToolButton {border-image: url(:/res_mainmenu/hzh_reduce_n.png);background:transparent;}\
+                                          QToolButton:checked{border-image: url(:/res_mainmenu/hzh_reduce_n.png);background:transparent;}"
+
+#define ToolButtonIRHZHReduce_s "QToolButton {border-image: url(:/res_mainmenu/hzh_reduce_s.png);background:transparent;}\
+                                          QToolButton:checked{border-image: url(:/res_mainmenu/hzh_reduce_s.png);background:transparent;}"
+
+#define ToolButtonPicMode_CCD_n "QToolButton{background:transparent; border-image: url(:/res_mainmenu/toolButton_picMode_ccd_n.png);}\
+                                          QToolButton::checked{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_ccd_s.png);}\
+                                          QToolButton::disabled{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_ccd_d.png);}"
+
+#define ToolButtonPicMode_CCD_s "QToolButton{background:transparent; border-image: url(:/res_mainmenu/toolButton_picMode_ccd_s.png);}\
+                                          QToolButton::checked{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_ccd_s.png);}\
+                                          QToolButton::disabled{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_ccd_d.png);}"
+
+#define ToolButtonPicMode_IR_n "QToolButton{background:transparent; border-image: url(:/res_mainmenu/toolButton_picMode_ir_n.png);}\
+                                          QToolButton::checked{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_ir_s.png);}\
+                                          QToolButton::disabled{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_ir_d.png);}"
+
+#define ToolButtonPicMode_IR_s "QToolButton{background:transparent; border-image: url(:/res_mainmenu/toolButton_picMode_ir_s.png);}\
+                                          QToolButton::checked{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_ir_s.png);}\
+                                          QToolButton::disabled{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_ir_d.png);}"
+
+#define ToolButtonPicMode_PIP_n "QToolButton{background:transparent; border-image: url(:/res_mainmenu/toolButton_picMode_pip_n.png);}\
+                                          QToolButton::checked{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_pip_s.png);}\
+                                          QToolButton::disabled{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_pip_d.png);}"
+
+#define ToolButtonPicMode_PIP_s "QToolButton{background:transparent; border-image: url(:/res_mainmenu/toolButton_picMode_pip_s.png);}\
+                                          QToolButton::checked{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_pip_s.png);}\
+                                          QToolButton::disabled{background:transparent;border-image: url(:/res_mainmenu/toolButton_picMode_pip_d.png);}"
+
+#define SpinBoxSetting_Detection_n  "QSpinBox{font: 14pt ;background:transparent;color:white;border:2px solid " FrameBorderColor_n ";}\
+                                          QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;}\
+                                          QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left; margin-left: 2px; width: 36;height: 36;}\
+                                          QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;}\
+                                          QSpinBox::down-button:pressed{subcontrol-position:left; width: 36; height: 36;}\
+                                          QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                          QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off { width: 36; height: 36;}"
+
+#define SpinBoxSetting_Detection_s  "QSpinBox{font: 14pt ;background:transparent;color:white;border:2px solid " FrameBorderColor_s ";}\
+                                          QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;}\
+                                          QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left; margin-left: 2px; width: 36;height: 36;}\
+                                          QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;}\
+                                          QSpinBox::down-button:pressed{subcontrol-position:left; width: 36; height: 36;}\
+                                          QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                          QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off { width: 36; height: 36;}"
+
+#define SpinBoxSetting_Detection_d  "QSpinBox{font: 14pt ;background:transparent;color: " TextColor_d " ;border:2px solid " FrameBorderColor_d " ;}\
+                                          QSpinBox::Disabled{font: 14pt ;background:transparent;color: " TextColor_d " ;border:2px solid " FrameBorderColor_d " ;}\
+                                          QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;}\
+                                          QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left; margin-left: 2px; width: 36;height: 36;}\
+                                          QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;}\
+                                          QSpinBox::down-button:pressed{subcontrol-position:left; width: 36; height: 36;}\
+                                          QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                          QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off { width: 36; height: 36;}"
+
+#define DoubleSpinBoxSetting_Detection_n  "QDoubleSpinBox{font: 14pt ;background:transparent;color:white;border:2px solid " FrameBorderColor_n " ;}\
+                                          QDoubleSpinBox::Disabled{font: 14pt ;background:transparent;color: " TextColor_d " ;border:2px solid " FrameBorderColor_d " ;}\
+                                          QDoubleSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;}\
+                                          QDoubleSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left; margin-left: 2px; width: 36;height: 36;}\
+                                          QDoubleSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;}\
+                                          QDoubleSpinBox::down-button:pressed{subcontrol-position:left; width: 36; height: 36;}\
+                                          QDoubleSpinBox::down-arrow:disabled,QDoubleSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                          QDoubleSpinBox::up-arrow:disabled,QDoubleSpinBox::up-arrow:off { width: 36; height: 36;}"
+
+
+#define DoubleSpinBoxSetting_Detection_s  "QDoubleSpinBox{font: 14pt ;background:transparent;color:white;border:2px solid " FrameBorderColor_s " ;}\
+                                          QDoubleSpinBox::Disabled{font: 14pt ;background:transparent;color: " TextColor_d ";border:2px solid " FrameBorderColor_d " ;}\
+                                          QDoubleSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;}\
+                                          QDoubleSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left; margin-left: 2px; width: 36;height: 36;}\
+                                          QDoubleSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;}\
+                                          QDoubleSpinBox::down-button:pressed{subcontrol-position:left; width: 36; height: 36;}\
+                                          QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                          QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off { width: 36; height: 36;}"
+
+#define ToolButton_SLM_n "QToolButton{border-image: url(:/res_mainmenu/SLM_n.png);background:transparent;}\
+                                      QToolButton::checked{border-image: url(:/res_mainmenu/SLM_s.png);background:transparent; }\
+                                      QToolButton::disabled{border-image: url(:/res_mainmenu/SLM_n.png);background:transparent; }"
+
+#define ToolButton_SLM_s "QToolButton{border-image: url(:/res_mainmenu/SLM_s.png);background:transparent;}\
+                                      QToolButton::checked{border-image: url(:/res_mainmenu/SLM_s.png);background:transparent; }\
+                                      QToolButton::disabled{border-image: url(:/res_mainmenu/SLM_n.png);background:transparent; }"
+
+#define ToolButton_SLM_open_n "QToolButton{border-image: url(:/res_mainmenu/SLM_open_n.png);background:transparent;}\
+                                      QToolButton::checked{border-image: url(:/res_mainmenu/SLM_open_s.png);background:transparent; }\
+                                      QToolButton::disabled{border-image: url(:/res_mainmenu/SLM_open_n.png);background:transparent; }"
+
+#define ToolButton_SLM_open_s "QToolButton{border-image: url(:/res_mainmenu/SLM_open_s.png);background:transparent;}\
+                                      QToolButton::checked{border-image: url(:/res_mainmenu/SLM_open_s.png);background:transparent; }\
+                                      QToolButton::disabled{border-image: url(:/res_mainmenu/SLM_open_n.png);background:transparent; }"
+
+#define ToolButton_auto_n "QToolButton{border-image: url(:/res_mainmenu/auto_n.png);background:transparent;}\
+                                      QToolButton::checked{border-image: url(:/res_mainmenu/auto_s.png);background:transparent; }\
+                                      QToolButton::disabled{border-image: url(:/res_mainmenu/auto_n.png);background:transparent; }"
+
+#define ToolButton_auto_s "QToolButton{border-image: url(:/res_mainmenu/auto_s.png);background:transparent;}\
+                                      QToolButton::checked{border-image: url(:/res_mainmenu/auto_s.png);background:transparent; }\
+                                      QToolButton::disabled{border-image: url(:/res_mainmenu/auto_n.png);background:transparent; }"
+
+#define LABLE_SERCICE_n "background:transparent;color:" FrameBorderColor_n ";border:2px solid " FrameBorderColor_n ";border-radius: 7px;"
+
+#define LABLE_SERCICE_s "background:transparent;color:" FrameBorderColor_s ";border:2px solid " FrameBorderColor_s ";border-radius: 7px;"
+
+#define HIDE_doubleSpinBox_n   "QDoubleSpinBox{font: 17pt;background:transparent;color:white;border:1px solid gray;border-radius:3px;}\
+                                QDoubleSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;       }\
+                                QDoubleSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                QDoubleSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                QDoubleSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off { width: 36;height: 36;}  "
+
+#define HIDE_doubleSpinBox_s   "QDoubleSpinBox{font: 17pt;background:transparent;color:white;border:1px solid gray;border-radius:3px;}\
+                                QDoubleSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;       }\
+                                QDoubleSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                QDoubleSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                QDoubleSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off { width: 36;height: 36;}  "
+
+#define HIDE_SpinBox_n        "QSpinBox{font: 17pt;background:transparent;color:white;border:1px solid gray;}\
+                               QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;       }\
+                               QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px; width: 36; height: 36;}\
+                               QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right; width: 36; height: 36;       }\
+                               QSpinBox::down-button:pressed{ subcontrol-position:left; width: 36; height: 36;}\
+                               QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off {   width: 36;height: 36;}\
+                               QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36; height: 36;}"
+
+#define HIDE_SpinBox_s        "QSpinBox{font: 17pt;background:transparent;color:white;border:1px solid gray;}\
+                               QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36;       }\
+                               QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px; width: 36; height: 36;}\
+                               QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right; width: 36; height: 36;       }\
+                               QSpinBox::down-button:pressed{ subcontrol-position:left; width: 36; height: 36;}\
+                               QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off {   width: 36;height: 36;}\
+                               QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36; height: 36;}"
+
+#define HIDE_SLIDER_n        "QSlider::groove:horizontal{border:0px solid #bbb;}\
+                            QSlider::sub-page:horizontal{ background-color:rgb(0, 221, 253);border-radius:2px;margin-top:9px;margin-bottom:9px;}\
+                            QSlider::add-page:horizontal{  background:gray;border:0px solid #777;border-radius:2px;margin-top:15px;margin-bottom:15px;}\
+                            QSlider::handle:horizontal{border:0px solid white;background-color: rgb(85, 255, 255);border-radius:0px;width: 20px; margin-top:3px;margin-bottom:3px; }"
+
+#define HIDE_SLIDER_s        "QSlider::groove:horizontal{border:0px solid #bbb;}\
+                            QSlider::sub-page:horizontal{ background-color:rgb(0, 221, 253);border-radius:2px;margin-top:9px;margin-bottom:9px;}\
+                            QSlider::add-page:horizontal{  background:gray;border:0px solid #777;border-radius:2px;margin-top:15px;margin-bottom:15px;}\
+                            QSlider::handle:horizontal{border:0px solid white;background-color: rgb(85, 255, 255);border-radius:0px;width: 20px; margin-top:3px;margin-bottom:3px; }"
+
+#define SPINBOX_DATESETTING_n "QSpinBox{font: 12pt ;background:transparent;color:white;border:0px solid " FrameBorderColor_n " ;}\
+                                QSpinBox::up-button { width: 25; height: 30; }QSpinBox::down-button {width: 25;height: 30;}"
+
+#define SPINBOX_DATESETTING_s "QSpinBox{font: 12pt ;background:transparent;color:white;border:1px solid " FrameBorderColor_s ";}\
+                                QSpinBox::up-button { width: 25; height: 30; }QSpinBox::down-button {width: 25;height: 30;}"
+
+
+#define HIDE_LABLE_FRAME_n    "background:transparent;border:1px solid grey;color:white;"
+
+#define HIDE_LABLE_FRAME_s    "background:transparent;border:1px solid grey;color:white;"
+
+#define ToolButton_NextPage_n   "QToolButton{border-image: url(:/res/ToolButton_right_n.png);}\
+                            QToolButton::pressed{border-image: url(:/res/ToolButton_right_n.png);}\
+                            QToolButton::disabled{border-image: url(:/res/ToolButton_right_d.png);}"
+
+#define ToolButton_LastPage_n  "QToolButton{border-image: url(:/res/ToolButton_left_n.png);}\
+                            QToolButton::pressed{border-image: url(:/res/ToolButton_left_n.png);}\
+                            QToolButton::disabled{border-image: url(:/res/ToolButton_left_d.png);}"
+
+#define ToolButton_NowPage_n    "border:white;color:white;"
+
+#define ToolButton_NextPage_s   "QToolButton{border-image: url(:/res/ToolButton_right_s.png);}\
+                            QToolButton::pressed{border-image: url(:/res/ToolButton_right_s.png);}\
+                            QToolButton::disabled{border-image: url(:/res/ToolButton_right_d.png);}"
+
+#define ToolButton_LastPage_s   "QToolButton{border-image: url(:/res/ToolButton_left_s.png);}\
+                            QToolButton::pressed{border-image: url(:/res/ToolButton_left_s.png);}\
+                            QToolButton::disabled{border-image: url(:/res/ToolButton_left_d.png);}"
+
+#define ToolButton_NowPage_s    "background-image: url(:/res/ToolButton_Page_s.png);border:white;color:white;"
+
+#endif // HP_ASSEMBLYSTYLE_H

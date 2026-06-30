@@ -1,0 +1,43 @@
+#ifndef HP_PROGRESSBAR_DIALOG_H
+#define HP_PROGRESSBAR_DIALOG_H
+
+#include <QWidget>
+#include <QTimer>
+#include <QDebug>
+#include "hp_enum.h"
+
+namespace Ui {
+class hp_progressbar_dialog;
+}
+
+class hp_progressbar_dialog : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_progressbar_dialog(QWidget *parent = nullptr);
+    ~hp_progressbar_dialog();
+
+    PROGRESSDIALOG_TYPE dialogType;
+    void hp_setDialogType(PROGRESSDIALOG_TYPE type);
+    void hp_setProgressValue(int value);
+    void StopProgressTimer();
+
+    int count;
+
+    void StartProgressTimer(int ms);
+signals:
+    void SignalIROpentimeout();
+public slots:
+    void SlotProgressTimer();
+private:
+    Ui::hp_progressbar_dialog *ui;
+
+    QTimer *ProgressTimer;
+
+
+    int ProgressTime;
+
+};
+
+#endif // HP_PROGRESSBAR_DIALOG_H

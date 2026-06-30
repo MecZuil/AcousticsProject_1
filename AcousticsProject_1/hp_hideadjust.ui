@@ -1,0 +1,4010 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_hideadjust</class>
+ <widget class="QWidget" name="hp_hideadjust">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 8, 16);</string>
+  </property>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>641</width>
+     <height>481</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QScrollBar:vertical{    
+width:30px;/*整个滑动条的宽度*/
+background:rgb(45, 48, 51);
+border:none;
+margin:00px 0px 00px 0px;/*上下两个小方块的长宽 也控制滑动条宽度*/
+}
+
+QScrollBar:horizontal{    
+height:30px;/*整个滑动条的宽度*/
+background:rgb(45, 48, 51);
+border:none;
+margin:0px 0px 0px 0px;/*上下两个小方块的长宽 也控制滑动条宽度*/
+}
+
+QScrollBar::handle:vertical{
+background:rgb(85, 255, 255);/*中间滑块的颜色*/
+border:none;
+border-radius:3px;
+}
+
+QScrollBar::handle:horizontal{
+background:rgb(85, 255, 255);/*中间滑块的颜色*/
+border:none;
+border-radius:3px;
+}
+
+QScrollBar::add-line:vertical {
+width: 3px;
+background:rgb(22, 24, 26);
+border:none;
+subcontrol-position:right;
+subcontrol-origin:margin;
+}
+
+QScrollBar::add-line:horizontal {
+width: 3px;
+background:rgb(22, 24, 26);
+border:none;
+subcontrol-position:right;
+subcontrol-origin:margin;
+}
+
+QScrollBar::sub-line:vertical {
+border:none;
+background:rgb(22, 24, 26);
+width: 3px;
+subcontrol-origin:margin;
+subcontrol-position:left;
+}
+
+QScrollBar::sub-line:horizontal {
+border:none;
+background:rgb(22, 24, 26);
+width: 3px;
+subcontrol-origin:margin;
+subcontrol-position:left;
+}
+
+QScrollBar::top-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+
+
+QScrollBar::bottom-arrow:vertical{
+subcontrol-origin: margin;
+height:3px;
+width:3px;
+border:0px solid rgb(45, 48, 51);
+background:rgb(45, 48, 51);
+}
+QScrollBar::sub-page:vertical{
+background:black;
+}
+QScrollBar::add-page:vertical
+{
+background:black;
+}</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>661</width>
+      <height>2724</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="10" column="2">
+      <widget class="QLabel" name="FPGA_Editon_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>FPGA
+版本号:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QCheckBox" name="CoreLog_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="CoreLog_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>core打印:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="30" column="1">
+      <widget class="QFrame" name="frame_So_Threthold">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QDoubleSpinBox" name="So_Threthold_doubleSpinBox">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>270</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QDoubleSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="accelerated">
+         <bool>true</bool>
+        </property>
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.010000000000000</double>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="So_Threthold_toolButton">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>1</y>
+          <width>171</width>
+          <height>58</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:none;background:transparent;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+     </item>
+     <item row="23" column="3">
+      <widget class="QCheckBox" name="AutoSave_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="28" column="0">
+      <widget class="QLabel" name="LinkThreThold_MAX_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>最大连通
+域限制：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="29" column="0">
+      <widget class="QLabel" name="LinkThreThold_MIN_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>最小连通
+域限制：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="46" column="1">
+      <widget class="QLabel" name="CurrentNoiseLimit_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="grab_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>截图开关:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="0">
+      <widget class="QLabel" name="test_slider_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>测试：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="29" column="1">
+      <widget class="QLabel" name="LinkThreThold_MIN_text_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+border:1px solid grey;
+color:white;</string>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="0">
+      <widget class="QLabel" name="test_spinBox_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>测试:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QCheckBox" name="grab_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="2">
+      <widget class="QLabel" name="noiseLimit_value_label">
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>12</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="1">
+      <widget class="QToolButton" name="test_toolButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>36</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>17</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>测试按钮</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="noiseLimit_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>噪声阈值:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="2">
+      <widget class="QLabel" name="win_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>加窗:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="47" column="1">
+      <widget class="QLabel" name="CurrentFDP_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QCheckBox" name="test_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="42" column="2">
+      <widget class="QToolButton" name="CurrentZ__button">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>36</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>同步</string>
+       </property>
+      </widget>
+     </item>
+     <item row="44" column="1">
+      <widget class="QLabel" name="CurrentX_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="2">
+      <widget class="QLabel" name="selfInspection_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>自检:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="3">
+      <widget class="QCheckBox" name="mainTime_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="1">
+      <widget class="QDoubleSpinBox" name="test_doubleSpinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QDoubleSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="decimals">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <double>256.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QSpinBox" name="noiseCount_spinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QSlider" name="noiseLimit_horizontalSlider">
+       <property name="minimumSize">
+        <size>
+         <width>160</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::groove:horizontal{
+	border:0px solid #bbb;
+}
+
+QSlider::sub-page:horizontal{          /*进度条左边*/
+	background-color:rgb(0, 221, 253);
+	border-radius:2px;
+	margin-top:9px;
+	margin-bottom:9px;
+}
+QSlider::add-page:horizontal{       /*进度条右边*/
+	background:gray;
+	border:0px solid #777;
+	border-radius:2px;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+QSlider::handle:horizontal{         /*滑块*/
+	border:0px solid white;
+	
+	background-color: rgb(85, 255, 255);
+	border-radius:0px;
+	width: 20px;
+	margin-top:3px;
+	margin-bottom:3px;
+}</string>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBothSides</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="test_checkbox_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>测试:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="47" column="0">
+      <widget class="QLabel" name="CurrentFDP_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>当前频域
+范围:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="45" column="1">
+      <widget class="QLabel" name="CurrentNoiseCount_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="43" column="0">
+      <widget class="QLabel" name="CurrentY_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>当前
+LocalY值:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="42" column="0">
+      <widget class="QLabel" name="CurrentZ_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>当前Z值:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="46" column="0">
+      <widget class="QLabel" name="CurrentNoiseLimit_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>当前噪声
+阈值:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="49" column="0">
+      <widget class="QLabel" name="CurrentRecord_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>录音状态:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="41" column="0">
+      <widget class="QLabel" name="___">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>-------------</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="43" column="1">
+      <widget class="QLabel" name="CurrentY_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="48" column="1">
+      <widget class="QLabel" name="CurrentselfInspection_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="42" column="1">
+      <widget class="QLabel" name="CurrentZ_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="48" column="0">
+      <widget class="QLabel" name="CurrentselfInspection_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>自检状态:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="43" column="2">
+      <widget class="QToolButton" name="CurrentY_button">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>36</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>同步</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QDoubleSpinBox" name="Z3Value_doubleSpinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QDoubleSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <double>256.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="45" column="2">
+      <widget class="QToolButton" name="CurrentNoiseCount_button">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>36</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>同步</string>
+       </property>
+      </widget>
+     </item>
+     <item row="44" column="2">
+      <widget class="QToolButton" name="CurrentX_button">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>36</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>同步</string>
+       </property>
+      </widget>
+     </item>
+     <item row="45" column="0">
+      <widget class="QLabel" name="CurrentNoiseCount_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>当前极值
+个数:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="24" column="1">
+      <widget class="QDoubleSpinBox" name="maxPos_doubleSpinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QDoubleSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="decimals">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <double>256.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="37" column="1">
+      <widget class="QCheckBox" name="LocalData_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="37" column="2">
+      <widget class="QLabel" name="WIFI_label_prompt_2">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>将FPGA原始
+定位数据
+写入文件</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="52" column="0">
+      <widget class="QLabel" name="PosFloat_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>定位数据
+浮点定点:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="51" column="1">
+      <widget class="QLabel" name="MaxPos_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="56" column="0">
+      <widget class="QLabel" name="PrpdFloat_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>语音增强
+浮点定点:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="52" column="1">
+      <widget class="QLabel" name="PosFloat_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="24" column="0">
+      <widget class="QLabel" name="maxPos_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>声源判断
+阈值：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QToolButton" name="toolButton_close">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+QToolButton{
+border-image: url(:/res/returnBig_n.png);
+}
+
+QToolButton::pressed{
+border-image: url(:/res/returnBig_s.png);
+}
+
+QToolButton::disabled{
+border-image: url(:/res/returnBig_d.png);
+}
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="57" column="1">
+      <widget class="QLabel" name="CurrentRecord_label_7">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="57" column="0">
+      <widget class="QLabel" name="DiagZero_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>协方差对
+角线置零:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="Z1Value_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>Z值-1:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="25" column="1">
+      <widget class="QCheckBox" name="Diagzero_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="58" column="1">
+      <widget class="QTextBrowser" name="textBrowser">
+       <property name="minimumSize">
+        <size>
+         <width>270</width>
+         <height>400</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;background:black;</string>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;core打印&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QSpinBox" name="Y1_spinBox">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+      </widget>
+     </item>
+     <item row="34" column="0">
+      <widget class="QLabel" name="__">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>------</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="25" column="0">
+      <widget class="QLabel" name="diagzero_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>协方差对
+角线：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QDoubleSpinBox" name="Z1Value_doubleSpinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QDoubleSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <double>256.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="2">
+      <widget class="QLabel" name="AutoSave_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>自动拍照:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="34" column="1">
+      <widget class="QLabel" name="xml_title_label_2">
+       <property name="minimumSize">
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>xml功能配置</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="37" column="0">
+      <widget class="QLabel" name="LocalData_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>原始数据
+写入</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="31" column="0">
+      <widget class="QLabel" name="So_Show_Mode_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>FPGA
+显示模式：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="32" column="0">
+      <widget class="QLabel" name="So_Corr_Mode_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>FPGA
+校正模式：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="30" column="0">
+      <widget class="QLabel" name="So_Threthold__label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>FPGA
+判定阈值：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="33" column="0">
+      <widget class="QLabel" name="So_Correct_Frame_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>FPGA
+校正帧数：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="31" column="1">
+      <widget class="QCheckBox" name="So_Show_Mode_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="41" column="2">
+      <widget class="QLabel" name="_____">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>---------</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="41" column="1">
+      <widget class="QToolButton" name="dataSync_toolButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>36</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>17</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>FPGA数据校对</string>
+       </property>
+      </widget>
+     </item>
+     <item row="33" column="1">
+      <widget class="QLabel" name="So_Correct_Frame_text_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+border:1px solid grey;
+color:white;</string>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="32" column="1">
+      <widget class="QCheckBox" name="So_Corr_Mode_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="3">
+      <widget class="QCheckBox" name="selfInspection_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="3">
+      <widget class="QCheckBox" name="win_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QDoubleSpinBox" name="Z2Value_doubleSpinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QDoubleSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <double>256.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="Z2Value_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>Z值-2:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="3">
+      <widget class="QCheckBox" name="record_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="1">
+      <widget class="QSlider" name="test_horizontalSlider">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::groove:horizontal{
+	border:0px solid #bbb;
+}
+
+QSlider::sub-page:horizontal{          /*进度条左边*/
+	background-color:rgb(0, 221, 253);
+	border-radius:2px;
+	margin-top:9px;
+	margin-bottom:9px;
+}
+QSlider::add-page:horizontal{       /*进度条右边*/
+	background:gray;
+	border:0px solid #777;
+	border-radius:2px;
+	margin-top:7px;
+	margin-bottom:7px;
+}
+QSlider::handle:horizontal{         /*滑块*/
+	border:0px solid white;
+	
+	background-color: rgb(85, 255, 255);
+	border-radius:0px;
+	width: 20px;
+	margin-top:3px;
+	margin-bottom:3px;
+}</string>
+       </property>
+       <property name="maximum">
+        <number>99</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLabel" name="X1Value_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>X1:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="noiseCount_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>极值个数:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="49" column="1">
+      <widget class="QLabel" name="CurrentRecord_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="Z3Value_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>Z值-3:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="51" column="0">
+      <widget class="QLabel" name="MaxPos_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>声源判定
+阈值:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="55" column="1">
+      <widget class="QLabel" name="Fftfloat_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="54" column="1">
+      <widget class="QLabel" name="PoshAddAll_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="47" column="2">
+      <widget class="QLabel" name="CurrentFDPCount_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="56" column="1">
+      <widget class="QLabel" name="PrpdFloat_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="55" column="0">
+      <widget class="QLabel" name="Fftfloat_title_5">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>频域数据
+浮点定点:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="54" column="0">
+      <widget class="QLabel" name="PoshAddAll_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>声源差值
+绝对值和:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="46" column="2">
+      <widget class="QToolButton" name="CurrentNoiseLimit_button">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>36</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>同步</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QSpinBox" name="localX_spinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="QLabel" name="Y1Value_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>Y1:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="2">
+      <widget class="QLabel" name="mainTime_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>时间:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="44" column="0">
+      <widget class="QLabel" name="CurrentX_title">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>当前
+LocalX值:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QSpinBox" name="X1_spinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="0">
+      <widget class="QLabel" name="test_toolBox_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>测试：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="36" column="0">
+      <widget class="QLabel" name="Set10K_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>10K设置</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="36" column="1">
+      <widget class="QCheckBox" name="Set10K_checkBox">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color: rgb(255, 255, 255);
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/checkBox_n.png);
+color: rgb(255, 255, 255);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+color: rgb(255, 255, 255);
+}
+
+
+QCheckBox::indicator:disabled {
+    image: url(:/res/checkBox_d.png);
+color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QLabel" name="localX_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>localX:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="2">
+      <widget class="QLabel" name="record_label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>录音:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="28" column="1">
+      <widget class="QLabel" name="LinkThreThold_MAX_text_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+border:1px solid grey;
+color:white;</string>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="30" column="2">
+      <widget class="QLabel" name="WIFI_label_prompt_5">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>0-1限制</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QSpinBox" name="localY_spinBox">
+       <property name="minimumSize">
+        <size>
+         <width>125</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDoubleSpinBox" name="Z0Value_doubleSpinBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QDoubleSpinBox
+{
+	font: 17pt &quot;微软雅黑&quot;;
+	background:transparent;
+	color:white;
+	border:1px solid gray;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+	margin-right: 2px;
+    width: 36;
+    height: 36;       
+}
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+    subcontrol-position:left;
+	margin-left: 2px;
+    width: 36;
+    height: 36;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    width: 36;
+    height: 36;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+    width: 36;
+    height: 36;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <double>256.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLabel" name="localY_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>localY:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="Z0Value_label">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>Z值-0:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="3">
+      <widget class="QToolButton" name="FPGA_Editon_toolButton">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>80</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>更新</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="ParaAdjust_label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>17</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
+       <property name="text">
+        <string>参数配置:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QToolButton" name="ParaAdjust_toolButton">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>配置</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

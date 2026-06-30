@@ -1,0 +1,86 @@
+#ifndef HP_INPUT_TEXT_H
+#define HP_INPUT_TEXT_H
+
+#include <QWidget>
+#include <QDebug>
+#include <QPushButton>
+#include <QMouseEvent>
+#include <QFontMetrics>
+#include <QPropertyAnimation>
+
+#include "hp_enum.h"
+
+#include "hi384_protocol.h"
+#include <sqlite3.h>
+
+
+
+namespace Ui {
+class hp_input_text;
+}
+
+int callback(void*,int,char**,char**);
+
+class hp_input_text : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit hp_input_text(QWidget *parent = 0);
+    ~hp_input_text();
+
+    QString hp_getText();
+    void hp_setText(QString str);
+    void hp_setShow(INPUT_SHOW show);
+    void hp_setCNENChangeLimit(bool isChange);
+//    void hp_setTextInputAni(bool isShow,INPUT_NOW_SHOW nowShow);
+//    void hp_setShowAndHideBt(INPUT_NOW_SHOW nowshow,bool show);
+    void hp_setMaxInput(int maxlen);//设置最长输入字符
+    void hp_setIns(INPUT_NOW_SHOW nowshow);
+    void hp_serSymInputEnabled(bool isEnabled);
+signals:
+    void SignalUpdateSetUpClock();
+        void hp_signal_text_over(QString text,INPUT_NOW_SHOW nowShow);
+        void SignalChangePreviewPage(QString text,INPUT_NOW_SHOW nowShow);
+    //    void hp_signal_show_hide_menu(INPUT_NOW_SHOW nowShow);
+
+public slots:
+
+private slots:
+        void btn_clicked();
+        void hp_slot_scroll_is_move(int val,bool isMove);//若鼠标滚动时会触发
+    //    void hp_slot_showAnifinish();
+protected:
+    virtual bool eventFilter(QObject *watched, QEvent *event);
+    virtual void changeEvent(QEvent *e);
+private:
+    Ui::hp_input_text *ui;
+
+    void hp_winInit();
+    void hp_connectInit();
+
+    void hp_showCNLab(bool isShow);
+    void hp_CN_Mode(QPushButton *btn);
+
+    void hp_clearChinese();//清除中文内容
+
+    sqlite3* db;
+
+    int txtWidth = 0;//当前label内存储的单个字母长度
+    int lenthPY = 0;//标识输入窗口中拼音位数
+
+    //当手指移动时不进行按下事件判断
+    bool isInScrollMove;//鼠标移动时，不响应
+    bool hp_checkScrollMove();
+    bool endAni;//标识动画是否结束
+    bool isLongKey;
+
+    QPropertyAnimation *animation;
+    INPUT_NOW_SHOW ins;//标识当前处于哪个界面的显示
+
+
+
+
+
+};
+
+#endif // HP_INPUT_TEXT_H

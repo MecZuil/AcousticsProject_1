@@ -1,0 +1,125 @@
+#include "hp_errorwarning_dialog.h"
+#include "ui_hp_errorwarning_dialog.h"
+
+hp_errorwarning_dialog::hp_errorwarning_dialog(QWidget *parent,QString title, QString text, int ms) :
+    QWidget(parent),
+    ui(new Ui::hp_errorwarning_dialog)
+{
+    ui->setupUi(this);
+    //通知窗口系统窗口应位于所有其他窗口的顶部。请注意，在x11上的某些窗口管理器上，您还必须传递qt:：x11BypassWindowManagerInit，此标志才能正常工作
+    //    setWindowFlags(Qt::WindowStaysOnTopHint);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+    setGeometry((800-width())/2,(480-height())/2,width(),height());  //384->640   96->160  272->480
+
+    isLongKey = false;
+
+    ui->titleLabel->setText(title);
+    ui->textLabel->setText(text);
+//    QTimer::singleShot(ms, this, SLOT(timer_finish()));
+
+    CloseTimer = new QTimer(this);
+    CloseTimer->setInterval(3000);
+    CloseTimer->stop();
+    connect(CloseTimer,SIGNAL(timeout()),this,SLOT(SlotCloseTimer()));
+}
+
+hp_errorwarning_dialog::~hp_errorwarning_dialog()
+{
+    delete ui;
+}
+
+void hp_errorwarning_dialog::SlotSetUIStyle(int type)
+{
+    if(type == 1)
+    {
+        QFont font("Microsoft YaHei", 20);
+        setGeometry((1920-780)/2,(1080-370)/2,780,370);
+        ui->frame->setGeometry(0,0,1920,1080);
+        ui->titleLabel->setGeometry(0,0,1920,1080);
+        ui->textLabel->setGeometry(0,0,1920,1080);
+        ui->OKToolButton->setGeometry(0,0,1920,1080);
+
+        ui->textLabel->setFont(font);
+        ui->titleLabel->setFont(font);
+        ui->OKToolButton->setFont(font);
+
+
+    }
+}
+void hp_errorwarning_dialog::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_errorwarning_dialog::mousePressEvent(QMouseEvent *event)
+{
+    SignalUpdateSetUpClock();
+}
+//窗口的按键响应事件
+void hp_errorwarning_dialog::keyPressEvent(QKeyEvent *ev)
+{
+    if(!(isLongKey=ev->isAutoRepeat()))
+    {
+        qDebug("hp_errorwarning_dialog::keyPressEvent(QKeyEvent *ev)------------------------0x%02x ",ev->key());
+        SignalUpdateSetUpClock();
+    }
+
+}
+void hp_errorwarning_dialog::keyReleaseEvent(QKeyEvent *ev)
+{
+    qDebug("hp_errorwarning_dialog::keyReleaseEvent(QKeyEvent *ev)------------------------0x%02x ",ev->key());
+    SignalUpdateSetUpClock();
+    switch(ev->key()){
+    case Key_RETURN:
+        on_OKToolButton_clicked();
+        break;
+    default:
+        break;
+    }
+
+}
+//定制错误警告提示框
+void hp_errorwarning_dialog::warning(QString title, QString text)
+{
+    ui->titleLabel->setText(title);
+    ui->textLabel->setText(text);
+}
+////
+//void hp_errorwarning_dialog::setWarningText(QString title ,QString text)
+//{
+//    ui->textLabel->setText(text);
+//    ui->titleLabel->setText(title);
+//}
+//设置单次响应定时器时间
+void hp_errorwarning_dialog::setDelayClose(int ms)
+{
+    CloseTimer->setInterval(ms);
+    CloseTimer->start();
+}
+//定时器触发事件
+void hp_errorwarning_dialog::timer_finish()
+{
+    close();
+}
+//确定按钮关闭提示框
+void hp_errorwarning_dialog::on_OKToolButton_clicked()
+{
+    SignalUpdateSetUpClock();
+    CloseTimer->stop();
+    close();
+}
+//定时器超时触发事件
+void hp_errorwarning_dialog::SlotCloseTimer()
+{
+    CloseTimer->stop();
+    close();
+}

@@ -1,0 +1,43 @@
+#include "hp_dialog_drawmenu.h"
+#include "ui_hp_dialog_drawmenu.h"
+
+hp_dialog_drawmenu::hp_dialog_drawmenu(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_drawmenu)
+{
+    ui->setupUi(this);
+
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+//    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+//    setWindowModality(Qt::WindowModal);
+    setGeometry(70,0,width(),height());
+    setFixedSize(this->width(), this->height());
+
+//    buttonGroup = new QButtonGroup(this);
+//    buttonGroup->addButton(ui->point,0);
+//    buttonGroup->addButton(ui->line,1);
+//    buttonGroup->addButton(ui->rect,2);
+//    buttonGroup->addButton(ui->clear,3);
+
+
+
+
+}
+
+hp_dialog_drawmenu::~hp_dialog_drawmenu()
+{
+    delete ui;
+}
+//翻译
+void hp_dialog_drawmenu::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}

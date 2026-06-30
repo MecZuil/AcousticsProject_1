@@ -1,0 +1,31 @@
+#include "hp_dialog_deledit.h"
+#include "ui_hp_dialog_deledit.h"
+
+hp_dialog_deledit::hp_dialog_deledit(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_deledit)
+{
+    ui->setupUi(this);
+
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setGeometry(70+320,0,width(),height());
+    setFixedSize(this->width(), this->height());
+}
+
+hp_dialog_deledit::~hp_dialog_deledit()
+{
+    delete ui;
+}
+//翻译
+void hp_dialog_deledit::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}

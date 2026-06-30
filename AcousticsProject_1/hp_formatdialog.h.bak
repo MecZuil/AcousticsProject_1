@@ -1,0 +1,71 @@
+#ifndef HP_FORMATDIALOG_H
+#define HP_FORMATDIALOG_H
+
+#include <QWidget>
+#include <QDebug>
+#include <QTimer>
+#include <QKeyEvent>
+
+#include "hp_enum.h"
+#include "hi384_protocol.h"
+
+namespace Ui {
+class hp_formatdialog;
+}
+
+class hp_formatdialog : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_formatdialog(QWidget *parent = nullptr);
+    ~hp_formatdialog();
+
+    void hp_setFormatDialogText(QString text);
+    void hp_setDialogType(DIALOG_TYPE);
+    void hp_setDialogTimer(int ms);
+
+signals:
+    void SignalUpdateSetUpClock();
+    void SignalWifiConnectCancel();
+    void SignalWifiConnecttimeout();
+    void Signal4GConnecttimeout();
+    void Signal4GConnectCancel();
+    void SignalGPSConnecttimeout();
+    void SignalGPSConnectCancel();
+    void SignalIROpentimeout();
+
+    void signal_pc_sys_formatting_sd();
+    void signal_pc_sys_config_init();
+    void signal_delete_pic();
+
+protected:
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void keyPressEvent(QKeyEvent *ev);
+    virtual void keyReleaseEvent(QKeyEvent *ev);
+
+private slots:
+
+//    void slot_pc_sys_formatting_sd(unsigned char return_value);
+    void on_ToolButton_OK_clicked();
+    void on_ToolButton_Cancel_clicked();
+    void SlotDialogTimer();
+
+//    void on_toolButton_clicked();
+
+private:
+    Ui::hp_formatdialog *ui;
+
+    void KeyRightHandle();
+    void KeyLeftHandle();
+    void changeEvent(QEvent *e);
+
+    bool isLongKey;
+    QTimer *DialogTimer;
+    DIALOG_TYPE dialogType;
+
+
+
+};
+
+#endif // HP_FORMATDIALOG_H

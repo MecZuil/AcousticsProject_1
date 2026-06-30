@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_formatdialog</class>
+ <widget class="QWidget" name="hp_formatdialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>325</width>
+    <height>166</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>325</width>
+     <height>166</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QFrame{
+background-color:rgb(13, 34, 67);
+border :1px solid rgb(62, 139, 192);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="Text">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>40</y>
+      <width>323</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;border:nong;</string>
+    </property>
+    <property name="text">
+     <string>是否格式化SD卡</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="ToolButton_OK">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>110</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);
+color:white;}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string>确定</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="ToolButton_Cancel">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>110</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);
+color:white;}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);
+color:white;}</string>
+    </property>
+    <property name="text">
+     <string>取消</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

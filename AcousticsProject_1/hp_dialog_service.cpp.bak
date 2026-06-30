@@ -1,0 +1,414 @@
+#include "hp_dialog_service.h"
+#include "ui_hp_dialog_service.h"
+
+hp_dialog_service::hp_dialog_service(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_service)
+{
+    ui->setupUi(this);
+
+    UIType = 0;
+    isConnected = false;
+    isConnecting = false;
+    isScreenClosed = false;
+    currentSelect = SERVICE_SERVER_ACT;
+
+    ui->label_Account->installEventFilter(this);
+    ui->label_IP->installEventFilter(this);
+    ui->label_server_act->installEventFilter(this);
+    ui->label_server_paswd->installEventFilter(this);
+
+    ui->toolButton_picUpload->close();
+    ui->label_title_picUpload->close();
+
+    ErrorWarning = new hp_errorwarning_dialog(this);
+    ErrorWarning->close();
+    FormatWarning = new hp_formatdialog(this);
+    FormatWarning->hp_setFormatDialogText(tr("服务连接中..."));
+    FormatWarning->hp_setDialogType(DIALOG_NULL);
+    FormatWarning->close();
+    HpInputText = new hp_input_text(this);
+    HpInputText->hp_setCNENChangeLimit(false);
+    HpInputText->hp_setIns(INPUT_SERVICE);
+    HpInputText->hide();
+
+    connect(HpInputText,SIGNAL(hp_signal_text_over(QString,INPUT_NOW_SHOW)),this,SLOT(hp_slot_text_over(QString,INPUT_NOW_SHOW)));
+//    connect(FormatWarning,SIGNAL(SignalWifiConnecttimeout()),this,SLOT(SlotWifiConnecttimeout()));
+//    connect(FormatWarning,SIGNAL(SignalWifiConnectCancel()),this,SLOT(SlotWifiConnectCancel()));
+
+}
+
+hp_dialog_service::~hp_dialog_service()
+{
+    delete ui;
+}
+
+
+void hp_dialog_service::SlotSetUIStyle(int type)
+{
+    UIType = type;
+    if(type == 1)
+    {
+        QFont font_title("Microsoft YaHei", 30);
+        QFont font("Microsoft YaHei", 26);
+
+        ui->label_title_server_act->setFont(font_title);
+        ui->label_server_act->setFont(font);
+        ui->label_title_server_paswd->setFont(font_title);
+        ui->label_server_paswd->setFont(font);
+        ui->label_title_IP->setFont(font_title);
+        ui->label_IP->setFont(font);
+        ui->label_title_account->setFont(font_title);
+        ui->label_Account->setFont(font);
+        ui->label_title_srvopen->setFont(font_title);
+        ui->checkBox_srvopen->setFont(font);
+
+        this->setGeometry(0,0,1920,1080);
+        ui->frame->setGeometry(0,0,1920,1080);
+        ui->toolButton_close->setGeometry(0,0,1920,1080);
+        ui->frame_2->setGeometry(0,240,1920,855);
+
+        ui->label_title_server_act->setMinimumSize(720,0);
+        ui->label_server_act->setMaximumSize(840,16777215);
+
+        ui->label_title_server_paswd->setMinimumSize(720,0);
+        ui->label_server_paswd->setMaximumSize(840,16777215);
+
+        ui->label_title_IP->setMinimumSize(720,0);
+        ui->label_IP->setMaximumSize(840,16777215);
+
+        ui->label_title_account->setMinimumSize(720,0);
+        ui->label_Account->setMaximumSize(840,16777215);
+
+        ui->label_title_srvopen->setMinimumSize(720,0);
+        ui->checkBox_srvopen->setMaximumSize(840,16777215);
+
+        ui->frame->setStyleSheet(FrameBackground_1_1920);
+        ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_1920_n);
+
+    }
+}
+
+void hp_dialog_service::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch (e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+
+        break;
+    default:
+        break;
+    }
+}
+
+bool hp_dialog_service::eventFilter(QObject *w, QEvent *e)
+{
+
+    if( e->type() == QEvent::MouseButtonPress )
+    {MYLOG<<"(w->objectName()  "<<w->objectName() ;
+        SignalUpdateSetUpClock();
+        if(w->objectName() == "label_server_act" )
+        {
+            hp_UIStatus_update(false);
+            if(currentSelect !=SERVICE_SERVER_ACT)
+                HpInputText->hide();
+            currentSelect = SERVICE_SERVER_ACT;
+            hp_UIStatus_update(true);
+            hp_edit_clicked();
+            return true;
+        }
+        else if( w->objectName() == "label_server_paswd")
+        {
+            hp_UIStatus_update(false);
+            if(currentSelect !=SERVICE_SERVER_PSWD)
+                HpInputText->hide();
+            currentSelect = SERVICE_SERVER_PSWD;
+            hp_UIStatus_update(true);
+
+            hp_edit_clicked();
+            return true;
+        }
+        else if(w->objectName() == "label_IP" )
+        {
+            hp_UIStatus_update(false);
+            if(currentSelect !=SERVICE_IP)
+                HpInputText->hide();
+            currentSelect = SERVICE_IP;
+            hp_UIStatus_update(true);
+
+            hp_edit_clicked();
+            return true;
+        }
+        else if( w->objectName() == "label_Account")
+        {
+            hp_UIStatus_update(false);
+            if(currentSelect !=SERVICE_Account)
+                HpInputText->hide();
+            currentSelect = SERVICE_Account;
+            hp_UIStatus_update(true);
+
+            hp_edit_clicked();
+            return true;
+        }
+    }
+    return false;
+
+}
+void hp_dialog_service::keyReleaseEvent(QKeyEvent *ev)
+{
+    SignalUpdateSetUpClock();
+    qDebug("hp_dialog_service::keyReleaseEvent(QKeyEvent *ev)------------------------0x%02x ",ev->key());
+    switch (ev->key()) {
+    case Key_RETURN:
+        emit ui->toolButton_close->clicked();
+        break;
+    default:
+        break;
+    }
+}
+void hp_dialog_service::mousePressEvent(QMouseEvent *ev)
+{
+    if(isScreenClosed)
+        return;
+    SignalUpdateSetUpClock();
+}
+//更新界面组件状态
+void hp_dialog_service::hp_UIStatus_update(bool isSelect )
+{
+    switch (currentSelect) {
+    case SERVICE_Account:
+        if(isSelect)
+            ui->label_Account->setStyleSheet(LABLE_SERCICE_s);
+        else
+            ui->label_Account->setStyleSheet(LABLE_SERCICE_n);
+        break;
+    case SERVICE_IP:
+        if(isSelect)
+            ui->label_IP->setStyleSheet(LABLE_SERCICE_s);
+        else
+            ui->label_IP->setStyleSheet(LABLE_SERCICE_n);
+        break;
+    case SERVICE_SERVER_ACT:
+        if(isSelect)
+            ui->label_server_act->setStyleSheet(LABLE_SERCICE_s);
+        else
+            ui->label_server_act->setStyleSheet(LABLE_SERCICE_n);
+        break;
+    case SERVICE_SERVER_PSWD:
+        if(isSelect)
+            ui->label_server_paswd->setStyleSheet(LABLE_SERCICE_s);
+        else
+            ui->label_server_paswd->setStyleSheet(LABLE_SERCICE_n);
+        break;
+    default:
+        break;
+    }
+}
+//文本框点击事件 通过事件过滤器触发
+void hp_dialog_service::hp_edit_clicked()
+{
+    if(HpInputText->isHidden() )
+    {
+        switch(currentSelect)
+        {
+        case SERVICE_SERVER_ACT:
+            HpInputText->hp_setMaxInput(26);
+            HpInputText->hp_setShow(INPUT_SHOW_ENG);
+            HpInputText->hp_serSymInputEnabled(true);
+            HpInputText->hp_setText(ui->label_server_act->text());
+            break;
+        case SERVICE_IP:
+            HpInputText->hp_setMaxInput(40);
+            HpInputText->hp_setShow(INPUT_SHOW_NUM);
+            HpInputText->hp_serSymInputEnabled(false);
+            HpInputText->hp_setText(ui->label_IP->text());
+            break;
+        case SERVICE_Account:
+            HpInputText->hp_setMaxInput(40);
+            HpInputText->hp_setShow(INPUT_SHOW_NUM);
+            HpInputText->hp_serSymInputEnabled(false);
+            HpInputText->hp_setText(ui->label_Account->text());
+            break;
+        case SERVICE_SERVER_PSWD:
+            HpInputText->hp_setMaxInput(40);
+            HpInputText->hp_setShow(INPUT_SHOW_ENG);
+            HpInputText->hp_serSymInputEnabled(true);
+            HpInputText->hp_setText(ui->label_server_paswd->text());
+            break;
+        default:
+            break;
+        }
+        HpInputText->show();
+    }
+    else
+    {
+        HpInputText->hide();
+    }
+
+}
+
+
+//返回键按下处理事件
+void hp_dialog_service::KeyReturnHandle()
+{
+    emit ui->toolButton_close->clicked();
+}
+
+void hp_dialog_service::on_checkBox_srvopen_clicked(bool checked)
+{
+    if(checked)
+    {
+        if(ui->label_IP->text().isEmpty() || ui->label_Account->text().isEmpty() || ui->label_server_act->text().isEmpty() || ui->label_server_paswd->text().isEmpty())
+        {
+            ErrorWarning->warning(tr("错误"),tr("有条目输入为空"));
+            ErrorWarning->setDelayClose(3000);/*等待 3s*/
+            ErrorWarning->show();
+            ui->checkBox_srvopen->setChecked(false);
+            emit ui->checkBox_srvopen->clicked(false);
+        }
+        else
+        {
+            isConnecting = true;
+//            ErrorWarning->setCloseTimerStart(30000);/*等待 3s*/
+            FormatWarning->hp_setFormatDialogText(tr("客户端连接中"));
+            FormatWarning->hp_setDialogType(DIALOG_NULL);
+            FormatWarning->show();
+            client_para para;
+            ServeIP = ui->label_IP->text();
+            ServePort = ui->label_Account->text();
+            ServeUsr = ui->label_server_act->text();
+            ServePass = ui->label_server_paswd->text();
+            int ret = ServePort.toInt();
+            para.switch_value = 1;
+            para.ServicePort = ret;
+            strcpy(para.ServiceIP,ServeIP.toLocal8Bit().data());
+            strcpy(para.ServiceUser,ServeUsr.toLocal8Bit().data());
+            strcpy(para.ServicePassword,ServePass.toLocal8Bit().data());
+//            qDebug() << "Send connect To NewServer";
+//            qDebug() << "Usr == > " << ServeUsr;
+//            qDebug() << "Password == > " << ServePass;
+//            qDebug() << "IP == > " << ServeIP;
+//            qDebug() << "Port == > " << ServePort;
+            signal_pc_sys_set_service(para);
+            clientPara.switch_value = 1;
+
+            clientPara.ServicePort = ret;
+            strcpy(clientPara.ServiceIP      ,ServeIP.toLocal8Bit().data());
+            strcpy(clientPara.ServiceUser    ,ServeUsr.toLocal8Bit().data());
+            strcpy(clientPara.ServicePassword,ServePass.toLocal8Bit().data());
+        }
+    }
+    else
+    {
+        client_para para2;
+//        isClientOpen = false;
+        para2.switch_value = 0;
+        int ret = ServePort.toInt();
+        para2.ServicePort = ret;
+        strcpy(para2.ServiceIP,ServeIP.toLocal8Bit().data());
+        strcpy(para2.ServiceUser,ServeUsr.toLocal8Bit().data());
+        strcpy(para2.ServicePassword,ServePass.toLocal8Bit().data());
+//        qDebug() << "enum_AUP_SERVER_PLUS Send disconnect To Server";
+//        qDebug() << "Usr == > " << ServeUsr;
+//        qDebug() << "Password == > " << ServePass;
+//        qDebug() << "IP == > " << ServeIP;
+//        qDebug() << "Port == > " << ServePort;
+        signal_pc_sys_set_service(para2);
+//        SignalIsClientOpen(false);
+//        siganl_client_isOn(false);
+    }
+}
+
+void hp_dialog_service::on_toolButton_close_clicked()
+{
+    if(!HpInputText->isHidden())
+        HpInputText->hide();
+    this->close();
+}
+//输入
+void hp_dialog_service::hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow)
+{
+    if(nowShow == INPUT_SERVICE)
+    {
+        switch (currentSelect) {
+        case SERVICE_Account:
+            ui->label_Account->setText(text);
+            break;
+        case SERVICE_IP:
+            ui->label_IP->setText(text);
+            break;
+        case SERVICE_SERVER_ACT:
+            ui->label_server_act->setText(text);
+            break;
+        case SERVICE_SERVER_PSWD:
+            ui->label_server_paswd->setText(text);
+            break;
+        default:
+            break;
+        }
+    }
+}
+//
+void hp_dialog_service::slot_pc_sys_set_service(unsigned char return_value)
+{
+    qDebug("slot_pc_sys_set_service(unsigned char return_value 0x%02x ",return_value);
+    if(ui->checkBox_srvopen->isChecked())
+    {
+        if(return_value == RE_OK)
+        {
+            isConnecting = false;
+            isConnected = true;
+            FormatWarning->close();
+            ErrorWarning->warning(tr("提示"),tr("连接成功"));
+            ErrorWarning->setDelayClose(3000);
+            ErrorWarning->show();
+            SignalIsClientConnected(true);
+        }
+        else
+        {
+            isConnected = false;
+            FormatWarning->close();
+            ErrorWarning->warning(tr("提示"),tr("连接失败"));
+            ErrorWarning->setDelayClose(3000);
+            ErrorWarning->show();
+            ui->checkBox_srvopen->setChecked(false);
+            SignalIsClientConnected(false);
+        }
+    }
+    else
+    {
+        isConnected = false;
+        SignalIsClientConnected(false);
+    }
+
+}
+//上传图片
+void hp_dialog_service::on_toolButton_picUpload_clicked()
+{
+    if(isConnected == true)
+    {
+        QString ResourcesListFileName;
+
+        QFile ResourcesListFile("/home/root/res/ResourcesList");
+        if(ResourcesListFile.open(QIODevice::ReadOnly))
+        {
+            ResourcesListFileName = ResourcesListFile.readAll();
+            ResourcesListFile.close();
+        }
+        QStringList strs = ResourcesListFileName.split("\n");
+        if(strs.count() == 0)
+            return ;
+        else
+        {
+
+        }
+    }
+    else
+    {
+        ErrorWarning->warning(tr("提示"),tr("请先连接客户端"));
+        ErrorWarning->setDelayClose(3000);
+        ErrorWarning->show();
+    }
+}

@@ -1,0 +1,15 @@
+source /opt/fsl-imx-x11/4.1.15-1.2.0/environment-setup-cortexa9hf-vfp-neon-poky-linux-gnueabi
+
+qmake
+make
+
+cp AcousticsProject_1 Q_S600
+
+#ftp 192.168.1.57 << EOF
+#ftp
+
+
+#put Q_S600
+#by
+#EOF
+

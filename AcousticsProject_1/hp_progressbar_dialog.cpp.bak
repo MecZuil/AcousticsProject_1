@@ -1,0 +1,96 @@
+#include "hp_progressbar_dialog.h"
+#include "ui_hp_progressbar_dialog.h"
+
+hp_progressbar_dialog::hp_progressbar_dialog(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_progressbar_dialog)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+    setGeometry((800-width())/2,(480-height())/2,this->width(),this->height());
+    ProgressTime = 5000;
+    count = 0;
+    dialogType = PRODIALOG_SELFINSPECTION;
+    ProgressTimer = new QTimer(this);
+    connect(ProgressTimer,SIGNAL(timeout()),this,SLOT(SlotProgressTimer()));
+    ProgressTimer->setInterval(100);
+
+}
+
+hp_progressbar_dialog::~hp_progressbar_dialog()
+{
+    delete ui;
+}
+
+
+void hp_progressbar_dialog::StartProgressTimer(int ms)
+{
+
+    ProgressTime = ms;
+    count = 0;
+    switch(dialogType)
+    {
+    case PRODIALOG_SELFINSPECTION:
+    ui->progressBar->setMaximum(100);
+    ui->progressBar->setValue(count);
+    ProgressTimer->start(100);
+        break;
+    case PRODIALOG_IROPEN:
+        ui->progressBar->setMaximum(15);
+        ui->progressBar->setValue(count);
+        ProgressTimer->start(1000);
+        break;
+    }
+
+}
+
+void hp_progressbar_dialog::StopProgressTimer()
+{
+    this->close();
+    ProgressTimer->stop();
+
+}
+
+void hp_progressbar_dialog::SlotProgressTimer()
+{
+//    qDebug()<<"ProgressTime count : "<<count<<"PREGRESBAR value : "<<ui->progressBar->value();
+    if(dialogType == PRODIALOG_SELFINSPECTION)
+    {
+        if(count == 100)
+        {
+            ProgressTimer->stop();
+            this->close();
+            return;
+        }
+        count = count +100/(ProgressTime/100);
+        ui->progressBar->setValue( count );
+    }
+    else if(dialogType == PRODIALOG_IROPEN)
+    {
+        count ++;
+        if(count == ProgressTime/1000)
+        {
+            StopProgressTimer();
+            SignalIROpentimeout();
+        }
+    }
+}
+void hp_progressbar_dialog::hp_setProgressValue(int value)
+{
+    ui->progressBar->setValue(value);
+}
+
+void hp_progressbar_dialog::hp_setDialogType(PROGRESSDIALOG_TYPE type)
+{
+    dialogType=type;
+    switch (dialogType) {
+    case PRODIALOG_IROPEN:
+        ui->Text->setText(tr("红外功能开启中"));
+        break;
+    case PRODIALOG_SELFINSPECTION:
+        ui->Text->setText(tr("麦克风自检中"));
+        break;
+    }
+
+}

@@ -1,0 +1,109 @@
+#ifndef HP_DIALOG_WIFI_H
+#define HP_DIALOG_WIFI_H
+
+#include <QWidget>
+#include <QScroller>
+#include <QKeyEvent>
+#include <QListWidgetItem>
+
+
+#include "hp_enum.h"
+#include "hi384_protocol.h"
+#include "hp_input_text.h"
+#include "hp_errorwarning_dialog.h"
+#include "hp_formatdialog.h"
+#include "hp_assemblystyle.h"
+
+
+namespace Ui {
+class hp_dialog_wifi;
+}
+
+class hp_dialog_wifi : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_dialog_wifi(QWidget *parent = nullptr);
+    ~hp_dialog_wifi();
+
+    int UIType;
+    bool isFirstSearchWifi;//每次打开wifi都重置为false
+    int wifiMode;//wifi模式  0 AP     1 STA
+    bool isSTAStart;//是否开启 signal_pc_sys_set_wifi_sta_start
+    bool isSTAConnected;//是否已连接成功
+    QString currentWifiName;
+    WIFIDIALOG_STATE wifiState;
+    void hp_wifiSTASet(bool isOpen);
+    void hp_wifiAPSet(bool isOpen);
+    void hp_wifiOpen(bool isOpen);
+    void KeyReturnHandle();
+
+protected:
+    virtual void keyPressEvent(QKeyEvent *ev);
+    virtual void keyReleaseEvent(QKeyEvent *ev);
+    virtual bool eventFilter(QObject *obj, QEvent *event);
+
+signals:
+    void SignalPrintscreenHandle();
+    void signal_pc_key_get_grab();
+    void signal_pc_sys_set_wifi_sta_start(int stats);
+    void signal_pc_sys_set_wifi_sta_search();
+    void signal_pc_sys_set_wifi_sta_connect(wifi_sta wifiSTA);
+    void signal_pc_key_set_wifi_ap_state(int stats);
+    void SignalSetIsWifiConnected(bool isConnected);
+    void SignalisGetWifiSTAConnectState(bool isGetState);
+    void SignalUpdateSetUpClock();
+    void SignalSetServiceCheckBox(bool Enabled );
+
+private slots:
+    void hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow);
+
+    void slot_pc_sys_set_wifi_sta_search(unsigned char return_value,QStringList strList,int recv_datalen);
+    void slot_pc_sys_set_wifi_sta_connect(unsigned char return_value);
+    void slot_pc_sys_get_wifi_sta_state(unsigned char return_value,int stats);
+    void slot_pc_key_set_wifi_ap_state(unsigned char return_value);
+
+    void on_toolButton_close_clicked();
+    void on_toolButton_refresh_clicked();
+    void on_checkBox_isSTAConnected_clicked(bool checked);
+    void on_listWidget_wifiName_itemPressed(QListWidgetItem *item);
+
+    void SlotWifiConnectCancel();
+    void SlotWifiConnecttimeout();
+
+    void on_listWidget_wifiMode_currentRowChanged(int currentRow);
+
+    void on_checkBox_isAPConnected_clicked(bool checked);
+
+private:
+    Ui::hp_dialog_wifi *ui;
+
+    void changeEvent(QEvent *e);
+
+    void hp_dateInit();
+    void hp_winInit();
+    void hp_connectInit();
+    void hp_set_wifiSelect(bool isSelect);
+    void hp_set_listWidetShow();
+    void KeyDownHandle();
+    void KeyUpHandle();
+    void KeyLeftHandle();
+    void KeyRightHandle();
+    void KeyOKHandle();
+
+    bool isLongKey;
+    bool isFresh;//是否正在刷新
+
+    bool isApStart;//ap模式是否打开
+    hp_input_text *HpInputText;
+    hp_errorwarning_dialog *ErrorWarning;
+    hp_formatdialog *FormatWarning;
+
+    wifi_sta wifiSTA;
+    WIFIDIALOG_SETTING wifiDialog_setting;
+    void on_frame_wifiPassword_clicked();
+
+};
+
+#endif // HP_DIALOG_WIFI_H

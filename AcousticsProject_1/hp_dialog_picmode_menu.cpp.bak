@@ -1,0 +1,85 @@
+#include "hp_dialog_picmode_menu.h"
+#include "ui_hp_dialog_picmode_menu.h"
+
+hp_dialog_picmode_menu::hp_dialog_picmode_menu(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_picmode_menu)
+{
+    ui->setupUi(this);
+
+    setGeometry(70,480-this->height(),width(),height());
+
+    ui->PicMode_CCD->setChecked(true);
+#if isSyncPicModeIR
+    ui->PicMode_IR->setEnabled( true);
+    ui->PicMode_PIP->setEnabled(true);
+
+    ui->buttonGroup_picMode->setId(ui->PicMode_IR,0);
+    ui->buttonGroup_picMode->setId(ui->PicMode_PIP,1);
+    ui->buttonGroup_picMode->setId(ui->PicMode_CCD,2);
+
+
+#else
+    ui->PicMode_IR->setEnabled( false);
+    ui->PicMode_PIP->setEnabled(false);
+#endif
+
+
+}
+
+void hp_dialog_picmode_menu::SlotSetUIStyle(int type)
+{
+    this->setGeometry(0,0,168,450);
+    ui->verticalFrame_PicMode->setGeometry(0,0,168,450);
+    ui->frame_PicMode_CCD->setGeometry(0,0,0,0);
+    ui->PicMode_CCD->setGeometry(0,0,0,0);
+    ui->frame_PicMode_IR->setGeometry(0,0,0,0);
+    ui->PicMode_IR->setGeometry(0,0,0,0);
+    ui->frame_PicMode_PIP->setGeometry(0,0,0,0);
+    ui->PicMode_PIP->setGeometry(0,0,0,0);
+
+    ui->PicMode_IR->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_ir_n.png);}\
+                                   QToolButton::checked{border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_ir_s.png);background:transparent;}\
+                                   QToolButton::disabled{border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_ir_d.png);background:transparent;}");
+
+    ui->PicMode_PIP->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_pip_n.png);}\
+                                   QToolButton::checked{border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_pip_s.png);background:transparent;}\
+                                   QToolButton::disabled{border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_pip_d.png);background:transparent;}");
+
+    ui->PicMode_CCD->setStyleSheet("QToolButton{background:transparent;border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_ccd_n.png);}\
+                                   QToolButton::checked{border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_ccd_s.png);background:transparent;}\
+                                   QToolButton::disabled{border-image: url(" UI_res_mainmenu_PATH_1920 "toolButton_picMode_ccd_d.png);background:transparent;}");
+
+
+}
+hp_dialog_picmode_menu::~hp_dialog_picmode_menu()
+{
+    delete ui;
+}
+
+void hp_dialog_picmode_menu::SetButtonShow()
+{
+}
+void hp_dialog_picmode_menu::SetButtonEnabled()
+{
+
+}
+//翻译
+void hp_dialog_picmode_menu::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+void hp_dialog_picmode_menu::slot_pc_key_get_ir_hzh(unsigned char return_value,int status)
+{
+    SLOTLOG<<"status : "<<status;
+    if(ui->buttonGroup_picMode->checkedId() !=status)
+        emit ui->buttonGroup_picMode->button(status)->click();
+}

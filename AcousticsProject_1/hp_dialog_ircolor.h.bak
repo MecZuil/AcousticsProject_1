@@ -1,0 +1,46 @@
+#ifndef HP_DIALOG_IRCOLOR_H
+#define HP_DIALOG_IRCOLOR_H
+
+#include <QWidget>
+#include <QAbstractButton>
+#include <QTime>
+#include "hp_load_whirl.h"
+
+namespace Ui {
+class hp_dialog_ircolor;
+}
+
+class hp_dialog_ircolor : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_dialog_ircolor(QWidget *parent = nullptr);
+    ~hp_dialog_ircolor();
+
+    bool set_sebiao(int sb);
+    int get_sebiao();
+    void set_sebiao(int min,int max,bool isSelect);
+    void setButtonGroupEnabled(bool isEnabled);
+    void setButtonGroupStyleSheet(bool isSelect);
+
+    Ui::hp_dialog_ircolor *ui;
+
+signals:
+    void signal_pc_key_set_ir_color(int stats);
+
+public slots:
+    void slot_pc_key_set_ir_color(unsigned char return_value,int data);
+    void sebiaoButtonGroupChecked(QAbstractButton* bt,bool checked);
+    void SlotSetUIStyle(int type);
+private:
+    hp_load_whirl *LoadWhirlProgressBarDialog;
+
+    int sebiao;
+
+    bool define_sebiao;
+     void changeEvent(QEvent *e);
+     void Sleep(int msec);
+};
+
+#endif // HP_DIALOG_IRCOLOR_H

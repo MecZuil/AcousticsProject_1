@@ -1,0 +1,244 @@
+#ifndef HP_DOMAINTHREAD_H
+#define HP_DOMAINTHREAD_H
+
+#include <QThread>
+#include <QDebug>
+#include <QString>
+
+#include "hp_enum.h"
+#include "hp_domainapi.h"
+#include "hp_domainprotocol.h"
+#include "hi384_protocol.h"
+
+
+#define SDBLK_PATH			"/dev/mmcblk2"							//总设备节点
+#define SDDEV_PATH			"/dev/mmcblk2p1"						//SD卡所在分区
+#define SDMOUNT_PATH		"/run/media/mmcblk2p1"					//SD卡挂载路径
+#define SDSAVE_PATH			"/run/media/mmcblk2p1/DCIM"				//SD卡保存路径
+
+#define SDMOUNT_CMD			"mount -t vfat -o noatime -o nodiratime /dev/mmcblk2p1 /run/media/mmcblk2p1 -o umask=0000"	//SD卡挂载命令
+#define SDUMOUNT_CMD		"umount -l /run/media/mmcblk2p1"		//SD卡卸载命令
+#define SDMKDIRSAVE_CMD		"mkdir -p /run/media/mmcblk2p1/DCIM"	//创建SD卡保存目录
+#define SDFORMAT_CMD		"mkfs.vfat /dev/mmcblk2p1"				//格式化SD卡分区
+#define SDDELETEALL_CMD		"rm /run/media/mmcblk2p1/* -rf"			//删除SD卡分区里所有文件
+
+#define RESET_CONFIG_XML_CMD            "cp /home/root/config_default.xml /home/root/config.xml"
+#define RESET_ENC_XML_CMD               "cp /home/root/enc_default.xml /home/root/enc.xml"
+#define RESET_SYS_XML_CMD               "cp /home/root/sys_default.xml /home/root/sys.xml"
+
+#define _ABS(a) ((a) < 0 ? -(a) : (a))
+#define SWAP(a, b) do { (a) = (a) ^ (b); \
+    (b) = (a) ^ (b); \
+    (a) = (a) ^ (b); \
+    } while (0)
+
+#define AVI_FRAME           14		//录像帧率
+#define SDFORMAT_CMD		"mkfs.vfat /dev/mmcblk2p1"				//格式化SD卡分区
+
+
+class hp_domainthread : public QThread
+{
+    Q_OBJECT
+public:
+    explicit hp_domainthread(QObject *parent = 0);
+
+
+    QString domainName;
+
+    void setDomainName(const QString& str);
+    void startDomain();
+    void stopDomain();
+
+protected:
+    void run();
+
+signals:
+
+    //pc_key
+    void signal_pc_key_set_capture_start(unsigned char return_value,char *data);
+    void signal_pc_key_set_capture_stop(unsigned char return_value);
+    void signal_pc_key_set_capture_edit(unsigned char return_value);
+    void signal_pc_key_get_capture_info(unsigned char return_value,take_capture_t data);
+    void signal_pc_key_get_capture_flag(unsigned char return_value,int stats);
+    void signal_pc_key_set_record_start(unsigned char return_value);
+    void signal_pc_key_set_record_stop(unsigned char return_value,char *data);
+//    void signal_pc_key_get_record_flag(unsigned char return_value,int stats);
+    void signal_pc_key_get_sdinsert(unsigned char return_value,int stats);
+    void signal_pc_key_get_sdinfo(unsigned char return_value,sdinfo_t sdinfo);
+    void signal_pc_key_set_wifi_ap_state(unsigned char return_value );
+    void signal_pc_key_get_wifi_ap_state(unsigned char return_value,int stats);
+    void signal_pc_key_set_ble_state(unsigned char return_value);
+    void signal_pc_key_set_ble_inout(unsigned char return_value);
+    void signal_pc_key_set_ble_search(unsigned char return_value,char *data);
+    void signal_pc_key_get_ble_oldconnect(unsigned char return_value);
+    void signal_pc_key_set_ble_connect(unsigned char return_value);
+    void signal_pc_key_set_ble_disconnect(unsigned char return_value);
+    void signal_pc_key_get_ble_state(unsigned char return_value,ble_stat bleStat);
+    void signal_pc_key_get_ble_search(unsigned char return_value,char *data);
+    void signal_pc_key_set_4g_state(unsigned char return_value);
+    void signal_pc_key_get_4g_state(unsigned char return_value,int stats);
+
+    void signal_pc_key_set_a_gray_rect(unsigned char return_value);
+    void signal_pc_key_edit_a_gray_rect(unsigned char return_value);
+    void signal_pc_key_del_a_gray_rect(unsigned char return_value);
+
+    void signal_pc_key_powerdown(unsigned char return_value);
+    void signal_pc_key_get_charge(unsigned char return_value,int stats);
+    void signal_pc_key_get_battery(unsigned char return_value ,int stats);
+
+    void signal_pc_key_set_single_source(unsigned char return_value);
+    void signal_pc_key_get_single_source(unsigned char return_value,int stats);
+    void signal_pc_key_set_moving_range(unsigned char return_value);
+    void signal_pc_key_get_moving_range(unsigned char return_value ,int_range movingRange);
+
+    void signal_pc_key_set_audio_start(unsigned char return_value );
+    void signal_pc_key_set_audio_stop(unsigned char return_value);
+    void signal_pc_key_set_audio_play(unsigned char return_value);
+    void signal_pc_key_set_audio_stopplay(unsigned char return_value);
+    void signal_pc_key_set_disp_multiple(unsigned char reutrn_value);
+    void signal_pc_key_get_grab(unsigned char return_value);
+    void signal_pc_key_set_hdmi(unsigned char return_value);
+    void signal_pc_key_set_lcdstate(unsigned char return_value);
+    void signal_pc_key_set_prpdstream(unsigned char return_value);
+    void signal_pc_key_set_usbmode(unsigned char return_value);
+    void signal_pc_key_get_usbinsert(unsigned char return_value,int stats);
+    void signal_pc_key_set_4ggps_state(unsigned char reutrn_value);
+    void signal_pc_key_set_twozoom(unsigned char return_value);
+    void signal_pc_key_set_autozoom(unsigned char return_value);
+    void signal_pc_key_set_displaypos(unsigned char reutrn_value);
+    void signal_pc_key_set_irstream(unsigned char return_value);
+    void signal_pc_fpga_set_setarithmetic(unsigned char return_value);
+
+    //buf
+    void signal_pc_buf_start_encode(unsigned char return_value);
+    void signal_pc_buf_stop_encode(unsigned char return_value);
+
+    //pc_sys
+    void signal_pc_sys_set_time_sec(unsigned char return_value);
+    void signal_pc_sys_formatting_sd(unsigned char return_value);
+    void signal_pc_sys_config_init(unsigned char return_value);
+
+    void signal_pc_sys_set_wifi_sta_start(unsigned char return_value);
+    void signal_pc_sys_set_wifi_sta_search(unsigned char return_value ,char *str);
+    void signal_pc_sys_set_wifi_sta_connect(unsigned char return_value);
+    void signal_pc_sys_get_wifi_sta_state(unsigned char return_value,int stats);
+//    void signal_pc_sys_set_prpd_anser(unsigned char return_value);
+    void signal_pc_sys_set_freq_anser(unsigned char return_value);
+
+    //fpga
+    void signal_pc_fpga_set_freq_start(unsigned char return_value);
+    void signal_pc_fpga_set_vid_mode(unsigned char return_value);
+    void signal_pc_fpga_set_adjust_ccd_x(unsigned char return_value);
+    void signal_pc_fpga_set_adjust_ccd_y(unsigned char return_value);
+    void signal_pc_fpga_set_z(unsigned char return_value);
+
+    //stream
+    void signal_pc_stream_data(unsigned char return_value,unsigned char * data);
+    void signal_pc_stream_prpd(unsigned char return_value,int * data,int recv_datalen);
+
+public slots:
+
+    //pc_key
+    void slot_pc_key_set_capture_start();
+    void slot_pc_key_set_capture_stop(take_capture_t data);
+    void slot_pc_key_set_capture_edit(take_capture_t data);
+    void slot_pc_key_get_capture_info(char *str);
+    void slot_pc_key_get_capture_flag();
+    void slot_pc_key_set_record_start();
+    void slot_pc_key_set_record_stop();
+//    void slot_pc_key_get_record_flag();
+    void slot_pc_key_get_sdinsert();
+    void slot_pc_key_get_sdinfo();
+    void slot_pc_key_set_wifi_ap_state(int data);
+    void slot_pc_key_get_wifi_ap_state();
+    void slot_pc_key_set_ble_state(int data);
+    void slot_pc_key_set_ble_inout(int stats);
+    void slot_pc_key_set_ble_search();
+    void slot_pc_key_get_ble_oldconnect();
+    void slot_pc_key_set_ble_connect(char *str);
+    void slot_pc_key_set_ble_disconnect();
+    void slot_pc_key_get_ble_state();
+    void slot_pc_key_get_ble_search();
+    void slot_pc_key_set_4g_state(int data);
+    void slot_pc_key_get_4g_state();
+
+    void slot_pc_key_set_a_gray_rect(grayRect_t rect);
+    void slot_pc_key_edit_a_gray_rect(grayRect_t rect);
+    void slot_pc_key_del_a_gray_rect(grayRect_t rect);
+
+    void slot_pc_key_powerdown();
+    void slot_pc_key_get_charge();
+    void slot_pc_key_get_battery();
+
+    void slot_pc_key_set_single_source(int stats);
+    void slot_pc_key_get_single_source();
+    void slot_pc_key_set_moving_range(int_range movingRange);
+    void slot_pc_key_get_moving_range();
+
+    void slot_pc_key_set_audio_start();
+    void slot_pc_key_set_audio_stop();
+    void slot_pc_key_set_audio_play();
+    void slot_pc_key_set_audio_stopplay();
+    void slot_pc_key_set_disp_multiple(int data);
+    void slot_pc_key_get_grab();
+    void slot_pc_key_set_hdmi(int stats);
+    void slot_pc_key_set_lcdstate(int stats);
+    void slot_pc_key_set_prpdstream(int stats);
+    void slot_pc_key_set_usbmode(int stats);
+    void slot_pc_key_get_usbinsert();
+    void slot_pc_key_set_twozoom(int stats);
+    void slot_pc_key_set_autozoom(int stats);
+    void slot_pc_key_set_displaypos(int_pos intPos);
+    void slot_pc_key_set_irstream(int stats);
+
+    //pc_buf
+    void slot_pc_buf_start_encode();
+    void slot_pc_buf_stop_encode();
+
+
+    //fpga
+    void slot_pc_fpga_set_freq_start(int data);
+    void slot_pc_fpga_set_vid_mode(int data);
+    void slot_pc_fpga_set_adjust_ccd_x(int data);
+    void slot_pc_fpga_set_adjust_ccd_y(int data);
+    void slot_pc_fpga_set_z( int_Z intZ);
+
+
+    //pc_sys
+    void slot_pc_sys_set_time_sec(char *str);
+    void slot_pc_sys_formatting_sd();
+    void slot_pc_sys_config_init();
+
+    void slot_pc_sys_set_wifi_sta_start(int stats);
+    void slot_pc_sys_set_wifi_sta_search();
+    void slot_pc_sys_set_wifi_sta_connect(wifi_sta wifiSTA);
+    void slot_pc_sys_get_wifi_sta_state();
+    void slot_pc_sys_set_prpd_anser();
+    void slot_pc_sys_set_freq_anser();
+    void slot_pc_key_set_4ggps_state(int stats);
+
+private:
+    //主命令判断 进行相关信号的划分调用
+    void process(unsigned char recv_cmd,unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen);
+    void pc_cfg_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen);
+    void pc_sys_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen);
+    void pc_key_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen);
+    void pc_buf_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen);
+    void pc_fpga_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen);
+    void pc_stream_process(unsigned char recv_subcmd,unsigned char return_value,unsigned char *data,int recv_datalen);
+
+
+private:
+    volatile bool stopped;
+
+    int sock_fd;
+
+    hp_domainapi *p_hpdomainapi;
+    hp_domainprotocol *p_hpprotocolpkg;
+
+
+
+
+};
+
+#endif // HP_DOMAINTHREAD_H

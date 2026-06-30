@@ -1,0 +1,45 @@
+#ifndef HP_DIALOG_DRAWMENU_H
+#define HP_DIALOG_DRAWMENU_H
+
+#include <QWidget>
+#include <QButtonGroup>
+#include "hi384_protocol.h"
+#include "hp_enum.h"
+
+
+typedef struct
+{
+    int s_PointNum;
+    int s_LineNum;
+    int s_RectNum;
+}S_PLRNum;
+
+typedef struct
+{
+    int Operate;//操作的是PLR中哪一个的标识
+    int ID;//与底层通信用的ID号
+    int Index;//PLR在容器中的位置
+}S_PLROperate;
+
+namespace Ui {
+class hp_dialog_drawmenu;
+}
+
+class hp_dialog_drawmenu : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_dialog_drawmenu(QWidget *parent = nullptr);
+    ~hp_dialog_drawmenu();
+
+    Ui::hp_dialog_drawmenu *ui;
+
+//    QButtonGroup* buttonGroup;
+private:
+
+    void changeEvent(QEvent *e);
+
+};
+
+#endif // HP_DIALOG_DRAWMENU_H

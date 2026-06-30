@@ -1,0 +1,2228 @@
+#include "hp_preview.h"
+#include "ui_hp_preview.h"
+#include    <QDebug>
+
+#define DebugShow 1
+
+char* MediaPauseCmd = "a\r\n";
+char* MediaExitCmd = "e\r\n";
+
+hp_preview::hp_preview(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_preview)
+{
+    ui->setupUi(this);
+
+    hp_winInit();
+
+    hp_dataInit();
+    StartCheckFile();//创建TempStoragePng文件夹
+    hp_connectInit();
+}
+
+hp_preview::~hp_preview()
+{
+    delete ui;
+}
+//按照分辨率修改UI尺寸及图标
+void hp_preview::SlotSetUIStyle(int type)
+{
+
+    if(type == 1)
+    {
+        QFont font("Microsoft YaHei", 14);
+        QFont font_page("Microsoft YaHei", 17);
+
+        this->setGeometry(0,0,1920,1080);
+        ui->frame->setGeometry(-480,0,2400,1080);
+        ui->previewShow->setGeometry(480,0,1440,1012);
+        ui->pictureShow->setGeometry(0,0,1440,1012);
+        ui->frame_pic->setGeometry(1920,268,480,540);
+        ui->scrollArea_picInfo->setGeometry(0,0,480,540);
+        ui->toolButton_voiceNotes->setMinimumSize(100,24);
+        ui->toolButton_voiceNotes->setMaximumSize(100,24);
+        ui->edit_PFPower->setMinimumSize(0,30);
+        ui->edit_range->setMinimumSize(0,30);
+        ui->edit_threshold->setMinimumSize(0,30);
+        ui->edit_freqL->setMinimumSize(0,30);
+        ui->edit_freqH->setMinimumSize(0,30);
+        ui->frame_button->setGeometry(1920,810,480,90);
+        ui->toolButton_edit->setGeometry(40,10,53,53);
+        ui->toolButton_delete->setGeometry(230,10,53,53);
+        ui->toolButton_close->setGeometry(400,10,53,53);
+        ui->edit_name->setGeometry(2112,135,281,60);
+        ui->label_name->setGeometry(1934,135,168,45);
+        ui->label_SD->setGeometry(1934,68,168,45);
+        ui->edit_SD->setGeometry(2112,68,290,45);
+        ui->frame_vid->setGeometry(1440,248,480,562);
+        ui->toolButton_videoPlay->setGeometry(120,180,240,67);
+        ui->slider_video->setGeometry(24,22,408,50);
+        ui->label_videoPlayTime->setGeometry(24,67,430,45);
+        ui->toolButton_videoStop->setGeometry(20,20,22,22);
+        ui->slider_video_2->setGeometry(20,80,31,331);
+        ui->frame_button_page->setGeometry(1920,900,480,180);
+        ui->label_page->setMinimumSize(80,80);
+        ui->toolButton_LastPage->setMinimumSize(80,80);
+        ui->label_xiegang->setMinimumSize(80,80);
+        ui->label_allPage->setMinimumSize(80,80);
+        ui->toolButton_NextPage->setMinimumSize(80,80);
+        ui->listWidget->setGeometry(0,810,1440,270);
+
+        ui->label_ASM->setFont(font);
+        ui->edit_ASM->setFont(font);
+        ui->label_dynamic_range->setFont(font);
+        ui->edit_dynamic_range->setFont(font);
+        ui->label_time->setFont(font);
+        ui->edit_time->setFont(font);
+        ui->toolButton_voiceNotes->setFont(font);
+        ui->label_voice_notes->setFont(font);
+        ui->label_notes->setFont(font);
+        ui->edit_notes->setFont(font);
+        ui->label_PFPower->setFont(font);
+        ui->edit_PFPower->setFont(font);
+        ui->label_range->setFont(font);
+        ui->edit_range->setFont(font);
+        ui->label_threshold->setFont(font);
+
+        ui->edit_threshold->setFont(font);
+        ui->label_freqL->setFont(font);
+        ui->edit_freqL->setFont(font);
+        ui->label_freqH->setFont(font);
+        ui->edit_freqH->setFont(font);
+        ui->edit_name->setFont(font);
+        ui->label_name->setFont(font);
+        ui->label_SD->setFont(font);
+        ui->edit_SD->setFont(font);
+        ui->label_videoPlayTime->setFont(font);
+        ui->toolButton_videoStop->setFont(font);
+        ui->label_page->setFont(font_page);
+        ui->label_xiegang->setFont(font_page);
+        ui->label_allPage->setFont(font_page);
+        ui->listWidget->setFont(font);
+
+
+
+        ui->toolButton_LastPage->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "ToolButton_left_n.png);}\
+                                               QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "ToolButton_left_s.png);}\
+                                               QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "ToolButton_left_d.png);}");
+        ui->toolButton_voiceNotes->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "voicenotes_stop_n.png);}");
+        ui->toolButton_videoStop->setStyleSheet("QToolButton{background-image: url(" UI_res_PATH_1920 "return_n.png);}\
+                                                QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "return_s.png);}\
+                                                QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "return_d.png);}");
+        ui->toolButton_videoPlay->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "label_Background_n.png);color:white;}\
+                                                QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "label_Background_s.png);color:white;}");
+        ui->toolButton_edit->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "edit_n.png);}\
+                                           QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "edit_s.png);}\
+                                            QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "edit_d.png);}");
+        ui->toolButton_delete->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "delete_n.png);}\
+                                             QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "delete_s.png);}\
+                                             QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "delete_d.png);}");
+        ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "return_n.png);}\
+                                              QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "return_s.png);}\
+                                             QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "return_d.png);}\n");
+        ui->toolButton_NextPage->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "ToolButton_right_n.png);}\
+                                               QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "ToolButton_right_s.png);}\
+                                               QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "ToolButton_right_d.png);}");
+    }
+}
+
+//变量初始化
+void hp_preview::hp_dataInit()
+{
+    isPD = false;
+    isGas = false;
+    isLongKey = false;
+    isNormal = false;
+    isUnkown = false;
+    isCollect = false;
+    isSdInsert = false;
+    isVoicePlay = false;
+    isVideoPlay = false;
+    isSDPathExist = false;
+    isSDUpdateSuccess = true;
+    isVideoProcessStart = false;
+    isAnimationUp = false;
+    isAudioPress = false;
+    isBluConnected = false;
+    isShowMoreInfo = true;
+    isLoadingListWidget = false;
+    isLoadingItem = false;
+    isClosePreview = false;
+    isVideoHaveAudio = false;
+    isClientConnected = false;
+
+
+    UIType = 0;
+    PicNum=0;
+    AviNum=0;
+    loadingNum = 1;
+    ThumbnailNum=0;
+    sd_info.usedMB=0;
+    sd_info.totalMB=0;
+    AviPlayFirstCount = 0;
+
+    currentSelect = PREVIEW_ListWidget;
+
+    ResourcesListDirect = "/home/root/res/ResourcesList";
+    FileDirect = "/run/media/mmcblk2p1/DCIM";
+
+    SlotSDInsert();
+
+    hp_updateStatus(true);
+
+}
+//界面初始化
+void hp_preview::hp_winInit()
+{
+
+    ui->frame->setStyleSheet("background:black; border :none;");
+    ui->frame_pic->setStyleSheet("background:black; border :none;");
+    ui->frame_vid->setStyleSheet("background:black; border :none;");
+    ui->frame_button->setStyleSheet("background:black; border :none;");
+    maskImage = new QImage(":/res/mask.png");
+    (*maskImage) = maskImage->scaled(320,240);
+    VideoPlayerProcess = new QProcess(this);
+    FormatDialog = new hp_formatdialog(this);
+    FormatDialog->close();
+    ErrorWarningDialog = new hp_errorwarning_dialog(this);
+    ErrorWarningDialog->close();
+    HpInputText = new hp_input_text(this);
+    HpInputText->hp_setIns(INPUT_PREVIEW);
+    HpInputText->close();
+
+    m_pipeLineMsgTimer = new QTimer(this);
+    connect(m_pipeLineMsgTimer, SIGNAL(timeout()), this, SLOT(query_position_and_duration()));
+
+
+    //    HpStatusBoxTop = new hp_statusbox_top(this);
+    //    HpStatusBoxTop->move(800-200,0);
+    hp_setListWidgetStyle();//设置表格样式
+    ui->frame_pic->close();
+    ui->frame_vid->close();
+    ui->pictureShow->close();
+    ui->label_videoPlayTime->close();
+    ui->label_PicUpload->close();
+    ui->toolButton_PicUpload->close();
+
+    ui->slider_video_2->close();
+
+    hp_setToolButtonEnabled(false,false,true);
+    ui->edit_name->setPlainText("");//初始化右侧信息栏
+
+    ui->frame_pic->setGeometry(800,119,200,241);
+    ui->frame_pic->close();
+    ui->frame_vid->setGeometry(800,119,200,241);
+    ui->frame_vid->close();
+    ui->frame_button->setGeometry(800,360,201,40);
+
+    if(isShowMoreInfo)
+    {
+        QScroller *scroller=QScroller::scroller(ui->scrollArea_picInfo);
+        scroller->grabGesture(ui->scrollArea_picInfo,QScroller::LeftMouseButtonGesture);//鼠标左键移动滑动条
+
+        ui->scrollAreaWidgetContents_picInfo->setGeometry(0,0,195,400);
+
+        //设置滑动条是否显示
+        //        ui->scrollArea_picInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        //        ui->scrollArea_picInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    }
+    else
+    {
+        ui->label_PFPower->close();
+        ui->edit_PFPower->close();
+        ui->label_range->close();
+        ui->edit_range->close();
+        ui->label_threshold->close();
+        ui->edit_threshold->close();
+        ui->label_freqL->close();
+        ui->edit_freqL->close();
+        ui->label_freqH->close();
+        ui->edit_freqH->close();
+        ui->scrollAreaWidgetContents_picInfo->setGeometry(0,0,195,250);
+    }
+
+    ui->listWidget->installEventFilter(this);
+    ui->toolButton_edit->installEventFilter(this);
+    ui->toolButton_close->installEventFilter(this);
+    ui->toolButton_delete->installEventFilter(this);
+    ui->toolButton_voiceNotes->installEventFilter(this);
+    ui->listWidget->viewport()->installEventFilter(this);
+    ui->pictureShow->installEventFilter(this);
+    ui->label_page->installEventFilter(this);
+
+
+
+    hp_InitAnimation();
+}
+//信号与槽连接
+void hp_preview::hp_connectInit()
+{
+    //    connect(HpInputText,SIGNAL(hp_signal_text_over(QString,INPUT_NOW_SHOW)),this,SLOT(hp_slot_text_over(QString,INPUT_NOW_SHOW)));
+    connect(HpInputText,SIGNAL(SignalChangePreviewPage(QString,INPUT_NOW_SHOW)),this,SLOT(hp_slot_text_over(QString,INPUT_NOW_SHOW)));
+    connect(VideoPlayerProcess,SIGNAL(readyRead()),this,SLOT(VideoPlayerReadData()));
+    //    connect(ui->listWidget->horizontalScrollBar(),&QScrollBar::actionTriggered,this ,&hp_preview::actionTriggered);
+    //    connect(ui->listWidget->horizontalScrollBar(),&QScrollBar::valueChanged,this ,&hp_preview::scrollChanged);
+
+    //    connect(VideoPlayerProcess,&QProcess::readyRead,[this]{qDebug().noquote()<<VideoPlayerProcess->readAll();});
+    //    VideoPlayerProcess->setProcessChannelMode(QProcess::MergedChannels);
+}
+void hp_preview::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+bool hp_preview::eventFilter(QObject *o,QEvent *e)
+{
+    if(e->type()==QEvent::MouseButtonPress)
+    {
+#if DebugShow
+        qDebug("hp_preview::eventFilter e->type()=QEvent::MouseButtonPress");
+#endif
+        SignalUpdateSetUpClock();
+    }
+
+    if(e->type() == QEvent::MouseButtonRelease)
+    {
+#if DebugShow
+        qDebug("hp_preview::eventFilter e->type()=QEvent::MouseButtonRelease");
+#endif
+        if(o->objectName() == "label_page")
+        {
+            hp_updateStatus(false);
+            currentSelect = PREVIEW_NowPage;
+            hp_updateStatus(true);
+            if(HpInputText->isHidden())
+            {
+                HpInputText->hp_setText(ui->label_page->text());
+                HpInputText->hp_setShow(INPUT_SHOW_NUM);
+                HpInputText->show();
+                HpInputText->raise();
+            }
+        }
+    }
+    return false;
+}
+
+void hp_preview::keyPressEvent(QKeyEvent *ev)
+{
+    if(!(isLongKey=ev->isAutoRepeat()))
+    {
+#if DebugShow
+        qDebug()<<" hp_preview::keyReleaseEvent(QKeyEvent *ev)---------- ev->key() = "<<ev->key();
+#endif
+        SignalUpdateSetUpClock();
+    }
+}
+
+void hp_preview::keyReleaseEvent(QKeyEvent *ev)
+{
+#if DebugShow
+    qDebug()<<" hp_preview::keyReleaseEvent(QKeyEvent *ev)---------- ev->key() = "<<ev->key();
+#endif
+    SignalUpdateSetUpClock();
+    if(isLoadingListWidget)
+        return;
+    QPixmap map;
+    switch (ev->key()) {
+    case Key_RETURN:
+        KeyReturnHandle();
+        break;
+    case Key_CAPTURNANDVIDEO:
+        SignalPrintscreenHandle();
+        //        map = this->grab();
+        //        map.save("/run/media/mmcblk2p1/DCIM/preview1.png");
+        //        map = QPixmap::grabWindow(this->winId());
+        //        map.save("/run/media/mmcblk2p1/DCIM/preview2.jpg");
+        //        signal_pc_key_get_grab();
+        //        system("sync");
+        break;
+        //    case Qt::Key_O:
+        //        signal_pc_key_get_grab();
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_preview::mousePressEvent(QMouseEvent *event)
+{
+    qDebug("void hp_preview::mousePressEvent(QMouseEvent *event)");
+    SignalUpdateSetUpClock();
+}
+//设置列表样式
+void hp_preview::hp_setListWidgetStyle()
+{
+    ui->listWidget->setIconSize(QSize(100,75));                 //设置QListWidget中的单元项的图片大小
+    ui->listWidget->setSpacing(2);                             //设置单元格间距
+    ui->listWidget->setFlow(QListView::LeftToRight);          //设置单元格从左到右排序
+    ui->listWidget->setWrapping(false);                      //防止自动换行
+    //    ui->listWidget->setResizeMode(QListView::Adjust);       //设置单元项自适应
+    //    ui->listWidget->setViewMode(QListView::IconMode);//设置单元格类型
+    ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);     //设置滑动条是否显示
+    QScroller *scroller=QScroller::scroller(ui->listWidget);
+    scroller->grabGesture(ui->listWidget,QScroller::LeftMouseButtonGesture);//鼠标左键移动滑动条
+    ui->listWidget->setMovement(QListView::Static);//使列表项不可被拖动位置
+}
+//编辑
+void hp_preview::on_toolButton_edit_clicked()
+{
+    hp_updateStatus(false);
+    currentSelect = PREVIEW_Edit;
+    hp_updateStatus(true);
+    hp_updateCurrentItemInfo(false);
+    //    if(!ui->listWidget->currentItem())
+    //        return;
+    signal_hp_capture_save_open(PREVIEW_PIC_SAVE,captureInfo);
+}
+//返回
+void hp_preview::on_toolButton_close_clicked()
+{
+    if(isClosePreview)
+        return;
+    isClosePreview = true;
+    hp_updateStatus(false);
+    currentSelect = PREVIEW_Return;
+    hp_updateStatus(true);
+
+    hp_setToolButtonEnabled(false,false,false);
+    if(isVoicePlay)
+    {
+        signal_pc_key_set_audio_stopplay();
+        Sleep(10);
+        isVoicePlay = false;
+    }
+    if(isVideoProcessStart)
+    {
+        hp_stopVideoProcess();
+        Sleep(200);
+    }
+    isLoadingListWidget = true;
+    hp_setToolButtonEnabled(false,false,false);
+    ui->listWidget->setEnabled(false);
+
+    videoPos.X = 70;
+    videoPos.Y = 0;
+    signal_pc_key_set_displaypos(videoPos);//打开视频层前需要设置视频层位置
+    Sleep(10);
+    signal_pc_buf_start_encode();
+}
+//删除按钮
+void hp_preview::on_toolButton_delete_clicked()
+{
+    hp_updateStatus(false);
+    currentSelect = PREVIEW_Delete;
+    hp_updateStatus(true);
+    //    if(!ui->listWidget->currentItem())
+    //        return;
+    FormatDialog->hp_setFormatDialogText(tr("是否删除此项?"));
+    FormatDialog->hp_setDialogType(DIALOG_OKCANCEL);
+    FormatDialog->show();
+
+}
+//确定删除图片
+void hp_preview::slot_delete_pic()
+{
+    QString deleteCmd;
+    deleteCmd = "rm -f "+FileDirect+"/"+ui->listWidget->currentItem()->text();//先将当前的要删除的图片名称记录下来
+    QByteArray ba=deleteCmd.toUtf8();
+    system(ba);
+    system("sync");
+    QString ACTFileName;
+    ACTFileName = "ACT_"+ui->listWidget->currentItem()->text().mid(4,15)+".act";
+    deleteCmd = "rm -f "+FileDirect+"/"+ACTFileName;//先将当前的要删除的图片名称记录下来
+    qDebug()<<deleteCmd;
+    system(deleteCmd.toUtf8());
+    system("sync");
+    SlotSDInsert();
+    hp_updateCurrentItemInfo(false);
+    hp_setToolButtonEnabled(false,false,true);
+}
+//设置名称
+void hp_preview::hp_setEditName(QString text)
+{
+    ui->edit_name->setPlainText(text);
+}
+//设置备注
+void hp_preview::hp_setEditNotes(QString note)
+{
+    ui->edit_notes->setPlainText(note);
+}
+//SD卡格式化后
+void hp_preview::slot_pc_sys_formatting_sd(unsigned char return_value)
+{
+    qDebug("##--------------------------hp_preview::slot_pc_sys_formatting_sd:return_value:0x%02x",return_value);
+    if(return_value==RE_OK)
+    {
+        ThumbnailNum=0;
+        PicNum=0;
+        AviNum=0;
+        listIndex=0;
+        loadingNum = 1;
+        FileList.clear();
+        FileNameList.clear();
+        ui->listWidget->clear();
+        FileNameList.clear();
+        ui->label_allPage->setText("1");
+        ui->label_page->setText(QString::number(loadingNum));
+        hp_updateCurrentItemInfo(false);
+        hp_setToolButtonEnabled(false,false,true);
+    }
+}
+//SD卡插入时的操作
+void hp_preview::SlotSDInsert()
+{
+    //    isLoadingListWidget = true;
+    QString str;
+    listIndex = 0;
+    //    system("rm -rf /home/root/res/TempStoragePng/*");//先清空设备内存储文件
+    hp_setToolButtonEnabled(false,false,true);
+    isSDUpdateSuccess=hp_updateDir();
+    qDebug()<<"isSDUpdateSuccess = "<<isSDUpdateSuccess;
+    if(isSDUpdateSuccess)
+    {
+        ShowCurrentPage();
+    }
+    else
+    {
+        //清空当前列表,显示加载错误
+    }
+
+    ui->listWidget->setEnabled(true);
+    //    isLoadingListWidget=false;
+    //            FormatDialog->close();
+}
+//SD卡拔出时的操作
+void hp_preview::SlotSDPullOut()
+{
+    QString str;
+    MYLOG;
+    if(isSDPathExist)
+    {
+        str =tr("SD卡错误");
+    }
+    else
+    {
+        str=tr("SD卡未插入");
+    }
+    ui->edit_SD->setText(str);
+    ThumbnailNum =0;
+    PicNum=0;
+    AviNum=0;
+    loadingNum = 1;
+    listIndex=0;
+    FileList.clear();
+    ui->listWidget->clear();
+    FileNameList.clear();
+    ui->label_allPage->setText("1");
+    ui->label_page->setText(QString::number(loadingNum));
+    hp_setToolButtonEnabled(false,false,true);
+    hp_updateCurrentItemInfo(false);
+
+}
+//SD卡容量信息更新
+void hp_preview::hp_setEditSD(QString sdInfo)
+{
+    ui->edit_SD->setText(sdInfo);
+}
+//更新SD卡的内容
+bool hp_preview::hp_updateDir()
+{
+    QDir dir("/run/media/mmcblk2p1/DCIM");
+    QStringList filters;
+    //    bool isExit=false;
+    FileList.clear();
+    FileNameList.clear();
+    filters.clear();
+    filters.append(QString("*.jpg"));
+    filters.append(QString("*.avi"));
+    //设置进入的目录显示的筛选条件
+    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);//只列出文件 列出隐藏文件 不列出符号连接
+    dir.setNameFilters(filters);
+    dir.setSorting(QDir::Name | QDir::Reversed);//按名字的反序
+
+    QFileInfoList fileList;//未按后缀排序的
+
+    fileList=dir.entryInfoList();
+
+    loadingNum = 1;
+    ThumbnailNum = 0;
+    PicNum = 0;
+    AviNum = 0;
+//    qDebug()<<"filelist size : "<<fileList.size();
+
+    for(int i=0; i<fileList.size(); i++)
+    {
+        QFileInfo fileInfo = fileList.at(i);
+//        qDebug()<<"fileInfo.fileName = "<<fileInfo.fileName();
+        if( fileInfo.fileName().contains(".avi",Qt::CaseInsensitive))
+        {
+            if(fileInfo.fileName().contains("VID",Qt::CaseInsensitive))
+            {
+                FileList.append(fileList.at(i));
+                AviNum++;
+                ThumbnailNum++;
+            }
+        }
+    }
+    for(int i = 0;i<fileList.size();i++)
+    {
+        QFileInfo fileInfo = fileList.at(i);
+        if( fileInfo.fileName().contains(".jpg",Qt::CaseInsensitive))
+        {
+            FileList.append(fileList.at(i));
+            FileNameList.append(fileInfo.fileName());
+            PicNum++;
+            ThumbnailNum++;
+        }
+    }
+    QString str;
+    //    if(ThumbnailNum != 0)
+    if(ThumbnailNum % 4 ==0)
+    {
+        if(ThumbnailNum == 0)
+            MaxPageCount = 1;
+        else
+            MaxPageCount = ThumbnailNum/4;
+    }
+    else
+        MaxPageCount = ThumbnailNum/4+1;
+
+    str = QString::number(MaxPageCount);
+
+    ui->label_allPage->setText(str);
+    ui->label_page->setText(QString::number(loadingNum));
+
+    for(int i = 0;i<FileList.size();i++)
+    {
+        MYLOG<<"****"<<FileList.at(i).fileName();
+    }
+
+    UpdateResourcesListFile();
+
+    return true;
+}
+//更新视频图片资源列表文件
+void hp_preview::UpdateResourcesListFile()
+{
+    FILE *fresourcesList = fopen(ResourcesListDirect,"w+");//打开可读写文件 每次打开内容都将清空
+
+    for(int i=0; i<FileList.size(); i++)
+    {
+        QFileInfo fileInfo = FileList.at(i);
+        if( fileInfo.fileName().contains(".avi",Qt::CaseInsensitive) )   //CaseInsensitive 比较字符串不区分大小写
+        {
+            if(fileInfo.fileName().contains("VID",Qt::CaseInsensitive))
+            {
+                QByteArray bfileName = fileInfo.fileName().toLatin1();
+                //                char *lineFeedSymbol ="\n";
+                char *cfileName = bfileName.data();//转化为纯字符数组
+                fwrite(cfileName,fileInfo.fileName().length(),1,fresourcesList);
+                fwrite("\n",1,1,fresourcesList);
+                //                printf("%s\n",cfileName);
+            }
+        }
+        else if( fileInfo.fileName().contains(".jpg",Qt::CaseInsensitive) )
+        {
+            QByteArray bfileName = fileInfo.fileName().toLatin1();
+            //                char *lineFeedSymbol ="\n";
+            char *cfileName = bfileName.data();//转化为纯字符数组
+            fwrite(cfileName,fileInfo.fileName().length(),1,fresourcesList);
+            fwrite("\n",1,1,fresourcesList);
+            //                printf("%s\n",cfileName);
+        }
+    }
+    fclose(fresourcesList);
+    return;
+}
+
+//检查开发板上是否有TempStoragePng这个文件夹
+void hp_preview::StartCheckFile()
+{
+    QDir dir;
+    QString Strdirect="./res/TempStoragePng";
+    QFileInfo fileInfo(Strdirect);
+
+    if( !fileInfo.isDir() )//判断是否存在文件夹
+        dir.mkdir(Strdirect);//不存在 创建文件夹
+    else
+        DeleVideoForJPG();//开机清空文件夹下的图片
+}
+//删除提取到的视频的第一帧图片
+void hp_preview::DeleVideoForJPG()
+{
+    QString cmd;
+    QByteArray  SysCommand;
+
+    cmd = "rm /home/root/res/TempStoragePng/VID*";
+
+    SysCommand=cmd.toLatin1();
+    system(SysCommand);
+    return ;
+}
+//获取视频第一帧图片
+int hp_preview::VideoForJPG(QString file,QString filename)
+{
+    QString cmd;
+    QProcess process;
+#if DebugShow
+    qDebug()<<"ffmpeg -n -i /run/media/mmcblk2p1/DCIM/"<<file<<" -r 12 -vframes 1 /home/root/res/TempStoragePng/"<<filename<<".jpg";
+#endif
+    cmd = "ffmpeg -n -i /run/media/mmcblk2p1/DCIM/"+file+" -r 12 -vframes 1 /home/root/res/TempStoragePng/"+filename+".jpg";
+    //通过过execute函数是阻塞 直到我们启动的外部程序结束才会往下进行 如果使用start我发现这个外部程序会被干掉
+    process.execute(cmd);
+    process.close();
+    return 0;
+}
+//显示SD卡内容
+void hp_preview::ShowCurrentPage()
+{
+    ui->frame_pic->close();
+    ui->frame_vid->close();
+    ui->pictureShow->close();
+    hp_setToolButtonEnabled(false,false,true);
+    ui->edit_name->setPlainText("");//初始化右侧信息栏
+    ui->listWidget->clear();
+    FileNameList.clear();
+    SlotShowCurrentPageTimer();
+}
+//新增列表项 20240926 解决新拍图片未打开预览命名重复时检测不到问题 拍完照临时新增listwidget
+void hp_preview::AddListWidgetItem(take_capture_t captureData)
+{
+    QString fileName = QString::fromUtf8((char *)captureData.filename);
+    QString newfileName = QString::fromUtf8((char *)captureData.newfilename);
+    bool flag = false;
+    QFile fileWrite(ResourcesListDirect);
+    QString ret;
+    if(fileWrite.open(QIODevice::ReadOnly))
+    {
+        ret= fileWrite.readAll();
+        fileWrite.close();
+    }
+
+    QStringList arryListWrite= ret.split("\n");
+    //    for(int i=0;i<arryListWrite.size();i++)
+    //    {
+    //        qDebug()<<arryListWrite.at(i);
+    //    }
+
+    if(fileWrite.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate))
+    {        //文件流写文件
+        QTextStream streamWrite(&fileWrite);      //通过文本流控制文件写操作
+
+        for(int i=0;i<arryListWrite.size();i++)
+        {      //这里到arryListWrite.size()-1是因为arryListWrite数组按照\n分 段时，最后一行尾部有个\n，所以数组最后一个值为空，需要将它去掉
+
+            if(arryListWrite.at(i).startsWith(fileName))
+            {
+                flag = true;
+                if(captureData.hasNewName)
+                {
+                    arryListWrite.replace(i,newfileName);
+                }
+                streamWrite<<arryListWrite.at(i)<<"\n";
+            }
+            else if(i == arryListWrite.size()-1){
+                //                MYLOG<<"i == arryListWrite.size()-1  arryListWrite ["<<i<<"] : "<<arryListWrite.at(i);
+                if(captureData.hasNewName)
+                    arryListWrite.replace(i,newfileName);
+                else
+                    arryListWrite.replace(i,fileName);
+                //                MYLOG<<"i == arryListWrite.size()-1  arryListWrite ["<<i<<"] : "<<arryListWrite.at(i);
+                streamWrite<<arryListWrite.at(i)<<"\n";
+            }
+            else
+            {
+                //                MYLOG<<"arryListWrite ["<<i<<"] : "<<arryListWrite.at(i);
+                streamWrite<<arryListWrite.at(i)<<"\n";
+                //                MYLOG<<"arryListWrite ["<<i<<"] : "<<arryListWrite.at(i);
+            }
+        }
+        for(int i=0;i<arryListWrite.size();i++)
+        {
+            MYLOG<<"*******"<<arryListWrite[i];
+        }
+        fileWrite.close();
+    }
+
+    //    if(captureData.hasNewName)
+    //    {
+    //        QString fileName = QString::fromUtf8((char *)captureData.filename);
+    //        QString newfileName = QString::fromUtf8((char *)captureData.newfilename);
+    //        QList<QListWidgetItem *> matchingItems = ui->listWidget->findItems(fileName, Qt::MatchExactly);
+    //        // 获取第一个匹配项对应的 QWidget
+    //        if (!matchingItems.isEmpty()) {
+    //           ui->listWidget->removeItemWidget(matchingItems[0]);
+    //        }
+    //        ui->listWidget->addItem(newfileName);
+    //        qDebug()<<ui->listWidget->item(ui->listWidget->count()-1);
+    //    }
+    //    else
+    //    {
+    //        QString fileName = QString::fromUtf8((char *)captureData.filename);
+    //        QList<QListWidgetItem *> matchingItems = ui->listWidget->findItems(fileName, Qt::MatchExactly);
+    //        // 获取第一个匹配项对应的 QWidget
+    //        if (matchingItems.isEmpty()) {
+    //           ui->listWidget->addItem(fileName);
+    //           qDebug()<<ui->listWidget->item(ui->listWidget->count()-1);
+    //        }
+    //    }
+}
+//分段处理预览界面
+void hp_preview::SlotShowCurrentPageTimer()
+{
+//    qDebug()<<"isSdInsert = "<<isSdInsert;
+    if(!isSdInsert)
+    {
+        return;
+    }
+    ui->listWidget->clear();
+    FileNameList.clear();
+    ui->listWidget->setEnabled(false);
+    int i;
+    int addCount =( loadingNum -1)*4;
+//    qDebug()<<"loadingNum : "<<loadingNum;
+    for(i=addCount;i<FileList.size() &&addCount<loadingNum * 4;i++)
+    {
+        QFileInfo fileInfo =FileList.at(i);
+        if(fileInfo.fileName().contains(".avi",Qt::CaseInsensitive))
+        {
+#if DebugShow
+            MYLOG<<" addCount avi : "<<addCount<<" fileInfo.fileName() : "<<fileInfo.fileName();
+#endif
+            QString FileName;
+            FileName=fileInfo.fileName().section('.',0,0);
+            QFile file(QString("/home/root/res/TempStoragePng/")+FileName+QString(".jpg"));
+            //            MYLOG<<file.errorString();
+            if(!file.exists())//为了加快切到视频的速度
+            {
+                qDebug()<<"File jpg is not exists : "<<"/home/root/res/TempStoragePng/"+FileName+".jpg";
+                VideoForJPG(fileInfo.fileName(),FileName);
+            }
+            QImage * VideoFirstImage = new QImage("./res/TempStoragePng/"+FileName+".jpg");
+            QPainter painter(VideoFirstImage);
+            painter.drawImage(0,0,*VideoFirstImage );
+            painter.drawImage(0,0,*maskImage);
+            if(! QFile::exists("./res/TempStoragePng/"+FileName+".jpg") )
+            {
+                qDebug()<<"./res/TempStoragePng/+FileName+.jpg  not exists";
+            }
+            QIcon icon(QPixmap::fromImage(*VideoFirstImage));
+            QListWidgetItem *tmp = new QListWidgetItem(icon, fileInfo.fileName());
+            tmp->setSizeHint(QSize(140,100));
+            ui->listWidget->addItem(tmp);
+            FileNameList.append(fileInfo.fileName());
+            addCount++;
+        }
+    }
+//    MYLOG<<addCount;
+    //    addCount = ( loadingNum - 1)*4;
+    for(i = addCount;i<FileList.size()&&i<loadingNum * 4;i++)
+    {
+        QFileInfo fileInfo =FileList.at(i);
+
+        if(fileInfo.fileName().contains(".jpg",Qt::CaseInsensitive))
+        {
+#if DebugShow
+            MYLOG<<" addCount jpg: "<<addCount<<" fileInfo.fileName() : "<<fileInfo.fileName();
+#endif
+            QImage * AddPicThumbnail = new QImage(fileInfo.path()+"/"+fileInfo.fileName());
+            QIcon icon(QPixmap::fromImage(*AddPicThumbnail));
+            QListWidgetItem *tmp = new QListWidgetItem(icon, fileInfo.fileName());
+            tmp->setSizeHint(QSize(140,100));
+            ui->listWidget->addItem(tmp);
+            update();
+#if DebugShow
+            qDebug()<<"listwidget count : "<<ui->listWidget->count();
+#endif
+            FileNameList.append(fileInfo.fileName());
+            addCount++;
+        }
+    }
+
+    ui->listWidget->setEnabled(true);
+}
+//改变选中缩略图
+void hp_preview::on_listWidget_currentRowChanged(int currentRow)
+{
+    qDebug()<<"hp_preview::on_listWidget_currentRowChanged currentRow : "<<currentRow;
+    //clear()会将清空item 也会触发row改变信号 增加空指针判断防止程序崩溃
+    if( ui->listWidget->currentItem()== nullptr)
+    {
+        qDebug()<<"ui->listWidget->currentItem()== nullptr";
+        return;
+    }
+    //获取到图片视频信息之前需要对界面做处理
+    isLoadingItem = true;
+    hp_updateStatus(false);
+    currentSelect = PREVIEW_ListWidget;
+    hp_updateStatus(true);
+    ui->listWidget->setEnabled(false);
+    hp_setToolButtonEnabled(false,false,false);
+    hp_updateCurrentItemInfo(false);
+    //切换界面需要处理上一个选中的图片视频
+    listIndex = currentRow;
+    if(isVoicePlay)
+    {
+        signal_pc_key_set_audio_stopplay();
+        isVoicePlay = false;
+    }
+    if(isVideoProcessStart)
+    {
+        hp_stopVideoProcess();
+    }
+
+    QString SelectFileName;
+    SelectFileName=ui->listWidget->currentItem()->text();
+    if(isSdInsert&&isSDUpdateSuccess)
+    {
+        if(SelectFileName.contains(".jpg",Qt::CaseInsensitive))
+        {
+            ui->edit_name->setPlainText(SelectFileName);
+            char *picName = SelectFileName.toUtf8().data();
+            printf("send to  core  :%s\n",picName);
+            signal_pc_key_get_capture_info(picName);
+            //            ui->frame_vid->close();
+        }
+        else if(SelectFileName.contains(".avi",Qt::CaseInsensitive))
+        {
+            ui->edit_name->setPlainText(SelectFileName);
+            char *aviName = SelectFileName.toUtf8().data();
+            printf("send to  core  :%s\n",aviName);
+            signal_pc_key_get_avi_streamcount(aviName);
+        }
+    }
+}
+//设置当前视频选中信息
+void hp_preview::hp_updateCurrentVidItemInfo(int Item)
+{
+    ui->slider_video->setValue(0);
+    ui->label_videoPlayTime->setText(tr("00:00 / 00:00"));
+    ui->frame_vid->show();
+    ShowVideoFirstPic(0,0,600,360);
+
+}
+//获取视频流码流数量返回
+void hp_preview::slot_pc_key_get_avi_streamcount(unsigned char return_value,int data)
+{
+    qDebug("hp_preview::slog_pc_key_get_avi_streamcount(unsigned char reutrn_value : 0x%02x    data : %d",return_value,data);
+    if(data == 1)
+        isVideoHaveAudio = false;
+    else if(data == 2)
+        isVideoHaveAudio = true;
+    else
+        isVideoHaveAudio = true;
+
+    hp_updateCurrentVidItemInfo(listIndex);
+    ui->frame_pic->close();
+    ui->listWidget->setEnabled(true);
+    isLoadingItem = false;
+    hp_setToolButtonEnabled(false,true,true);
+}
+//延时
+void hp_preview::Sleep(int msec)
+{
+    QTime dieTime =QTime::currentTime().addMSecs(msec);
+    while (QTime::currentTime()<dieTime)
+    {
+        QCoreApplication::processEvents(QEventLoop::AllEvents,100);
+    }
+}
+//更新右侧信息栏
+void hp_preview::hp_updateCurrentItemInfo(bool isShow)
+{
+    if(!isShow)
+    {
+        ui->frame_pic->close();
+        ui->frame_vid->close();
+        ui->pictureShow->close();
+
+        ui->edit_name->setPlainText("");
+    }
+    else
+    {
+        //图片
+        QString picture = "/run/media/mmcblk2p1/DCIM/"+ui->listWidget->currentItem()->text();
+#if DebugShow
+        qDebug()<<"on_listWidget_currentRowChanged : currentPicture : "<<picture;
+#endif
+        QImage *image=new QImage(picture);
+        QPixmap *pixmap = new QPixmap();
+        *image=image->scaled(600,360,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+
+        pixmap->convertFromImage(*image);
+        ui->pictureShow->setPixmap(*pixmap);
+        //录音
+#if DebugShow
+        qDebug()<<"captureData.hasVoice : "<<captureInfo.hasVoice;
+#endif
+        if(captureInfo.hasVoice)
+        {
+            ui->toolButton_voiceNotes->show();
+        }
+        else
+        {
+            ui->toolButton_voiceNotes->close();
+        }
+        //备注
+        QString Notes = QString::fromUtf8((char *)captureInfo.notes);
+        ui->edit_notes->setPlainText(Notes);
+        //声源
+        if(captureInfo.soundmode == 1)
+        {
+            ui->edit_ASM->setText(tr("多声源模式"));
+        }
+        else
+        {
+            ui->edit_ASM->setText(tr("单声源模式"));
+        }
+        //动态范围
+        QString moveRangeNotes = QString::number(captureInfo.moverange.lower) +'-' + QString::number(1000);
+        ui->edit_dynamic_range->setText(moveRangeNotes);
+
+#if DebugShow
+        qDebug()<<"captureInfo.notes : "<<Notes<<"\n  captureInfo.soundmode : "<<captureInfo.soundmode<<"\n  captureInfo.moverange : "<<moveRangeNotes;
+#endif
+        //时间注
+        //        QString picTime = ui->listWidget->currentItem()->text().mid(4,8);
+        //        picTime.insert(4,'/');
+        //        picTime.insert(7,'/');
+        struct tm  *ptm = localtime((time_t *)(&captureInfo.tv.tv_sec));//获取当前时间
+        //        sprintf(filename, "FPGA_%d%02d%02d_%02d%02d%02d.dat",ptm->tm_year+1900, ptm->tm_mon+1, ptm->tm_mday,
+        //                           ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
+        QString picTime = QString::number(ptm->tm_year+1900)+'/'+QString::number(ptm->tm_mon+1)+'/'+QString::number(ptm->tm_mday)+'\n'+QString::number(ptm->tm_hour)+':'+QString::number(ptm->tm_min)+':'+QString::number(ptm->tm_sec);
+
+        ui->edit_time->setPlainText(picTime);
+        if(isShowMoreInfo)
+        {
+            //频域
+            ui->edit_freqL->setText(QString::number(captureInfo.freqRange.lowwer,'f',2)+" kHz");
+            ui->edit_freqH->setText(QString::number(captureInfo.freqRange.upper,'f',2)+" kHz");
+            //BF Power(max)
+            ui->edit_PFPower->setText(QString::number(captureInfo.bfPowerMax,'f',2)+" dB");
+            //阈值DB
+            ui->edit_threshold->setText(QString::number(captureInfo.threshold,'f',2)+" dB");
+            //范围DB
+            ui->edit_range->setText(QString::number(captureInfo.rangedb,'f',2)+" dB");
+        }
+
+
+        ui->frame_pic->show();
+        ui->pictureShow->show();
+        hp_setToolButtonEnabled(true,true,true);
+    }
+}
+//录音播放按钮点击
+void hp_preview::on_toolButton_voiceNotes_clicked()
+{
+    hp_updateStatus(false);
+#if DebugShow
+    qDebug()<<"isAudioPress : "<<isAudioPress<<" -----  isBluConnected : "<<isBluConnected;
+    qDebug()<<"on_toolButton_voiceNotes_clicked captureInfo.hasVoice:"<<captureInfo.hasVoice;
+#endif
+    if(isAudioPress || (!isBluConnected))
+    {
+
+        isVoicePlay = false;
+        hp_updateStatus(true);
+        return;
+    }
+
+    if(!isVoicePlay)
+    {
+        hp_setToolButtonEnabled(false,false,true);
+        isVoicePlay = true;
+        //            hp_updateStatus(true);
+        isAudioPress=true;
+        signal_pc_key_set_audio_play();
+    }
+    else
+    {
+        isVoicePlay = false;
+        //            hp_updateStatus(true);
+        isAudioPress=true;
+        signal_pc_key_set_audio_stopplay();
+    }
+    currentSelect = PREVIEW_VoiceNote;
+    hp_updateStatus(true);
+}
+//蓝牙开关控制 录音放音
+void hp_preview::slot_pc_key_set_ble_inout(unsigned char return_value)
+{
+    qDebug("hp_preview::slot_pc_key_set_ble_inout(unsigned char return_value : 0x%02x",return_value);
+    if(isAudioPress)
+        signal_pc_key_set_audio_play();
+}
+//播放录音反馈
+void hp_preview::slot_pc_key_set_audio_play(unsigned char return_value)
+{
+    qDebug()<<"hp_preview::slot_pc_key_set_audio_play(unsigned char return_value : "<<return_value;
+    isAudioPress = false;
+}
+//停止播放录音反馈
+void hp_preview::slot_pc_key_set_audio_stopplay(unsigned char return_value)
+{
+    qDebug()<<"hp_preview::slot_pc_key_set_audio_stopplay(unsigned char return_value : "<<return_value;
+    isVoicePlay = false;
+    isAudioPress = false;
+    hp_setToolButtonEnabled(true,true,true);
+    if(currentSelect == PREVIEW_VoiceNote)
+    {
+//        qDebug()<<"hp_updateStatus  isSelect : true     PREVIEW_VoiceNote     isVoicePlay : "<<isVoicePlay;
+        ui->toolButton_voiceNotes->setStyleSheet("QToolButton{background:transparent;border-image: url(:/res/voicenotes_stop_s.png);}\
+                                                 QToolButton::pressed{background:transparent;border-image: url(:/res/voicenotes_stop_s.png);}");
+    }
+    else
+    {
+//        qDebug()<<"hp_updateStatus  isSelect : false      PREVIEW_VoiceNote     isVoicePlay : "<<isVoicePlay;
+        ui->toolButton_voiceNotes->setStyleSheet("QToolButton{background:transparent;border-image: url(:/res/voicenotes_stop_n.png);}\
+                                                 QToolButton::pressed{background:transparent;border-image: url(:/res/voicenotes_stop_n.png);}");
+
+    }
+
+}
+//获取选中图像信息并显示
+void hp_preview::slot_pc_key_get_capture_info(unsigned char return_value,take_capture_t data)
+{
+    qDebug("hp_preview::slot_pc_key_get_capture_info(unsigned char return_value : 0x%02x",return_value);
+    if(return_value == RE_OK)
+    {
+        memset(&captureInfo,0,sizeof(take_capture_t));
+        memcpy(&captureInfo,&data,sizeof(take_capture_t));
+        hp_updateCurrentItemInfo(true);
+    }
+    else if(return_value == RE_ERR_PARA_RECV)
+    {
+        char *cPicNotes = ui->listWidget->currentItem()->text().toUtf8().data();
+        memset(&captureInfo,0,sizeof(take_capture_t));
+        memcpy(&captureInfo.filename,cPicNotes,strlen(cPicNotes));
+
+        //图片
+        QString picture = "/run/media/mmcblk2p1/DCIM/"+ui->listWidget->currentItem()->text();
+#if DebugShow
+        qDebug()<<"on_listWidget_currentRowChanged : currentPicture : "<<picture;
+#endif
+        QImage *image=new QImage(picture);
+        QPixmap *pixmap = new QPixmap();
+        *image=image->scaled(600,360,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+        pixmap->convertFromImage(*image);
+        ui->pictureShow->setPixmap(*pixmap);
+        hp_setToolButtonEnabled(false,false,true);
+        hp_updateCurrentItemInfo(false);
+        ui->edit_name->setPlainText(ui->listWidget->currentItem()->text());
+        ui->toolButton_delete->setEnabled(true);
+        ui->edit_notes->setPlainText("普通格式图片");
+        ui->edit_ASM->clear();
+        ui->edit_time->clear();
+        ui->edit_dynamic_range->clear();
+        if(isShowMoreInfo)
+        {
+            ui->edit_PFPower->clear();
+            ui->edit_freqH->clear();
+            ui->edit_freqL->clear();
+            ui->edit_threshold->clear();
+            ui->edit_range->clear();
+        }
+
+        ui->frame_pic->show();
+        ui->pictureShow->show();
+
+        isLoadingItem = false;
+        //        FormatDialog->hp_setDialogType(DIALOG_DELETE);
+        //        FormatDialog->hp_setFormatDialogText(tr("图片异常,是否删除?"));
+        //        FormatDialog->show();
+    }
+    ui->listWidget->setEnabled(true);
+}
+//图像信息编辑后的处理
+void hp_preview::slot_pc_key_set_capture_edit(unsigned char return_value)
+{
+    qDebug()<<"hp_preview::slot_pc_key_set_capture_edit(unsigned char return_value : "<<return_value;
+    QString name;
+    if(captureInfo.hasNewName)
+    {
+        int last_count = loadingNum;
+        hp_updateDir();
+        loadingNum = last_count;
+        ui->label_page->setText(QString::number(loadingNum));
+        ShowCurrentPage();
+//        name = QString::fromLocal8Bit((char *)captureInfo.newfilename);
+//        //    qDebug()<<"name : "<<name;
+//        ui->listWidget->currentItem()->setText(name);
+    }
+
+    on_listWidget_currentRowChanged(listIndex);
+}
+//文件信息同步
+void hp_preview::hp_setCaptureInfo(take_capture_t picInfo)
+{
+    memset(&captureInfo,0,sizeof(take_capture_t));
+    memcpy(&captureInfo,&picInfo,sizeof(take_capture_t));
+    captureInfo = picInfo;
+}
+//查找是否有同名图片 返回false代表有同名文件 true代表无同名文件
+bool hp_preview::hp_ChangePicInfo(take_capture_t picInfo)
+{
+//    memset(&captureInfo,0,sizeof(take_capture_t));
+//    memcpy(&captureInfo,&picInfo,sizeof(take_capture_t));
+//    captureInfo = picInfo;
+    QString picInfoPath ;
+
+    if(captureInfo.hasNewName)
+    {
+        if(ui->listWidget->count() != 0)//图片列表有图片
+        {
+            QString name_old = QString::fromLocal8Bit((char *)captureInfo.filename);
+            QString name_new = QString::fromLocal8Bit((char *)captureInfo.newfilename);
+
+            QString ResourcesListFileName;
+            QFile ResourcesListFile(ResourcesListDirect);
+            if(ResourcesListFile.open(QIODevice::ReadOnly))
+            {
+                ResourcesListFileName = ResourcesListFile.readAll();
+                ResourcesListFile.close();
+            }
+//            MYLOG<<ResourcesListFileName<<" name_new : "<<name_new;
+            if(!ResourcesListFileName.contains(name_new))
+            {
+                return true;
+            }
+            else
+            {
+                QStringList strs = ResourcesListFileName.split("\n");
+                if(strs.count() == 0)
+                    return true;
+                for(QString str : strs)
+                {
+//                    MYLOG<<"str : "<<str <<" name_new : "<<name_new;
+                    if(str == name_new)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+    }
+}
+
+//上一页按钮响应
+void hp_preview::on_toolButton_LastPage_clicked()
+{
+    hp_updateStatus(false);
+    currentSelect = PREVIEW_LastPage;
+    hp_updateStatus(true);
+
+    if(loadingNum>1)
+    {
+        loadingNum--;
+
+        ui->label_page->setText(QString::number(loadingNum));
+        ui->listWidget->setEnabled(false);
+        hp_setToolButtonEnabled(false,false,false);
+        hp_updateCurrentItemInfo(false);
+
+        ShowCurrentPage();
+
+        hp_setToolButtonEnabled(false,false,true);
+    }
+
+}
+//下一页按钮响应
+void hp_preview::on_toolButton_NextPage_clicked()
+{
+    hp_updateStatus(false);
+    currentSelect = PREVIEW_NextPage;
+    hp_updateStatus(true);
+    if(loadingNum * 4 < FileList.size())
+    {
+        loadingNum ++ ;
+        ui->label_page->setText(QString::number(loadingNum));
+        ui->listWidget->setEnabled(false);
+        hp_setToolButtonEnabled(false,false,false);
+        hp_updateCurrentItemInfo(false);
+
+        ShowCurrentPage();
+
+        hp_setToolButtonEnabled(false,false,true);
+    }
+}
+void hp_preview::hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow)
+{
+    if(nowShow == INPUT_PREVIEW)
+    {
+
+        int page = Limit(text.toInt(),MaxPageCount,1);
+        if(loadingNum == page)
+            return;
+        else
+        {
+            loadingNum = page;
+
+            ui->label_page->setText(QString::number(loadingNum));
+            hp_setToolButtonEnabled(false,false,false);
+            hp_updateCurrentItemInfo(false);
+            ShowCurrentPage();
+            hp_setToolButtonEnabled(false,false,true);
+        }
+
+    }
+}
+//停止视频
+void hp_preview::hp_videoStop()
+{
+    VideoPlayerProcess->kill();
+}
+//视频开始播放
+void hp_preview::VideoPlayerReadData()
+{
+
+//    qDebug()<<"VideoPlayerReadData";
+    while(!VideoPlayerProcess->atEnd())
+    {
+        QString s = QLatin1String(VideoPlayerProcess->readLine());
+        qDebug()<<"ReadData == "<< s;
+        if(!isSdInsert)
+        {
+            isVideoPlay = false;
+            isVideoProcessStart = false;
+            VideoPlayerProcess->close();
+            ui->slider_video->setValue(0);
+            ui->label_videoPlayTime->setText(tr("00:00 / 00:00"));
+            ui->toolButton_videoPlay->setText(tr("播放"));
+            hp_stopVideoProcess();
+        }
+        if(s.contains("gplay meet internal error: Could not demultiplex stream"))
+        {
+            isVideoPlay = false;
+            isVideoProcessStart = false;
+            VideoPlayerProcess->close();
+            ui->slider_video->setValue(0);
+            ui->label_videoPlayTime->setText(tr("00:00 / 00:00"));
+            ui->toolButton_videoPlay->setText(tr("播放"));
+            hp_stopVideoProcess();
+            FormatDialog->hp_setDialogType(DIALOG_OKCANCEL);
+            FormatDialog->hp_setFormatDialogText(tr("视频播放错误,是否删除该视频?"));
+            FormatDialog->show();
+            return;
+        }
+        if(s.contains("[00:00:00",Qt::CaseInsensitive))
+        {
+
+        }
+        //进度条处理
+        if(s.contains("(No Repeated)",Qt::CaseInsensitive))
+        {
+            int idx = s.indexOf("/");
+            QString nowTime = s.mid(idx - 8,8);
+            QString endTime = s.mid(idx + 1,8);
+
+            int value_h_max = s.mid(idx+1,2).toInt();
+            int value_m_max = s.mid(idx+4,2).toInt();
+            int value_s_max = s.mid(idx+7,2).toInt();
+            ui->slider_video->setMaximum(value_h_max*3600+value_m_max*60+value_s_max);
+
+            int value_h = s.mid(idx-8,2).toInt();
+            int value_m = s.mid(idx-5,2).toInt();
+            int value_s = s.mid(idx-2,2).toInt();
+            ui->slider_video->setValue(value_h*3600+value_m*60+value_s);
+
+            QString videoPlayTimeStr = QString::number(value_m_max)+":"+QString::number(value_s_max)+" / "+QString::number(value_m)+":"+QString::number(value_s);
+
+            //            if(videoPlayTimeStr == ui->label_videoPlayTime->text())
+            //            {
+
+            //                AviPlayFirstCount = 1;
+            //                //                QString videoPath = "/run/media/mmcblk2p1/DCIM/"+ui->listWidget->currentItem()->text();
+            //                //                qDebug()<<"video : "<<videoPath<<"will play!!!!!!!!!";
+            //                //                QString cmd = "gplay-1.0 " + videoPath + " --video-sink=\"overlaysink display-master=true display-slave=true\"";
+            //                //                qDebug()<<cmd;
+            //                //                VideoPlayerProcess->start(cmd);
+            //                //        ShowVideoFirstPic(0,0,600,480);
+            //                qDebug() << __func__;
+            //                QString SameScreenCmd;
+            //                std::string strSameScrValue = " ! decodebin ! videoscale ! video/x=640,height=480 ! tee name=t ! queue ! videoconvert ! fbdevsink device=/dev/fb0 t. ! queue ! videoconvert ! fbdevsink device=/dev/fb2";
+            //                QByteArray stdSameScrByte = QByteArray::fromStdString(strSameScrValue);
+            //                QString SameScreenCmdPara = stdSameScrByte;
+            //                SameScreenCmd = "filesrc location=/run/media/mmcblk2p1/DCIM/" + ui->listWidget->currentItem()->text() + SameScreenCmdPara;
+
+            //                qDebug()<<"video file audio :"<<getAudioSize(ui->listWidget->currentItem()->text());
+
+            //                qDebug() << __func__ << "cmd order = " << SameScreenCmd;
+
+            //                pipeline = gst_parse_launch(SameScreenCmd.toLocal8Bit().data(), NULL);
+            //                if (!pipeline) {
+            //                    qDebug() << "Failed to create pipeline";
+            //                }
+            //                else
+            //                {
+            //                    // 获取管道总线
+            //                    m_pipeLineMsgTimer->start(1000);
+            //                    bus = gst_element_get_bus(pipeline);
+            //                }
+
+            //                VideoPlayerProcess->kill();
+
+            //                gst_element_set_state(pipeline, GST_STATE_PLAYING);//设置为播放状态GST_STATE_PLAYING， 暂停为GST_STATE_PAUSED,从暂停恢复播放只需要重新设置为PLAYING即可
+            //                return ;
+            //            }
+
+
+            ui->label_videoPlayTime->setText(videoPlayTimeStr);
+
+        }
+        //视频播放结束
+        if(s.indexOf("Exit display thread")!=-1)
+        {
+            hp_stopVideoProcess();
+        }
+    }
+}
+//结束播放按钮 [x]eXit
+void hp_preview::on_toolButton_videoStop_clicked()
+{
+    hp_updateStatus(false);
+    currentSelect = PREVIEW_VideoStop;
+    hp_updateStatus(true);
+    if(isVideoProcessStart)
+    {
+        hp_stopVideoProcess();
+    }
+}
+//视频模块开始运行
+void hp_preview::slot_pc_buf_start_encode(unsigned char return_value)
+{
+    qDebug()<<"hp_preview::slot_pc_buf_start_encode(unsigned char return_value : "<<return_value;
+}
+//视频播放按钮 gplay-1.0 /run/media/mmcblk2p1/DCIM/20000415112210.avi --video-sink=\"overlaysink display-master=true display-slave=true\"
+void hp_preview::on_toolButton_videoPlay_clicked()
+{
+    hp_updateStatus(false);
+    currentSelect = PREVIEW_VideoPlay;
+    hp_updateStatus(true);
+#if DebugShow
+    MYLOG<<"isvideohaveaudio : "<<isVideoHaveAudio<<"isBluConnected : "<<isBluConnected;
+    qDebug()<<"hp_preview::on_toolButton_videoPlay_clicked----isVideoProcessStart : "<<isVideoProcessStart;
+#endif
+    if(isVideoHaveAudio)
+    {
+        if(!isBluConnected)
+        {
+            ErrorWarningDialog->warning(tr("提示"),tr("该视频存在音频数据\n请连接蓝牙耳机播放"));
+            ErrorWarningDialog->setDelayClose(5000);
+            ErrorWarningDialog->show();
+            return;
+        }
+    }
+
+    if(!isVideoProcessStart)
+    {
+        //开始视频播放
+        ui->listWidget->setEnabled(false);
+        ui->toolButton_delete->setEnabled(false);
+        isVideoProcessStart = true;
+        isVideoPlay = true;
+        ShowVideoFirstPic(0,0,600,480);
+        hp_AnimationDown();
+        ui->pictureShow->close();
+        VideoAnimationGroup->start();
+
+        //        QString videoPath = "/run/media/mmcblk2p1/DCIM/"+ui->listWidget->currentItem()->text();
+        //        qDebug()<<"video : "<<videoPath<<"will play!!!!!!!!!";
+        //        QString cmd = "gst-launch-1.0 filesrc location=" + videoPath + " ! decodebin ! autovideosink";
+        //        qDebug()<<cmd;
+        //        ui->toolButton_videoPlay->setText(tr("暂停"));
+        //        VideoPlayerProcess->start(cmd);
+    }
+    //    else
+    //    {
+    //        VideoPlayerProcess->write(MediaPauseCmd);//[a]Pause when playing, play when paused [p]Play [s]Stop
+    //        if(isVideoPlay)
+    //        {
+    //            ui->toolButton_videoPlay->setText(tr("播放"));
+    //            isVideoPlay = false;
+    //        }
+    //        else
+    //        {
+    //            ui->toolButton_videoPlay->setText(tr("暂停"));
+    //            isVideoPlay = true;
+    //        }
+    //    }
+}
+//void hp_preview::slot_pc_key_set_play_avi(unsigned char return_value)
+//{
+//    qDebug("hp_preview::slot_pc_key_set_play_avi(unsigned char return_value : 0x%02x",return_value);
+//    QString videoPath = "/run/media/mmcblk2p1/DCIM/"+ui->listWidget->currentItem()->text();
+//    qDebug()<<"video : "<<videoPath<<"will play!!!!!!!!!";
+//    QString cmd = "gplay-1.0 " + videoPath + " --video-sink=\"overlaysink display-master=true display-slave=true\"";
+//    VideoPlayerProcess->start(cmd);
+//}
+//视频播放结束
+void hp_preview::hp_stopVideoProcess()
+{
+    //    VideoPlayerProcess->kill();
+    if(AviPlayFirstCount==1)
+    {
+        gst_element_set_state(pipeline, GST_STATE_NULL);
+        gst_object_unref(GST_OBJECT(pipeline));
+        m_pipeLineMsgTimer->stop();
+        qDebug() << __func__;
+        //结束播放释放管道
+    }
+    else
+    {
+        VideoPlayerProcess->kill();
+    }
+
+    AviPlayFirstCount = 0;
+
+    ui->toolButton_delete->setEnabled(true);
+    ui->slider_video->setValue(0);
+    ui->slider_video_2->setValue(0);
+    ui->label_videoPlayTime->setText(tr("00:00 / 00:00"));
+    ui->toolButton_videoPlay->setText(tr("播放"));
+    isAnimationUp = true;
+    hp_AnimationUp();
+    VideoAnimationGroup->start();
+    isVideoProcessStart = false;
+    isVideoPlay = false;
+}
+//动画初始化
+void hp_preview::hp_InitAnimation()
+{
+    FrameAnimation = new QPropertyAnimation(this);
+    FrameAnimation->setDuration(500);
+    FrameAnimation->setTargetObject(ui->frame);
+
+    ListWidgetAnimation = new QPropertyAnimation(this);
+    connect(FrameAnimation,&QPropertyAnimation::finished, this, &hp_preview::SlotListWidgetAnimation);
+    ListWidgetAnimation->setTargetObject(this);
+    ListWidgetAnimation->setDuration(500);
+    ListWidgetAnimation->setTargetObject(ui->listWidget);
+
+    VideoAnimationGroup = new QParallelAnimationGroup(this);
+    VideoAnimationGroup->setLoopCount(1);
+}
+//向下滑出动画
+void hp_preview::hp_AnimationDown()
+{
+    ListWidgetAnimation->setPropertyName("pos");
+    ListWidgetAnimation->setStartValue(QPoint(ui->listWidget->x(),ui->listWidget->y()));
+    ListWidgetAnimation->setEndValue(QPoint(0,500));
+
+    FrameAnimation->setPropertyName("pos");
+    FrameAnimation->setStartValue(QPoint(ui->frame->x(),ui->frame->y()));
+    FrameAnimation->setEndValue(QPoint(0,0));
+
+    VideoAnimationGroup->addAnimation(ListWidgetAnimation);
+    VideoAnimationGroup->addAnimation(FrameAnimation);
+}
+//向上出现动画
+void hp_preview::hp_AnimationUp()
+{
+    ListWidgetAnimation->setPropertyName("pos");
+    ListWidgetAnimation->setStartValue(QPoint(ui->listWidget->x(),ui->listWidget->y()));
+    ListWidgetAnimation->setEndValue(QPoint(0,360));
+
+    FrameAnimation->setPropertyName("pos");
+    FrameAnimation->setStartValue(QPoint(ui->frame->x(),ui->frame->y()));
+    FrameAnimation->setEndValue(QPoint(-200,0));
+
+    VideoAnimationGroup->addAnimation(ListWidgetAnimation);
+    VideoAnimationGroup->addAnimation(FrameAnimation);
+}
+//动画结束或开始 限制列表是否可选中
+void hp_preview::SlotListWidgetAnimation()
+{
+    if(isAnimationUp)
+    {
+        update();
+        isAnimationUp = false;
+        ShowVideoFirstPic(0,0,600,360);
+        ui->listWidget->setEnabled(true);
+
+    }
+    else
+    {
+        QString videoPath = "/run/media/mmcblk2p1/DCIM/"+ui->listWidget->currentItem()->text();
+//        qDebug()<<"video : "<<videoPath<<"will play!!!!!!!!!";
+        QString cmd = "gplay-1.0 " + videoPath + " --video-sink=\"overlaysink display-master=true display-slave=true\"";
+        qDebug()<<cmd;
+        VideoPlayerProcess->start(cmd);
+
+
+        //        {
+        //            //        ShowVideoFirstPic(0,0,600,480);
+        //            qDebug() << __func__;
+        //            QString SameScreenCmd;
+        //            std::string strSameScrValue = " ! decodebin ! videoscale ! video/x=600,height=360 ! tee name=t ! queue ! videoconvert ! fbdevsink device=/dev/fb0 t. ! queue ! videoconvert ! fbdevsink device=/dev/fb2";
+        //            QByteArray stdSameScrByte = QByteArray::fromStdString(strSameScrValue);
+        //            QString SameScreenCmdPara = stdSameScrByte;
+        //            SameScreenCmd = "filesrc location=/run/media/mmcblk2p1/DCIM/" + ui->listWidget->currentItem()->text() + SameScreenCmdPara;
+
+        //            qDebug()<<"video file audio :"<<getAudioSize(ui->listWidget->currentItem()->text());
+
+        //            qDebug() << __func__ << "cmd order = " << SameScreenCmd;
+
+        //            pipeline = gst_parse_launch(SameScreenCmd.toLocal8Bit().data(), NULL);
+        //            if (!pipeline) {
+        //                qDebug() << "Failed to create pipeline";
+        //            }
+        //            else
+        //            {
+        //                // 获取管道总线
+        //                m_pipeLineMsgTimer->start(1000);
+        //                bus = gst_element_get_bus(pipeline);
+        //            }
+        //            gst_element_set_state(pipeline, GST_STATE_PLAYING);//设置为播放状态GST_STATE_PLAYING， 暂停为GST_STATE_PAUSED,从暂停恢复播放只需要重新设置为PLAYING即可
+        //            return ;
+        //        }
+    }
+}
+
+void hp_preview::hp_updateStatus(bool isSelect)
+{
+    if(UIType == 1)
+    {
+        switch (currentSelect)
+        {
+        case PREVIEW_ListWidget:
+            if(isSelect)
+            {
+                ui->listWidget->setStyleSheet(ListWidgetHorizontalSheetStyle_1920_s);
+            }
+            else
+            {
+                ui->listWidget->setStyleSheet(ListWidgetHorizontalSheetStyle_1920_n);
+            }
+            break;
+        case PREVIEW_Edit:
+            if(isSelect)
+            {
+                ui->toolButton_edit->setStyleSheet( "QToolButton{border-image: url(" UI_res_PATH_1920 "edit_s.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "edit_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "edit_d.png);}");
+            }
+            else
+            {
+                ui->toolButton_edit->setStyleSheet( "QToolButton{border-image: url(" UI_res_PATH_1920 "edit_n.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "edit_n.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "edit_d.png);}");
+            }
+            break;
+        case PREVIEW_Delete:
+            if(isSelect)
+            {
+                ui->toolButton_delete->setStyleSheet( "QToolButton{border-image: url(" UI_res_PATH_1920 "delete_s.png);}\
+                                                      QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "delete_s.png);}\
+                                                      QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "delete_d.png);}");
+            }
+            else
+            {
+                ui->toolButton_delete->setStyleSheet( "QToolButton{border-image: url(" UI_res_PATH_1920 "delete_n.png);}\
+                                                      QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "delete_s.png);}\
+                                                      QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "delete_d.png);}");
+            }
+            break;
+        case PREVIEW_Return:
+            if(isSelect)
+            {
+                ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "return_s.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "return_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "return_d.png);}");
+            }
+            else
+            {
+                ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "return_n.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "return_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "return_d.png);}");
+            }
+            break;
+        case PREVIEW_VoiceNote:
+            if(isSelect)
+            {
+                if(isVoicePlay)
+                {
+                    ui->toolButton_voiceNotes->setStyleSheet(ToolButtonVoiceSheetStyleStart_1920_s);
+                }
+                else
+                {
+                    ui->toolButton_voiceNotes->setStyleSheet(ToolButtonVoiceSheetStyleStop_1920_s);
+                }
+
+            }
+            else
+            {
+                if(isVoicePlay)
+                {
+                    ui->toolButton_voiceNotes->setStyleSheet(ToolButtonVoiceSheetStyleStart_1920_n);
+                }
+                else
+                {
+                    ui->toolButton_voiceNotes->setStyleSheet(ToolButtonVoiceSheetStyleStop_1920_n);
+                }
+            }
+            break;
+        case PREVIEW_VideoPlay:
+            if(isSelect)
+            {
+                ui->toolButton_videoPlay->setStyleSheet(ToolButtonSheetStyle_1920_s);
+            }else
+            {
+                ui->toolButton_videoPlay->setStyleSheet(ToolButtonSheetStyle_1920_n);
+            }
+            break;
+        case PREVIEW_VideoStop:
+            if(isSelect)
+            {
+                ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "return_s.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "return_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "return_d.png);}");
+            }
+            else
+            {
+                ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_1920 "return_n.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_1920 "return_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_1920 "return_d.png);}");
+            }
+            break;
+        case PREVIEW_LastPage:
+            if(isSelect)
+                ui->toolButton_LastPage->setStyleSheet(ToolButton_LastPage_1920_s);
+            else
+                ui->toolButton_LastPage->setStyleSheet(ToolButton_LastPage_1920_n);
+            break;
+        case PREVIEW_NextPage:
+            if(isSelect)
+                ui->toolButton_NextPage->setStyleSheet(ToolButton_NextPage_1920_s);
+            else
+                ui->toolButton_NextPage->setStyleSheet(ToolButton_NextPage_1920_n);
+            break;
+        case PREVIEW_NowPage:
+            //        if(isSelect)
+            //            ui->label_page->setStyleSheet(ToolButton_NowPage_s);
+            //        else
+            //            ui->label_page->setStyleSheet(ToolButton_NowPage_n);
+            break;
+        }
+    }
+    else
+    {
+        switch (currentSelect)
+        {
+        case PREVIEW_ListWidget:
+            if(isSelect)
+            {
+                ui->listWidget->setStyleSheet(ListWidgetHorizontalSheetStyle_800_s);
+            }
+            else
+            {
+                ui->listWidget->setStyleSheet(ListWidgetHorizontalSheetStyle_800_n);
+            }
+            break;
+        case PREVIEW_Edit:
+            if(isSelect)
+            {
+                ui->toolButton_edit->setStyleSheet( "QToolButton{border-image: url(" UI_res_PATH_800 "edit_s.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_800 "edit_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_800 "edit_d.png);}");
+            }
+            else
+            {
+                ui->toolButton_edit->setStyleSheet( "QToolButton{border-image: url(" UI_res_PATH_800 "edit_n.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_800 "edit_n.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_800 "edit_d.png);}");
+            }
+            break;
+        case PREVIEW_Delete:
+            if(isSelect)
+            {
+                ui->toolButton_delete->setStyleSheet( "QToolButton{border-image: url(" UI_res_PATH_800 "delete_s.png);}\
+                                                      QToolButton::pressed{border-image: url(" UI_res_PATH_800 "delete_s.png);}\
+                                                      QToolButton::disabled{border-image: url(" UI_res_PATH_800 "delete_d.png);}");
+            }
+            else
+            {
+                ui->toolButton_delete->setStyleSheet( "QToolButton{border-image: url(" UI_res_PATH_800 "delete_n.png);}\
+                                                      QToolButton::pressed{border-image: url(" UI_res_PATH_800 "delete_s.png);}\
+                                                      QToolButton::disabled{border-image: url(" UI_res_PATH_800 "delete_d.png);}");
+            }
+            break;
+        case PREVIEW_Return:
+            if(isSelect)
+            {
+                ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_800 "return_s.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_800 "return_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_800 "return_d.png);}");
+            }
+            else
+            {
+                ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_800 "return_n.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_800 "return_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_800 "return_d.png);}");
+            }
+            break;
+        case PREVIEW_VoiceNote:
+            if(isSelect)
+            {
+                if(isVoicePlay)
+                {
+                    ui->toolButton_voiceNotes->setStyleSheet(ToolButtonVoiceSheetStyleStart_800_s);
+                }
+                else
+                {
+                    ui->toolButton_voiceNotes->setStyleSheet(ToolButtonVoiceSheetStyleStop_800_s);
+                }
+
+            }
+            else
+            {
+                if(isVoicePlay)
+                {
+                    ui->toolButton_voiceNotes->setStyleSheet(ToolButtonVoiceSheetStyleStart_800_n);
+                }
+                else
+                {
+                    ui->toolButton_voiceNotes->setStyleSheet(ToolButtonVoiceSheetStyleStop_800_n);
+                }
+            }
+            break;
+        case PREVIEW_VideoPlay:
+            if(isSelect)
+            {
+                ui->toolButton_videoPlay->setStyleSheet(ToolButtonSheetStyle_800_s);
+            }else
+            {
+                ui->toolButton_videoPlay->setStyleSheet(ToolButtonSheetStyle_800_n);
+            }
+            break;
+        case PREVIEW_VideoStop:
+            if(isSelect)
+            {
+                ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_800 "return_s.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_800 "return_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_800 "return_d.png);}");
+            }
+            else
+            {
+                ui->toolButton_close->setStyleSheet("QToolButton{border-image: url(" UI_res_PATH_800 "return_n.png);}\
+                                                    QToolButton::pressed{border-image: url(" UI_res_PATH_800 "return_s.png);}\
+                                                    QToolButton::disabled{border-image: url(" UI_res_PATH_800 "return_d.png);}");
+            }
+            break;
+        case PREVIEW_LastPage:
+            if(isSelect)
+                ui->toolButton_LastPage->setStyleSheet(ToolButton_LastPage_s);
+            else
+                ui->toolButton_LastPage->setStyleSheet(ToolButton_LastPage_n);
+            break;
+        case PREVIEW_NextPage:
+            if(isSelect)
+                ui->toolButton_NextPage->setStyleSheet(ToolButton_NextPage_s);
+            else
+                ui->toolButton_NextPage->setStyleSheet(ToolButton_NextPage_n);
+            break;
+        case PREVIEW_NowPage:
+            //        if(isSelect)
+            //            ui->label_page->setStyleSheet(ToolButton_NowPage_s);
+            //        else
+            //            ui->label_page->setStyleSheet(ToolButton_NowPage_n);
+            break;
+        }
+    }
+}
+//显示视频第一帧
+void hp_preview::ShowVideoFirstPic(int x,int y,int width,int height)
+{
+    ui->pictureShow->setGeometry(x,y,width,height);
+    QString CurrentVidName = ui->listWidget->currentItem()->text().section('.',0,0);
+    QString videoFirstJPG = "./res/TempStoragePng/" + CurrentVidName + ".jpg";
+    qDebug()<<"hp_updateCurrentVidItemInfo----on_listWidget_currentRowChanged : videoFirstJPG_Path : "<<videoFirstJPG;
+    if(! QFile::exists(videoFirstJPG) )
+    {
+        qDebug()<<"./res/TempStoragePng/+FileName+.jpg  not exists";
+    }
+    QImage *image = new QImage(videoFirstJPG);
+    QPixmap *pixmap = new QPixmap();
+    *image = image->scaled(width,height,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+    pixmap->convertFromImage(*image);
+    ui->pictureShow->setPixmap(*pixmap);
+    ui->pictureShow->show();
+    ui->listWidget->raise();
+}
+//设置蓝牙连接状态
+void hp_preview::hp_SetPreviewSaveBlu(int isConnected)
+{
+    isBluConnected = isConnected;
+}
+//设置按钮可使用状态
+void hp_preview::hp_setToolButtonEnabled(int isEdit,int isDelete,int isReturn)
+{
+    ui->toolButton_edit->setEnabled(isEdit);
+    ui->toolButton_delete->setEnabled(isDelete);
+    ui->toolButton_close->setEnabled(isReturn);
+}
+//视频播放时间获取
+void hp_preview::query_position_and_duration()
+{
+    qDebug() << __func__;
+    gint64 position, duration;
+    if (gst_element_query_position(pipeline, GST_FORMAT_TIME, &position) &&
+            gst_element_query_duration(pipeline, GST_FORMAT_TIME, &duration)) {
+        qDebug() << typeid(position).name() << position << duration;
+        QString currTime = QString::number(position / 1000000000);
+        QString totalTime = QString::number(duration / 1000000000);
+        qDebug() << currTime.toInt() << totalTime.toInt() << currTime << totalTime;
+        ui->slider_video_2->setMaximum(totalTime.toInt());
+        ui->slider_video_2->setValue(currTime.toInt());
+        //gint64是long long int类型，单位是纳秒，所以要除1000000000才是正常的秒数
+        if(currTime.toInt() >= totalTime.toInt())
+        {
+            on_toolButton_videoStop_clicked();
+
+        }
+    }
+}
+
+void hp_preview::seekToPosition(gint64 time_nanoseconds)
+{
+    if (!pipeline) {
+        qDebug() << "Pipeline is not initialized";
+        return;
+    }
+
+    /*
+        element: 进行seek操作的GstElement。
+        rate: 播放速率，1.0 表示正常速率。
+        format: 位置和时间的格式，通常是GST_FORMAT_TIME，表示时间以纳秒为单位。
+        flags: 寻求行为的标志，例如GST_SEEK_FLAG_FLUSH（在seek前刷新管道）。
+        start_type: 开始位置的类型，通常是GST_SEEK_TYPE_SET（从绝对位置开始）。
+        start: 开始位置的具体值（如从视频的第几纳秒开始）。
+        stop_type: 结束位置的类型，可以是GST_SEEK_TYPE_NONE（不指定结束位置）。
+        stop: 具体的结束位置（如果stop_type不是GST_SEEK_TYPE_NONE）。
+     */
+    gboolean seek_success = gst_element_seek(pipeline,
+                                             1.0,                // rate
+                                             GST_FORMAT_TIME,    // format
+                                             GST_SEEK_FLAG_FLUSH, // flags
+                                             GST_SEEK_TYPE_SET,   // start_type
+                                             time_nanoseconds,    // start
+                                             GST_SEEK_TYPE_NONE,  // stop_type
+                                             GST_CLOCK_TIME_NONE); // stop
+
+
+    if (!seek_success) {
+        qDebug() << "Seek operation failed";
+    } else {
+        qDebug() << "Seek operation succeeded";
+    }
+}
+
+int hp_preview::getAudioSize(const QString fileName)
+{
+    QString filePath = "/run/media/mmcblk2p1/DCIM/" + fileName;
+    QFile file(filePath);
+
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << "Failed to open file:" << file.errorString();
+        return 0;
+    }
+
+    // 设置偏移量到 264 字节处
+    qint64 offset = 264;
+    if (!file.seek(offset)) {
+        qDebug() << "Failed to seek to offset" << offset;
+        file.close();
+        return 0;
+    }
+
+    QDataStream in(&file);
+    in.setByteOrder(QDataStream::BigEndian);
+
+    int value;
+    in >> value;
+
+    if (in.status() != QDataStream::Ok) {
+        qDebug() << "Failed to read integer from file";
+        file.close();
+        return 1;
+    }
+
+    qDebug() << "Read value:" << value;
+    qDebug("0x%x", value);
+
+    file.close();
+
+    return value;
+}
+//按键 ↓键
+void hp_preview::KeyDownHandle()
+{
+    hp_updateStatus(false);
+    if(ui->frame_pic->isVisible())//图片选中
+    {
+        if(currentSelect == PREVIEW_ListWidget)
+        {
+            currentSelect = PREVIEW_VoiceNote;
+        }
+        else if(currentSelect == PREVIEW_VoiceNote)
+        {
+            currentSelect = PREVIEW_Edit;
+        }
+    }
+    else if(ui->frame_vid->isVisible())//视频选中
+    {
+        if(currentSelect == PREVIEW_ListWidget)
+        {
+            currentSelect = PREVIEW_VideoPlay;
+        }
+        else if(currentSelect == PREVIEW_VideoPlay)
+        {
+            currentSelect = PREVIEW_VideoStop;
+        }
+        else if(currentSelect == PREVIEW_VideoStop)
+        {
+            currentSelect = PREVIEW_Return;
+        }
+    }
+    else//未选中或选中错误文件
+    {
+        if(currentSelect == PREVIEW_ListWidget)
+        {
+            currentSelect = PREVIEW_Return;
+        }
+    }
+    hp_updateStatus(true);
+}
+//按键 ↑键
+void hp_preview::KeyUpHandle()
+{
+    hp_updateStatus(false);
+    if(ui->frame_pic->isVisible())//图片选中
+    {
+        if(currentSelect == PREVIEW_Edit||currentSelect == PREVIEW_Return||currentSelect == PREVIEW_Delete)
+        {
+            currentSelect = PREVIEW_VoiceNote;
+        }
+        else if(currentSelect == PREVIEW_VoiceNote)
+        {
+            if(ui->listWidget->currentItem()==nullptr&&ui->listWidget->count()!=0)
+            {
+                ui->listWidget->setCurrentRow(0);
+                currentSelect = PREVIEW_ListWidget;
+            }
+            else if(ui->listWidget->currentItem()!=nullptr)
+            {
+                currentSelect = PREVIEW_ListWidget;
+            }
+        }
+    }
+    else if(ui->frame_vid->isVisible())//视频选中
+    {
+        if(currentSelect == PREVIEW_Return)
+        {
+            currentSelect = PREVIEW_VideoStop;
+        }
+        else if(currentSelect == PREVIEW_VideoStop)
+        {
+            currentSelect = PREVIEW_VideoPlay;
+        }
+        else if(currentSelect == PREVIEW_VideoPlay)
+        {
+            if(ui->listWidget->currentItem()==nullptr&&ui->listWidget->count()!=0)
+            {
+                ui->listWidget->setCurrentRow(0);
+                currentSelect = PREVIEW_ListWidget;
+            }
+            else if(ui->listWidget->currentItem()!=nullptr)
+            {
+                currentSelect = PREVIEW_ListWidget;
+            }
+        }
+    }
+    else//未选中或选中错误文件
+    {
+        if(currentSelect == PREVIEW_Edit||currentSelect == PREVIEW_Return||currentSelect == PREVIEW_Delete)
+        {
+            currentSelect = PREVIEW_ListWidget;
+        }
+    }
+    hp_updateStatus(true);
+}
+//按键 ←键
+void hp_preview::KeyLeftHandle()
+{
+    hp_updateStatus(false);
+    if(currentSelect == PREVIEW_Edit||(currentSelect == PREVIEW_Delete&&!ui->toolButton_delete->isEnabled()))
+    {
+        if(ui->listWidget->currentItem()==nullptr&&ui->listWidget->count()!=0)
+        {
+            ui->listWidget->setCurrentRow(0);
+            currentSelect = PREVIEW_ListWidget;
+        }
+        else if(ui->listWidget->currentItem()!=nullptr)
+        {
+            currentSelect = PREVIEW_ListWidget;
+        }
+    }
+    else if(currentSelect == PREVIEW_Edit&&ui->toolButton_delete->isEnabled())
+    {
+        currentSelect = PREVIEW_Edit;
+    }
+    else if(currentSelect == PREVIEW_Return)
+    {
+        if(ui->toolButton_delete->isEnabled())
+        {
+            currentSelect = PREVIEW_Delete;
+        }
+        else//删除若不可使用则编辑必也不可
+        {
+            if(ui->listWidget->currentItem()==nullptr&&ui->listWidget->count()!=0)
+            {
+                ui->listWidget->setCurrentRow(0);
+                currentSelect = PREVIEW_ListWidget;
+            }
+            else if(ui->listWidget->currentItem()!=nullptr)
+            {
+                currentSelect = PREVIEW_ListWidget;
+            }
+        }
+    }
+    else if(currentSelect == PREVIEW_ListWidget)
+    {
+        if(ui->listWidget->currentItem()==nullptr&&ui->listWidget->count() != 0)
+        {
+            ui->listWidget->setCurrentRow(0);
+        }
+        else if((ui->listWidget->currentRow()-1)>=0)
+        {
+            ui->listWidget->setCurrentRow(ui->listWidget->currentRow()-1);
+        }
+    }
+    hp_updateStatus(true);
+}
+//按键 →键
+void hp_preview::KeyRightHandle()
+{
+    hp_updateStatus(false);
+    if(currentSelect == PREVIEW_ListWidget)
+    {
+        if(ui->listWidget->currentItem()==nullptr&&ui->listWidget->count() != 0)
+        {
+            ui->listWidget->setCurrentRow(0);
+        }
+        else if((ui->listWidget->currentRow()+1)<ui->listWidget->count())
+        {
+            ui->listWidget->setCurrentRow(ui->listWidget->currentRow()+1);
+        }
+    }
+    else if(currentSelect == PREVIEW_Edit)
+    {
+        currentSelect = PREVIEW_Delete;
+    }
+    else if(currentSelect == PREVIEW_Delete)
+    {
+        currentSelect = PREVIEW_Return;
+    }
+    hp_updateStatus(true);
+}
+//按键 确认键
+void hp_preview::KeyOKHandle()
+{
+    switch (currentSelect) {
+    case PREVIEW_Delete:
+        if(ui->toolButton_delete->isEnabled())
+        {
+            emit ui->toolButton_delete->clicked();
+        }
+        break;
+    case PREVIEW_Edit:
+        if(ui->toolButton_edit->isEnabled())
+        {
+            emit ui->toolButton_edit->clicked();
+        }
+        break;
+    case PREVIEW_ListWidget:
+        break;
+    case PREVIEW_Return:
+        if(ui->toolButton_close->isEnabled())
+        {
+            emit ui->toolButton_close->clicked();
+        }
+        break;
+    case PREVIEW_VideoPlay:
+        emit ui->toolButton_videoPlay->clicked();
+        break;
+    case PREVIEW_VideoStop:
+        emit ui->toolButton_videoStop->clicked();
+        break;
+    case PREVIEW_VoiceNote:
+        emit ui->toolButton_voiceNotes->clicked();
+        break;
+    }
+}
+//按键 返回键
+void hp_preview::KeyReturnHandle()
+{
+    if(ui->toolButton_close->isEnabled())
+    {
+        if(isVideoProcessStart)
+        {
+            on_toolButton_videoStop_clicked();
+        }
+        else
+        {
+            ui->toolButton_close->click();
+        }
+    }
+
+}
+
+//图片上传按钮响应
+void hp_preview::on_toolButton_PicSave_clicked()
+{
+    SignalUpdateSetUpClock();
+    if(isClientConnected)
+    {
+        ErrorWarningDialog->warning(tr("提示"),tr("图片上传中"));
+        //    ErrorWarningDialog->setDelayClose(5000);
+        ErrorWarningDialog->show();
+        char * picName = ui->listWidget->currentItem()->text().toUtf8().data();
+        signal_pc_pic_set_pic(picName);
+    }
+    else
+    {
+        ErrorWarningDialog->warning(tr("错误"),tr("请先进行客户端连接"));
+        ErrorWarningDialog->setDelayClose(3000);
+        ErrorWarningDialog->show();
+    }
+}
+//图片上传信号反馈
+void hp_preview::slot_pc_pic_set_pic(unsigned char return_value)
+{
+    if(return_value == RE_OK)
+    {
+        ErrorWarningDialog->warning(tr("提示"),tr("图片上传成功"));
+    //    ErrorWarningDialog->setDelayClose(5000);
+        ErrorWarningDialog->show();
+    }
+    else
+    {
+        ErrorWarningDialog->warning(tr("错误"),tr("图片上传失败"));
+        ErrorWarningDialog->setDelayClose(5000);
+        ErrorWarningDialog->show();
+    }
+}
+//客户端连接传递
+void hp_preview::SlotIsClientConnected(bool isConnected)
+{
+    isClientConnected = isConnected;
+}

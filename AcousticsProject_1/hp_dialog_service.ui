@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_dialog_service</class>
+ <widget class="QWidget" name="hp_dialog_service">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>微软雅黑</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>481</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+background-image:url(:/res/background_1.jpg);
+border:none;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="QToolButton" name="toolButton_close">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QToolButton{background:transparent;
+border-image: url(:/res/returnBig_n.png);
+}
+
+QToolButton::pressed{background:transparent;
+border-image: url(:/res/returnBig_s.png);
+}
+
+QToolButton::disabled{background:transparent;
+border-image: url(:/res/returnBig_d.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>791</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame{background:none;border:none;}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="horizontalSpacing">
+      <number>50</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>25</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_title_server_act">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:rgb(216, 235, 255);</string>
+       </property>
+       <property name="text">
+        <string>服务器用户名</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_server_act">
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:#C3CCEF;
+border:2px solid white;
+border-radius: 7px;</string>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_title_server_paswd">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:rgb(216, 235, 255);</string>
+       </property>
+       <property name="text">
+        <string>服务器用户密码</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_server_paswd">
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:#C3CCEF;
+border:2px solid white;
+border-radius: 7px;</string>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_title_IP">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:rgb(216, 235, 255);</string>
+       </property>
+       <property name="text">
+        <string>服务器IP</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_IP">
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:#C3CCEF;
+border:2px solid white;
+border-radius: 7px;</string>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_title_account">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:rgb(216, 235, 255);</string>
+       </property>
+       <property name="text">
+        <string>服务器端口</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_Account">
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:#C3CCEF;
+border:2px solid white;
+border-radius: 7px;</string>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_title_srvopen">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:rgb(216, 235, 255);</string>
+       </property>
+       <property name="text">
+        <string>开启客户端</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QCheckBox" name="checkBox_srvopen">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>17</pointsize>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QCheckBox{
+	background:transparent;
+	color:#C3CCEF;
+}
+QCheckBox::indicator:unchecked {
+    image:url(:/res/checkBox_n.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/checkBox_s.png);
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_title_picUpload">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>19</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color:rgb(216, 235, 255);</string>
+       </property>
+       <property name="text">
+        <string>图片上传</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QToolButton" name="toolButton_picUpload">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>11</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+background:transparent;
+border-image: url(:/res/label_Background_n.png);
+color:white;
+}
+QToolButton::pressed{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}
+QToolButton::focus{
+background:transparent;
+border-image: url(:/res/label_Background_s.png);color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>一键上传</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

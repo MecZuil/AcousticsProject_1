@@ -1,0 +1,36 @@
+#ifndef HP_DIALOG_PICMODE_MENU_H
+#define HP_DIALOG_PICMODE_MENU_H
+
+#include <QWidget>
+#include <QButtonGroup>
+#include "hp_assemblystyle.h"
+#include "hp_enum.h"
+
+namespace Ui {
+class hp_dialog_picmode_menu;
+}
+
+class hp_dialog_picmode_menu : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_dialog_picmode_menu(QWidget *parent = nullptr);
+    ~hp_dialog_picmode_menu();
+
+//    QButtonGroup* buttonGroup_picMode;
+
+    void SetButtonShow();
+    void SetButtonEnabled();
+
+    Ui::hp_dialog_picmode_menu *ui;
+
+public slots:
+    void slot_pc_key_get_ir_hzh(unsigned char return_value,int status);
+private:
+    void changeEvent(QEvent *e);
+
+
+};
+
+#endif // HP_DIALOG_PICMODE_MENU_H

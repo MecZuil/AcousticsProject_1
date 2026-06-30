@@ -1,0 +1,488 @@
+#include "hp_dialog_ircolor.h"
+#include "ui_hp_dialog_ircolor.h"
+
+hp_dialog_ircolor::hp_dialog_ircolor(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_ircolor)
+{
+    ui->setupUi(this);
+
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+//    setWindowModality(Qt::WindowModal);
+
+    setGeometry(70,480-this->height(),width(),height());
+    setFixedSize(this->width(), this->height());
+    ui->toolButton_1->setChecked(true);
+//    ui->gridFrame->setStyleSheet("QFrame{background-color:rgb(13, 34, 67);border :none;}");
+    connect(ui->buttonGroup,SIGNAL(buttonToggled(QAbstractButton*,bool)),this,SLOT(sebiaoButtonGroupChecked(QAbstractButton*,bool)));
+
+    LoadWhirlProgressBarDialog = new hp_load_whirl(this);
+    LoadWhirlProgressBarDialog->close();
+    ui->frame_gray->setVisible(false);
+}
+
+hp_dialog_ircolor::~hp_dialog_ircolor()
+{
+    delete ui;
+}
+
+void hp_dialog_ircolor::SlotSetUIStyle(int type)
+{
+    if(type == 1)
+    {
+        this->setGeometry(0,0,768,450);
+        ui->gridFrame->setGeometry(0,0,768,450);
+        ui->gridFrame->setGeometry(0,0,768,450);
+        ui->toolButton_13->setMinimumSize(112,112);
+        ui->toolButton_11->setMinimumSize(112,112);
+        ui->toolButton_10->setMinimumSize(112,112);
+        ui->toolButton_17->setMinimumSize(112,112);
+        ui->toolButton_14->setMinimumSize(112,112);
+        ui->toolButton_12->setMinimumSize(112,112);
+        ui->toolButton_15->setMinimumSize(112,112);
+        ui->toolButton_1->setMinimumSize(112,112);
+        ui->toolButton_16->setMinimumSize(112,112);
+        ui->toolButton_2->setMinimumSize(112,112);
+        ui->toolButton_19->setMinimumSize(112,112);
+        ui->toolButton_18->setMinimumSize(112,112);
+        ui->toolButton_20->setMinimumSize(112,112);
+        ui->toolButton_21->setMinimumSize(112,112);
+        ui->toolButton_22->setMinimumSize(112,112);
+
+
+        ui->toolButton_13->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao13_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao13_s.png);background:transparent;}");
+
+        ui->toolButton_11->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao11_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao11_s.png);background:transparent;}");
+
+        ui->toolButton_10->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao10_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao10_s.png);background:transparent;}");
+
+        ui->toolButton_17->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao17_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao17_s.png);background:transparent;}");
+
+        ui->toolButton_14->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao14_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao14_s.png);background:transparent;}");
+
+        ui->toolButton_12->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao12_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao12_s.png);background:transparent;}");
+
+        ui->toolButton_15->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao15_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao15_s.png);background:transparent;}");
+
+        ui->toolButton_1->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao1_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao1_s.png);background:transparent;}");
+
+        ui->toolButton_16->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao16_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao16_s.png);background:transparent;}");
+
+        ui->toolButton_2->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao2_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao2_s.png);background:transparent;}");
+
+        ui->toolButton_19->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao19_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao19_s.png);background:transparent;}");
+
+        ui->toolButton_18->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao18_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao18_s.png);background:transparent;}");
+
+        ui->toolButton_20->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao20_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao20_s.png);background:transparent;}");
+
+        ui->toolButton_21->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao21_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao21_s.png);background:transparent;}");
+
+        ui->toolButton_22->setStyleSheet("QToolButton {border-image: url(" UI_res_PATH_1920 "sebiao22_n.png);background:transparent;}\
+                                  QToolButton:checked{ border-image: url(" UI_res_PATH_1920 "sebiao22_s.png);background:transparent;}");
+
+        ui->toolButton_11->setMaximumSize(112,112);
+        ui->toolButton_10->setMaximumSize(112,112);
+        ui->toolButton_17->setMaximumSize(112,112);
+        ui->toolButton_14->setMaximumSize(112,112);
+        ui->toolButton_12->setMaximumSize(112,112);
+        ui->toolButton_15->setMaximumSize(112,112);
+        ui->toolButton_1->setMaximumSize(112,112);
+        ui->toolButton_16->setMaximumSize(112,112);
+        ui->toolButton_2->setMaximumSize(112,112);
+        ui->toolButton_19->setMaximumSize(112,112);
+        ui->toolButton_18->setMaximumSize(112,112);
+        ui->toolButton_20->setMaximumSize(112,112);
+        ui->toolButton_21->setMaximumSize(112,112);
+        ui->toolButton_22->setMaximumSize(112,112);
+    }
+}
+
+//翻译
+void hp_dialog_ircolor::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+
+//void hp_dialog_ircolor::slot_pc_key_set_ir_color(unsigned char return_value)
+//{
+
+//}
+
+bool hp_dialog_ircolor::set_sebiao(int sb)
+{
+    sebiao = sb;
+//    signal_update_lcdoff_time(false);
+    switch(sebiao)
+    {
+    case 1:
+        ui->toolButton_1->setChecked(true);
+        break;
+    case 2:
+        ui->toolButton_2->setChecked(true);
+        break;
+    case 10:
+        ui->toolButton_10->setChecked(true);
+        break;
+    case 11:
+        ui->toolButton_11->setChecked(true);
+        break;
+    case 12:
+        ui->toolButton_12->setChecked(true);
+        break;
+    case 13:
+        ui->toolButton_13->setChecked(true);
+        break;
+    case 14:
+        ui->toolButton_14->setChecked(true);
+        break;
+    case 15:
+        ui->toolButton_15->setChecked(true);
+        break;
+    case 16:
+        ui->toolButton_16->setChecked(true);
+        break;
+    case 17:
+        ui->toolButton_17->setChecked(true);
+        break;
+    case 18:
+        ui->toolButton_18->setChecked(true);
+        break;
+    case 19:
+        ui->toolButton_19->setChecked(true);
+        break;
+    case 20:
+        ui->toolButton_20->setChecked(true);
+        break;
+    case 21:
+        ui->toolButton_21->setChecked(true);
+        break;
+    case 22:
+        ui->toolButton_22->setChecked(true);
+        break;
+    default:
+        break;
+    }
+
+    return true;
+}
+
+int hp_dialog_ircolor::get_sebiao()
+{
+    return sebiao;
+}
+
+//信号反馈 - 设置红外伪彩
+void hp_dialog_ircolor::slot_pc_key_set_ir_color(unsigned char return_value,int data)
+{
+    qDebug("hp_dialog_ircolor::slot_pc_key_set_ir_color(unsigned char return_value : 0x%02x , data : %d",return_value,data);
+//    if(data == 1)
+//    {
+        Sleep(100);
+        setButtonGroupEnabled(true);
+        LoadWhirlProgressBarDialog->StopLoadTimer();
+//    }
+}
+
+//色标按钮组点击事件
+void hp_dialog_ircolor::sebiaoButtonGroupChecked(QAbstractButton* bt,bool checked)
+{
+    setButtonGroupEnabled(false);
+    if(bt->objectName() == "toolButton_1")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_1->x(),ui->toolButton_1->y(),ui->toolButton_1->width(),ui->toolButton_1->height());
+            signal_pc_key_set_ir_color(1);
+            sebiao = 1;
+        }
+    }
+    if(bt->objectName() == "toolButton_2")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_2->x(),ui->toolButton_2->y(),ui->toolButton_2->width(),ui->toolButton_2->height());
+            signal_pc_key_set_ir_color(2);
+            sebiao = 2;
+        }
+    }
+    if(bt->objectName() == "toolButton_10")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_10->x(),ui->toolButton_10->y(),ui->toolButton_10->width(),ui->toolButton_10->height());
+
+            signal_pc_key_set_ir_color(10);
+            sebiao = 10;
+        }
+    }
+    if(bt->objectName() == "toolButton_11")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_11->x(),ui->toolButton_11->y(),ui->toolButton_11->width(),ui->toolButton_11->height());
+
+            signal_pc_key_set_ir_color(11);
+            sebiao = 11;
+        }
+    }
+    if(bt->objectName() == "toolButton_12")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_12->x(),ui->toolButton_12->y(),ui->toolButton_12->width(),ui->toolButton_12->height());
+
+            signal_pc_key_set_ir_color(12);
+            sebiao = 12;
+        }
+    }
+    if(bt->objectName() == "toolButton_13")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_13->x(),ui->toolButton_13->y(),ui->toolButton_13->width(),ui->toolButton_13->height());
+
+            signal_pc_key_set_ir_color(13);
+            sebiao = 13;
+        }
+    }
+    if(bt->objectName() == "toolButton_14")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_14->x(),ui->toolButton_14->y(),ui->toolButton_14->width(),ui->toolButton_14->height());
+
+            signal_pc_key_set_ir_color(14);
+            sebiao = 14;
+        }
+    }
+    if(bt->objectName() == "toolButton_15")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_15->x(),ui->toolButton_15->y(),ui->toolButton_15->width(),ui->toolButton_15->height());
+
+            signal_pc_key_set_ir_color(15);
+            sebiao = 15;
+        }
+    }
+    if(bt->objectName() == "toolButton_16")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_16->x(),ui->toolButton_16->y(),ui->toolButton_16->width(),ui->toolButton_16->height());
+
+            signal_pc_key_set_ir_color(16);
+            sebiao = 16;
+        }
+    }
+    if(bt->objectName() == "toolButton_17")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_17->x(),ui->toolButton_17->y(),ui->toolButton_17->width(),ui->toolButton_17->height());
+
+            signal_pc_key_set_ir_color(17);
+            sebiao = 17;
+        }
+    }
+    if(bt->objectName() == "toolButton_18")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_18->x(),ui->toolButton_18->y(),ui->toolButton_18->width(),ui->toolButton_18->height());
+
+            signal_pc_key_set_ir_color(18);
+            sebiao = 18;
+        }
+    }
+    if(bt->objectName() == "toolButton_19")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_19->x(),ui->toolButton_19->y(),ui->toolButton_19->width(),ui->toolButton_19->height());
+
+            signal_pc_key_set_ir_color(19);
+            sebiao = 19;
+        }
+    }
+    if(bt->objectName() == "toolButton_20")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_20->x(),ui->toolButton_20->y(),ui->toolButton_20->width(),ui->toolButton_20->height());
+
+            signal_pc_key_set_ir_color(20);
+            sebiao = 20;
+        }
+    }
+    if(bt->objectName() == "toolButton_21")
+    {
+        if(checked)
+        {
+            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_21->x(),ui->toolButton_21->y(),ui->toolButton_21->width(),ui->toolButton_21->height());
+
+            signal_pc_key_set_ir_color(21);
+            sebiao = 21;
+        }
+    }
+    if(bt->objectName() == "toolButton_22")
+    {
+        if(checked)
+        {            LoadWhirlProgressBarDialog->StartLoadTimer(ui->toolButton_22->x(),ui->toolButton_22->y(),ui->toolButton_22->width(),ui->toolButton_22->height());
+
+            signal_pc_key_set_ir_color(22);
+            sebiao = 22;
+        }
+    }
+
+}
+
+void hp_dialog_ircolor::setButtonGroupEnabled(bool isEnabled)
+{
+    ui->frame_gray->setVisible(!isEnabled);
+    ui->toolButton_1->setEnabled(isEnabled);
+    ui->toolButton_2->setEnabled(isEnabled);
+    ui->toolButton_10->setEnabled(isEnabled);
+    ui->toolButton_11->setEnabled(isEnabled);
+    ui->toolButton_12->setEnabled(isEnabled);
+    ui->toolButton_13->setEnabled(isEnabled);
+    ui->toolButton_14->setEnabled(isEnabled);
+    ui->toolButton_15->setEnabled(isEnabled);
+    ui->toolButton_16->setEnabled(isEnabled);
+    ui->toolButton_17->setEnabled(isEnabled);
+    ui->toolButton_18->setEnabled(isEnabled);
+    ui->toolButton_19->setEnabled(isEnabled);
+    ui->toolButton_20->setEnabled(isEnabled);
+    ui->toolButton_21->setEnabled(isEnabled);
+    ui->toolButton_22->setEnabled(isEnabled);
+}
+//void hp_dialog_ircolor::setButtonGroupStyleSheet(bool isSelect)
+//{
+//    switch(sebiao)
+//    {
+//    case 1:
+//        if(isSelect)
+//           ui.toolButton_1. ;
+//        else
+//            ;
+//        break;
+//    case 2:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 10:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 11:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 12:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 13:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 14:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 15:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 16:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 17:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 18:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 19:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 20:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 21:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    case 22:
+//        if(isSelect)
+//            ;
+//        else
+//            ;
+//        break;
+//    default:
+//        break;
+//    }
+//}
+void hp_dialog_ircolor::Sleep(int msec)
+{
+    QTime dieTime =QTime::currentTime().addMSecs(msec);
+    while (QTime::currentTime()<dieTime)
+    {
+        QCoreApplication::processEvents(QEventLoop::AllEvents,100);
+    }
+}

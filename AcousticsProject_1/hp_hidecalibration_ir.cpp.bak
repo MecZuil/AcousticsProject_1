@@ -1,0 +1,434 @@
+#include "hp_hidecalibration_ir.h"
+#include "ui_hp_hidecalibration_ir.h"
+
+hp_hidecalibration_ir::hp_hidecalibration_ir(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_hidecalibration_ir)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+
+    setGeometry(70,0,this->width(),this->height());
+    ui->frame->setStyleSheet("QFrame{background-color:rgb(0,8,16);}");
+
+    UIType = 0;
+    isDrawPoint = false;
+    PromptDialog = new hp_formatdialog(this);
+    PromptDialog->hp_setFormatDialogText(tr("参数保存中..."));
+    PromptDialog->hp_setDialogType(DIALOG_NULL);
+    PromptDialog->close();
+
+    HpInputText = new hp_input_text(this);
+    HpInputText->hp_setIns(INPUT_HIDECALIIR);
+    HpInputText->close();
+
+    ui->listWidget_tempRange->close();
+
+    connect(HpInputText,SIGNAL(hp_signal_text_over(QString,INPUT_NOW_SHOW)),this,SLOT(hp_slot_text_over(QString,INPUT_NOW_SHOW)));
+    current_select = HIDECALIIR_EMISSIVITY;
+    ui->label_coordinate_x->installEventFilter(this);
+    ui->label_coordinate_y->installEventFilter(this);
+    ui->spinBox_distance->installEventFilter(this);
+    ui->spinBox_emissivity->installEventFilter(this);
+    ui->spinBox_enviroTemp->installEventFilter(this);
+    ui->spinBox_presetTemp1->installEventFilter(this);
+    ui->frame_tempRange->installEventFilter(this);
+
+    HpInputText->raise();
+}
+
+hp_hidecalibration_ir::~hp_hidecalibration_ir()
+{
+    delete ui;
+
+void hp_hidecalibration_ir::SlotSetUIStyle(int type)
+{
+    UIType = type;
+    if(type == 1)
+    {
+        setGeometry(70,0,1536,1080);
+        ui->frame->setGeometry(0,0,1536,1080);
+        ui->title_emissivity->setGeometry(216,225,384,90);
+        ui->title_distance->setGeometry(216,340,384,90);
+        ui->title_coordinate->setGeometry(216,450,384,90);
+        ui->title_enviroTemp->setGeometry(216,670,384,90);
+        ui->title_presetTemp1->setGeometry(216,790,384,90);
+        ui->label_coordinate_x->setGeometry(800,450,260,90);
+        ui->title_coordinate_x->setGeometry(670,450,120,90);
+        ui->label_coordinate_y->setGeometry(1230,450,260,90);
+        ui->title_coordinate_y->setGeometry(1090,450,120,90);
+        ui->title_enviroTemp_2->setGeometry(1176,675,96,90);
+        ui->title_presetTemp1_2->setGeometry(1176,787,96,90);
+        ui->toolButton_getCoordinate->setGeometry(672,562,336,90);
+        ui->toolButton_startCali->setGeometry(216,945,312,90);
+        ui->toolButton_save->setGeometry(600,945,312,90);
+        ui->toolButton_generate->setGeometry(1080,945,408,90);
+        ui->spinBox_emissivity->setGeometry(670,225,456,90);
+        ui->spinBox_distance->setGeometry(670,340,456,90);
+        ui->spinBox_enviroTemp->setGeometry(670,670,456,90);
+        ui->spinBox_presetTemp1->setGeometry(670,790,456,90);
+        ui->toolButton_openInputText->setGeometry(1100,562,336,90);
+        ui->title_tempRange->setGeometry(216,110,384,90);
+        ui->listWidget_tempRange->setGeometry(670,200,191,90);
+        ui->frame_tempRange->setGeometry(670,110,456,90);
+        ui->tempRange_text->setGeometry(1,1,191,29);
+        ui->tempRange_select->setGeometry(170,0,20,29);
+        ui->toolButton_close->setGeometry(72,45,72,45);
+
+    }
+}
+
+bool hp_hidecalibration_ir::eventFilter(QObject *o, QEvent *e)
+{
+    if(e->type() == QEvent::FocusOut)
+    {
+        if(o->objectName() == "frame_tempRange")
+        {
+            current_select = HIDECALIIR_TEMPRANGE;
+//            if(ui->listWidget_tempRange->isVisible())
+//            {
+//                ui->listWidget_tempRange->setVisible(false);
+//            }
+//            else
+//            {
+//                ui->listWidget_tempRange->setVisible(true);
+//            }
+        }
+        else if(o->objectName() == "spinBox_distance")
+        {
+            current_select = HIDECALIIR_DISTANCE;
+            ui->spinBox_distance->setStyleSheet("QDoubleSpinBox{font: 17pt ;background:transparent;color:white;border:1px solid rgba(199, 199, 199, 150);}\
+                                                QDoubleSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36; }\
+                                                QDoubleSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                                QDoubleSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                                QDoubleSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                                QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                                QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36;height: 36;}");
+        }
+        else if(o->objectName() == "spinBox_emissivity")
+        {
+            current_select = HIDECALIIR_EMISSIVITY;
+            ui->spinBox_emissivity->setStyleSheet("QSpinBox{font: 17pt ;background:transparent;color:white;border:1px solid rgba(199, 199, 199, 150);}\
+                                                QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36; }\
+                                                QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                                QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                                QSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                                QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                                QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36;height: 36;}");
+        }
+        else if(o->objectName() == "spinBox_enviroTemp")
+        {
+             current_select = HIDECALIIR_ENVIROTEMP;
+             setStyleSheet("QSpinBox{font: 17pt ;background:transparent;color:white;border:1px solid rgba(199, 199, 199, 150);}\
+                                                             QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36; }\
+                                                             QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                                             QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                                             QSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                                             QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                                             QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36;height: 36;}");
+        }
+        else if(o->objectName() == "spinBox_presetTemp1")
+        {
+            current_select = HIDECALIIR_PRESETTEMP1;
+            setStyleSheet("QSpinBox{font: 17pt ;background:transparent;color:white;border:1px solid rgba(199, 199, 199, 150);}\
+                                                            QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36; }\
+                                                            QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                                            QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                                            QSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                                            QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                                            QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36;height: 36;}");
+        }
+    }
+    if(e->type() == QEvent::FocusIn)
+    {
+        if(o->objectName() == "spinBox_distance")
+        {
+            current_select = HIDECALIIR_DISTANCE;
+            ui->spinBox_distance->setStyleSheet("QDoubleSpinBox{font: 17pt ;background:transparent;color:white;border:1px solid rgba(0, 221, 253,150);}\
+                                                QDoubleSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36; }\
+                                                QDoubleSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                                QDoubleSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                                QDoubleSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                                QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                                QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36;height: 36;}");
+        }
+        else if(o->objectName() == "spinBox_emissivity")
+        {
+            current_select = HIDECALIIR_EMISSIVITY;
+            ui->spinBox_emissivity->setStyleSheet("QSpinBox{font: 17pt ;background:transparent;color:white;border:1px solid rgba(0, 221, 253,150);}\
+                                                QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36; }\
+                                                QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                                QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                                QSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                                QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                                QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36;height: 36;}");
+        }
+        else if(o->objectName() == "spinBox_enviroTemp")
+        {
+             current_select = HIDECALIIR_ENVIROTEMP;
+             setStyleSheet("QSpinBox{font: 17pt ;background:transparent;color:white;border:1px solid rgba(0, 221, 253,150);}\
+                                                             QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36; }\
+                                                             QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                                             QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                                             QSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                                             QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                                             QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36;height: 36;}");
+        }
+        else if(o->objectName() == "spinBox_presetTemp1")
+        {
+            current_select = HIDECALIIR_PRESETTEMP1;
+            setStyleSheet("QSpinBox{font: 17pt ;background:transparent;color:white;border:1px solid rgba(0, 221, 253,150);}\
+                                                            QSpinBox::up-button {subcontrol-origin:border;subcontrol-position:right;margin-right: 2px;width: 36;height: 36; }\
+                                                            QSpinBox::down-button {subcontrol-origin:border;subcontrol-position:left;margin-left: 2px;width: 36;height: 36;}\
+                                                            QSpinBox::up-button:pressed{subcontrol-origin:border;subcontrol-position:right;width: 36;height: 36;       }\
+                                                            QSpinBox::down-button:pressed{subcontrol-position:left;width: 36;height: 36;}\
+                                                            QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off { width: 36;height: 36;}\
+                                                            QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off {  width: 36;height: 36;}");
+        }
+    }
+    if(e->type()==QMouseEvent::MouseButtonPress)
+    {
+        if(o->objectName() == "frame_tempRange")
+        {
+            if(ui->listWidget_tempRange->isHidden())
+            {
+                ui->listWidget_tempRange->show();
+            }
+            else
+            {
+               ui->listWidget_tempRange->hide();
+            }
+        }
+        if(o->objectName() == "label_coordinate_x")
+        {
+            current_select = HIDECALIIR_X;
+        }
+        else if(o->objectName() == "label_coordinate_y")
+        {
+            current_select = HIDECALIIR_Y;
+        }
+    }
+}
+void hp_hidecalibration_ir::mousePressEvent(QMouseEvent *event)
+{
+     qDebug() << "hp_hidecalibration_ir::mousePressEvent == > " << event->pos();
+    pressPoint = event->pos();
+    nowPoint = event->pos();
+    if(isDrawPoint)
+    {
+        update();
+    }
+}
+void hp_hidecalibration_ir::mouseMoveEvent(QMouseEvent *event)
+{
+    if(isDrawPoint)
+    {
+        nowPoint = event->pos();
+        update();
+    }
+
+}
+void hp_hidecalibration_ir::mouseReleaseEvent(QMouseEvent *event)
+{
+    if(isDrawPoint)
+    {
+        nowPoint = event->pos();
+        ui->label_coordinate_x->setText( QString::number(nowPoint.x()) );
+        ui->label_coordinate_y->setText( QString::number(nowPoint.y ()) );
+        update();
+    }
+}
+void hp_hidecalibration_ir::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.setPen(Qt::yellow);
+    painter.setPen(5);
+    painter.drawPoint(nowPoint.x(),nowPoint.y());
+    painter.drawLine(nowPoint.x()-10,nowPoint.y(),nowPoint.x()+10,nowPoint.y());       //线
+    painter.drawLine(nowPoint.x(),nowPoint.y()-10,nowPoint.x(),nowPoint.y()+10);       //线
+
+}
+
+void hp_hidecalibration_ir::on_toolButton_getCoordinate_clicked()
+{
+    ui->frame->setVisible(false);
+//    ui->display_point->setVisible(true);
+    isDrawPoint = true;
+    nowPoint = QPoint(ui->label_coordinate_x->text().toInt(),ui->label_coordinate_y->text().toInt());
+    update();
+
+}
+//
+void hp_hidecalibration_ir::on_toolButton_startCali_clicked()
+{
+    PromptDialog->hp_setFormatDialogText(tr("校正中..."));
+    PromptDialog->show();
+
+    signal_pc_key_set_ir_start_redress();
+}
+//保存标定参数按钮
+void hp_hidecalibration_ir::on_toolButton_save_clicked()
+{
+    IRPara.distance100 = ui->spinBox_distance->value()*100;
+    IRPara.emissivity100 = ui->spinBox_emissivity->value();
+    IRPara.enviroTemp100 = ui->spinBox_enviroTemp->value()*100;
+    IRPara.presetTemp100 = ui->spinBox_presetTemp1->value()*100;
+    IRPara.x = ui->label_coordinate_x->text().toInt();
+    IRPara.y = ui->label_coordinate_y->text().toInt();
+//    qDebug()<<"IRPara.distance100 : "<<IRPara.distance100<<" IRPara.emissivity100 : "<<IRPara.emissivity100<<" IRPara.enviroTemp100 : "<<IRPara.enviroTemp100<<" IRPara.presetTemp100 ： "<<IRPara.presetTemp100<<" IRPara.x : "<<IRPara.x<<" IRPara.y : "<<IRPara.y;
+    signal_pc_key_set_ir_redress(IRPara);
+
+
+    PromptDialog->hp_setFormatDialogText(tr("参数保存中..."));
+    PromptDialog->show();
+
+
+}
+//标定文件导出按钮
+void hp_hidecalibration_ir::on_toolButton_generate_clicked()
+{
+    PromptDialog->hp_setFormatDialogText(tr("标定文件导出中..."));
+    PromptDialog->show();
+
+    QDateTime datatime;
+    QString timestr = datatime.currentDateTime().toString("yyyyMMddHHmmss");
+    QString fileName = "/run/media/mmcblk2p1/detector_value_" + timestr + ".dat";
+    char * bFileName = fileName.toUtf8().data();
+    char cFileName[50];
+    memcpy(cFileName,bFileName,strlen(bFileName));
+    signal_pc_key_get_ir_califile(cFileName);
+
+
+}
+
+void hp_hidecalibration_ir::hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow)
+{
+    if(nowShow != INPUT_HIDECALIIR)
+        return;
+
+    switch (current_select) {
+    case HIDECALIIR_EMISSIVITY:
+        ui->spinBox_emissivity->setValue(qRound(text.toDouble()));
+        break;
+    case HIDECALIIR_DISTANCE:
+        ui->spinBox_distance->setValue(text.toDouble());
+        break;
+    case HIDECALIIR_X:
+    {
+        int iValueX = qRound(text.toDouble());
+        if(iValueX>640)
+            iValueX = 640;
+        if(iValueX<0)
+            iValueX = 0;
+        QString ValueX = QString::number(iValueX);
+        ui->label_coordinate_x->setText(ValueX);
+    }
+        break;
+    case HIDECALIIR_Y:
+    {
+        int iValueY = qRound(text.toDouble());
+        if(iValueY>480)
+            iValueY = 480;
+        if(iValueY<0)
+            iValueY = 0;
+        QString ValueY = QString::number(iValueY);
+        ui->label_coordinate_y->setText(ValueY);
+    }
+        break;
+    case HIDECALIIR_ENVIROTEMP:
+        ui->spinBox_enviroTemp->setValue(text.toDouble());
+        break;
+    case HIDECALIIR_PRESETTEMP1:
+        ui->spinBox_presetTemp1->setValue(text.toDouble());
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_hidecalibration_ir::slot_pc_key_set_ir_redress(unsigned char return_value)
+{
+    qDebug("hp_hidecalibration_ir::slot_pc_key_set_ir_redress(unsigned char return_value : 0x%02x ",return_value);
+    PromptDialog->close();
+}
+void hp_hidecalibration_ir::slot_pc_key_set_ir_start_redress(unsigned char return_value)
+{
+    qDebug("hp_hidecalibration_ir::slot_pc_key_set_ir_start_redress(unsigned char return_value : 0x%02x ",return_value);
+    PromptDialog->close();
+}
+void hp_hidecalibration_ir::slot_pc_key_get_ir_califile(unsigned char return_value)
+{
+    qDebug("hp_hidecalibration_ir::slot_pc_key_get_ir_califile(unsigned char return_value : 0x%02x ",return_value);
+    PromptDialog->close();
+}
+//退出按钮
+void hp_hidecalibration_ir::on_toolButton_close_clicked()
+{
+    if(ui->frame->isVisible())//退出标定
+    {
+        signal_pc_key_set_ir_mode(0);
+        signal_pc_key_set_ir_autopear(1);//打开专家模式,关闭自动切档
+        this->close();
+    }
+    else//退出选点坐标
+    {
+        ui->frame->setVisible(true);
+        isDrawPoint = false;
+    }
+}
+
+void hp_hidecalibration_ir::on_toolButton_openInputText_clicked()
+{
+    if(HpInputText->isHidden())
+    {
+        HpInputText->hp_setShow(INPUT_SHOW_NUM_2);
+        HpInputText->hp_setMaxInput(3);
+        switch (current_select) {
+        case HIDECALIIR_EMISSIVITY:
+            HpInputText->hp_setText(ui->spinBox_emissivity->text());
+            HpInputText->hp_setMaxInput(10);
+            break;
+        case HIDECALIIR_DISTANCE:
+            HpInputText->hp_setText(ui->spinBox_distance->text());
+            HpInputText->hp_setMaxInput(10);
+            break;
+        case HIDECALIIR_X:
+            HpInputText->hp_setText(ui->label_coordinate_x->text());
+            HpInputText->hp_setMaxInput(10);
+            break;
+        case HIDECALIIR_Y:
+            HpInputText->hp_setText(ui->label_coordinate_y->text());
+            HpInputText->hp_setMaxInput(10);
+            break;
+        case HIDECALIIR_ENVIROTEMP:
+            HpInputText->hp_setText(ui->spinBox_enviroTemp->text());
+            HpInputText->hp_setMaxInput(10);
+            break;
+        case HIDECALIIR_PRESETTEMP1:
+            HpInputText->hp_setText(ui->spinBox_presetTemp1->text());
+            HpInputText->hp_setMaxInput(10);
+            break;
+        default:
+            break;
+        }
+        HpInputText->show();
+    }
+    else
+        HpInputText->hide();
+}
+
+void hp_hidecalibration_ir::on_listWidget_tempRange_currentRowChanged(int currentRow)
+{
+    PromptDialog->hp_setFormatDialogText(tr("档位切换中..."));
+    PromptDialog->show();
+    ui->tempRange_text->setText(ui->listWidget_tempRange->currentItem()->text());
+    signal_pc_key_set_ir_temprange(currentRow+1);
+    ui->listWidget_tempRange->hide();
+}
+
+void hp_hidecalibration_ir::slot_pc_key_set_ir_temprange(unsigned char return_value)
+{
+    qDebug("hp_hidecalibration_ir::slot_pc_key_set_ir_temprange(unsigned char return_value : 0x%02x",return_value);
+    PromptDialog->close();
+}

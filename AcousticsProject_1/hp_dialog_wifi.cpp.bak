@@ -1,0 +1,930 @@
+#include "hp_dialog_wifi.h"
+#include "ui_hp_dialog_wifi.h"
+
+hp_dialog_wifi::hp_dialog_wifi(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_wifi)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+
+    hp_dateInit();
+    hp_winInit();
+    hp_connectInit();
+
+    ui->frame->setStyleSheet("background-image: url(:/res/background_1.jpg);");
+    ui->frame_STA->setStyleSheet("background:transparent;");
+    ui->listWidget_wifiName->setStyleSheet(ListWidgeVerticalSheetStyle_n);
+}
+
+hp_dialog_wifi::~hp_dialog_wifi()
+{
+    delete ui;
+}
+
+void hp_dialog_wifi::SlotSetUIStyle(int type)
+{
+    UIType = type;
+    if(type == 1)
+    {
+        QFont font("Microsoft YaHei", 20);
+
+        ui->listWidget_wifiName->setGeometry(0,0,0,0);
+        this->setGeometry(0,0,1920,1080);
+        ui->frame->setGeometry(0,0,1920,1080);
+        ui->toolButton_close->setGeometry(68,68,68,68);
+
+        ui->frame_background->setGeometry(1930,0,1920,1080);
+        ui->title_wifiMode_2->setGeometry(320,200,201,70);
+
+        ui->frame_wifiMode->setGeometry(696,192,580,70);
+        ui->wifiMode_text->setGeometry(1,1,578,68);
+        ui->wifiMode_select->setGeometry(531,1,48,68);
+        ui->listWidget_wifiMode->setGeometry(1640,180,240,81);
+        ui->frame_STA->setGeometry(0,270,1920,810);
+        ui->toolButton_refresh->setGeometry(1310,60,240,67);
+       ui->wifiError_label->setGeometry(1320,350,221,54);
+        ui->frame_wifiPassword->setGeometry(700,240,580,70);
+        ui->wifiPassword_text->setGeometry(1,1,578,68);
+        ui->wifiPassword_text_2->setGeometry(1,1,578,68);
+        ui->frame_wifiName->setGeometry(696,61,580,70);
+        ui->wifiName_text->setGeometry(1,1,578,68);
+        ui->wifiName_select->setGeometry(531,1,48,68);
+        ui->title_wifiName->setGeometry(320,61,201,70);
+        ui->title_wifiPassword->setGeometry(320,240,201,70);
+        ui->checkBox_isSTAConnected->setGeometry(1320,230,177,95);
+        ui->checkBox_isAPConnected->setGeometry(1320,180,177,95);
+
+        ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_1920_n);
+        ui->checkBox_isSTAConnected->setStyleSheet(CheckBoxSheetStyle_1920_n);
+        ui->checkBox_isAPConnected->setStyleSheet(CheckBoxSheetStyle_1920_n);
+        ui->toolButton_refresh->setStyleSheet(ToolButtonSheetStyle_1920_n);
+        ui->wifiMode_select->setFont(font);
+        ui->listWidget_wifiName->setFont(font);
+        ui->title_wifiMode_2->setFont(font);
+        ui->wifiMode_text->setFont(font);
+        ui->wifiMode_select->setFont(font);
+        ui->listWidget_wifiMode->setFont(font);
+        ui->toolButton_refresh->setFont(font);
+        ui->wifiError_label->setFont(font);
+        ui->wifiPassword_text->setFont(font);
+        ui->wifiPassword_text_2->setFont(font);
+        ui->wifiName_text->setFont(font);
+        ui->wifiName_select->setFont(font);
+        ui->title_wifiName->setFont(font);
+        ui->title_wifiPassword->setFont(font);
+    }
+}
+
+void hp_dialog_wifi::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+//数据初始化
+void hp_dialog_wifi::hp_dateInit()
+{
+    isLongKey = false;
+    isFresh = false;
+    isSTAStart = false;
+    isSTAConnected = false;
+    isApStart = false;
+        UIType= 0;
+    wifiMode = 0;
+    isFirstSearchWifi = false;
+    //    isSTAConnecting = false;
+    currentWifiName = "";
+
+    wifiState = WIFI_DISCONNECT;
+    wifiDialog_setting=WIFI_MODE;
+    hp_set_wifiSelect(true);
+}
+//界面初始化
+void hp_dialog_wifi::hp_winInit()
+{
+//    ui->frame->setStyleSheet("QWidget{background:black;}");
+
+    ui->listWidget_wifiName->setResizeMode(QListView::Adjust);      //设置单元项自适应
+    ui->listWidget_wifiName->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);//设置滑动条是否显示
+    QScroller *scroller=QScroller::scroller(ui->listWidget_wifiName);
+    scroller->grabGesture(ui->listWidget_wifiName,QScroller::LeftMouseButtonGesture);//鼠标左键拖动
+
+    ui->listWidget_wifiName->setCurrentRow(0);
+    ui->wifiName_text->setText(ui->listWidget_wifiName->currentItem()->text());
+
+    ErrorWarning = new hp_errorwarning_dialog(this);
+    ErrorWarning->close();
+    FormatWarning = new hp_formatdialog(this);
+    FormatWarning->hp_setFormatDialogText(tr("刷新中..."));
+    FormatWarning->close();
+
+    HpInputText = new hp_input_text(this);
+    HpInputText->hp_setCNENChangeLimit(false);
+    HpInputText->hp_setIns(INPUT_SETTING_WIFI_SPA);
+    HpInputText->hide();
+
+    ui->listWidget_wifiName->setGeometry(290,57,240,181);
+    ui->listWidget_wifiName->setVisible(false);
+
+    ui->listWidget_wifiMode->setGeometry(290,110,240,61);
+    ui->listWidget_wifiMode->setVisible(false);
+
+    ui->wifiPassword_text_2->setVisible(false);
+    ui->wifiError_label->setVisible(false);
+
+    ui->frame_background->move(0,0);
+
+    ui->frame_background->installEventFilter(this);
+    ui->frame_wifiName->installEventFilter(this);
+    ui->frame_wifiPassword->installEventFilter(this);
+    ui->frame_wifiMode->installEventFilter(this);
+}
+//信号槽连接
+void hp_dialog_wifi::hp_connectInit()
+{
+    connect(HpInputText,SIGNAL(hp_signal_text_over(QString,INPUT_NOW_SHOW)),this,SLOT(hp_slot_text_over(QString,INPUT_NOW_SHOW)));
+    connect(FormatWarning,SIGNAL(SignalWifiConnecttimeout()),this,SLOT(SlotWifiConnecttimeout()));
+    connect(FormatWarning,SIGNAL(SignalWifiConnectCancel()),this,SLOT(SlotWifiConnectCancel()));
+}
+
+bool hp_dialog_wifi::eventFilter(QObject *obj, QEvent *event)
+{
+    if(event->type()==QMouseEvent::MouseButtonPress)
+    {
+        SignalUpdateSetUpClock();
+        if(obj->objectName()=="frame_wifiPassword")
+        {
+            hp_set_wifiSelect(false);
+            wifiDialog_setting=WIFI_PASSWORD;
+            hp_set_listWidetShow();
+            hp_set_wifiSelect(true);
+            if(!ui->checkBox_isSTAConnected->isChecked())
+            {
+                on_frame_wifiPassword_clicked();
+            }
+            else
+            {
+                ui->wifiError_label->setText(tr("请先断开连接"));
+                ui->wifiError_label->show();
+            }
+        }
+        else
+        {
+            if(!HpInputText->isHidden())
+            {
+                HpInputText->hide();
+            }
+            if(obj->objectName()=="frame_wifiMode")
+            {
+                hp_set_wifiSelect(false);
+                wifiDialog_setting=WIFI_MODE;
+                hp_set_listWidetShow();
+                hp_set_wifiSelect(true);
+            }
+            else if(obj->objectName()=="frame_wifiName")
+            {
+                hp_set_wifiSelect(false);
+                wifiDialog_setting=WIFI_WIFINAME;
+                hp_set_listWidetShow();
+                hp_set_wifiSelect(true);
+            }
+        }
+    }
+    return false;
+}
+
+void hp_dialog_wifi::keyPressEvent(QKeyEvent *ev)
+{
+    if(!(isLongKey=ev->isAutoRepeat()))
+    {
+        qDebug(" hp_dialog_wifi::keyPressEvent(QKeyEvent *ev)---------- ev->key() = 0x%02x",ev->key());
+        SignalUpdateSetUpClock();
+    }
+}
+
+void hp_dialog_wifi::keyReleaseEvent(QKeyEvent *ev)
+{
+    qDebug()<<" hp_dialog_wifi::keyReleaseEvent(QKeyEvent *ev)---------- ev->key() = "<<ev->key();
+    SignalUpdateSetUpClock();
+    switch (ev->key())
+    {
+    case Key_RETURN:
+        KeyReturnHandle();
+        break;
+    case Key_CAPTURNANDVIDEO:
+        SignalPrintscreenHandle();
+    default:
+        break;
+    }
+}
+//设置组件样式
+void hp_dialog_wifi::hp_set_wifiSelect(bool isSelect)
+{
+    if(!isSelect)
+    {
+        ui->wifiError_label->close();
+    }
+    if(UIType == 1)
+    {
+        switch (wifiDialog_setting){
+        case WIFI_RETURN:
+            if(isSelect)
+            { ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_1920_s);
+            }
+            else
+            {
+                ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_1920_n);
+            }
+            break;
+        case WIFI_MODE:
+            if(isSelect)
+        {ui->frame_wifiMode->setStyleSheet(FrameSheetStyle_1920_s);}
+            else
+            {ui->frame_wifiMode->setStyleSheet(FrameSheetStyle_1920_n);}
+            break;
+        case WIFI_WIFINAME:
+            if(isSelect)
+            {ui->frame_wifiName->setStyleSheet(FrameSheetStyle_1920_s);}
+            else
+            {ui->frame_wifiName->setStyleSheet(FrameSheetStyle_1920_n);}
+            break;
+        case WIFI_PASSWORD:
+            if(isSelect)
+            {ui->frame_wifiPassword->setStyleSheet(FrameSheetStyle_1920_s);}
+            else
+            {ui->frame_wifiPassword->setStyleSheet(FrameSheetStyle_1920_n);}
+            break;
+        case WIFI_REFRESHBUTTON:
+            if(isSelect)
+            {
+                ui->toolButton_refresh->setStyleSheet(ToolButtonSheetStyle_1920_s);
+            }
+            else
+            {    ui->toolButton_refresh->setStyleSheet(ToolButtonSheetStyle_1920_n);}
+            break;
+        case WIFI_CONNECTCHECKBOX:
+            if(isSelect)
+            {
+                ui->checkBox_isSTAConnected->setStyleSheet(CheckBoxSheetStyle_1920_s);
+            }
+            else
+            {
+                ui->checkBox_isSTAConnected->setStyleSheet(CheckBoxSheetStyle_1920_n);
+            }
+            break;
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (wifiDialog_setting){
+        case WIFI_RETURN:
+            if(isSelect)
+            { ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_800_s);
+            }
+            else
+            {
+                ui->toolButton_close->setStyleSheet(ToolButtonReturnSheetStyleBig_800_n);
+            }
+            break;
+        case WIFI_MODE:
+            if(isSelect)
+            {ui->frame_wifiMode->setStyleSheet(FrameSheetStyle_800_s);}
+            else
+            {ui->frame_wifiMode->setStyleSheet(FrameSheetStyle_800_n);}
+            break;
+        case WIFI_WIFINAME:
+            if(isSelect)
+            {ui->frame_wifiName->setStyleSheet(FrameSheetStyle_800_s);}
+            else
+            {ui->frame_wifiName->setStyleSheet(FrameSheetStyle_800_n);}
+            break;
+        case WIFI_PASSWORD:
+            if(isSelect)
+            {ui->frame_wifiPassword->setStyleSheet(FrameSheetStyle_800_s);}
+            else
+            {ui->frame_wifiPassword->setStyleSheet(FrameSheetStyle_800_n);}
+            break;
+        case WIFI_REFRESHBUTTON:
+            if(isSelect)
+            {
+                ui->toolButton_refresh->setStyleSheet(ToolButtonSheetStyle_800_s);
+            }
+            else
+            {    ui->toolButton_refresh->setStyleSheet(ToolButtonSheetStyle_800_n);}
+            break;
+        case WIFI_CONNECTCHECKBOX:
+            if(isSelect)
+            {
+                ui->checkBox_isSTAConnected->setStyleSheet(CheckBoxSheetStyle_800_s);
+            }
+            else
+            {
+                ui->checkBox_isSTAConnected->setStyleSheet(CheckBoxSheetStyle_800_n);
+            }
+            break;
+        default:
+            break;
+        }
+
+    }
+}
+//列表显示更新
+void hp_dialog_wifi::hp_set_listWidetShow()
+{
+    switch (wifiDialog_setting) {
+    case WIFI_WIFINAME:
+        if(!ui->checkBox_isSTAConnected->isChecked())
+        {
+            ui->listWidget_wifiName->setVisible(!ui->listWidget_wifiName->isVisible());
+        }
+        else
+        {
+            ui->wifiError_label->setText(tr("请先断开连接"));
+            ui->wifiError_label->show();
+        }
+        ui->listWidget_wifiMode->setVisible(false);
+        break;
+    case WIFI_MODE:
+
+            ui->listWidget_wifiMode->setVisible(!ui->listWidget_wifiMode->isVisible());
+            qDebug()<<"ui->listWidget_wifiMode->setVisible    ui->listWidget_wifiMode->isVisible : "<<ui->listWidget_wifiMode->isVisible() <<"isSTAConnected : "<<isSTAConnected;
+        ui->listWidget_wifiName->setVisible(false);
+        break;
+    default:
+        ui->listWidget_wifiMode->setVisible(false);
+        ui->listWidget_wifiName->setVisible(false);
+        break;
+    }
+}
+//wifi按钮打开或关闭
+void hp_dialog_wifi::hp_wifiOpen(bool isOpen)
+{
+    if(isOpen)
+    {
+
+        ui->frame_STA->setVisible(false);
+        ui->checkBox_isAPConnected->setVisible(true);
+        isFirstSearchWifi = true;
+    }
+    else
+    {
+        if( wifiMode ==0)
+        {
+            if(ui->checkBox_isAPConnected->isChecked())
+            {
+                ui->checkBox_isAPConnected->setChecked(false);
+                emit ui->checkBox_isAPConnected->clicked(false);
+            }
+        }
+        else
+        {
+            signal_pc_sys_set_wifi_sta_start(0);
+            if(ui->checkBox_isSTAConnected->isChecked())
+            {
+                ui->checkBox_isSTAConnected->setChecked(false);
+                emit ui->checkBox_isSTAConnected->clicked(false);
+            }
+            ui->listWidget_wifiMode->setCurrentRow(0);
+        }
+    }
+}
+//STA模式关闭前要先断开连接
+void hp_dialog_wifi::hp_wifiSTASet(bool isOpen)
+{
+    if(isOpen)
+    {
+
+        signal_pc_sys_set_wifi_sta_start(1);
+        ui->frame_STA->show();
+    }
+    else
+    {
+        if(isSTAConnected)
+        {
+            ui->checkBox_isSTAConnected->setChecked(false);
+            emit ui->checkBox_isSTAConnected->clicked(false);
+        }
+        signal_pc_sys_set_wifi_sta_start(0);
+
+        wifiState = WIFI_DISCONNECT;
+
+        ui->wifiPassword_text_2->clear();
+        ui->wifiPassword_text->show();
+        ui->listWidget_wifiName->clear();
+
+        ui->listWidget_wifiName->addItem(tr("未选中"));
+        ui->listWidget_wifiName->setCurrentRow(0);
+        ui->wifiName_text->setText(ui->listWidget_wifiName->currentItem()->text());
+        ui->wifiError_label->setVisible(false);
+        ui->frame_STA->setVisible(false);
+    }
+
+    //    if(isSTAStart)
+    //    {
+    //        isSTAStart = false;
+    //        signal_pc_sys_set_wifi_sta_start(0);
+    //    }
+}
+//AP模式关闭前要先断开连接
+void hp_dialog_wifi::hp_wifiAPSet(bool isOpen)
+{
+    if(isOpen)
+    {
+        ui->checkBox_isAPConnected->setVisible(true);
+    }
+    else
+    {
+        if(ui->checkBox_isAPConnected->isChecked())
+        {
+            emit ui->checkBox_isAPConnected->clicked(false);
+            ui->checkBox_isAPConnected->setChecked(false);
+        }
+        ui->checkBox_isAPConnected->setVisible(false);
+    }
+}
+//输入网络密码
+void hp_dialog_wifi::hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow)
+{
+    if(ui->listWidget_wifiName->isVisible())
+    {
+        ui->listWidget_wifiName->setVisible(false);
+    }
+    if(nowShow == INPUT_SETTING_WIFI_SPA)
+    {
+        ui->wifiPassword_text->hide();
+        ui->wifiPassword_text_2->show();
+        ui->wifiPassword_text_2->setText(text);
+//        qDebug()<<"ui->wifiPassword_text_2->text()"<<ui->wifiPassword_text_2->text();
+        if(ui->wifiPassword_text_2->text().isEmpty())
+        {
+            ui->wifiPassword_text->show();
+        }
+    }
+}
+//点击输入框打开输入法
+void hp_dialog_wifi::on_frame_wifiPassword_clicked()
+{
+    if(HpInputText->isHidden())
+    {
+        HpInputText->hp_setShow(INPUT_SHOW_ENG);
+        HpInputText->hp_setMaxInput(40);
+        HpInputText->hp_setText(ui->wifiPassword_text_2->text());
+        HpInputText->show();
+    }
+    else
+    {
+        HpInputText->hide();
+    }
+
+}
+//刷新可用网络
+void hp_dialog_wifi::on_toolButton_refresh_clicked()
+{
+    hp_set_wifiSelect(false);
+    wifiDialog_setting = WIFI_REFRESHBUTTON;
+    hp_set_listWidetShow();
+    hp_set_wifiSelect(true);
+
+    if(!ui->checkBox_isSTAConnected->isChecked())
+    {
+        FormatWarning->hp_setFormatDialogText(tr("刷新中..."));
+        FormatWarning->hp_setDialogType(DIALOG_NULL);
+        FormatWarning->show();
+        ui->listWidget_wifiName->clear();
+        ui->wifiName_text->setText("");
+        signal_pc_sys_set_wifi_sta_search();
+    }
+    else
+    {
+        ui->wifiError_label->setText(tr("请先断开连接"));
+        ui->wifiError_label->show();
+    }
+
+}
+//STA网络连接开关
+void hp_dialog_wifi::on_checkBox_isSTAConnected_clicked(bool checked)
+{
+    hp_set_wifiSelect(false);
+    wifiDialog_setting = WIFI_CONNECTCHECKBOX;
+    hp_set_listWidetShow();
+    hp_set_wifiSelect(true);
+
+    if(checked)
+    {
+        if((ui->listWidget_wifiName->currentRow()==0)||(ui->listWidget_wifiName->currentItem()==nullptr))
+        {
+            ui->wifiError_label->setText(tr("请选择网络"));
+            ui->wifiError_label->show();
+            ui->checkBox_isSTAConnected->setChecked(false);
+        }
+        else if(!ui->wifiPassword_text->isHidden())
+        {
+            ui->wifiError_label->setText(tr("请输入网络密码"));
+            ui->wifiError_label->show();
+            ui->checkBox_isSTAConnected->setChecked(false);
+        }
+        else
+        {
+            FormatWarning->hp_setFormatDialogText(tr("连接中..."));
+            FormatWarning->hp_setDialogType(DIALOG_CANCEL);
+            FormatWarning->show();
+            //            isSTAConnecting = true ;
+            ui->wifiError_label->setVisible(false);
+
+            memset(&wifiSTA, 0, sizeof(wifiSTA));//清空数组
+            wifiSTA.switch_value = 1;//是否连接
+            QByteArray bssid = ui->wifiName_text->text().toUtf8();
+            char *cssid = bssid.data();
+            memcpy(wifiSTA.ssid, cssid, strlen(cssid));
+            QByteArray bpassword = ui->wifiPassword_text_2->text().toUtf8();
+            char *cpassword = bpassword.data();
+            memcpy(wifiSTA.password, cpassword, strlen(cpassword));
+
+            qDebug()<<"wifiSTA.ssid : "<<wifiSTA.ssid<<"      wifiSTA.password : "<<wifiSTA.password;
+            signal_pc_sys_set_wifi_sta_connect(wifiSTA);
+        }
+    }
+    else
+    {
+        qDebug("hp_dialog_wifi::on_checkBox_isSTAConnected_clicked(bool checked : false");
+        wifiSTA.switch_value = 0;
+        isSTAConnected = false;
+        SignalSetServiceCheckBox(isSTAConnected);
+        SignalSetIsWifiConnected(false);
+        SignalisGetWifiSTAConnectState(false);
+        signal_pc_sys_set_wifi_sta_connect(wifiSTA);
+        ui->wifiError_label->close();
+    }
+}
+//wifi获取可接入的网络反馈
+void hp_dialog_wifi::slot_pc_sys_set_wifi_sta_search(unsigned char return_value, QStringList strList,int recv_datalen)
+{
+    qDebug()<<"hp_dialog_wifi::slot_pc_sys_set_wifi_sta_search-----return_value"<<return_value;
+
+//    qDebug()<<"hp_dialog_wifi::slot_pc_sys_set_wifi_sta_search-----return_val "<<QString::fromUtf8(str);
+    if(isFirstSearchWifi)
+    {
+        isFirstSearchWifi = false;
+        signal_pc_sys_set_wifi_sta_search();
+        return;
+    }
+//        char wifival[2048] = {0};
+//    int k = 0;
+//    for(int i = 0;i<recv_datalen;i++)
+//    {
+//        if(str[i] != '\0')
+//        {
+//            wifival[k] = str[i];
+//            k++;
+//        }
+//        qDebug("%c -- %d -- %x",str[i],str[i],str[i]);
+
+//    }
+
+//    static int fileInide = 0;
+//    fileInide++;
+//    QString filstr = "/run/media/mmcblk2p1/wififile" + QString::number(fileInide) + ".txt";
+//    FILE* file_fp = fopen(filstr.toUtf8().data(), "w");
+//    fread(str, 1, recv_datalen, file_fp);       //写入全部数据
+//    fclose(file_fp);
+//    system("sync");
+
+//    QString rettest = QString::fromUtf8(wifival);
+//    qDebug()<<"rettest --strNames : "<<rettest;
+    ui->listWidget_wifiName->addItem(tr("未选中"));
+    ui->listWidget_wifiName->setCurrentRow(0);
+    if(return_value == RE_OK)
+    {
+//        QString strNames = QString::fromUtf8(str);
+//        qDebug()<<"wifi --strNames : "<<strNames;
+//        QStringList strs = strNames.split("\n");
+        for(int i=0;i<strList.length()-1;i++)
+        {
+            QString wifiNameStr = strList[i];
+            qDebug()<<"wifiName : "<<wifiNameStr;
+            if(wifiNameStr.contains("\\x"))
+            {
+                continue;
+            }
+            if(wifiNameStr != "")
+            {
+                //防止重复添加
+                if(ui->listWidget_wifiName->findItems(wifiNameStr,Qt::MatchExactly).count() == 0)
+                {
+                    qDebug()<<"wifiName : "<<wifiNameStr;
+                    ui->listWidget_wifiName->addItem(wifiNameStr);
+                }
+            }
+        }
+        //            if(s[0] == '\"')//因为返回的值，有时候缺少引号
+        //            {
+        //                s = s.remove(0,1);
+        //            }
+        //            if(s[s.length() - 1] == '\"')
+        //            {
+        //                s.chop(1);//移除右边的空白字符或预定义字符
+        //            }
+    }
+    ui->wifiName_text->setText(ui->listWidget_wifiName->currentItem()->text());
+    hp_set_wifiSelect(false);
+    wifiDialog_setting = WIFI_WIFINAME;
+    hp_set_listWidetShow();
+    hp_set_wifiSelect(true);
+
+    FormatWarning->close();
+
+
+}
+//接入网络信号反馈
+void hp_dialog_wifi::slot_pc_sys_set_wifi_sta_connect(unsigned char return_value)
+{
+    qDebug()<<"hp_dialog_wifi::slot_pc_sys_set_wifi_sta_connect-----return_value"<<return_value;
+
+    if(wifiSTA.switch_value==0)
+    {
+        return;
+    }
+    if(return_value == RE_OK)
+    {
+        SignalisGetWifiSTAConnectState(true);
+        FormatWarning->hp_setFormatDialogText(tr("连接中..."));
+        FormatWarning->hp_setDialogType(DIALOG_CANCEL);
+        FormatWarning->hp_setDialogTimer(30000);
+        FormatWarning->show();
+    }
+    else
+    {
+
+        qDebug()<<"hp_dialog_wifi::slot_pc_sys_set_wifi_sta_connect-----return_value"<<return_value<<"--------1";
+        ErrorWarning->warning(tr("提示"),tr("连接失败"));
+        ErrorWarning->setDelayClose(3000);
+        ErrorWarning->show();
+        ui->checkBox_isSTAConnected->setChecked(false);
+        emit ui->checkBox_isSTAConnected->clicked(false);
+        FormatWarning->close();
+    }
+}
+//返回按钮
+void hp_dialog_wifi::on_toolButton_close_clicked()
+{
+    hp_set_wifiSelect(false);
+    wifiDialog_setting = WIFI_RETURN;
+    hp_set_listWidetShow();
+    hp_set_wifiSelect(true);
+    //    if(!isSTAConnected)
+    //    {
+    //        isSTAStart = false;
+    //        signal_pc_sys_set_wifi_sta_start(isSTAStart);
+    //    }
+
+    this->close();
+}
+//获取wifi连接状态处理
+void hp_dialog_wifi::slot_pc_sys_get_wifi_sta_state(unsigned char return_value,int stats)
+{
+    qDebug()<<"hp_dialog_wifi::slot_pc_sys_get_wifi_sta_state(unsigned char return_value : "<<return_value<<"-----stats : "<<stats<<" ----isSTAConnected : "<<isSTAConnected;
+    if(ui->checkBox_isSTAConnected->isChecked()==false)
+        return;
+    if((!isSTAConnected)&&stats ==1)
+    {
+        isSTAConnected = true;
+        SignalSetServiceCheckBox(isSTAConnected);
+        SignalSetIsWifiConnected(true);
+        ErrorWarning->warning(tr("提示"),tr("连接成功"));
+        ErrorWarning->setDelayClose(3000);
+        ErrorWarning->show();
+        FormatWarning->close();
+    }
+    else if(isSTAConnected&&stats == 0)
+    {
+        isSTAConnected = false;
+        SignalSetServiceCheckBox(isSTAConnected);
+//        SignalSetIsWifiConnected(false);
+//        SignalisGetWifiSTAConnectState(false);
+        ui->checkBox_isSTAConnected->setChecked(false);
+        emit ui->checkBox_isSTAConnected->clicked(false);
+        ErrorWarning->warning(tr("提示"),tr("连接已断开"));
+        ErrorWarning->setDelayClose(3000);
+        ErrorWarning->show();
+        //        ui->checkBox_isSTAConnected->setChecked(false);
+        //        emit ui->checkBox_isSTAConnected->clicked(false);
+    }
+}
+
+//wifi名称列表选中
+void hp_dialog_wifi::on_listWidget_wifiName_itemPressed(QListWidgetItem *item)
+{
+    qDebug()<<"void hp_dialog_wifi::on_listWidget_wifiName_itemPressed(QListWidgetItem *item)";
+    ui->wifiName_text->setText(item->text());
+    ui->wifiPassword_text_2->clear();
+    ui->wifiPassword_text->setHidden(false);
+    ui->listWidget_wifiName->setVisible(false);
+}
+//消息弹窗取消按钮点击
+void hp_dialog_wifi::SlotWifiConnectCancel()
+{
+    SignalisGetWifiSTAConnectState(false);
+    ui->checkBox_isSTAConnected->setChecked(false);
+    emit ui->checkBox_isSTAConnected->clicked(false);
+}
+//连接中弹窗定时器计时结束
+void hp_dialog_wifi::SlotWifiConnecttimeout()
+{
+    ErrorWarning->warning(tr("提示"),tr("连接失败"));
+    ErrorWarning->setDelayClose(3000);
+    ErrorWarning->show();
+    SignalisGetWifiSTAConnectState(false);
+    ui->checkBox_isSTAConnected->setChecked(false);
+    emit ui->checkBox_isSTAConnected->clicked(false);
+}
+//按键 ↓键
+void hp_dialog_wifi::KeyDownHandle()
+{
+    if(wifiDialog_setting==WIFI_WIFINAME&&ui->listWidget_wifiName->isVisible())
+    {
+        if(ui->listWidget_wifiName->currentItem()==nullptr)
+        {
+            if(ui->listWidget_wifiName->count()!=0)
+            {
+                ui->listWidget_wifiName->setCurrentRow(0);
+            }
+        }
+        else if(ui->listWidget_wifiName->currentRow()+1<=ui->listWidget_wifiName->count())
+        {
+            ui->listWidget_wifiName->setCurrentRow(ui->listWidget_wifiName->currentRow()+1);
+        }
+        else
+        {
+            ui->listWidget_wifiName->setCurrentRow(0);
+        }
+    }
+    else if(wifiDialog_setting==WIFI_REFRESHBUTTON||wifiDialog_setting==WIFI_WIFINAME||wifiDialog_setting==WIFI_RETURN)
+    {
+        hp_set_wifiSelect(false);
+        wifiDialog_setting = (WIFIDIALOG_SETTING)(wifiDialog_setting+1);
+        hp_set_listWidetShow();
+        hp_set_wifiSelect(true);
+    }
+}
+//按键 ↑键
+void hp_dialog_wifi::KeyUpHandle()
+{
+    if(wifiDialog_setting==WIFI_WIFINAME&&ui->listWidget_wifiName->isVisible())
+    {
+        if(ui->listWidget_wifiName->currentItem()==nullptr)
+        {
+            if(ui->listWidget_wifiName->count()!=0)
+            {
+                ui->listWidget_wifiName->setCurrentRow(0);
+            }
+        }
+        else if(ui->listWidget_wifiName->currentRow()-1>0)
+        {
+            ui->listWidget_wifiName->setCurrentRow(ui->listWidget_wifiName->currentRow()-1);
+        }
+        else
+        {
+            ui->listWidget_wifiName->setCurrentRow(ui->listWidget_wifiName->count()-1);
+        }
+    }
+    else if(wifiDialog_setting==WIFI_CONNECTCHECKBOX||wifiDialog_setting==WIFI_PASSWORD||wifiDialog_setting==WIFI_WIFINAME)
+    {
+        hp_set_wifiSelect(false);
+        wifiDialog_setting = (WIFIDIALOG_SETTING)(wifiDialog_setting-1);
+        hp_set_listWidetShow();
+        hp_set_wifiSelect(true);
+    }
+}
+//按键 ←键
+void hp_dialog_wifi::KeyLeftHandle()
+{
+    if(wifiDialog_setting==WIFI_CONNECTCHECKBOX||wifiDialog_setting==WIFI_REFRESHBUTTON)
+    {
+        hp_set_wifiSelect(false);
+        wifiDialog_setting = (WIFIDIALOG_SETTING)(wifiDialog_setting-2);
+        hp_set_listWidetShow();
+        hp_set_wifiSelect(true);
+    }else if(wifiDialog_setting == WIFI_WIFINAME)
+    {
+        hp_set_wifiSelect(false);
+        wifiDialog_setting = WIFI_RETURN;
+        hp_set_listWidetShow();
+        hp_set_wifiSelect(true);
+    }
+}
+//按键 →键
+void hp_dialog_wifi::KeyRightHandle()
+{
+    if(wifiDialog_setting==WIFI_WIFINAME||wifiDialog_setting==WIFI_PASSWORD)
+    {
+        hp_set_wifiSelect(false);
+        wifiDialog_setting = (WIFIDIALOG_SETTING)(wifiDialog_setting+2);
+        hp_set_listWidetShow();
+        hp_set_wifiSelect(true);
+    }
+    else if(wifiDialog_setting == WIFI_RETURN)
+    {
+        hp_set_wifiSelect(false);
+        wifiDialog_setting = WIFI_WIFINAME;
+        hp_set_listWidetShow();
+        hp_set_wifiSelect(true);
+    }
+}
+//按键 确认键
+void hp_dialog_wifi::KeyOKHandle()
+{
+    switch (wifiDialog_setting) {
+    case WIFI_CONNECTCHECKBOX:
+        ui->checkBox_isSTAConnected->setChecked(!ui->checkBox_isSTAConnected->isChecked());
+        emit ui->checkBox_isSTAConnected->clicked(ui->checkBox_isSTAConnected->isChecked());
+        break;
+    case WIFI_PASSWORD:
+        hp_set_listWidetShow();
+        if(!ui->checkBox_isSTAConnected->isChecked())
+        {
+            on_frame_wifiPassword_clicked();
+        }
+        else
+        {
+            ui->wifiError_label->setText(tr("请先断开连接"));
+            ui->wifiError_label->show();
+        }
+        break;
+    case WIFI_REFRESHBUTTON:
+        emit ui->toolButton_refresh->clicked();
+        break;
+    case WIFI_RETURN:
+        emit ui->toolButton_close->clicked();
+        break;
+    case WIFI_WIFINAME:
+        if(!ui->checkBox_isSTAConnected->isChecked())
+        {
+            on_frame_wifiPassword_clicked();
+        }
+        else
+        {
+            ui->wifiError_label->setText(tr("请先断开连接"));
+            ui->wifiError_label->show();
+        }
+        break;
+    default:
+        break;
+    }
+}
+//按键 返回键
+void hp_dialog_wifi::KeyReturnHandle()
+{
+    emit ui->toolButton_close->clicked();
+}
+//切换wifi模式
+void hp_dialog_wifi::on_listWidget_wifiMode_currentRowChanged(int currentRow)
+{
+    ui->wifiMode_text->setText(ui->listWidget_wifiMode->currentItem()->text());
+    wifiMode = currentRow ;
+    ui->listWidget_wifiMode->setVisible(false);
+//    ui->listWidget_wifiMode->setVisible(false);
+    if(wifiMode == 0)
+    {
+        hp_wifiSTASet(false);
+        hp_wifiAPSet(true);
+    }
+    else
+    {
+        hp_wifiAPSet(false);
+        hp_wifiSTASet(true);
+    }
+}
+//AP模式wifi开关
+void hp_dialog_wifi::on_checkBox_isAPConnected_clicked(bool checked)
+{
+    hp_set_wifiSelect(false);
+    wifiDialog_setting = WIFI_APSWITCH;
+    hp_set_listWidetShow();
+    isApStart = checked;
+    if(checked)
+        wifiState = WIFI_CONNECTED;
+    else
+        wifiState = WIFI_DISCONNECT;
+    qDebug()<<"SignalSetIsWifiConnected(checked : "<< checked;
+    SignalSetIsWifiConnected(checked);
+    SignalSetServiceCheckBox(checked);
+    signal_pc_key_set_wifi_ap_state(checked);
+
+}
+//信号反馈 wifi开关控制
+void hp_dialog_wifi::slot_pc_key_set_wifi_ap_state(unsigned char return_value)
+{
+    qDebug()<<"##--------------------------hp_settingface::slot_pc_key_set_wifi_ap_state-------return_value:"<<return_value;
+
+}

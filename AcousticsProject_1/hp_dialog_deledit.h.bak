@@ -1,0 +1,24 @@
+#ifndef HP_DIALOG_DELEDIT_H
+#define HP_DIALOG_DELEDIT_H
+
+#include <QWidget>
+
+namespace Ui {
+class hp_dialog_deledit;
+}
+
+class hp_dialog_deledit : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_dialog_deledit(QWidget *parent = nullptr);
+    ~hp_dialog_deledit();
+ Ui::hp_dialog_deledit *ui;
+
+private:
+ void changeEvent(QEvent *e);
+
+};
+
+#endif // HP_DIALOG_DELEDIT_H

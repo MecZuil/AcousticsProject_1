@@ -1,0 +1,100 @@
+#include "hp_dialog_fdpselect.h"
+#include "ui_hp_dialog_fdpselect.h"
+
+hp_dialog_fdpselect::hp_dialog_fdpselect(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_fdpselect)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setGeometry(800-90-70,480-this->height()-160,width(),height());
+    current_select = FDPSELECT_AUTO;
+
+
+    isSLMOpen = false;
+
+    f=value_Max / poordX_Max;   //实际数据2048 / 显示轴坐标100
+}
+
+hp_dialog_fdpselect::~hp_dialog_fdpselect()
+{
+    delete ui;
+}
+
+void hp_dialog_fdpselect::on_FDPSet_Auto_clicked()
+{
+    hp_button_status_update(false);
+    current_select = FDPSELECT_AUTO;
+    hp_button_status_update(true);
+    signal_pc_key_get_fpga_calfreq();
+}
+
+void hp_dialog_fdpselect::on_FDPSet_SLM_clicked()
+{
+    isSLMOpen = !isSLMOpen;
+    if(isSLMOpen)
+        ui->FDPSet_Auto->setEnabled(false);
+    else
+        ui->FDPSet_Auto->setEnabled(true);
+    hp_button_status_update(false);
+    current_select = FDPSELECT_SLM;
+    hp_button_status_update(true);
+    SignalSetFdpChooseRect(qRound(20 * f),qRound(20 * f) + 256);
+    SignalSetSLM(isSLMOpen);
+}
+
+void hp_dialog_fdpselect::slot_pc_key_get_fpga_calfreq(unsigned char return_value,int data)
+{
+    qDebug("hp_dialog_fdpselect::slot_pc_key_get_fpga_calfreq(unsigned char return_value : 0x%02x , data : %d ",return_value,data);
+    int fpdValue_min = data - 256 / 2;//获取的Data值是要选择的一个频段的中间位置，所以减128获取最低点
+    int fpdValue_max = data + 256 / 2;
+
+    SignalSetFdpChooseRect(fpdValue_min,fpdValue_max);
+}
+
+void hp_dialog_fdpselect::hp_button_status_update(bool isSelect)
+{
+    switch (current_select) {
+    case FDPSELECT_AUTO:
+        if(isSelect)
+        {
+            ui->FDPSet_Auto->setStyleSheet(ToolButton_auto_s);
+        }else {
+            ui->FDPSet_Auto->setStyleSheet(ToolButton_auto_n);
+        }
+        break;
+    case FDPSELECT_SLM:
+        if(isSelect)
+        {
+            if(isSLMOpen)
+                ui->FDPSet_SLM->setStyleSheet(ToolButton_SLM_open_s);
+            else
+                ui->FDPSet_SLM->setStyleSheet(ToolButton_SLM_s);
+
+        }
+        else
+        {
+            if(isSLMOpen)
+                ui->FDPSet_SLM->setStyleSheet(ToolButton_SLM_open_n);
+            else
+                ui->FDPSet_SLM->setStyleSheet(ToolButton_SLM_n);
+        }
+        break;
+    }
+}
+void hp_dialog_fdpselect::SlotSetButtonEnabled(bool isSLM,bool isAuto)
+{
+    if(!isSLM && isSLMOpen)
+    {
+        on_FDPSet_SLM_clicked();
+    }
+    ui->FDPSet_Auto->setEnabled(isAuto);
+        ui->FDPSet_SLM->setEnabled(isSLM);
+
+}
+void hp_dialog_fdpselect::SetSLMVisible(bool isVisible)
+{
+    ui->FDPSet_SLM->setVisible(isVisible);
+}
+
+

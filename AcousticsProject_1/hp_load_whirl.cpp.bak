@@ -1,0 +1,78 @@
+#include "hp_load_whirl.h"
+#include "ui_hp_load_whirl.h"
+
+hp_load_whirl::hp_load_whirl(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_load_whirl)
+{
+    ui->setupUi(this);
+
+    LoadTimer = new QTimer(this);
+
+    connect(LoadTimer,SIGNAL(timeout()),this, SLOT(SlotLoadTimer()));
+}
+
+hp_load_whirl::~hp_load_whirl()
+{
+    delete ui;
+}
+
+void hp_load_whirl::SlotSetUIStyle(int type)
+{
+
+}
+void hp_load_whirl::SlotLoadTimer()
+{
+    rotation++;
+    if(rotation==360)
+        rotation=0;
+    update();
+}
+
+void hp_load_whirl::StartLoadTimer(int wx,int wy,int width,int height)
+{
+    qDebug()<<"start whirl load x "<<wx<<"  y  "<<wy<<"  width  "<<width<<"  height  "<<height;
+    setGeometry(wx,wy,width,height);
+    LoadTimer->start(3);
+    this->show();
+}
+void hp_load_whirl::StopLoadTimer()
+{
+    qDebug()<<"stop whirl load ";
+    LoadTimer->stop();
+    this->close();
+}
+
+void hp_load_whirl::paintEvent(QPaintEvent *event)
+{
+    int width = this->width();
+    int height = this->height();
+    int side = qMin(width,height);
+
+    QPainter painter(this);
+    painter.setRenderHints(QPainter::Antialiasing|QPainter::TextAntialiasing);
+    painter.translate(width/2,height/2);
+    painter.scale(side/200.0,side/200.0);
+
+    QConicalGradient gra(QPoint(0,0),0);
+    gra.setColorAt(0,QColor(0, 221, 253));
+    gra.setColorAt(1,QColor("#FFFFFF"));
+
+    QBrush brush(gra);
+
+    int radius = 40;
+    int sider = 5;
+    QRect rect(-radius,-radius,radius*2,radius*2);
+    QPainterPath path;
+    path.arcTo(rect,0,270);
+
+    QPainterPath subPath;
+    subPath.addEllipse(rect.adjusted(sider,sider,-sider,-sider));
+
+    path = path-subPath;
+    painter.setBrush(brush);
+    painter.setPen(Qt::NoPen);
+    painter.rotate(rotation);
+    painter.drawPath(path);
+
+}

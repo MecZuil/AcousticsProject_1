@@ -1,0 +1,478 @@
+#include "hp_input_text.h"
+#include "ui_hp_input_text.h"
+
+
+
+QStringList allPY;              //所有拼音链表
+hp_input_text::hp_input_text(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_input_text)
+{
+    ui->setupUi(this);
+
+
+    hp_winInit();
+    hp_connectInit();
+}
+
+hp_input_text::~hp_input_text()
+{
+    delete ui;
+    sqlite3_close(db);
+}
+
+void hp_input_text::hp_winInit()
+{
+    this->setWindowFlags(Qt::FramelessWindowHint);
+
+    hp_showCNLab(false);
+    //    ui->scrollArea->close();
+    ui->scrollArea->isUpDown = false;
+    isInScrollMove = false;
+    isLongKey = false;
+    ins = INPUT_SHOW_NONE;
+
+    int nResult = sqlite3_open("py.db",&db);
+    if (nResult != SQLITE_OK)
+    {
+        qDebug()<<"打开数据库失败(open datadase error)："<<sqlite3_errmsg(db);
+    }
+    else
+    {
+        qDebug()<<"数据库打开成功(open datadase OK)";
+    }
+
+    hp_setShow(INPUT_SHOW_ENG);
+
+    ui->scrollArea->horizontalScrollBar()->hide();
+    ui->scrollArea->horizontalScrollBar()->setStyleSheet("height:0px;");
+
+    ui->label_CH_show->installEventFilter(this);
+    ui->label_CH_show->installEventFilter(ui->scrollArea);
+
+    ui->btnOther10_2->close();
+    ui->btnOther10_3->close();
+
+}
+void hp_input_text::SlotSetUIStyle(int type)
+{
+    if(type == 1)
+    {
+        ui->frame->setGeometry(0,0,2047,630);
+        ui->frame_eng->setGeometry(0,1305,2047,475);
+        ui->scrollArea->setGeometry(72,117,1754,95);
+        ui->label_CH_show->setGeometry(0,0,48001,80);
+        ui->lineEdit->setGeometry(48,23,1790,95);
+        ui->frame_num_2->setGeometry(0,810,2047,407);
+        ui->frame_char->setGeometry(0,1800,2047,418);
+        ui->frame_num->setGeometry(0,202,2047,418);
+
+
+        //遍历按钮 按钮松开触发信号
+        QList<QPushButton *> btn = this->findChildren<QPushButton *>();
+        foreach (QPushButton * b, btn)
+        {
+            b->setGeometry(b->x()*2.4,b->y()*2.25,b->width()*2.4,b->height()*2.25);
+
+            b->setStyleSheet("QPushButton{ border-image: url(:/res_1920/label_Background_n.png);color:white;}\
+                             QPushButton::pressed{border-image: url(:/res_1920/label_Background_s.png);color:white;}");
+            QFont font_title("Microsoft YaHei", 24);
+            b->setFont(font_title);
+        }
+    }
+
+}
+
+void hp_input_text::hp_connectInit()
+{
+    //遍历按钮 按钮松开触发信号
+    QList<QPushButton *> btn = this->findChildren<QPushButton *>();
+    foreach (QPushButton * b, btn)
+    {
+        connect(b, SIGNAL(released()), this, SLOT(btn_clicked()));
+    }
+
+    connect(ui->scrollArea,SIGNAL(signal_scrollArea_IsMove(int,bool)),this,SLOT(hp_slot_scroll_is_move(int,bool)));
+}
+
+void hp_input_text::btn_clicked()
+{
+    QPushButton *btn = (QPushButton *)sender();
+    qDebug() << btn->objectName();
+
+    if(btn->objectName() == "btnCN")
+    {
+        //中文按钮
+        hp_clearChinese();
+        if(ui->btnCN->text() == "CN")//表示当前为中文
+        {
+            ui->btnCN->setText("EN");
+            hp_showCNLab(false);
+        }
+        else{//表示当前为英文
+            ui->btnCN->setText("CN");
+            hp_showCNLab(true);
+        }
+        return;
+    }
+    else if(btn->objectName() == "btnType_2" || btn->objectName() == "btnchange_return")
+    {
+        //切换按钮，切换为字母
+        hp_setShow(INPUT_SHOW_ENG);
+        return;
+    }
+    else if(btn->objectName() == "btnchange_sym1_2" || btn->objectName() == "btnchange_sym1")
+    {
+        //切换按钮，切换为字符
+        hp_setShow(INPUT_SHOW_CHAR);
+        return;
+    }
+    else if(btn->objectName() == "btnchange_123")
+    {
+        //切换按钮，切换为数字
+        hp_setShow(INPUT_SHOW_NUM_2);
+        return;
+    }
+
+    //以下是中文输入处理
+    if(ui->btnCN->text() == "CN")//表示当前为中文
+    {
+        hp_CN_Mode(btn);
+        return;
+    }
+
+    //以下是英文输入处理
+    if(btn->objectName() == "btnOK" || btn->objectName() == "btnOK_2" || btn->objectName() == "btnOK_3" || btn->objectName() == "btnOK_4")
+    {
+        this->close();
+        hp_signal_text_over(ui->lineEdit->text(),ins);
+        SignalChangePreviewPage(ui->lineEdit->text(),ins);
+
+        hp_clearChinese();//发布时清空中文
+    }
+    else if(btn->objectName() == "btnDel" || btn->objectName() == "btnDelete" || btn->objectName() == "btnDel_2" || btn->objectName() == "btnDelete_new2")
+    {
+        //删除按钮
+        ui->lineEdit->backspace();
+        hp_signal_text_over(ui->lineEdit->text(),ins);
+    }
+    else if(btn->objectName() == "btnSpace")
+    {
+        //空格按钮
+        ui->lineEdit->insert(" ");
+        hp_signal_text_over(ui->lineEdit->text(),ins);
+    }
+    else if(btn->objectName() == "btnType")
+    {
+        //大写按钮
+        QList<QPushButton *> btn = ui->frame_eng->findChildren<QPushButton *>();
+        bool toUpper = false;
+        if(ui->btna->text() == "a")
+        {
+            toUpper = true;
+        }
+        foreach (QPushButton * b, btn)
+        {
+            if(b->text()=="CN"||b->text()=="EN"||b->text()=="sp"){
+                continue;
+            }
+            if (toUpper)
+            {
+                b->setText(b->text().toUpper());
+            }else{
+                b->setText(b->text().toLower());
+            }
+        }
+    }
+    else
+    {
+        ui->lineEdit->insert(btn->text());
+        hp_signal_text_over(ui->lineEdit->text(),ins);
+    }
+}
+
+bool hp_input_text::eventFilter(QObject *watched, QEvent *event)
+{
+
+    if(event->type() == QMouseEvent::MouseButtonRelease)
+    {
+        if(watched->objectName() == "label_CH_show")
+        {
+            qDebug()<<"##-----------------hp_input_text::eventFilter watched->objectName() == label_CH_show ";
+            QMouseEvent *em = (QMouseEvent *)event;
+            if(!hp_checkScrollMove())//若没有进行鼠标滚动事件
+            {
+                if(txtWidth != 0 && allPY.count() > 0)
+                {
+                    int i = em->pos().x() / txtWidth;
+                    if(i < allPY.count())
+                    {
+                        QString nowText = ui->lineEdit->text().left(ui->lineEdit->text().length() - lenthPY) + allPY[i];
+                        ui->lineEdit->setText(nowText);
+                        hp_signal_text_over(ui->lineEdit->text(),ins);
+                        hp_clearChinese();
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
+void hp_input_text::changeEvent(QEvent *e){
+
+    qDebug()<<"##------------hp_input_text::changeEvent(QEvent *e)    e->type()="<<e->type();
+    QWidget::changeEvent(e);
+    switch (e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+
+}
+
+void hp_input_text::hp_clearChinese()//清除中文内容
+{
+    lenthPY = 0;
+    ui->label_CH_show->clear();
+}
+
+void hp_input_text::hp_showCNLab(bool isShow)
+{
+    if(isShow)
+    {
+        this->resize(800,ui->lineEdit->height() + 10 + ui->label_CH_show->height() + ui->frame_num->height());
+        ui->scrollArea->show();
+        ui->frame_char->move(0,ui->lineEdit->height() + 10 + ui->label_CH_show->height());
+        ui->frame_eng->move(0,ui->lineEdit->height() + 10 + ui->label_CH_show->height());
+        ui->frame_num->move(0,ui->lineEdit->height() + 10 + ui->label_CH_show->height());
+        ui->frame_num_2->move(0,ui->lineEdit->height() + 10 + ui->label_CH_show->height());
+    }else{
+        this->resize(800,ui->lineEdit->height() + 10 + ui->frame_num->height());
+        ui->scrollArea->close();
+        ui->frame_char->move(0,ui->lineEdit->height() + 10);
+        ui->frame_eng->move(0,ui->lineEdit->height() + 10);
+        ui->frame_num->move(0,ui->lineEdit->height() + 10);
+        ui->frame_num_2->move(0,ui->lineEdit->height() + 10);
+    }
+    this->move(0,480 - this->height());
+}
+
+void hp_input_text::hp_setShow(INPUT_SHOW show)
+{
+    ui->frame_char->close();
+    ui->frame_eng->close();
+    ui->frame_num->close();
+    ui->frame_num_2->close();
+//    ui->lineEdit->clear();
+    if(show == INPUT_SHOW_NUM)
+    {
+        if(ui->btnCN->text() == "CN")//若当前为中文
+        {
+            hp_clearChinese();
+            ui->btnCN->setText("EN");
+            hp_showCNLab(false);
+        }
+        ui->frame_num->show();
+    }else if(show == INPUT_SHOW_NUM_2)
+    {
+        ui->frame_num_2->show();
+    }else if(show == INPUT_SHOW_CHAR)
+    {
+        ui->frame_char->show();
+    }else if(show == INPUT_SHOW_ENG)
+    {
+        ui->frame_eng->show();
+    }else if(show == INPUT_SHOW_NOCHCHAR)
+    {
+        if(ui->btnCN->text() == "CN")//若当前为中文
+        {
+            hp_clearChinese();
+            ui->btnCN->setText("EN");
+            hp_showCNLab(false);
+        }
+        ui->frame_eng->show();
+    }
+}
+
+void hp_input_text::hp_CN_Mode(QPushButton *btn)
+{
+    //若本身是大写，则切换为小写
+    if(ui->btna->text() == "A")
+    {
+        QList<QPushButton *> btp = ui->frame_eng->findChildren<QPushButton *>();
+        foreach (QPushButton * b, btp)
+        {
+            b->setText(b->text().toLower());
+        }
+    }
+
+    if(btn->objectName() == "btnDel" || btn->objectName() == "btnDelete" || btn->objectName() == "btnDel_2" || btn->objectName() == "btnDelete_new2")
+    {
+        //删除按钮
+        ui->lineEdit->backspace();
+        if(lenthPY > 0)
+        {
+            lenthPY--;
+        }
+    }else if(btn->objectName() == "btnSpace")
+    {
+        ui->lineEdit->insert(" ");
+        hp_clearChinese();
+    }else if(btn->objectName() == "btnType")
+    {
+        //大写按钮，不做任何处理
+    }else if(btn->objectName() == "btnOK" || btn->objectName() == "btnOK_2" || btn->objectName() == "btnOK_3" || btn->objectName() == "btnOK_4")
+    {
+        this->close();
+        hp_clearChinese();//发布时清空中文
+
+    }else if( btn->objectName() == "btnOther10_2" || btn->objectName() == "btnOther10_3" || btn->objectName() == "btnDot_3" || btn->objectName() == "btnDot" || btn->objectName() == "btnOther_new15" || btn->objectName() == "btnOther_new16" || ui->frame_char->isVisible())//若不是按下拼音键
+    {
+        ui->lineEdit->insert(btn->text());
+        hp_clearChinese();
+    }else{
+        ui->lineEdit->insert(btn->text());
+        lenthPY++;
+    }
+    hp_signal_text_over(ui->lineEdit->text(),ins);
+    //清除汉字和文本
+    allPY.clear();
+    ui->label_CH_show->clear();
+    //通过拼音获取文本
+    QString currentPY = ui->lineEdit->text().right(lenthPY);//获取拼音
+    qDebug()<<"##------------------currentPY--"<< currentPY;
+    QString sql = QString("SELECT word FROM pinyin WHERE pinyin='%1'").arg(currentPY);
+    char* errmsg;
+    int nResult = sqlite3_exec(db,sql.toLatin1().data(),callback,NULL,&errmsg);
+    if (nResult != SQLITE_OK)
+    {
+        sqlite3_close(db);
+        sqlite3_free(errmsg);
+        return;
+    }
+
+    //计算文本长度
+    QFontMetrics metrics(ui->label_CH_show->font());//计算给定字体的字符和字符串的大小
+    txtWidth = 0;
+    if(allPY.count() > 0)
+    {
+        QString txt = QString("     %1     ").arg(allPY[0]);
+        txtWidth = metrics.width(txt);
+    }
+
+    //计算label长度
+    if(txtWidth * allPY.count() > 751)
+    {
+        ui->label_CH_show->resize(txtWidth * allPY.count(),ui->label_CH_show->height());
+    }
+    else
+    {
+        ui->label_CH_show->resize(751,ui->label_CH_show->height());
+
+    }
+    //    ui->scrollAreaWidgetContents->resize(ui->label_CH_show->size());
+    ui->scrollAreaWidgetContents->setMinimumSize(ui->label_CH_show->size());
+    ui->scrollAreaWidgetContents->setMaximumSize(ui->label_CH_show->size());
+
+    //    qDebug() << "Size == > " << ui->scrollAreaWidgetContents->size();
+
+    //添加文本
+    for (int i = 0; i < allPY.count(); i++)
+    {
+        QString txt = QString("     %1     ").arg(allPY[i]);
+        ui->label_CH_show->setText(ui->label_CH_show->text() + txt);
+    }
+}
+
+void hp_input_text::hp_setText(QString str)
+{
+    ui->lineEdit->setText(str);
+}
+
+QString hp_input_text::hp_getText()
+{
+    return ui->lineEdit->text();
+}
+
+void hp_input_text::hp_setMaxInput(int maxlen)//设置最长输入字符
+{
+    ui->lineEdit->setMaxLength(maxlen);
+}
+
+void hp_input_text::hp_serSymInputEnabled(bool isEnabled)
+{
+    ui->btnchange_sym1->setEnabled(isEnabled);
+    ui->btnchange_sym1->setVisible(isEnabled);
+    ui->btnchange_sym1_2->setEnabled(isEnabled);
+    ui->btnchange_sym1_2->setVisible(isEnabled);
+    ui->btnOther_new16->setVisible(isEnabled);
+    ui->btnOther_new15->setVisible(isEnabled);
+    ui->btnSpace->setVisible(isEnabled);
+    ui->btnCN->setVisible(isEnabled);
+
+    ui->btnOther10_2->setVisible(!isEnabled);
+    ui->btnOther10_3->setVisible(!isEnabled);
+}
+
+int callback(void* ,int nCount,char** pValue,char** pName)
+{
+    //逐个将查询到的字词加入汉字队列
+    for(int i=0;i<nCount;i++)
+    {
+        QString result = pValue[i];
+
+        //        qDebug() << i << " ; " << result.toUtf8();
+
+        QStringList text = result.split(" ");
+        foreach (QString txt, text)
+        {
+            if (txt.length() > 0)
+            {
+                allPY.append(txt);
+            }
+        }
+    }
+}
+
+bool hp_input_text::hp_checkScrollMove()
+{
+    if(isInScrollMove)
+    {
+        isInScrollMove = false;
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void hp_input_text::hp_slot_scroll_is_move(int val,bool isMove)
+{
+    if(isMove)//若是释放，则不关心
+    {
+        isInScrollMove = true;
+    }
+}
+
+void hp_input_text::hp_setIns(INPUT_NOW_SHOW nowShow)
+{
+    ins = nowShow;
+
+    if(nowShow == INPUT_PREVIEW)
+    {
+        ui->btnDot->close();
+        ui->btnDot_2->close();
+    }
+    else if(nowShow == INPUT_HIDECALIIR)
+    {
+        hp_setShow(INPUT_SHOW_NUM);
+    }
+}
+//限制是否能够中英文切换
+void hp_input_text::hp_setCNENChangeLimit(bool isChange)
+{
+        ui->btnCN->setEnabled(isChange);
+}

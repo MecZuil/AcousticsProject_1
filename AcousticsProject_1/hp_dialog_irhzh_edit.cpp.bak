@@ -1,0 +1,186 @@
+#include "hp_dialog_irhzh_edit.h"
+#include "ui_hp_dialog_irhzh_edit.h"
+
+hp_dialog_irhzh_edit::hp_dialog_irhzh_edit(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::hp_dialog_irhzh_edit)
+{
+    ui->setupUi(this);
+
+    setGeometry(70+320+130,0,width(),height());
+    isAmplify = false;
+
+    UIType = 0;
+    ui->amplify_reduce->close();
+    //IRHZH_para在主界面参数设置时初始化
+}
+
+hp_dialog_irhzh_edit::~hp_dialog_irhzh_edit()
+{
+    delete ui;
+}
+
+void hp_dialog_irhzh_edit::SlotSetUIStyle(int type)
+{
+    UIType = type;
+    if(UIType == 1)
+    {
+        this->setGeometry(0,0,360,157);
+        ui->frame_drawType->setGeometry(0,0,360,157);
+        ui->alpha->setMinimumSize(120,120);
+        ui->alpha->setMaximumSize(120,120);
+        ui->amplify_reduce->setMinimumSize(120,120);
+        ui->amplify_reduce->setMaximumSize(120,120);
+        ui->alpha->setStyleSheet("QToolButton {border-image: url(" UI_res_mainmenu_PATH_1920 "hzh_alpha100_n.png);}  ");
+        ui->amplify_reduce->setStyleSheet("QToolButton {border-image: url(" UI_res_mainmenu_PATH_1920 "hzh_amplify_n.png);}  ");
+    }
+}
+
+//翻译
+void hp_dialog_irhzh_edit::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    switch(e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+void hp_dialog_irhzh_edit::on_alpha_clicked()
+{
+    hp_button_status_update(false);
+    current_button = IRHZHEDIT_ALPHA;
+    if(IRHZH_para.alpha==0)
+        IRHZH_para.alpha = 50;
+    else if(IRHZH_para.alpha==50)
+        IRHZH_para.alpha = 0;
+    hp_button_status_update(true);
+
+    SignalIRHZHParaSync(IRHZH_para);
+
+}
+
+void hp_dialog_irhzh_edit::on_amplify_reduce_clicked()
+{
+    hp_button_status_update(false);
+    current_button = IRHZHEDIT_AMPLIFY;
+    isAmplify = !isAmplify;
+    hp_button_status_update(true);
+    ui->alpha->setVisible(!isAmplify);
+
+//    signal_pc_key_set_ir_hzh(!isAmplify);
+
+//    SignalSetIRHZHDisplay(isAmplify);
+}
+
+void hp_dialog_irhzh_edit::hp_button_status_update(bool isSelect)
+{
+    if(UIType==1)
+    {
+        switch (current_button) {
+        case IRHZHEDIT_ALPHA:
+            if(isSelect)
+            {
+                if(IRHZH_para.alpha == 0)
+                    ui->alpha->setStyleSheet(ToolButtonIRHZHAlpha100_1920_s);
+                else if(IRHZH_para.alpha == 50)
+                    ui->alpha->setStyleSheet(ToolButtonIRHZHAlpha50_1920_s);
+            }
+            else
+            {
+                if(IRHZH_para.alpha == 0)
+                    ui->alpha->setStyleSheet(ToolButtonIRHZHAlpha100_1920_n);
+                else if(IRHZH_para.alpha == 50)
+                    ui->alpha->setStyleSheet(ToolButtonIRHZHAlpha50_1920_n);
+            }
+            break;
+        case IRHZHEDIT_AMPLIFY:
+            if(isSelect)
+            {
+                if(isAmplify)
+                {
+                    this->move(800-90-this->width(),480-this->height());
+                    ui->amplify_reduce->setStyleSheet(ToolButtonIRHZHReduce_1920_s);
+                }
+                else
+                {
+                    this->move(800-90-IRHZH_para.X,480-IRHZH_para.Y);
+                    ui->amplify_reduce->setStyleSheet(ToolButtonIRHZHAmplify_1920_s);
+                }
+            }
+            else
+            {
+                if(isAmplify)
+                {
+                    this->move(800-90-this->width(),480-this->height());
+                    ui->amplify_reduce->setStyleSheet(ToolButtonIRHZHReduce_1920_n);
+                }
+                else
+                {
+                    this->move(800-90-IRHZH_para.X,480-IRHZH_para.Y);
+                    ui->amplify_reduce->setStyleSheet(ToolButtonIRHZHAmplify_1920_n);
+                }
+            }
+            break;
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (current_button) {
+        case IRHZHEDIT_ALPHA:
+            if(isSelect)
+            {
+                if(IRHZH_para.alpha == 0)
+                    ui->alpha->setStyleSheet(ToolButtonIRHZHAlpha100_800_s);
+                else if(IRHZH_para.alpha == 50)
+                    ui->alpha->setStyleSheet(ToolButtonIRHZHAlpha50_800_s);
+            }
+            else
+            {
+                if(IRHZH_para.alpha == 0)
+                    ui->alpha->setStyleSheet(ToolButtonIRHZHAlpha100_800_n);
+                else if(IRHZH_para.alpha == 50)
+                    ui->alpha->setStyleSheet(ToolButtonIRHZHAlpha50_800_n);
+            }
+            break;
+        case IRHZHEDIT_AMPLIFY:
+            if(isSelect)
+            {
+                if(isAmplify)
+                {
+                    this->move(800-90-this->width(),480-this->height());
+                    ui->amplify_reduce->setStyleSheet(ToolButtonIRHZHReduce_800_s);
+                }
+                else
+                {
+                    this->move(800-90-IRHZH_para.X,480-IRHZH_para.Y);
+                    ui->amplify_reduce->setStyleSheet(ToolButtonIRHZHAmplify_800_s);
+                }
+            }
+            else
+            {
+                if(isAmplify)
+                {
+                    this->move(800-90-this->width(),480-this->height());
+                    ui->amplify_reduce->setStyleSheet(ToolButtonIRHZHReduce_800_n);
+                }
+                else
+                {
+                    this->move(800-90-IRHZH_para.X,480-IRHZH_para.Y);
+                    ui->amplify_reduce->setStyleSheet(ToolButtonIRHZHAmplify_800_n);
+                }
+            }
+            break;
+        default:
+            break;
+        }
+
+    }
+}
+

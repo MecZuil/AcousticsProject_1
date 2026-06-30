@@ -1,0 +1,101 @@
+#ifndef HP_DISPLAY_FDP_H
+#define HP_DISPLAY_FDP_H
+
+#include <QWidget>
+#include <QPainter>
+#include <QPen>
+#include <QRect>
+#include <QDebug>
+#include <qcustomplot.h>
+#include "hp_enum.h"
+#include "hi384_protocol.h"
+#include "hp_xmlreader.h"
+
+
+
+namespace Ui {
+class hp_display_fdp;
+}
+
+class hp_display_fdp : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_display_fdp(QWidget *parent = nullptr);
+    ~hp_display_fdp();
+
+
+    void hp_updateChooseRectUI(bool isSelect);
+    void SetAutoEnabled(bool isEnabled );
+
+    int UIType;
+    bool isSLMOpen;//SLM智能场景是否打开
+    bool isAdaptiveOpen;//频域选择自适应是否打开
+
+protected:
+    virtual void mousePressEvent(QMouseEvent *ev);
+//    virtual void paintEvent(QPaintEvent *ev) override;
+    virtual void mouseMoveEvent(QMouseEvent *ev);
+    virtual void mouseReleaseEvent(QMouseEvent *ev);
+
+signals:
+    void signal_pc_fpga_set_freq_start(int data);
+    void signal_pc_sys_set_freq_anser();
+    void signal_pc_key_set_freq_range(double_range doubleRange);
+
+    void SignalUpdateSetUpClock();
+
+public slots:
+    void SlotSetFdpChooseRect(int fdp_value,int fdp_max);
+    void slot_pc_key_get_freq_range(unsigned char return_value,double_range range);
+
+
+private slots:
+    void slot_pc_fpga_set_freq_start(unsigned char return_value);
+    void slot_pc_stream_data(unsigned char return_value,unsigned char * data);
+    void slot_pc_sys_set_freq_anser(unsigned char return_value);
+    void slot_pc_key_set_freq_range(unsigned char return_value);
+
+
+    void hp_plotDataShow();            //图表数据显示
+    void SlotDataCount();//计算帧率
+//    void SlotSetSLM(bool  isSLMOpen);
+
+private:
+    Ui::hp_display_fdp *ui;
+
+
+    void hp_winInit();
+    void hp_plotStyleInit();           //图表样式设置
+
+    void hp_setTicker();               //设置轴坐标偏移
+
+    int isChangePingDuan;//频段是否可调节
+    int valuePlot;
+    int dataCount;
+    int y_topLine;
+    int y_buttonLine;
+    int tickOffset;//刻度值偏移量
+    int cyRatio;//实际刻度与y轴的比例
+
+    bool is10KSetEnabled;//是否开放10K以下设置 0-10K以下均当做10K发送 1-10K以下正常发送
+    bool chooseTopLine;
+    bool chooseBottomLine;
+    bool chooseMoveRect;
+
+    double_range SendDoubleRange;
+    double f;
+//    QCPMarginGroup *marginGroup;
+    QCPItemText *currentPoint_y;
+
+    QPoint press_point;
+    QPoint current_point;
+    QTimer *TimerFDP;
+//    QCustomPlot *customPlot;
+    QCPColorScale *colorScale;
+
+    hp_XMLReader XmlReader;
+};
+
+#endif // HP_DISPLAY_FDP_H

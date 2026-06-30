@@ -1,0 +1,117 @@
+#ifndef HP_CAPTURE_SAVE_H
+#define HP_CAPTURE_SAVE_H
+
+#include <QWidget>
+#include <QDebug>
+#include <QDateTime>
+
+#include "hp_assemblystyle.h"
+#include "hp_input_text.h"
+#include "hp_enum.h"
+#include "hp_errorwarning_dialog.h"
+#include "hi384_protocol.h"
+
+
+namespace Ui {
+class hp_capture_save;
+}
+
+class hp_capture_save : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit hp_capture_save(QWidget *parent = nullptr);
+    ~hp_capture_save();
+
+    int UIType;//0-800*480 1*1920*1080
+
+    bool isAudioStart;
+    bool isSaveSuccess;
+    bool hasVoiceNotes;//是否存在录音
+    void hp_setSaveShow(SAVE_SHOW saveShow);
+    void hp_setEditName(QString text);
+    void hp_setEditNotes(QString note);
+    void hp_setPreWidget(QString path);
+    void hp_stopTimerVideo();
+    void hp_init_UIStatus_update();
+    void hp_UIStatus_update(bool isSeclect);
+    void hp_SetCaptureSaveBlu(int isConnected);
+    void hp_SetCurrentPicInfo(take_capture_t info);
+    QString hp_getEditName();
+    QString hp_getEditNotes();
+
+//    hp_statusbox_top* HpStatusBoxTop;
+
+signals:
+    void SignalPrintscreenHandle();
+    void SignalUpdateSetUpClock();
+    void signal_hp_capture_save_close(SAVE_SHOW saveShow,int isSave);
+    void signal_pc_key_set_audio_start();
+    void signal_pc_key_set_audio_stop();
+    void signal_pc_key_get_grab();
+    void signal_pc_key_set_ble_inout(int stats);
+
+private slots:
+    void hp_slot_text_over(QString text,INPUT_NOW_SHOW nowShow);
+//    void slot_setting_dateTimeChange(QDateTime dateTime);
+
+    void on_toolButton_save_clicked();
+    void on_toolButton_cancel_clicked();
+    void on_checkBox_normal_stateChanged(int arg1);
+    void on_checkBox_unkown_stateChanged(int arg1);
+    void on_checkBox_PD_stateChanged(int arg1);
+    void on_checkBox_gas_stateChanged(int arg1);
+    void on_checkBox_collect_stateChanged(int arg1);
+    void on_toolButton_voice_clicked();
+
+
+    void SlotTimerVoiceNote();
+
+//    void slot_pc_key_get_battery(unsigned char return_value,int stats);
+    void slot_pc_key_set_audio_start(unsigned char return_value);
+    void slot_pc_key_set_audio_stop(unsigned char return_value);
+    void slot_pc_key_set_ble_inout(unsigned char return_value);
+protected:
+    virtual bool eventFilter(QObject *watched, QEvent *event);
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void keyPressEvent(QKeyEvent *event);
+    virtual void keyReleaseEvent(QKeyEvent *event);
+
+private:
+    Ui::hp_capture_save *ui;
+
+    void changeEvent(QEvent *e);
+
+
+    bool isBluConnected;
+    bool isLongKey;//记录是否长按
+    //几个标签是否选中
+    int isNormal;
+    int isUnkown;
+    int isPD;
+    int isGas;
+    int isCollect;
+    int TimerVoiceNoteCount;
+    QTimer *TimerVoiceNote;
+
+    take_capture_t captureInfo;
+    HPCAPTURESAVE_CONTROL currentSelect;//当前输入的label 0:无 1:name 2:notes
+    SAVE_SHOW saveShow;//区分图片视频拍摄保存 图片视频预览编辑
+
+    hp_input_text *HpInputText;
+    hp_errorwarning_dialog *ErrorWarning;
+
+    void hp_winInit();
+    void hp_connectInit();
+    void hp_edit_clicked();
+    void hp_update_checkBox_isEnabled();
+    void KeyDownHandle();
+    void KeyUpHandle();
+    void KeyLeftHandle();
+    void KeyRightHandle();
+    void KeyOKHandle();
+    void KeyReturnHandle();
+};
+
+#endif // HP_CAPTURE_SAVE_H
