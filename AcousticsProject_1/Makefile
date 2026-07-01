@@ -15,7 +15,7 @@ CXX           = arm-poky-linux-gnueabi-g++ -march=armv7-a -mfloat-abi=hard -mfpu
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_MULTIMEDIAWIDGETS_LIB -DQT_QUICKWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_SQL_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_SCRIPT_LIB -DQT_SERIALPORT_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -DLINUX=1 -DEGL_API_FB=1 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -DLINUX=1 -DEGL_API_FB=1 -std=gnu++11 -std=c++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../MyCrossCompiling/modules/lib/imx6/gstreamer/include -I../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I../../MyCrossCompiling/modules/lib/imx6/glib-2.0 -I../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/ -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include/ -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0/ -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I. -I/home/knight/gpu/gpu-viv-bin-mx6q-3.10.17-1.0.0/hardfp/usr/include -I. -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++
+INCPATH       = -I. -I../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include -I../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I../../../MyCrossCompiling/modules/lib/imx6/glib-2.0 -I../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/ -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include/ -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0/ -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I. -I/home/knight/gpu/gpu-viv-bin-mx6q-3.10.17-1.0.0/hardfp/usr/include -I. -isystem /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++
 QMAKE         = /opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = AcousticsProject_11.0.0
-DISTDIR = /home/knight/MyQtProject/AcousticsProject_1/.tmp/AcousticsProject_11.0.0
+DISTDIR = /home/knight/MyQtProject/As300/AcousticsProject_1/.tmp/AcousticsProject_11.0.0
 LINK          = arm-poky-linux-gnueabi-g++ -march=armv7-a -mfloat-abi=hard -mfpu=neon -mtune=cortex-a9 --sysroot=/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib -Wl,-rpath-link,/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib
 LIBS          = $(SUBLIBS) -L/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/lib -L/home/knight/gpu/gpu-viv-bin-mx6q-3.10.17-1.0.0/hardfp/usr/lib -L/home/knight/MyCrossCompiling/modules/lib/imx6/orc/lib -L/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -L/opt/fsl-imx-fb/4.1.15-1.1.1/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib -lavcodec -lavdevice -lavfilter -lavformat -lavutil -lpostproc -lswscale -lswresample -L/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib -lxml2 -lz -lorc-0.4 -lgstbase-1.0 -lgstreamer-1.0 -lglib-2.0 -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lsqlite3 -L/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0 -lgstvideo-1.0 -lasound -lQt5PrintSupport -L/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib -lQt5MultimediaWidgets -lQt5QuickWidgets -lQt5Widgets -lQt5Multimedia -lQt5Quick -lQt5Gui -lQt5Xml -lQt5Sql -lQt5Qml -lQt5Network -lQt5Script -lQt5SerialPort -lQt5Core -lGLESv2 -lEGL -lGAL -lpthread 
@@ -1509,172 +1509,172 @@ moc_mainwidget.cpp: hp_main_button.h \
 		hp_enum.h \
 		hi384_protocol.h \
 		hp_preview.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include/glibconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
 		hp_assemblystyle.h \
 		hp_formatdialog.h \
 		hp_statusbox_top.h \
@@ -1715,174 +1715,174 @@ moc_mainwidget.cpp: hp_main_button.h \
 		mainwidget.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include mainwidget.h -o moc_mainwidget.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include mainwidget.h -o moc_mainwidget.cpp
 
-moc_hp_preview.cpp: ../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
+moc_hp_preview.cpp: ../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include/glibconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
 		hp_assemblystyle.h \
 		hp_enum.h \
 		hp_formatdialog.h \
@@ -1893,14 +1893,14 @@ moc_hp_preview.cpp: ../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gs
 		hp_preview.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_preview.h -o moc_hp_preview.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_preview.h -o moc_hp_preview.cpp
 
 moc_hp_statusbox_top.cpp: hp_enum.h \
 		hi384_protocol.h \
 		hp_statusbox_top.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_statusbox_top.h -o moc_hp_statusbox_top.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_statusbox_top.h -o moc_hp_statusbox_top.cpp
 
 moc_hp_display_prpd.cpp: qcustomplot.h \
 		hp_enum.h \
@@ -1908,12 +1908,12 @@ moc_hp_display_prpd.cpp: qcustomplot.h \
 		hp_display_prpd.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_display_prpd.h -o moc_hp_display_prpd.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_display_prpd.h -o moc_hp_display_prpd.cpp
 
 moc_qcustomplot.cpp: qcustomplot.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include qcustomplot.h -o moc_qcustomplot.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include qcustomplot.h -o moc_qcustomplot.cpp
 
 moc_hp_domainthread.cpp: hp_enum.h \
 		hp_domainapi.h \
@@ -1922,7 +1922,7 @@ moc_hp_domainthread.cpp: hp_enum.h \
 		hp_domainthread.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_domainthread.h -o moc_hp_domainthread.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_domainthread.h -o moc_hp_domainthread.cpp
 
 moc_hp_capture_save.cpp: hp_assemblystyle.h \
 		hp_input_text.h \
@@ -1932,7 +1932,7 @@ moc_hp_capture_save.cpp: hp_assemblystyle.h \
 		hp_capture_save.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_capture_save.h -o moc_hp_capture_save.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_capture_save.h -o moc_hp_capture_save.cpp
 
 moc_hp_settingface.cpp: hp_assemblystyle.h \
 		hp_enum.h \
@@ -1958,7 +1958,7 @@ moc_hp_settingface.cpp: hp_assemblystyle.h \
 		hp_settingface.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_settingface.h -o moc_hp_settingface.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_settingface.h -o moc_hp_settingface.cpp
 
 moc_hp_display_fdp.cpp: qcustomplot.h \
 		hp_enum.h \
@@ -1967,28 +1967,28 @@ moc_hp_display_fdp.cpp: qcustomplot.h \
 		hp_display_fdp.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_display_fdp.h -o moc_hp_display_fdp.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_display_fdp.h -o moc_hp_display_fdp.cpp
 
 moc_hp_input_text.cpp: hp_enum.h \
 		hi384_protocol.h \
 		hp_input_text.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_input_text.h -o moc_hp_input_text.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_input_text.h -o moc_hp_input_text.cpp
 
 moc_hp_style_scrollarea.cpp: hi384_protocol.h \
 		hp_enum.h \
 		hp_style_scrollarea.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_style_scrollarea.h -o moc_hp_style_scrollarea.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_style_scrollarea.h -o moc_hp_style_scrollarea.cpp
 
 moc_hp_gradient_rect.cpp: hp_enum.h \
 		hi384_protocol.h \
 		hp_gradient_rect.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_gradient_rect.h -o moc_hp_gradient_rect.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_gradient_rect.h -o moc_hp_gradient_rect.cpp
 
 moc_hp_dialog_wifi.cpp: hp_enum.h \
 		hi384_protocol.h \
@@ -1999,28 +1999,28 @@ moc_hp_dialog_wifi.cpp: hp_enum.h \
 		hp_dialog_wifi.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_wifi.h -o moc_hp_dialog_wifi.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_wifi.h -o moc_hp_dialog_wifi.cpp
 
 moc_hp_formatdialog.cpp: hp_enum.h \
 		hi384_protocol.h \
 		hp_formatdialog.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_formatdialog.h -o moc_hp_formatdialog.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_formatdialog.h -o moc_hp_formatdialog.cpp
 
 moc_hp_errorwarning_dialog.cpp: hp_enum.h \
 		hi384_protocol.h \
 		hp_errorwarning_dialog.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_errorwarning_dialog.h -o moc_hp_errorwarning_dialog.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_errorwarning_dialog.h -o moc_hp_errorwarning_dialog.cpp
 
 moc_hp_main_button.cpp: hp_enum.h \
 		hi384_protocol.h \
 		hp_main_button.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_main_button.h -o moc_hp_main_button.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_main_button.h -o moc_hp_main_button.cpp
 
 moc_hp_dialog_bluetooth.cpp: hp_enum.h \
 		hi384_protocol.h \
@@ -2031,7 +2031,7 @@ moc_hp_dialog_bluetooth.cpp: hp_enum.h \
 		hp_dialog_bluetooth.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_bluetooth.h -o moc_hp_dialog_bluetooth.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_bluetooth.h -o moc_hp_dialog_bluetooth.cpp
 
 moc_hp_hideadjust.cpp: hp_enum.h \
 		hi384_protocol.h \
@@ -2043,13 +2043,13 @@ moc_hp_hideadjust.cpp: hp_enum.h \
 		hp_hideadjust.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_hideadjust.h -o moc_hp_hideadjust.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_hideadjust.h -o moc_hp_hideadjust.cpp
 
 moc_hp_style_datetimeedit.cpp: hp_enum.h \
 		hp_style_datetimeedit.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_style_datetimeedit.h -o moc_hp_style_datetimeedit.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_style_datetimeedit.h -o moc_hp_style_datetimeedit.cpp
 
 moc_hp_main_menu.cpp: hp_enum.h \
 		hp_xmlreader.h \
@@ -2067,25 +2067,25 @@ moc_hp_main_menu.cpp: hp_enum.h \
 		hp_main_menu.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_main_menu.h -o moc_hp_main_menu.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_main_menu.h -o moc_hp_main_menu.cpp
 
 moc_hp_usbinsert_interface.cpp: hp_enum.h \
 		hp_usbinsert_interface.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_usbinsert_interface.h -o moc_hp_usbinsert_interface.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_usbinsert_interface.h -o moc_hp_usbinsert_interface.cpp
 
 moc_hp_previewloading.cpp: hi384_protocol.h \
 		hp_previewloading.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_previewloading.h -o moc_hp_previewloading.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_previewloading.h -o moc_hp_previewloading.cpp
 
 moc_hp_poweroff_dialog.cpp: hi384_protocol.h \
 		hp_poweroff_dialog.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_poweroff_dialog.h -o moc_hp_poweroff_dialog.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_poweroff_dialog.h -o moc_hp_poweroff_dialog.cpp
 
 moc_hp_dialog_selfinspection.cpp: hi384_protocol.h \
 		qcustomplot.h \
@@ -2095,14 +2095,14 @@ moc_hp_dialog_selfinspection.cpp: hi384_protocol.h \
 		hp_dialog_selfinspection.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_selfinspection.h -o moc_hp_dialog_selfinspection.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_selfinspection.h -o moc_hp_dialog_selfinspection.cpp
 
 moc_hp_dialog_ircolor.cpp: hi384_protocol.h \
 		hp_load_whirl.h \
 		hp_dialog_ircolor.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_ircolor.h -o moc_hp_dialog_ircolor.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_ircolor.h -o moc_hp_dialog_ircolor.cpp
 
 moc_hp_display.cpp: hi384_protocol.h \
 		hp_xmlreader.h \
@@ -2110,172 +2110,172 @@ moc_hp_display.cpp: hi384_protocol.h \
 		hp_main_button.h \
 		hp_enum.h \
 		hp_preview.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include/glibconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
 		hp_assemblystyle.h \
 		hp_formatdialog.h \
 		hp_statusbox_top.h \
@@ -2317,7 +2317,7 @@ moc_hp_display.cpp: hi384_protocol.h \
 		hp_display.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_display.h -o moc_hp_display.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_display.h -o moc_hp_display.cpp
 
 moc_hp_dialog_drawmenu.cpp: hi384_protocol.h \
 		hp_enum.h \
@@ -2325,20 +2325,20 @@ moc_hp_dialog_drawmenu.cpp: hi384_protocol.h \
 		hp_dialog_drawmenu.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_drawmenu.h -o moc_hp_dialog_drawmenu.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_drawmenu.h -o moc_hp_dialog_drawmenu.cpp
 
 moc_hp_dialog_deledit.cpp: hp_assemblystyle.h \
 		hp_dialog_deledit.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_deledit.h -o moc_hp_dialog_deledit.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_deledit.h -o moc_hp_dialog_deledit.cpp
 
 moc_hp_progressbar_dialog.cpp: hp_enum.h \
 		hi384_protocol.h \
 		hp_progressbar_dialog.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_progressbar_dialog.h -o moc_hp_progressbar_dialog.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_progressbar_dialog.h -o moc_hp_progressbar_dialog.cpp
 
 moc_hp_dialog_hidepassword.cpp: hp_input_text.h \
 		hp_enum.h \
@@ -2347,7 +2347,7 @@ moc_hp_dialog_hidepassword.cpp: hp_input_text.h \
 		hp_dialog_hidepassword.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_hidepassword.h -o moc_hp_dialog_hidepassword.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_hidepassword.h -o moc_hp_dialog_hidepassword.cpp
 
 moc_hp_hidecalibration_ir.cpp: hp_enum.h \
 		hi384_protocol.h \
@@ -2357,7 +2357,7 @@ moc_hp_hidecalibration_ir.cpp: hp_enum.h \
 		hp_hidecalibration_ir.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_hidecalibration_ir.h -o moc_hp_hidecalibration_ir.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_hidecalibration_ir.h -o moc_hp_hidecalibration_ir.cpp
 
 moc_hp_dialog_irhzh_edit.cpp: hi384_protocol.h \
 		hp_assemblystyle.h \
@@ -2365,14 +2365,14 @@ moc_hp_dialog_irhzh_edit.cpp: hi384_protocol.h \
 		hp_dialog_irhzh_edit.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_irhzh_edit.h -o moc_hp_dialog_irhzh_edit.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_irhzh_edit.h -o moc_hp_dialog_irhzh_edit.cpp
 
 moc_hp_dialog_picmode_menu.cpp: hp_assemblystyle.h \
 		hp_enum.h \
 		hp_dialog_picmode_menu.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_picmode_menu.h -o moc_hp_dialog_picmode_menu.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_picmode_menu.h -o moc_hp_dialog_picmode_menu.cpp
 
 moc_hp_dialog_ir_parameter.cpp: hp_assemblystyle.h \
 		hp_enum.h \
@@ -2380,7 +2380,7 @@ moc_hp_dialog_ir_parameter.cpp: hp_assemblystyle.h \
 		hp_dialog_ir_parameter.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_ir_parameter.h -o moc_hp_dialog_ir_parameter.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_ir_parameter.h -o moc_hp_dialog_ir_parameter.cpp
 
 moc_hp_dialog_bluetooth_old.cpp: hp_enum.h \
 		hi384_protocol.h \
@@ -2389,12 +2389,12 @@ moc_hp_dialog_bluetooth_old.cpp: hp_enum.h \
 		hp_dialog_bluetooth_old.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_bluetooth_old.h -o moc_hp_dialog_bluetooth_old.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_bluetooth_old.h -o moc_hp_dialog_bluetooth_old.cpp
 
 moc_hp_load_whirl.cpp: hp_load_whirl.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_load_whirl.h -o moc_hp_load_whirl.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_load_whirl.h -o moc_hp_load_whirl.cpp
 
 moc_hp_dialog_fdpselect.cpp: hi384_protocol.h \
 		hp_enum.h \
@@ -2402,12 +2402,12 @@ moc_hp_dialog_fdpselect.cpp: hi384_protocol.h \
 		hp_dialog_fdpselect.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_fdpselect.h -o moc_hp_dialog_fdpselect.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_fdpselect.h -o moc_hp_dialog_fdpselect.cpp
 
 moc_hp_preview_avi.cpp: hp_preview_avi.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_preview_avi.h -o moc_hp_preview_avi.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_preview_avi.h -o moc_hp_preview_avi.cpp
 
 moc_hp_dialog_service.cpp: hi384_protocol.h \
 		hp_assemblystyle.h \
@@ -2418,19 +2418,19 @@ moc_hp_dialog_service.cpp: hi384_protocol.h \
 		hp_dialog_service.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_service.h -o moc_hp_dialog_service.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_service.h -o moc_hp_dialog_service.cpp
 
 moc_hp_style_toolbox.cpp: hp_enum.h \
 		hp_style_toolbox.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_style_toolbox.h -o moc_hp_style_toolbox.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_style_toolbox.h -o moc_hp_style_toolbox.cpp
 
 moc_hp_qspinbox.cpp: hp_enum.h \
 		hp_qspinbox.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_qspinbox.h -o moc_hp_qspinbox.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_qspinbox.h -o moc_hp_qspinbox.cpp
 
 moc_hp_dialog_smartscenes.cpp: hi384_protocol.h \
 		hp_enum.h \
@@ -2438,24 +2438,24 @@ moc_hp_dialog_smartscenes.cpp: hi384_protocol.h \
 		hp_dialog_smartscenes.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_smartscenes.h -o moc_hp_dialog_smartscenes.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_dialog_smartscenes.h -o moc_hp_dialog_smartscenes.cpp
 
 moc_hp_bluetooth_data.cpp: hi384_protocol.h \
 		hp_enum.h \
 		hp_bluetooth_data.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_bluetooth_data.h -o moc_hp_bluetooth_data.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_bluetooth_data.h -o moc_hp_bluetooth_data.cpp
 
 moc_hp_4g_data.cpp: hp_4g_data.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_4g_data.h -o moc_hp_4g_data.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_4g_data.h -o moc_hp_4g_data.cpp
 
 moc_hp_gps_data.cpp: hp_gps_data.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
-	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_gps_data.h -o moc_hp_gps_data.cpp
+	/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include /home/knight/MyQtProject/As300/AcousticsProject_1/moc_predefs.h -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/knight/MyQtProject/As300/AcousticsProject_1 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0 -I/home/knight/MyCrossCompiling/modules/lib/imx6/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/libxml2 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/gstreamer-1.0/include -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/include/glib-2.0 -I/home/knight/fsl-release-bsp/build_imx6q_fb/tmp/sysroots/imx6qsabresd/usr/lib/glib-2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtPrintSupport -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuickWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQuick -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtXml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSql -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtQml -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtScript -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtSerialPort -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0 -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include/c++/5.2.0/backward -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/5.2.0/include-fixed -I/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/include hp_gps_data.h -o moc_hp_gps_data.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -2495,172 +2495,172 @@ ui_mainwidget.h: mainwidget.ui \
 		hp_main_button.h \
 		hp_enum.h \
 		hp_preview.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include/glibconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
 		hp_assemblystyle.h \
 		hp_formatdialog.h \
 		hp_statusbox_top.h \
@@ -2865,172 +2865,172 @@ main.o: main.cpp mainwidget.h \
 		hp_enum.h \
 		hi384_protocol.h \
 		hp_preview.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include/glibconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
 		hp_assemblystyle.h \
 		hp_formatdialog.h \
 		hp_statusbox_top.h \
@@ -3075,172 +3075,172 @@ mainwidget.o: mainwidget.cpp mainwidget.h \
 		hp_enum.h \
 		hi384_protocol.h \
 		hp_preview.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include/glibconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
 		hp_assemblystyle.h \
 		hp_formatdialog.h \
 		hp_statusbox_top.h \
@@ -3288,172 +3288,172 @@ mainwidget.o: mainwidget.cpp mainwidget.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwidget.o mainwidget.cpp
 
 hp_preview.o: hp_preview.cpp hp_preview.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include/glibconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
 		hp_assemblystyle.h \
 		hp_enum.h \
 		hp_formatdialog.h \
@@ -3671,172 +3671,172 @@ hp_display.o: hp_display.cpp hp_display.h \
 		hp_main_button.h \
 		hp_enum.h \
 		hp_preview.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gst.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/galloca.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtypes.h \
 		/opt/fsl-imx-x11/4.1.15-1.2.0/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi/usr/lib/glib-2.0/include/glibconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
-		../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
-		../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversionmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/garray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gasyncqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gatomic.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gerror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gquark.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbacktrace.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbase64.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbitlock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbookmarkfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gbytes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gcharset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gchecksum.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gconvert.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdataset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimezone.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gdir.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/genviron.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gfileutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ggettext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghash.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmem.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gnode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghmac.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghook.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/ghostutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/giochannel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstring.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gunicode.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gkeyfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmappedfile.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmarkup.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gmessages.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/goption.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gpattern.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gprimes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqsort.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/grand.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gregex.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gscanner.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gsequence.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gshell.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gslice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gspawn.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstrfuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gstringchunk.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtestutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gthreadpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtimer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtrashstack.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gtree.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gurifuncs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvarianttype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gvariant.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/gwin32.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcache.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gcompletion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gmain.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/grel.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/deprecated/gthread.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib/glib-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/glib-compat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstenumtypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/glib-object.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtype.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparam.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsignal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gmarshal.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gboxed.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/glib-types.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/genums.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gsourceclosure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypemodule.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gtypeplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluearray.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gvaluetypes.h \
+		../../../MyCrossCompiling/modules/lib/imx6/glib-2.0/include/gobject/gobject-autocleanups.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstversion.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstatomicqueue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelement.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/lib/gstreamer-1.0/include/gst/gstconfig.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolbinding.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontrolsource.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbuffer.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstminiobject.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstallocator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmemory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmeta.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferlist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcaps.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gststructure.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdatetime.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcapsfeatures.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpadtemplate.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstevent.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstformat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstiterator.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaglist.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsample.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsegment.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmessage.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstquery.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttoc.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcontext.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevice.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttask.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttaskpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbus.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstplugin.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstmacros.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpluginfeature.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsturi.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstbufferpool.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstchildproxy.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdebugutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdevicemonitor.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceprovider.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstelementmetadata.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsterror.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstghostpad.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstinfo.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparamspecs.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstvalue.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpipeline.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpoll.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstpreset.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstprotection.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstregistry.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstsystemclock.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttagsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttocsetter.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefind.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gsttypefindfactory.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstutils.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstparse.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/gstcompat.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/audio/streamvolume.h \
+		../../../MyCrossCompiling/modules/lib/imx6/gstreamer/include/gstreamer-1.0/gst/video/videooverlay.h \
 		hp_assemblystyle.h \
 		hp_formatdialog.h \
 		hp_statusbox_top.h \
